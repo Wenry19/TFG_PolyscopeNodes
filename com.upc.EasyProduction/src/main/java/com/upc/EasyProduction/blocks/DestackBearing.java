@@ -1,6 +1,6 @@
 package com.upc.EasyProduction.blocks;
 
-public class DestackBearing {
+public class DestackBearing extends Block {
 
 	final private String defaultCode = "\n"
 			+ "      # $ 41 \"If N_Bases≥4\"\n"

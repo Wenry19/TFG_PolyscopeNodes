@@ -1,6 +1,6 @@
 package com.upc.EasyProduction.blocks;
 
-public class While {
+public class While extends Block {
 	final private String defaultCode = "\n"
 			+ "    while (True):\n"
 			+ "      # $ 12 \"Robot Program\"\n"

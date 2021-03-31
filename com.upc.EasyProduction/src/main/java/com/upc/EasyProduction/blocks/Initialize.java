@@ -1,6 +1,6 @@
 package com.upc.EasyProduction.blocks;
 
-public class Initialize {
+public class Initialize extends Block {
 	
 	final private String defaultCode = "\n"
 			+ "    global cnt_1=0\n"

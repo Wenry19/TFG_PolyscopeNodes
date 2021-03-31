@@ -1,6 +1,6 @@
 package com.upc.EasyProduction.blocks;
 
-public class DestackBase {
+public class DestackBase extends Block {
 	
 	final private String defaultCode = "\n"
 			+ "      # $ 21 \"'StartPos_Bases= Punto de contacto con el stack=StackPos_Base'\"\n"

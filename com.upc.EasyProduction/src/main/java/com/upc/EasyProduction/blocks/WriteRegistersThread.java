@@ -1,6 +1,6 @@
 package com.upc.EasyProduction.blocks;
 
-public class WriteRegistersThread {
+public class WriteRegistersThread extends Block {
 
 	final private String defaultCode = "\n"
 			+ "    # $ 89 \"SubTarea_1\"\n"

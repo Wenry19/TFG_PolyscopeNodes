@@ -1,6 +1,6 @@
 package com.upc.EasyProduction.blocks;
 
-public class ExperimentTimeThread {
+public class ExperimentTimeThread extends Block{
 	final private String defaultCode = "\n"
 			+ "    # $ 100 \"SubTarea_2\"\n"
 			+ "    thread SubTarea_2():\n"

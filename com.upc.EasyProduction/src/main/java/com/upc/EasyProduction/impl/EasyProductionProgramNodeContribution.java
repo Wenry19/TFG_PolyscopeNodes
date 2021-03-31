@@ -106,15 +106,15 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		
 		writer.appendRaw(timerThread.getDefaultCode());
 		
+		writer.appendRaw(writeRegistersThread.getDefaultCode());
+		
+		writer.appendRaw(experimentTimeThread.getDefaultCode());
+		
 		writer.appendRaw(putProduct.getDefaultCode());
 		
 		writer.appendRaw(putBearing.getDefaultCode());
 		
 		writer.appendRaw(putBase.getCode());
-		
-		writer.appendRaw(writeRegistersThread.getDefaultCode());
-		
-		writer.appendRaw(experimentTimeThread.getDefaultCode());
 		
 		writer.appendRaw(whileBlock.getDefaultCode());
 		

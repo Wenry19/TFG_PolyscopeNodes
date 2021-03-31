@@ -1,6 +1,6 @@
 package com.upc.EasyProduction.blocks;
 
-public class PutProduct {
+public class PutProduct extends Block {
 	final private String defaultCode = "\n"
 			+ "    def PUT_PRODUCT_TO_PALLET():\n"
 			+ "      # $ 107 \"PUT_PRODUCT_TO_PALLET\" \"noBreak\"\n"

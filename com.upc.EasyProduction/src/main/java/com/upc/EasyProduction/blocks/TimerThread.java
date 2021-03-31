@@ -1,6 +1,6 @@
 package com.upc.EasyProduction.blocks;
 
-public class TimerThread { // activate or deactivate timers?
+public class TimerThread extends Block { // activate or deactivate timers?
 	
 	final private String defaultCode = "\n"
 			+ "    thread Timer_Thread():\n"

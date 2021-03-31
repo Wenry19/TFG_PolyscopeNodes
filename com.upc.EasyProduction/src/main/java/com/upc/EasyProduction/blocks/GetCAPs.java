@@ -1,6 +1,6 @@
 package com.upc.EasyProduction.blocks;
 
-public class GetCAPs {
+public class GetCAPs extends Block {
 
 	final private String defaultCode = "\n"
 			+ "      # $ 63 \"If N_Bearings≥4\"\n"

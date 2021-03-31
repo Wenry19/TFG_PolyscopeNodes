@@ -1,6 +1,6 @@
 package com.upc.EasyProduction.blocks;
 
-public class PutBase {
+public class PutBase extends Block {
 	final private String defaultCode = "\n"
 			+ "    def PUT_BASE_MATRIZ_ASSEMBLY():\n"
 			+ "      # $ 158 \"PUT_BASE_MATRIZ_ASSEMBLY\" \"noBreak\"\n"

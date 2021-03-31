@@ -1,6 +1,6 @@
 package com.upc.EasyProduction.blocks;
 
-public class DespalletizeProduct {
+public class DespalletizeProduct extends Block{
 
 	final private String defaultCode = "\n"
 			+ "        # $ 71 \"Loop 4 times\"\n"

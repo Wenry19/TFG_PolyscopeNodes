@@ -1,6 +1,6 @@
 package com.upc.EasyProduction.blocks;
 
-public class PutBearing {
+public class PutBearing extends Block {
 	final private String defaultCode = "\n"
 			+ "    def PUT_BEARING_MATRIZ_ASSEMBLY():\n"
 			+ "      # $ 132 \"PUT_BEARING_MATRIZ_ASSEMBLY\" \"noBreak\"\n"
