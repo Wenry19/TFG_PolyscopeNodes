@@ -2,6 +2,7 @@ package com.upc.EasyProduction.impl;
 
 import javax.swing.JScrollPane;
 
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -18,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.upc.EasyProduction.blocks.Workflow;
+import com.upc.EasyProduction.dragdrop.MainPanel;
 import com.ur.urcap.api.contribution.ContributionProvider;
 import com.ur.urcap.api.contribution.ViewAPIProvider;
 import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeView;
@@ -25,6 +27,7 @@ import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeView;
 public class EasyProductionProgramNodeView implements SwingProgramNodeView<EasyProductionProgramNodeContribution>{
 	
 	private Workflow workflow = Workflow.getInstance();
+	private MainPanel mainPanel = MainPanel.getInstance();
 
 	// TESTS IN ECLIPSE --------------------------------------------------------
 	public EasyProductionProgramNodeView() {
@@ -108,12 +111,14 @@ public class EasyProductionProgramNodeView implements SwingProgramNodeView<EasyP
 	public void buildUI(JPanel panel, ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		// provider provides us access to the active instance of contribution
 		
-		panel.setLayout(new BorderLayout(10, 10));
+		panel.setLayout(null);
 		// panel.add(createIOComboBox(ioComboBox, provider));
 		
-		System.out.println(panel.getSize());
+		//System.out.println(panel.getSize());
 		
-		panel.add(workflow.getPanel(), BorderLayout.WEST);
+		//panel.add(workflow.getPanel(), BorderLayout.WEST);
+		
+		panel.add(mainPanel);
 		
 		
 	}

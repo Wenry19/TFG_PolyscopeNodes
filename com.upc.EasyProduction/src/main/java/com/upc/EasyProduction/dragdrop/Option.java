@@ -4,6 +4,8 @@ package com.upc.EasyProduction.dragdrop;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -19,7 +21,6 @@ public class Option extends JLabel {
 	private final int HEIGHT = 50;
 	
 	private JLabel dragOption;
-	private JPanel ddPanel;
 	
 	Option(String name){
 		
@@ -39,23 +40,14 @@ public class Option extends JLabel {
 		this.dragOption.setSize(new Dimension(WIDTH, HEIGHT));
 		this.dragOption.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		
-		this.ddPanel = new JPanel();
-		this.ddPanel.setLayout(null);
-		this.ddPanel.setSize(606, 407);
-		this.ddPanel.setPreferredSize(new Dimension(606, 407));
-		this.ddPanel.setOpaque(false);
-		this.ddPanel.add(this.dragOption);
-		this.ddPanel.setBackground(Color.green);
-		this.ddPanel.setVisible(true);
-		
-		//this.dragOption.setLocation(this.getLocation());
+		this.dragOption.setVisible(false);
 		
 		MouseListener mouseListener = new MouseListener();
 		dragOption.addMouseListener(mouseListener);
 		dragOption.addMouseMotionListener(mouseListener);
 		
-		this.addMouseListener(mouseListener); // change current dragPanel
-		
+		this.addMouseListener(mouseListener);
+				
 		this.setText(name);
 		
 		this.setVerticalAlignment(JLabel.CENTER);
@@ -70,12 +62,12 @@ public class Option extends JLabel {
 		
 	}
 	
-	public JPanel getDDPanel() {
-		return this.ddPanel;
-	}
-	
 	public String getName() {
 		return this.name;
+	}
+	
+	public JLabel getDragLabel() {
+		return this.dragOption;
 	}
 	
 	// inner classes
@@ -85,31 +77,48 @@ public class Option extends JLabel {
 		private int prevX;
 		private int prevY;
 		
+		private boolean canRelease = false;
+		//private boolean canExit = false;
+		
+		private int offsetOptionsPanel = 200; // ULL!!
+		
 		public void mousePressed(MouseEvent e) {
-			
-			//JComponent jc = (JComponent)e.getSource();
-			
-			JLabel opt = (JLabel) e.getSource();
-			
+						
 			prevX = e.getX();
 			prevY = e.getY();
-			
-			// change current dragPanel
-			
-			CardLayout cardLayout = MainPanel.getInstance().getCardLayout();
-			cardLayout.show(MainPanel.getInstance().getDragDropPanelManagement(), opt.getName());
-			
 			
 			System.out.println("pressed");
 			
 		}
 		
+		public void mouseEntered(MouseEvent e) {
+			
+			try {
+				Option opt = (Option) e.getSource();
+				opt.getDragLabel().setVisible(true);
+				
+				opt.getDragLabel().setLocation(opt.getLocation().x + offsetOptionsPanel, opt.getLocation().y);
+				}
+			
+			catch (Exception except) {}
+			
+			finally {
+				System.out.println("entered!!");
+			}
+		}
+		
+		public void mouseExited(MouseEvent e) {
+			
+		}
+		
 		public void mouseDragged(MouseEvent e) {
 			
-			JComponent jc = (JComponent)e.getSource();
+			JComponent jc = (JComponent) e.getSource();
 			int difX = e.getX() - prevX;
 			int difY = e.getY() - prevY;
 	        jc.setLocation(jc.getLocation().x + difX, jc.getLocation().y + difY);
+	        
+	        canRelease = true;
 			
 			//System.out.println("dragged");
 			
@@ -117,9 +126,13 @@ public class Option extends JLabel {
 		
 		public void mouseReleased(MouseEvent e) {
 			
-			JLabel jlabel = (JLabel)e.getSource();
-			//jlabel.setVisible(false);
+			if (canRelease) {
+				JLabel opt = (JLabel) e.getSource();
+				opt.setVisible(false);
+				canRelease = false;
+			}
+			
+			System.out.println("released!!");
 		}
-	}
-	
+	}	
 }

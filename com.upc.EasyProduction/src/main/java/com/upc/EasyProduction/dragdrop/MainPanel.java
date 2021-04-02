@@ -1,11 +1,12 @@
 package com.upc.EasyProduction.dragdrop;
 
-import java.awt.CardLayout;
+
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 
-public class MainPanel extends JLayeredPane {
+public class MainPanel extends JLayeredPane{
 	
 	private OptionsPanel optionsPanel;
 	
@@ -20,8 +21,9 @@ public class MainPanel extends JLayeredPane {
 		this.add(optionsPanel, JLayeredPane.DEFAULT_LAYER);
 		this.setBounds(0, 0, 606, 407);
 		
+		this.add(optionsPanel.getDragDropPanel(), JLayeredPane.DRAG_LAYER);
 		
-		this.add(optionsPanel.getDragDropPanelManagement(), JLayeredPane.DRAG_LAYER);
+		
 	}
 	
 	public static MainPanel getInstance() {
@@ -30,12 +32,8 @@ public class MainPanel extends JLayeredPane {
 	
 	// end singleton
 	
-	public CardLayout getCardLayout() {
-		return (CardLayout) optionsPanel.getDragDropPanelManagement().getLayout();
-	}
-	
-	public JPanel getDragDropPanelManagement() {
-		return optionsPanel.getDragDropPanelManagement();
+	public void test() {
+		System.out.println(optionsPanel.opt1.getLocation());
 	}
 
 }

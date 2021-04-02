@@ -1,21 +1,22 @@
 
 package com.upc.EasyProduction.dragdrop;
 
-import java.awt.CardLayout;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane; // eye!!
 
 
 public class OptionsPanel extends JPanel {
 	
-	private JPanel dragDropPanelManagement;
+	private JPanel dragDropPanel;
 	
-	private Option opt1;
-	private Option opt2;
+	public Option opt1;
+	public Option opt2;
 		
 	public OptionsPanel() {
 		
@@ -31,7 +32,7 @@ public class OptionsPanel extends JPanel {
 		
 		this.add(opt1);
 		this.add(opt2);
-		
+				
 	}
 	
 	private void initialize() {
@@ -43,7 +44,7 @@ public class OptionsPanel extends JPanel {
 		
 		this.setLocation(200, 0);
 		
-		this.setBackground(Color.blue);
+		this.setBackground(Color.gray);
 		
 		//________
 		
@@ -51,22 +52,22 @@ public class OptionsPanel extends JPanel {
 		this.opt2 = new Option("default2");
 		
 		
-		this.dragDropPanelManagement = new JPanel();
-		this.dragDropPanelManagement.setLayout(new CardLayout());
+		this.dragDropPanel = new JPanel();
+		this.dragDropPanel.setLayout(null);
 		
-		this.dragDropPanelManagement.setSize(606, 407);
-		this.dragDropPanelManagement.setPreferredSize(new Dimension(606, 407));
-		this.dragDropPanelManagement.setOpaque(false);
-		this.dragDropPanelManagement.setLocation(0, 0);
+		this.dragDropPanel.setSize(606, 407);
+		this.dragDropPanel.setPreferredSize(new Dimension(606, 407));
+		this.dragDropPanel.setOpaque(false);
+		this.dragDropPanel.setLocation(0, 0);
 		
-		this.dragDropPanelManagement.add(this.opt1.getDDPanel(), this.opt1.getName());
-		this.dragDropPanelManagement.add(this.opt2.getDDPanel(), this.opt2.getName());
-		
+		//add options labels drag
+		this.dragDropPanel.add(this.opt1.getDragLabel());
+		this.dragDropPanel.add(this.opt2.getDragLabel());
 		
 	}
 	
-	public JPanel getDragDropPanelManagement() {
-		return dragDropPanelManagement;
+	public JPanel getDragDropPanel() {
+		return dragDropPanel;
 	}
 	
 	public void addOption(String name) {
@@ -74,4 +75,5 @@ public class OptionsPanel extends JPanel {
 		Option opt = new Option(name);
 		this.add(opt);
 	}
+	
 }
