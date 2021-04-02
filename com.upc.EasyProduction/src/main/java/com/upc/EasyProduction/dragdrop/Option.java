@@ -1,4 +1,5 @@
-package dragdrop;
+
+package com.upc.EasyProduction.dragdrop;
 
 import java.awt.CardLayout;
 import java.awt.Color;

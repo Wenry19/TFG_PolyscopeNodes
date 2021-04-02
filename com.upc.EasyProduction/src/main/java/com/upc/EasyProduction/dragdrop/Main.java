@@ -1,4 +1,4 @@
-package dragdrop;
+package com.upc.EasyProduction.dragdrop;
 
 import java.awt.Dimension;
 
