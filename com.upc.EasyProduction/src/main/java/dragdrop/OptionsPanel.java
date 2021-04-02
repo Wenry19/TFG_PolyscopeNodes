@@ -1,98 +1,76 @@
 package dragdrop;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.FlowLayout;
 
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.JScrollPane; // eye!!
 
-public class OptionsPanel extends JPanel{
+
+public class OptionsPanel extends JPanel {
 	
+	private JPanel dragDropPanelManagement;
 	
-	
-	public static void main(String[] args) { // tests
-		JFrame frame = new JFrame();
-		OptionsPanel optPanel = new OptionsPanel();
-		Option option = new Option("tests");
+	private Option opt1;
+	private Option opt2;
 		
-		MouseListener mouseListener = optPanel.new MouseListener();
-		option.addMouseListener(mouseListener);
-		option.addMouseMotionListener(mouseListener);
+	public OptionsPanel() {
 		
-		optPanel.add(option);
-		//frame.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		frame.setLayout(null);
-		frame.setPreferredSize(new Dimension(606, 407));
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(optPanel);
-		frame.pack();
-		frame.setVisible(true);
+		initialize();
+		//provisional
+		addOption("tests1");
+		addOption("tests2");
+		addOption("tests3");
+		addOption("tests4");
+		addOption("tests5");
+		addOption("tests6");
+		addOption("tests7");
 		
-		optPanel.setLocation(200, 0);
+		this.add(opt1);
+		this.add(opt2);
+		
 	}
 	
-	
-	
-	public OptionsPanel() {
+	private void initialize() {
+		
+		this.setLayout(new FlowLayout(FlowLayout.CENTER, 1, 1));
 		
 		this.setSize(406, 407);
 		this.setPreferredSize(new Dimension(406, 407));
 		
+		this.setLocation(200, 0);
+		
 		this.setBackground(Color.blue);
 		
-		this.setLayout(null);
-
+		//________
+		
+		this.opt1 = new Option("default1");
+		this.opt2 = new Option("default2");
+		
+		
+		this.dragDropPanelManagement = new JPanel();
+		this.dragDropPanelManagement.setLayout(new CardLayout());
+		
+		this.dragDropPanelManagement.setSize(606, 407);
+		this.dragDropPanelManagement.setPreferredSize(new Dimension(606, 407));
+		this.dragDropPanelManagement.setOpaque(false);
+		this.dragDropPanelManagement.setLocation(0, 0);
+		
+		this.dragDropPanelManagement.add(this.opt1.getDDPanel(), this.opt1.getName());
+		this.dragDropPanelManagement.add(this.opt2.getDDPanel(), this.opt2.getName());
+		
+		
 	}
 	
-	// add option method?
+	public JPanel getDragDropPanelManagement() {
+		return dragDropPanelManagement;
+	}
 	
-	
-	// inner classes
-	
-	private class MouseListener extends MouseAdapter{
+	public void addOption(String name) {
 		
-		private int prevX;
-		private int prevY;
-				
-		public void mousePressed(MouseEvent e) {
-			
-			JComponent jc = (JComponent)e.getSource();
-			
-			prevX = e.getX();
-			prevY = e.getY();
-			
-			
-			//System.out.println("pressed");
-			
-		}
-		
-		public void mouseDragged(MouseEvent e) {
-			
-			JComponent jc = (JComponent)e.getSource();
-			int difX = e.getX() - prevX;
-			int difY = e.getY() - prevY;
-	        jc.setLocation(jc.getLocation().x + difX, jc.getLocation().y + difY);
-			
-			//System.out.println("dragged");
-			
-		}
-		
-		public void mouseReleased(MouseEvent e) {
-			
-			JLabel jlabel = (JLabel)e.getSource();
-			//jlabel.setVisible(false);
-			
-			// gestionar l'entrada del node al workflow
-			
-			// afegir jlabel que és el que s'arrastrarà, l'altra estarà col·locat al flowlayout del optionspanel
-			
-			// problema: passar entre panels... -> layeredpanel?? o afegir option al panel base de ur
-			
-		}
+		Option opt = new Option(name);
+		this.add(opt);
 	}
 }
