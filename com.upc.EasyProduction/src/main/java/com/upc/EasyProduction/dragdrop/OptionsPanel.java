@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.LinkedList;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -19,23 +20,25 @@ public class OptionsPanel extends JPanel {
 	
 	private JPanel dragDropPanel;
 	
-	private MouseListener mouseListener = new MouseListener();
+	private MouseListener mouseListener;
+	
+	private LinkedList<Option> options;
 			
 	public OptionsPanel() {
 		
 		initialize();
-		//provisional
-		addOption("tests1");
-		addOption("tests2");
-		addOption("tests3");
-		addOption("tests4");
-		addOption("tests5");
-		addOption("tests6");
-		addOption("tests7");
+		
+		addDefaultOptions();
 				
 	}
 	
 	private void initialize() {
+		
+		mouseListener = new MouseListener();
+		
+		options = new LinkedList();
+		
+		// this JPanel which contains the different options
 		
 		this.setLayout(new FlowLayout(FlowLayout.CENTER, 1, 1));
 		
@@ -46,16 +49,15 @@ public class OptionsPanel extends JPanel {
 		
 		this.setBackground(Color.gray);
 		
-		//________
+		// aux JPanel which is used for drag and drop
 		
+		dragDropPanel = new JPanel();
+		dragDropPanel.setLayout(null);
 		
-		this.dragDropPanel = new JPanel();
-		this.dragDropPanel.setLayout(null);
-		
-		this.dragDropPanel.setSize(606, 407);
-		this.dragDropPanel.setPreferredSize(new Dimension(606, 407));
-		this.dragDropPanel.setOpaque(false);
-		this.dragDropPanel.setLocation(0, 0);
+		dragDropPanel.setSize(606, 407);
+		dragDropPanel.setPreferredSize(new Dimension(606, 407));
+		dragDropPanel.setOpaque(false);
+		dragDropPanel.setLocation(0, 0);
 		
 	}
 	
@@ -74,7 +76,25 @@ public class OptionsPanel extends JPanel {
 		opt.addMouseListener(mouseListener);
 		
 		this.add(opt);
-		this.dragDropPanel.add(opt.getDragLabel());
+		
+		dragDropPanel.add(opt.getDragLabel());
+		
+		options.add(opt);
+	}
+	
+	private void addDefaultOptions() {
+		
+		addOption("Sleep");
+		addOption("Pop Up");
+		addOption("Set Digital Output");
+		addOption("Get Digital Input");
+		addOption("Set Analog Output");
+		addOption("Get Analog Input");
+		
+	}
+	
+	public void printOptions() {
+		System.out.println(options);
 	}
 	
 	

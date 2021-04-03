@@ -16,11 +16,12 @@ public class MainPanel extends JLayeredPane{
 		
 		optionsPanel = new OptionsPanel();
 		
+		this.setLayout(null);
+		
 		this.add(optionsPanel, JLayeredPane.DEFAULT_LAYER);
 		this.setBounds(0, 0, 606, 407);
 		
 		this.add(optionsPanel.getDragDropPanel(), JLayeredPane.DRAG_LAYER);
-		
 		
 	}
 	

@@ -18,8 +18,6 @@ public class Main {
 		frame.add(mainPanel);
 		frame.pack();
 		frame.setVisible(true);
-		
-		
 
 	}
 
