@@ -3,9 +3,13 @@ package com.upc.EasyProduction.dragdrop;
 
 
 import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane; // eye!!
@@ -15,9 +19,8 @@ public class OptionsPanel extends JPanel {
 	
 	private JPanel dragDropPanel;
 	
-	public Option opt1;
-	public Option opt2;
-		
+	private MouseListener mouseListener = new MouseListener();
+			
 	public OptionsPanel() {
 		
 		initialize();
@@ -29,9 +32,6 @@ public class OptionsPanel extends JPanel {
 		addOption("tests5");
 		addOption("tests6");
 		addOption("tests7");
-		
-		this.add(opt1);
-		this.add(opt2);
 				
 	}
 	
@@ -48,9 +48,6 @@ public class OptionsPanel extends JPanel {
 		
 		//________
 		
-		this.opt1 = new Option("default1");
-		this.opt2 = new Option("default2");
-		
 		
 		this.dragDropPanel = new JPanel();
 		this.dragDropPanel.setLayout(null);
@@ -59,10 +56,6 @@ public class OptionsPanel extends JPanel {
 		this.dragDropPanel.setPreferredSize(new Dimension(606, 407));
 		this.dragDropPanel.setOpaque(false);
 		this.dragDropPanel.setLocation(0, 0);
-		
-		//add options labels drag
-		this.dragDropPanel.add(this.opt1.getDragLabel());
-		this.dragDropPanel.add(this.opt2.getDragLabel());
 		
 	}
 	
@@ -73,7 +66,82 @@ public class OptionsPanel extends JPanel {
 	public void addOption(String name) {
 		
 		Option opt = new Option(name);
+		
+		
+		opt.getDragLabel().addMouseListener(mouseListener);
+		opt.getDragLabel().addMouseMotionListener(mouseListener);
+		
+		opt.addMouseListener(mouseListener);
+		
 		this.add(opt);
+		this.dragDropPanel.add(opt.getDragLabel());
+	}
+	
+	
+	
+	// inner classes
+	
+	private class MouseListener extends MouseAdapter {
+		
+		private int prevX;
+		private int prevY;
+		
+		private int offsetOptionsPanel = 200; // ULL!!
+		
+		private Option currentOptionSelected;
+		
+		
+		public void mouseClicked(MouseEvent e) {
+			
+			if (e.getSource() instanceof Option) {
+				
+				Option opt = (Option) e.getSource();
+				
+				if (currentOptionSelected != null) {
+					currentOptionSelected.getDragLabel().setVisible(false);
+				}
+				
+				opt.getDragLabel().setVisible(true);
+				
+				opt.getDragLabel().setLocation(opt.getLocation().x + offsetOptionsPanel, opt.getLocation().y);
+				
+				currentOptionSelected = opt;
+			}
+			
+			System.out.println("clicked" + " " + (e.getSource() instanceof Option));
+			
+		}
+		
+		public void mousePressed(MouseEvent e) {
+						
+			prevX = e.getX();
+			prevY = e.getY();
+				
+		}
+		
+		public void mouseDragged(MouseEvent e) {
+			
+			JComponent jc = (JComponent) e.getSource();
+			int difX = e.getX() - prevX;
+			int difY = e.getY() - prevY;
+	        jc.setLocation(jc.getLocation().x + difX, jc.getLocation().y + difY);
+	        			
+		}
+		
+		public void mouseReleased(MouseEvent e) {
+			
+			if (!(e.getSource() instanceof Option)) {
+				JLabel draggedLabel = (JLabel) e.getSource();
+				draggedLabel.setVisible(false);
+			}
+			
+			System.out.println("released");
+			
+		}
+		
+		public void mouseEntered(MouseEvent e) {
+			System.out.println("entered"+ ((JLabel)e.getSource()).getText());
+		}
 	}
 	
 }
