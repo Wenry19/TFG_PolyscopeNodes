@@ -3,24 +3,40 @@ package com.upc.EasyProduction.blocks;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 
-public class Block { // no s'hauria de poder instanciar diria
+public class Block extends JLabel{ // no s'hauria de poder instanciar diria (extend JLabel??)
 	
 	protected String defaultCode; //final?
 	
 	protected String code;
 	
-	protected JLabel blockLabel;
+	//protected JLabel blockLabel;
+	protected JFrame frame;
+	
+	protected MouseListener mouseListener;
 	
 	protected String name;
 	
-	protected final int WIDTH = 200;
-	protected final int HEIGHT = 50;
+	protected final int WIDTH = 180;
+	protected final int HEIGHT = 40;
 	
 	
 	public Block() {
+		
+		mouseListener = new MouseListener();
+		//blockLabel = new JLabel();
+		
+		frame = new JFrame();
+		
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		frame.setSize(400, 400);
+		frame.setVisible(false);
+		
+		
+		this.addMouseListener(mouseListener);
 
 	}
 	
@@ -40,11 +56,15 @@ public class Block { // no s'hauria de poder instanciar diria
 	}
 	
 	public JLabel getBlockLabel() {
-		return blockLabel;
+		return this;
 	}
 	
 	public String getName() {
 		return name;
+	}
+	
+	public JFrame getFrame() {
+		return frame;
 	}
 	
 	// inner classes
@@ -53,6 +73,10 @@ public class Block { // no s'hauria de poder instanciar diria
 		
 		
 		public void mouseClicked(MouseEvent e) {
+			
+			Block b = (Block) e.getSource();
+			
+			b.getFrame().setVisible(true);
 
 		}
 		

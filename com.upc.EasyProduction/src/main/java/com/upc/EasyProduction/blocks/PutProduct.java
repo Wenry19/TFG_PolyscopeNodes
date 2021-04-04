@@ -64,17 +64,16 @@ public class PutProduct extends Block {
 				+ "    end";
 		
 		name = "PutProduct";
-		blockLabel = new JLabel();
 		
-		blockLabel.setText(name);
-		blockLabel.setText(this.name);
-		blockLabel.setOpaque(true);
-		blockLabel.setVerticalAlignment(JLabel.CENTER);
-		blockLabel.setHorizontalAlignment(JLabel.CENTER);
-		blockLabel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		blockLabel.setSize(new Dimension(WIDTH, HEIGHT));
-		blockLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-		blockLabel.setBackground(Color.LIGHT_GRAY);
+		this.setText(name);
+		this.setText(this.name);
+		this.setOpaque(true);
+		this.setVerticalAlignment(JLabel.CENTER);
+		this.setHorizontalAlignment(JLabel.CENTER);
+		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		this.setSize(new Dimension(WIDTH, HEIGHT));
+		this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+		this.setBackground(Color.LIGHT_GRAY);
 		
 	}
 	

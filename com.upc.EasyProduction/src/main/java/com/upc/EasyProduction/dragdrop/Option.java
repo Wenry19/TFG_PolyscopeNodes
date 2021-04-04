@@ -11,8 +11,8 @@ import javax.swing.JLabel;
 public class Option extends JLabel {
 
 	private String name;
-	private final int WIDTH = 200;
-	private final int HEIGHT = 50;
+	private final int WIDTH = 190;
+	private final int HEIGHT = 40;
 	
 	private JLabel dragOption;
 	

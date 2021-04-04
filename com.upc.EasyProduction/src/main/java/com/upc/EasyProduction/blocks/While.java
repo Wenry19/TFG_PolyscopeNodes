@@ -32,17 +32,16 @@ public class While extends Block {
 				+ "      movej(get_inverse_kin(p[.298616357137, -.112388877195, .127097072908, -2.221424005928, 2.221422962714, -.000273677751], qnear=[-3.5587941304981996E-5, -1.5707243124591272, -1.5707510153399866, -1.5707724730121058, 1.5706911087036133, -3.606477846318512E-5]), a=8.726646259971647, v=4.363323129985823)";
 		
 		name = "While";
-		blockLabel = new JLabel();
 		
-		blockLabel.setText(name);
-		blockLabel.setText(this.name);
-		blockLabel.setOpaque(true);
-		blockLabel.setVerticalAlignment(JLabel.CENTER);
-		blockLabel.setHorizontalAlignment(JLabel.CENTER);
-		blockLabel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		blockLabel.setSize(new Dimension(WIDTH, HEIGHT));
-		blockLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-		blockLabel.setBackground(Color.LIGHT_GRAY);
+		this.setText(name);
+		this.setText(this.name);
+		this.setOpaque(true);
+		this.setVerticalAlignment(JLabel.CENTER);
+		this.setHorizontalAlignment(JLabel.CENTER);
+		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		this.setSize(new Dimension(WIDTH, HEIGHT));
+		this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+		this.setBackground(Color.LIGHT_GRAY);
 	}
 	
 	public static While getInstance() {

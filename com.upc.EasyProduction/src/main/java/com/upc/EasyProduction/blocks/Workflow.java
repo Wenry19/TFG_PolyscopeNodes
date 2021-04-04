@@ -3,6 +3,7 @@ package com.upc.EasyProduction.blocks;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.util.LinkedList;
 
 import javax.swing.JLabel;
@@ -10,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 
-public class Workflow {
+public class Workflow extends JPanel {
 	
 	LinkedList<Block> workflow = new LinkedList();
 	
@@ -30,8 +31,8 @@ public class Workflow {
 	private GetCAPs getCAPs = GetCAPs.getInstance();
 	private DespalletizeProduct despalletizeProduct = DespalletizeProduct.getInstance();
 	
-	private JPanel panel = new JPanel();
-	private JScrollPane scrollPane = new JScrollPane(panel);
+	//private JPanel panel = new JPanel();
+	private JScrollPane scrollPane = new JScrollPane(this);
 	
 	// Singleton (only one instance)
 	
@@ -74,24 +75,20 @@ public class Workflow {
 	
 	private void iniPanel() {
 		
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 1, 1));
+		this.setLayout(new GridLayout(0, 1));
 		
-		//panel.setBackground(Color.blue); // provisional
+		this.setLocation(0, 0);
 		
-		panel.setPreferredSize(new Dimension(200, 407));
-		panel.setSize(new Dimension(200, 407));
-		panel.setLocation(0, 0);
-		
-		panel.setVisible(true);
+		this.setVisible(true);
 		
 		
 		for(int i = 0; i < workflow.size(); i++) {
-			panel.add(workflow.get(i).getBlockLabel());
+			this.add(workflow.get(i).getBlockLabel());
 		}
 		
 	}
 	
 	public JPanel getPanel() {
-		return panel;
+		return this;
 	}
 }
