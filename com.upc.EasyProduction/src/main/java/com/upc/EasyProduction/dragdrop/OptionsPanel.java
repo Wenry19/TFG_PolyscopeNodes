@@ -47,7 +47,7 @@ public class OptionsPanel extends JPanel {
 		
 		this.setLocation(200, 0);
 		
-		this.setBackground(Color.gray);
+		//this.setBackground(Color.gray);
 		
 		// aux JPanel which is used for drag and drop
 		

@@ -76,71 +76,22 @@ public class Workflow {
 		
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 1, 1));
 		
-		panel.setBackground(Color.blue); // provisional
+		//panel.setBackground(Color.blue); // provisional
 		
 		panel.setPreferredSize(new Dimension(200, 407));
+		panel.setSize(new Dimension(200, 407));
+		panel.setLocation(0, 0);
+		
+		panel.setVisible(true);
 		
 		
-		JLabel label = new JLabel("hola");
-		label.setPreferredSize(new Dimension(200, 50));
-		label.setBackground(Color.red);
-		label.setOpaque(true);
-		
-		JLabel label1 = new JLabel("hola1");
-		label1.setPreferredSize(new Dimension(200, 50));
-		label1.setBackground(Color.red);
-		label1.setOpaque(true);
-		
-		JLabel label2 = new JLabel("hola2");
-		label2.setPreferredSize(new Dimension(200, 50));
-		label2.setBackground(Color.red);
-		label2.setOpaque(true);
-		
-		JLabel label3 = new JLabel("hola3");
-		label3.setPreferredSize(new Dimension(200, 50));
-		label3.setBackground(Color.red);
-		label3.setOpaque(true);
-		
-		JLabel label4 = new JLabel("hola4");
-		label4.setPreferredSize(new Dimension(200, 50));
-		label4.setBackground(Color.red);
-		label4.setOpaque(true);
-		
-		JLabel label5 = new JLabel("hola5");
-		label5.setPreferredSize(new Dimension(200, 50));
-		label5.setBackground(Color.red);
-		label5.setOpaque(true);
-		
-		JLabel label6 = new JLabel("hola6");
-		label6.setPreferredSize(new Dimension(200, 50));
-		label6.setBackground(Color.red);
-		label6.setOpaque(true);
-		
-		JLabel label7 = new JLabel("hola7");
-		label7.setPreferredSize(new Dimension(200, 50));
-		label7.setBackground(Color.red);
-		label7.setOpaque(true);
-		
-		JLabel label8 = new JLabel("hola8");
-		label8.setPreferredSize(new Dimension(200, 50));
-		label8.setBackground(Color.red);
-		label8.setOpaque(true);
-		
-		
-		panel.add(label);
-		panel.add(label1);
-		panel.add(label2);
-		panel.add(label3);
-		panel.add(label4);
-		panel.add(label5);
-		panel.add(label6);
-		panel.add(label7);
-		panel.add(label8);
-		
+		for(int i = 0; i < workflow.size(); i++) {
+			panel.add(workflow.get(i).getBlockLabel());
+		}
 		
 	}
 	
-	public JScrollPane getPanel() {
-		return scrollPane;
+	public JPanel getPanel() {
+		return panel;
 	}
 }
