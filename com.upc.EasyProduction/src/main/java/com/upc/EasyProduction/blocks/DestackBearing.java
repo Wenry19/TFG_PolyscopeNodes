@@ -77,14 +77,6 @@ public class DestackBearing extends Block {
 		name = "DestackBearing";
 		
 		this.setText(name);
-		this.setText(this.name);
-		this.setOpaque(true);
-		this.setVerticalAlignment(JLabel.CENTER);
-		this.setHorizontalAlignment(JLabel.CENTER);
-		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		this.setSize(new Dimension(WIDTH, HEIGHT));
-		this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-		this.setBackground(Color.LIGHT_GRAY);
 		
 	}
 	

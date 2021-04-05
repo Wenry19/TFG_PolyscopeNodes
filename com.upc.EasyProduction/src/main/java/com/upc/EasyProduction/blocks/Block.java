@@ -1,8 +1,11 @@
 package com.upc.EasyProduction.blocks;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -37,6 +40,14 @@ public class Block extends JLabel{ // no s'hauria de poder instanciar diria (ext
 		
 		
 		this.addMouseListener(mouseListener);
+		
+		this.setOpaque(true);
+		this.setVerticalAlignment(JLabel.CENTER);
+		this.setHorizontalAlignment(JLabel.CENTER);
+		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		this.setSize(new Dimension(WIDTH, HEIGHT));
+		this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+		this.setBackground(Color.LIGHT_GRAY);
 
 	}
 	

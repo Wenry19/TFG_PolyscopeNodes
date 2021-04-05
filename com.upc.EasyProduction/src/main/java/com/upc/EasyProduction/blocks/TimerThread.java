@@ -1,10 +1,5 @@
 package com.upc.EasyProduction.blocks;
 
-import java.awt.Color;
-import java.awt.Dimension;
-
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 
 public class TimerThread extends Block { // activate or deactivate timers?
 	
@@ -44,14 +39,6 @@ public class TimerThread extends Block { // activate or deactivate timers?
 		name = "TimerThread";
 		
 		this.setText(name);
-		this.setText(this.name);
-		this.setOpaque(true);
-		this.setVerticalAlignment(JLabel.CENTER);
-		this.setHorizontalAlignment(JLabel.CENTER);
-		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		this.setSize(new Dimension(WIDTH, HEIGHT));
-		this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-		this.setBackground(Color.LIGHT_GRAY);
 	}
 	
 	public static TimerThread getInstance() {
