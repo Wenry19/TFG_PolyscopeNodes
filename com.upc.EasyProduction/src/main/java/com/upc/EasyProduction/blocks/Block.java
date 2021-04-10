@@ -43,6 +43,7 @@ public class Block extends JLabel{ // no s'hauria de poder instanciar diria (ext
 		
 		
 		this.addMouseListener(mouseListener);
+		this.addMouseMotionListener(mouseListener);
 		
 		this.setOpaque(true);
 		this.setVerticalAlignment(JLabel.CENTER);
@@ -113,6 +114,15 @@ public class Block extends JLabel{ // no s'hauria de poder instanciar diria (ext
 		}
 		
 		public void mouseDragged(MouseEvent e) {
+			
+			if (e.getSource() instanceof Operation) {
+
+				Workflow wf = Workflow.getInstance();
+				
+				wf.deleteBlock(((Block)e.getSource()).getWorkflowPosition());
+			}
+			
+			System.out.println("dragged block wf");
 	        			
 		}
 		

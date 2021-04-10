@@ -100,7 +100,8 @@ public class Workflow extends JPanel {
 			
 			if (i != workflow.size()-1) {
 				JLabel arrow = new JLabel();
-				ImageIcon icon = new ImageIcon("arrow_down32.png");
+				// ULL!!!!
+				ImageIcon icon = new ImageIcon("/home/enric/eclipse-workspace/TFG_PolyscopeNodes/com.upc.EasyProduction/arrow_down32.png");
 				
 				arrow.setPreferredSize(new Dimension(24, 12));
 				arrow.setSize(new Dimension(24, 12));
@@ -159,6 +160,15 @@ public class Workflow extends JPanel {
 		else { // if (id == "PopUp"){}
 			return new PopUp();
 		}
+		
+	}
+	
+	public void deleteBlock(int i) {
+		
+		workflow.remove(i);
+		
+		updatePanel();
+		updateBlocksPositions();
 		
 	}
 	
