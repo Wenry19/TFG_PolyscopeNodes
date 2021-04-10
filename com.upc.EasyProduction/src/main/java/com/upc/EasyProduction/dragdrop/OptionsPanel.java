@@ -2,10 +2,12 @@
 package com.upc.EasyProduction.dragdrop;
 
 
-import java.awt.Color;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.LinkedList;
@@ -13,7 +15,11 @@ import java.util.LinkedList;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane; // eye!!
+import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
+
+import com.upc.EasyProduction.blocks.Block;
+import com.upc.EasyProduction.blocks.Workflow;
 
 
 public class OptionsPanel extends JPanel {
@@ -23,13 +29,28 @@ public class OptionsPanel extends JPanel {
 	private MouseListener mouseListener;
 	
 	private LinkedList<Option> options;
+	
+	private JScrollPane scroll;
+	
+	
+	static private OptionsPanel singleton = new OptionsPanel();
 			
-	public OptionsPanel() {
+	private OptionsPanel() {
 		
 		initialize();
 		
 		addDefaultOptions();
+		
+		scroll = new JScrollPane(this);
+		
+		scroll.setPreferredSize(new Dimension(406, 407));
+		scroll.setSize(new Dimension(406, 407));
+		scroll.setLocation(200, 0);
 				
+	}
+	
+	static public OptionsPanel getInstance() {
+		return singleton;
 	}
 	
 	private void initialize() {
@@ -42,13 +63,11 @@ public class OptionsPanel extends JPanel {
 		
 		this.setLayout(new FlowLayout(FlowLayout.CENTER, 1, 1));
 		
-		this.setSize(406, 407);
-		this.setPreferredSize(new Dimension(406, 407));
+		this.setSize(400, 400);
+		this.setPreferredSize(new Dimension(400, 400)); // 406x407
 		
 		this.setLocation(200, 0);
-		
-		//this.setBackground(Color.gray);
-		
+				
 		// aux JPanel which is used for drag and drop
 		
 		dragDropPanel = new JPanel();
@@ -85,16 +104,20 @@ public class OptionsPanel extends JPanel {
 	private void addDefaultOptions() {
 		
 		addOption("Sleep");
-		addOption("Pop Up");
-		addOption("Set Digital Output");
-		addOption("Get Digital Input");
-		addOption("Set Analog Output");
-		addOption("Get Analog Input");
+		addOption("PopUp");
+		addOption("SetDigitalOutput");
+		addOption("GetDigitalInput");
+		addOption("SetAnalogOutput");
+		addOption("GetAnalogInput");
 		
 	}
 	
 	public void printOptions() {
 		System.out.println(options);
+	}
+	
+	public JScrollPane getScrollPanel() {
+		return scroll;
 	}
 	
 	
@@ -153,6 +176,24 @@ public class OptionsPanel extends JPanel {
 			if (!(e.getSource() instanceof Option)) {
 				JLabel draggedLabel = (JLabel) e.getSource();
 				draggedLabel.setVisible(false);
+				
+				// detect in which block of the workflow the mouse has been released
+				
+				Workflow wf = Workflow.getInstance();
+								
+				//System.out.println(((Block) wf.findComponentAt(OptionsPanel.getInstance().getDragDropPanel().getMousePosition(true))).getWorkflowPosition());
+				
+				// in this way works in Polyscope...
+				PointerInfo a = MouseInfo.getPointerInfo();
+				Point point = new Point(a.getLocation());
+				SwingUtilities.convertPointFromScreen(point, OptionsPanel.getInstance().getDragDropPanel());
+				
+				Block target = ((Block) wf.findComponentAt(point));
+				
+				if (target != null) {
+					wf.addBlock(draggedLabel.getText(), target.getWorkflowPosition());
+				}
+				
 			}
 			
 			System.out.println("released");

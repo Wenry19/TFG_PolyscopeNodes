@@ -12,19 +12,20 @@ import javax.swing.JLabel;
 
 public class Block extends JLabel{ // no s'hauria de poder instanciar diria (extend JLabel??)
 	
+	protected String name;
+	
 	protected String defaultCode; //final?
 	
 	protected String code;
 	
-	//protected JLabel blockLabel;
 	protected JFrame frame;
 	
 	protected MouseListener mouseListener;
 	
-	protected String name;
-	
 	protected final int WIDTH = 180;
 	protected final int HEIGHT = 40;
+	
+	protected int wfPos;
 	
 	
 	public Block() {
@@ -48,6 +49,8 @@ public class Block extends JLabel{ // no s'hauria de poder instanciar diria (ext
 		this.setSize(new Dimension(WIDTH, HEIGHT));
 		this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		this.setBackground(Color.LIGHT_GRAY);
+		
+		wfPos = -1; // not in workflow
 
 	}
 	
@@ -66,9 +69,6 @@ public class Block extends JLabel{ // no s'hauria de poder instanciar diria (ext
 		return code;
 	}
 	
-	public JLabel getBlockLabel() {
-		return this;
-	}
 	
 	public String getName() {
 		return name;
@@ -76,6 +76,18 @@ public class Block extends JLabel{ // no s'hauria de poder instanciar diria (ext
 	
 	public JFrame getFrame() {
 		return frame;
+	}
+	
+	public void setWorkflowPosition(int pos) {
+		
+		wfPos = pos;
+		
+	}
+	
+	public int getWorkflowPosition() {
+		
+		return wfPos;
+		
 	}
 	
 	// inner classes

@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
+import com.upc.EasyProduction.impl.MainPanel;
+
 public class Main {
 
 	public static void main(String[] args) {

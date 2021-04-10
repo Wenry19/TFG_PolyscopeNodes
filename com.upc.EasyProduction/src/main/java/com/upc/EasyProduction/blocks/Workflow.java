@@ -1,19 +1,18 @@
 package com.upc.EasyProduction.blocks;
 
-import java.awt.Color;
+
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.LinkedList;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.border.Border;
 
 public class Workflow extends JPanel {
 	
-	LinkedList<Block> workflow = new LinkedList();
+	LinkedList<Block> workflow = new LinkedList<Block>();
+	
+	private JScrollPane scroll;
 	
 	
 	private Initialize initialize = Initialize.getInstance();
@@ -30,10 +29,7 @@ public class Workflow extends JPanel {
 	private DestackBearing destackBearing = DestackBearing.getInstance();
 	private GetCAPs getCAPs = GetCAPs.getInstance();
 	private DespalletizeProduct despalletizeProduct = DespalletizeProduct.getInstance();
-	
-	//private JPanel panel = new JPanel();
-	private JScrollPane scrollPane = new JScrollPane(this);
-	
+		
 	// Singleton (only one instance)
 	
 	private static Workflow singleton = new Workflow();
@@ -44,7 +40,11 @@ public class Workflow extends JPanel {
 		// default workflow
 		
 		this.iniDefaultWorkflow();
-		this.iniPanel();
+		this.updatePanel();
+		
+		scroll = new JScrollPane(this);
+		scroll.setPreferredSize(new Dimension(200, 407));
+		scroll.setSize(new Dimension(200, 407));
 		
 	}
 	
@@ -71,9 +71,11 @@ public class Workflow extends JPanel {
 		workflow.add(getCAPs);
 		workflow.add(despalletizeProduct);
 		
+		updateBlocksPositions();
+		
 	}
 	
-	private void iniPanel() {
+	private void updatePanel() {
 		
 		this.setLayout(new GridLayout(0, 1));
 		
@@ -83,12 +85,64 @@ public class Workflow extends JPanel {
 		
 		
 		for(int i = 0; i < workflow.size(); i++) {
-			this.add(workflow.get(i).getBlockLabel());
+			this.add(workflow.get(i));
+		}
+		
+		this.revalidate();
+		this.repaint();
+		
+	}
+	
+	private void updateBlocksPositions() {
+		for(int i = 0; i < workflow.size(); i++) {
+			workflow.get(i).setWorkflowPosition(i);
+		}
+	}
+	
+	public void addBlock(String id, int position) {
+		
+		Block block = findBlock(id);
+		
+		workflow.add(position+1, block);
+		
+		updateBlocksPositions();
+		
+		updatePanel();
+		
+		
+	}
+	
+	private Block findBlock(String id) {
+				
+		if (id == "GetAnalogInput") {
+			return new GetAnalogInput();
+		}
+		
+		else if (id == "SetAnalogOutput") {
+			return new SetAnalogOutput();
+		}
+		
+		else if (id == "GetDigitalInput") {
+			return new GetDigitalOutput();
+		}
+		
+		else if (id == "SetDigitalOutput") {
+			return new SetDigitalOutput();
+		}
+		
+		else if (id == "Sleep") {
+			return new Sleep();
+		}
+		
+		else { // if (id == "PopUp"){}
+			return new PopUp();
 		}
 		
 	}
 	
-	public JPanel getPanel() {
-		return this;
+	
+	public JScrollPane getScrollPanel() {
+		
+		return scroll;
 	}
 }

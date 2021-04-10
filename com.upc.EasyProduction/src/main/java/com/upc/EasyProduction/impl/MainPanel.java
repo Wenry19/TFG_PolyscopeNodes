@@ -1,4 +1,4 @@
-package com.upc.EasyProduction.dragdrop;
+package com.upc.EasyProduction.impl;
 
 
 
@@ -8,6 +8,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 
 import com.upc.EasyProduction.blocks.Workflow;
+import com.upc.EasyProduction.dragdrop.OptionsPanel;
 
 public class MainPanel extends JLayeredPane{
 	
@@ -20,25 +21,17 @@ public class MainPanel extends JLayeredPane{
 	
 	private MainPanel() {
 		
-		optionsPanel = new OptionsPanel();
+		optionsPanel = OptionsPanel.getInstance();
 		workflow = Workflow.getInstance();
-		
-		JScrollPane aux = new JScrollPane(workflow.getPanel());
-		JScrollPane aux2 = new JScrollPane(optionsPanel);
-		aux.setPreferredSize(new Dimension(200, 407));
-		aux.setSize(new Dimension(200, 407));
-		
-		aux2.setPreferredSize(new Dimension(406, 407));
-		aux2.setSize(new Dimension(406, 407));
 		
 		this.setLayout(null);
 		
-		this.add(optionsPanel, JLayeredPane.DEFAULT_LAYER);
+		this.add(optionsPanel.getScrollPanel(), JLayeredPane.DEFAULT_LAYER);
 		this.setBounds(0, 0, 606, 407);
 		
 		this.add(optionsPanel.getDragDropPanel(), JLayeredPane.DRAG_LAYER);
 		
-		this.add(aux, JLayeredPane.DEFAULT_LAYER);
+		this.add(workflow.getScrollPanel(), JLayeredPane.DRAG_LAYER);
 		this.setBounds(0, 0, 606, 407);
 		
 	}
