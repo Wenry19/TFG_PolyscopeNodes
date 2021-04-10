@@ -3,6 +3,7 @@ package com.upc.EasyProduction.dragdrop;
 
 
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.MouseInfo;
@@ -188,10 +189,11 @@ public class OptionsPanel extends JPanel {
 				Point point = new Point(a.getLocation());
 				SwingUtilities.convertPointFromScreen(point, OptionsPanel.getInstance().getDragDropPanel());
 				
-				Block target = ((Block) wf.findComponentAt(point));
 				
-				if (target != null) {
-					wf.addBlock(draggedLabel.getText(), target.getWorkflowPosition());
+				Component target = wf.findComponentAt(point);
+				
+				if (target != null && target instanceof Block) {
+					wf.addBlock(draggedLabel.getText(), ((Block)target).getWorkflowPosition());
 				}
 				
 			}

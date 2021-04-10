@@ -2,10 +2,12 @@ package com.upc.EasyProduction.blocks;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -49,6 +51,9 @@ public class Block extends JLabel{ // no s'hauria de poder instanciar diria (ext
 		this.setSize(new Dimension(WIDTH, HEIGHT));
 		this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		this.setBackground(Color.LIGHT_GRAY);
+		
+		//this.setFont(new Font("Khmer OS", Font.BOLD, 12));
+		
 		
 		wfPos = -1; // not in workflow
 

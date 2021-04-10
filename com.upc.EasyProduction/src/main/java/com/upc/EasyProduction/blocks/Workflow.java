@@ -2,9 +2,12 @@ package com.upc.EasyProduction.blocks;
 
 
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.util.LinkedList;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -77,7 +80,14 @@ public class Workflow extends JPanel {
 	
 	private void updatePanel() {
 		
-		this.setLayout(new GridLayout(0, 1));
+		this.removeAll();
+		
+		this.setLayout(new GridBagLayout());
+		
+		GridBagConstraints c = new GridBagConstraints();
+		
+		c.gridheight = 1;
+		c.gridwidth = 0;
 		
 		this.setLocation(0, 0);
 		
@@ -85,7 +95,19 @@ public class Workflow extends JPanel {
 		
 		
 		for(int i = 0; i < workflow.size(); i++) {
-			this.add(workflow.get(i));
+			
+			this.add(workflow.get(i), c);
+			
+			if (i != workflow.size()-1) {
+				JLabel arrow = new JLabel();
+				ImageIcon icon = new ImageIcon("arrow_down32.png");
+				
+				arrow.setPreferredSize(new Dimension(24, 12));
+				arrow.setSize(new Dimension(24, 12));
+				arrow.setIcon(icon);
+				
+				this.add(arrow, c);
+			}
 		}
 		
 		this.revalidate();

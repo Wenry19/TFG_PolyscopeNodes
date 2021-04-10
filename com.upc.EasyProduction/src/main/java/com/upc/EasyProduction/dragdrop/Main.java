@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
-import com.upc.EasyProduction.impl.MainPanel;
+import com.upc.EasyProduction.MainPanel.MainPanel;
 
 public class Main {
 

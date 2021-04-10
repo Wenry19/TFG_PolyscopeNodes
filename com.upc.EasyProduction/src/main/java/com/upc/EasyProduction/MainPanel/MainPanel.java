@@ -1,4 +1,4 @@
-package com.upc.EasyProduction.impl;
+package com.upc.EasyProduction.MainPanel;
 
 
 
