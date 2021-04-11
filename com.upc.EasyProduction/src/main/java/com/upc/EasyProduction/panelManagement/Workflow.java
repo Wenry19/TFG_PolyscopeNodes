@@ -32,6 +32,7 @@ import com.upc.EasyProduction.blocks.productionBlocks.DestackBase;
 import com.upc.EasyProduction.blocks.productionBlocks.DestackBearing;
 import com.upc.EasyProduction.blocks.productionBlocks.EndIfBases;
 import com.upc.EasyProduction.blocks.productionBlocks.EndIfBearings;
+import com.upc.EasyProduction.blocks.productionBlocks.EndIfCAPSandProducts;
 import com.upc.EasyProduction.blocks.productionBlocks.EndWhileProducts;
 import com.upc.EasyProduction.blocks.productionBlocks.EndWhileTrue;
 import com.upc.EasyProduction.blocks.productionBlocks.ExperimentTimeThread;
@@ -40,6 +41,7 @@ import com.upc.EasyProduction.blocks.productionBlocks.InitializeVars;
 import com.upc.EasyProduction.blocks.productionBlocks.TimerThread;
 import com.upc.EasyProduction.blocks.productionBlocks.IfBases;
 import com.upc.EasyProduction.blocks.productionBlocks.IfBearings;
+import com.upc.EasyProduction.blocks.productionBlocks.IfCAPSandProducts;
 import com.upc.EasyProduction.blocks.productionBlocks.WhileProducts;
 import com.upc.EasyProduction.blocks.productionBlocks.WhileTrue;
 import com.upc.EasyProduction.blocks.productionBlocks.WriteRegistersThread;
@@ -72,12 +74,15 @@ public class Workflow extends JPanel {
 	private CallPutBearing putBearing = new CallPutBearing();
 	private EndIfBearings endWhileBearings = new EndIfBearings();
 	
+	private IfCAPSandProducts ifCAPSandProducts = new IfCAPSandProducts();
 	private GetCAPs getCAPs = new GetCAPs();
 	
 	private WhileProducts whileProducts = new WhileProducts();
 	private DespalletizeProduct despalletizeProduct = new DespalletizeProduct();
 	private CallPutProduct putProduct = new CallPutProduct();
 	private EndWhileProducts endWhileProducts = new EndWhileProducts();
+	
+	private EndIfCAPSandProducts endIfCAPSandProducts = new EndIfCAPSandProducts();
 	
 	
 	private EndWhileTrue endWhileTrue = new EndWhileTrue();
@@ -129,12 +134,16 @@ public class Workflow extends JPanel {
 		workflow.add(putBearing);
 		workflow.add(endWhileBearings);
 		
+		workflow.add(ifCAPSandProducts);
+		
 		workflow.add(getCAPs);
 		
 		workflow.add(whileProducts);
 		workflow.add(despalletizeProduct);
 		workflow.add(putProduct);
 		workflow.add(endWhileProducts);
+		
+		workflow.add(endIfCAPSandProducts);
 		
 		workflow.add(endWhileTrue);
 		
@@ -187,6 +196,8 @@ public class Workflow extends JPanel {
 	}
 	
 	public void addBlock(String id, int position) {
+		
+		if (position == workflow.size() - 1) return;
 		
 		Block block = findBlock(id);
 		
@@ -258,5 +269,13 @@ public class Workflow extends JPanel {
 		}
 		
 		return code;
+	}
+	
+	public void setWorkflow(LinkedList workflow) {
+		
+		this.workflow = workflow;
+		
+		updatePanel();
+		
 	}
 }

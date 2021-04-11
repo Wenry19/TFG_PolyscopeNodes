@@ -14,7 +14,7 @@ public class EndIfBases extends Block{
 		defaultCode = "\n"
 				+ "    end";
 		
-		name = "EndIfBases";
+		name = "EndIf";
 		
 		this.setText(name);
 		

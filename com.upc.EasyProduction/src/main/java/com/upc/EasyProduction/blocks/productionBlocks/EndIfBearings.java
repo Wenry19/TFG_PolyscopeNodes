@@ -13,7 +13,7 @@ public class EndIfBearings extends Block{
 		defaultCode = "\n"
 				+ "    end";
 		
-		name = "EndIfBearings";
+		name = "EndIf";
 		
 		this.setText(name);
 		

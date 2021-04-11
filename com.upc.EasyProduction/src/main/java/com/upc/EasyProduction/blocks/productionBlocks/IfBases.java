@@ -8,7 +8,7 @@ public class IfBases extends Block{
 	
 	public IfBases() {
 		
-		identation = "    ";
+		identation = "      ";
 		
 		defaultCode = "\n"
 				+ "    # $ 21 \"'StartPos_Bases= Punto de contacto con el stack=StackPos_Base'\"\n"
@@ -16,7 +16,7 @@ public class IfBases extends Block{
 				+ "    # $ 22 \"If N_Bases<4\"\n"
 				+ "    if (N_Bases<4):";
 		
-		name = "IfBases<4";
+		name = "If(Bases<4)";
 		
 		this.setText(name);
 		

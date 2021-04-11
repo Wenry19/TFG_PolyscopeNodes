@@ -4,20 +4,20 @@ import java.awt.Color;
 
 import com.upc.EasyProduction.blocks.Block;
 
-public class EndWhileTrue extends Block {
+public class EndIfCAPSandProducts extends Block{
 	
-	public EndWhileTrue() {
+	public EndIfCAPSandProducts() {
 		
-		identation = "  ";
+		identation = "    ";
 		
 		defaultCode = "\n"
-				+ "  end\n";
+				+ "    end\n";
 		
-		name = "EndWhile";
+		name = "EndIf";
 		
 		this.setText(name);
 		
-		this.setBackground(new Color(0xaeaebf));
+		this.setBackground(new Color(0xb2c2b1));
 	}
 	
 

@@ -8,13 +8,12 @@ public class EndWhileProducts extends Block{
 	
 	public EndWhileProducts() {
 		
-		identation = "    ";
+		identation = "      ";
 		
 		defaultCode = "\n"
-				+ "      end  \n"
-				+ "    end";
+				+ "      end";
 		
-		name = "EndWhileProducts";
+		name = "EndWhile";
 		
 		this.setText(name);
 		

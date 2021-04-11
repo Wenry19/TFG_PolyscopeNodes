@@ -9,13 +9,13 @@ public class IfBearings extends Block{
 	
 	public IfBearings() {
 		
-		identation = "    ";
+		identation = "      ";
 		
 		defaultCode = "\n"
 				+ "    # $ 41 \"If N_Bases≥4\"\n"
 				+ "    if (N_Bases >= 4):";
 		
-		name = "IfBearings<4";
+		name = "If(Bases>=4)";
 		
 		this.setText(name);
 		

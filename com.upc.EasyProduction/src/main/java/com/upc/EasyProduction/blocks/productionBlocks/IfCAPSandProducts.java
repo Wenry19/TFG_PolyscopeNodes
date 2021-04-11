@@ -4,20 +4,21 @@ import java.awt.Color;
 
 import com.upc.EasyProduction.blocks.Block;
 
-public class EndWhileTrue extends Block {
+public class IfCAPSandProducts extends Block{
 	
-	public EndWhileTrue() {
+	public IfCAPSandProducts() {
 		
-		identation = "  ";
+		identation = "      ";
 		
 		defaultCode = "\n"
-				+ "  end\n";
+				+ "    # $ 63 \"If N_Bearings≥4\"\n"
+				+ "    if (N_Bearings >= 4):\n";
 		
-		name = "EndWhile";
+		name = "If(Bearings>=4)";
 		
 		this.setText(name);
 		
-		this.setBackground(new Color(0xaeaebf));
+		this.setBackground(new Color(0xb2c2b1));
 	}
 	
 
