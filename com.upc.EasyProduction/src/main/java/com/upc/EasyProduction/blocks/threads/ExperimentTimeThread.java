@@ -1,7 +1,6 @@
-package com.upc.EasyProduction.blocks;
+package com.upc.EasyProduction.blocks.threads;
 
-
-public class ExperimentTimeThread extends Block{	
+public class ExperimentTimeThread extends Thread{	
 	
 	// Singleton (only one instance)
 	

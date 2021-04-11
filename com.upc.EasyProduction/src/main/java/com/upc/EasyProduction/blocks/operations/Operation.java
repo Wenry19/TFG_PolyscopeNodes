@@ -1,8 +1,10 @@
-package com.upc.EasyProduction.blocks;
+package com.upc.EasyProduction.blocks.operations;
 
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
+
+import com.upc.EasyProduction.blocks.Block;
 
 public class Operation extends Block{
 	

@@ -11,6 +11,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import com.upc.EasyProduction.blocks.operations.Operation;
+import com.upc.EasyProduction.workflow.Workflow;
+
 
 public class Block extends JLabel{ // no s'hauria de poder instanciar diria (extend JLabel??)
 	

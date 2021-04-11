@@ -1,7 +1,6 @@
-package com.upc.EasyProduction.blocks;
+package com.upc.EasyProduction.blocks.threads;
 
-
-public class TimerThread extends Block { // activate or deactivate timers?
+public class TimerThread extends Thread { // activate or deactivate timers?
 	
 	// Singleton (only one instance)
 	

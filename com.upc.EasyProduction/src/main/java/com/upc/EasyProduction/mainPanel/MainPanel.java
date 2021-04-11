@@ -1,4 +1,4 @@
-package com.upc.EasyProduction.MainPanel;
+package com.upc.EasyProduction.mainPanel;
 
 
 
@@ -7,8 +7,8 @@ import java.awt.Dimension;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 
-import com.upc.EasyProduction.blocks.Workflow;
 import com.upc.EasyProduction.dragdrop.OptionsPanel;
+import com.upc.EasyProduction.workflow.Workflow;
 
 public class MainPanel extends JLayeredPane{
 	

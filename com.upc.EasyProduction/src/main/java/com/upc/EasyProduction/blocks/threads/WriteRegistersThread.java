@@ -1,7 +1,6 @@
-package com.upc.EasyProduction.blocks;
+package com.upc.EasyProduction.blocks.threads;
 
-
-public class WriteRegistersThread extends Block {
+public class WriteRegistersThread extends Thread {
 	
 	// Singleton (only one instance)
 	

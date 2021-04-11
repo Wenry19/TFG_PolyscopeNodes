@@ -1,14 +1,15 @@
 package com.upc.EasyProduction.blocks;
 
+import java.awt.Color;
 
-public class While extends Block {
+public class WhileTrue extends Block {
 	
 	// Singleton (only one instance)
 	
-	private static While singleton = new While();
+	private static WhileTrue singleton = new WhileTrue();
 	
 	
-	private While() {
+	private WhileTrue() {
 		defaultCode = "\n"
 				+ "    while (True):\n"
 				+ "      # $ 12 \"Robot Program\"\n"
@@ -26,12 +27,14 @@ public class While extends Block {
 				+ "      # $ 19 \"P_Ready\" \"breakAfter\"\n"
 				+ "      movej(get_inverse_kin(p[.298616357137, -.112388877195, .127097072908, -2.221424005928, 2.221422962714, -.000273677751], qnear=[-3.5587941304981996E-5, -1.5707243124591272, -1.5707510153399866, -1.5707724730121058, 1.5706911087036133, -3.606477846318512E-5]), a=8.726646259971647, v=4.363323129985823)";
 		
-		name = "While";
+		name = "WhileTrue";
 		
 		this.setText(name);
+		
+		this.setBackground(new Color(0xaeaebf)); // ull!
 	}
 	
-	public static While getInstance() {
+	public static WhileTrue getInstance() {
 		return singleton;
 	}
 	

@@ -7,6 +7,9 @@ import com.ur.urcap.api.domain.script.ScriptWriter;
 import com.ur.urcap.api.domain.undoredo.UndoRedoManager;
 import com.ur.urcap.api.domain.undoredo.UndoableChanges;
 import com.upc.EasyProduction.blocks.*;
+import com.upc.EasyProduction.blocks.threads.ExperimentTimeThread;
+import com.upc.EasyProduction.blocks.threads.TimerThread;
+import com.upc.EasyProduction.blocks.threads.WriteRegistersThread;
 
 public class EasyProductionProgramNodeContribution implements ProgramNodeContribution{
 	
@@ -23,14 +26,14 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	private static final Float DEFAULT_N_BASES = 4.0f; // default values for each key
 	
 
-	private Initialize initialize = Initialize.getInstance();
+	private InitializeVars initialize = InitializeVars.getInstance();
 	private TimerThread timerThread = TimerThread.getInstance();
-	private PutProduct putProduct = PutProduct.getInstance();
-	private PutBearing putBearing = PutBearing.getInstance();
-	private PutBase putBase = PutBase.getInstance();
+	private DefPutProduct putProduct = DefPutProduct.getInstance();
+	private DefPutBearing putBearing = DefPutBearing.getInstance();
+	private DefPutBase putBase = DefPutBase.getInstance();
 	private WriteRegistersThread writeRegistersThread = WriteRegistersThread.getInstance();
 	private ExperimentTimeThread experimentTimeThread = ExperimentTimeThread.getInstance();
-	private While whileBlock = While.getInstance();
+	private WhileTrue whileBlock = WhileTrue.getInstance();
 	private DestackBase destackBase = DestackBase.getInstance();
 	private DestackBearing destackBearing = DestackBearing.getInstance();
 	private GetCAPs getCAPs = GetCAPs.getInstance();

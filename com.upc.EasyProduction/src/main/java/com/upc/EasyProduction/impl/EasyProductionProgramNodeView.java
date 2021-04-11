@@ -18,8 +18,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.upc.EasyProduction.MainPanel.MainPanel;
-import com.upc.EasyProduction.blocks.Workflow;
+import com.upc.EasyProduction.mainPanel.MainPanel;
+import com.upc.EasyProduction.workflow.Workflow;
 import com.ur.urcap.api.contribution.ContributionProvider;
 import com.ur.urcap.api.contribution.ViewAPIProvider;
 import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeView;

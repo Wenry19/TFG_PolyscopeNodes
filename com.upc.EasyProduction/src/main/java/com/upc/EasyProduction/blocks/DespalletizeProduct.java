@@ -35,13 +35,7 @@ public class DespalletizeProduct extends Block{
 				+ "          # $ 86 \"Wait: 0.5\" \"noBreak\"\n"
 				+ "          sleep(0.5)\n"
 				+ "          # $ 87 \"Exit_4\" \"noBreak\"\n"
-				+ "          movel(pose_trans(pose_8, pose_trans(pose_inv(p[-.110222921483, -.400694473317, .016073121842, .000281289657, 3.141507524398, .000442570959]),p[-.110187854924, -.400679425425, .060006956619, .000206408095, 3.141448072859, .000559160477])), a=2.5, v=0.25)\n"
-				+ "          # $ 88 \"Call PUT_PRODUCT_TO_PALLET\"\n"
-				+ "          PUT_PRODUCT_TO_PALLET()\n"
-				+ "          Loop_1 = Loop_1 + 1\n"
-				+ "        end\n"
-				+ "      end\n"
-				+ "    end";
+				+ "          movel(pose_trans(pose_8, pose_trans(pose_inv(p[-.110222921483, -.400694473317, .016073121842, .000281289657, 3.141507524398, .000442570959]),p[-.110187854924, -.400679425425, .060006956619, .000206408095, 3.141448072859, .000559160477])), a=2.5, v=0.25)\n";
 		
 		name = "DespalletizeProduct";
 		

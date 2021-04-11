@@ -64,10 +64,7 @@ public class DestackBase extends Block {
 				+ "            end\n"
 				+ "          end\n"
 				+ "          sync()\n"
-				+ "        end\n"
-				+ "        # $ 40 \"Call PUT_BASE_MATRIZ_ASSEMBLY\"\n"
-				+ "        PUT_BASE_MATRIZ_ASSEMBLY()\n"
-				+ "      end";
+				+ "        end\n";
 		
 		name = "DestackBase";
 		

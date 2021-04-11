@@ -1,7 +1,7 @@
 package com.upc.EasyProduction.blocks;
 
 
-public class Initialize extends Block {
+public class InitializeVars extends Block {
 	
 	
 	private int numberIniBases;
@@ -10,10 +10,10 @@ public class Initialize extends Block {
 	
 	// Singleton (only one instance)
 	
-	private static Initialize singleton = new Initialize();
+	private static InitializeVars singleton = new InitializeVars();
 	
 	
-	private Initialize() { // maybe it should be singleton
+	private InitializeVars() { // maybe it should be singleton
 		
 		numberIniBases = 0;
 		numberIniBearings = 0;
@@ -59,13 +59,13 @@ public class Initialize extends Block {
 				+ "    # $ 11 \"Set DO[2]=Off\"\n"
 				+ "    set_standard_digital_out(2, False)";
 		
-		name = "Initilize";
+		name = "InitilizeVars";
 		
 		this.setText(name);
 		
 	}
 	
-	public static Initialize getInstance() {
+	public static InitializeVars getInstance() {
 		return singleton;
 	}
 	

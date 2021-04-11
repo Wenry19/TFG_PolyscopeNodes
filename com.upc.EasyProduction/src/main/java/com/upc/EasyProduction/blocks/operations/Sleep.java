@@ -1,4 +1,4 @@
-package com.upc.EasyProduction.blocks;
+package com.upc.EasyProduction.blocks.operations;
 
 public class Sleep extends Operation {
 	

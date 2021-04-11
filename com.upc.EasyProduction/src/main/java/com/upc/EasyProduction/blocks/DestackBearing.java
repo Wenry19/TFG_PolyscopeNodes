@@ -69,10 +69,7 @@ public class DestackBearing extends Block {
 				+ "            end\n"
 				+ "          end\n"
 				+ "          sync()\n"
-				+ "        end\n"
-				+ "        # $ 62 \"Call PUT_BEARING_MATRIZ_ASSEMBLY\"\n"
-				+ "        PUT_BEARING_MATRIZ_ASSEMBLY()\n"
-				+ "      end";
+				+ "        end\n";
 		
 		name = "DestackBearing";
 		

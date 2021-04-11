@@ -20,7 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 
 import com.upc.EasyProduction.blocks.Block;
-import com.upc.EasyProduction.blocks.Workflow;
+import com.upc.EasyProduction.workflow.Workflow;
 
 
 public class OptionsPanel extends JPanel {
@@ -44,8 +44,8 @@ public class OptionsPanel extends JPanel {
 		
 		scroll = new JScrollPane(this);
 		
-		scroll.setPreferredSize(new Dimension(406, 407));
-		scroll.setSize(new Dimension(406, 407));
+		scroll.setPreferredSize(new Dimension(406, 404));
+		scroll.setSize(new Dimension(406, 404));
 		scroll.setLocation(200, 0);
 				
 	}
@@ -187,7 +187,7 @@ public class OptionsPanel extends JPanel {
 				// in this way works in Polyscope...
 				PointerInfo a = MouseInfo.getPointerInfo();
 				Point point = new Point(a.getLocation());
-				SwingUtilities.convertPointFromScreen(point, OptionsPanel.getInstance().getDragDropPanel());
+				SwingUtilities.convertPointFromScreen(point, wf);
 				
 				
 				Component target = wf.findComponentAt(point);
