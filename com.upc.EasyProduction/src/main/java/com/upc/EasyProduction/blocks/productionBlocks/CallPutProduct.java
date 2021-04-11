@@ -7,12 +7,12 @@ public class CallPutProduct extends Block{
 		public CallPutProduct() {
 			
 			defaultCode = "\n"
-					+ "          # $ 88 \"Call PUT_PRODUCT_TO_PALLET\"\n"
-					+ "          PUT_PRODUCT_TO_PALLET()\n"
-					+ "          Loop_1 = Loop_1 + 1\n"
-					+ "        end\n"
+					+ "        # $ 88 \"Call PUT_PRODUCT_TO_PALLET\"\n"
+					+ "        PUT_PRODUCT_TO_PALLET()\n"
+					+ "        Loop_1 = Loop_1 + 1\n"
 					+ "      end\n"
-					+ "    end";
+					+ "    end\n"
+					+ "  end";
 			
 			name = "CallPutProduct";
 			
