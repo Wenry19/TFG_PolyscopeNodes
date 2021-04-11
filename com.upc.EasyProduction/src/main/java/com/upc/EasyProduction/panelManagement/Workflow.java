@@ -2,6 +2,7 @@ package com.upc.EasyProduction.panelManagement;
 
 
 import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -20,7 +21,6 @@ import com.upc.EasyProduction.blocks.operationBlocks.PopUp;
 import com.upc.EasyProduction.blocks.operationBlocks.SetAnalogOutput;
 import com.upc.EasyProduction.blocks.operationBlocks.SetDigitalOutput;
 import com.upc.EasyProduction.blocks.operationBlocks.Sleep;
-import com.upc.EasyProduction.blocks.InfoFlowLabel;
 import com.upc.EasyProduction.blocks.productionBlocks.CallPutBase;
 import com.upc.EasyProduction.blocks.productionBlocks.CallPutBearing;
 import com.upc.EasyProduction.blocks.productionBlocks.CallPutProduct;
@@ -30,10 +30,17 @@ import com.upc.EasyProduction.blocks.productionBlocks.DefPutProduct;
 import com.upc.EasyProduction.blocks.productionBlocks.DespalletizeProduct;
 import com.upc.EasyProduction.blocks.productionBlocks.DestackBase;
 import com.upc.EasyProduction.blocks.productionBlocks.DestackBearing;
+import com.upc.EasyProduction.blocks.productionBlocks.EndWhileBases;
+import com.upc.EasyProduction.blocks.productionBlocks.EndWhileBearings;
+import com.upc.EasyProduction.blocks.productionBlocks.EndWhileProducts;
+import com.upc.EasyProduction.blocks.productionBlocks.EndWhileTrue;
 import com.upc.EasyProduction.blocks.productionBlocks.ExperimentTimeThread;
 import com.upc.EasyProduction.blocks.productionBlocks.GetCAPs;
 import com.upc.EasyProduction.blocks.productionBlocks.InitializeVars;
 import com.upc.EasyProduction.blocks.productionBlocks.TimerThread;
+import com.upc.EasyProduction.blocks.productionBlocks.WhileBases;
+import com.upc.EasyProduction.blocks.productionBlocks.WhileBearings;
+import com.upc.EasyProduction.blocks.productionBlocks.WhileProducts;
 import com.upc.EasyProduction.blocks.productionBlocks.WhileTrue;
 import com.upc.EasyProduction.blocks.productionBlocks.WriteRegistersThread;
 
@@ -54,13 +61,26 @@ public class Workflow extends JPanel {
 	private DefPutBase defPutBase = new DefPutBase();
 
 	private WhileTrue whileTrue = new WhileTrue();
+	
+	private WhileBases whileBases = new WhileBases();
 	private DestackBase destackBase = new DestackBase();
 	private CallPutBase putBase = new CallPutBase();
+	private EndWhileBases endWhileBases = new EndWhileBases();
+	
+	private WhileBearings whileBearings = new WhileBearings();
 	private DestackBearing destackBearing = new DestackBearing();
 	private CallPutBearing putBearing = new CallPutBearing();
+	private EndWhileBearings endWhileBearings = new EndWhileBearings();
+	
 	private GetCAPs getCAPs = new GetCAPs();
+	
+	private WhileProducts whileProducts = new WhileProducts();
 	private DespalletizeProduct despalletizeProduct = new DespalletizeProduct();
 	private CallPutProduct putProduct = new CallPutProduct();
+	private EndWhileProducts endWhileProducts = new EndWhileProducts();
+	
+	
+	private EndWhileTrue endWhileTrue = new EndWhileTrue();
 		
 	// Singleton (only one instance)
 	
@@ -98,20 +118,25 @@ public class Workflow extends JPanel {
 		workflow.add(defPutBearing);
 		
 		workflow.add(whileTrue);
-		workflow.add(new InfoFlowLabel("WhileBases<4"));
+		
+		workflow.add(whileBases);
 		workflow.add(destackBase);
 		workflow.add(putBase);
-		workflow.add(new InfoFlowLabel("EndWhile"));
-		workflow.add(new InfoFlowLabel("WhileBearings<4"));
+		workflow.add(endWhileBases);
+		
+		workflow.add(whileBearings);
 		workflow.add(destackBearing);
 		workflow.add(putBearing);
-		workflow.add(new InfoFlowLabel("EndWhile"));
+		workflow.add(endWhileBearings);
+		
 		workflow.add(getCAPs);
-		workflow.add(new InfoFlowLabel("WhileProducts<4"));
+		
+		workflow.add(whileProducts);
 		workflow.add(despalletizeProduct);
 		workflow.add(putProduct);
-		workflow.add(new InfoFlowLabel("EndWhile"));
-		workflow.add(new InfoFlowLabel("EndWhileTrue", new Color(0xaeaebf)));
+		workflow.add(endWhileProducts);
+		
+		workflow.add(endWhileTrue);
 		
 		updateBlocksPositions();
 		

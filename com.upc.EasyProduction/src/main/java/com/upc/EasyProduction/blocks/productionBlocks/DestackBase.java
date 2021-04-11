@@ -8,10 +8,6 @@ public class DestackBase extends Block {
 	public DestackBase() {
 		
 		defaultCode = "\n"
-				+ "    # $ 21 \"'StartPos_Bases= Punto de contacto con el stack=StackPos_Base'\"\n"
-				+ "    # 'StartPos_Bases= Punto de contacto con el stack=StackPos_Base'\n"
-				+ "    # $ 22 \"If N_Bases<4\"\n"
-				+ "    if (N_Bases<4):\n"
 				+ "      # $ 23 \"BASEtime: Start\"\n"
 				+ "      BASEtime_is_counting = True\n"
 				+ "      # $ 24 \"'(((((((Destack BASE))))))'\"\n"

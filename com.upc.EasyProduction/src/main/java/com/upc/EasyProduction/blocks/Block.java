@@ -105,12 +105,12 @@ public class Block extends JLabel{
 		
 		public void mouseClicked(MouseEvent e) {
 			
-			if (!(e.getSource() instanceof InfoFlowLabel)) {
+			//if (!(e.getSource() instanceof )) {
 			
-				Block b = (Block) e.getSource();
+			Block b = (Block) e.getSource();
 				
-				b.getFrame().setVisible(true);
-			}
+			b.getFrame().setVisible(true);
+			//}
 
 		}
 		

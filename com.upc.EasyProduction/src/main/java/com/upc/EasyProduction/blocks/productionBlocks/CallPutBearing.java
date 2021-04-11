@@ -6,10 +6,11 @@ public class CallPutBearing extends Block{
 		
 		public CallPutBearing() {
 			
+			identation = "    ";
+			
 			defaultCode = "\n"
 					+ "      # $ 62 \"Call PUT_BEARING_MATRIZ_ASSEMBLY\"\n"
-					+ "      PUT_BEARING_MATRIZ_ASSEMBLY()\n"
-					+ "    end";
+					+ "      PUT_BEARING_MATRIZ_ASSEMBLY()\n";
 			
 			name = "CallPutBearing";
 			

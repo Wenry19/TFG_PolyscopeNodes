@@ -13,8 +13,6 @@ public class DestackBearing extends Block {
 	public DestackBearing() {
 		
 		defaultCode = "\n"
-				+ "    # $ 41 \"If N_Bases≥4\"\n"
-				+ "    if (N_Bases >= 4):\n"
 				+ "      # $ 42 \"BEARINGtime: Start\"\n"
 				+ "      BEARINGtime_is_counting = True\n"
 				+ "      # $ 43 \"MoveJ\"\n"

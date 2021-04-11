@@ -8,9 +8,6 @@ public class DespalletizeProduct extends Block{
 	public DespalletizeProduct() {
 		
 		defaultCode = "\n"
-				+ "      # $ 71 \"Loop 4 times\"\n"
-				+ "      Loop_1 = 0\n"
-				+ "      while (Loop_1 < 4):\n"
 				+ "        # $ 72 \"MoveJ\"\n"
 				+ "        # $ 73 \"Approach_2\" \"breakAfter\"\n"
 				+ "        movej(get_inverse_kin(p[-.050273197644, -.341535366440, .102459786423, -.032924896149, 3.141372266899, -.000292544836], qnear=[-1.385470215474264, -1.690115753804342, -1.558995548878805, -1.463085953389303, 1.5708110332489014, 0.1643647700548172]), a=8.726646259971647, v=4.363323129985823)\n"

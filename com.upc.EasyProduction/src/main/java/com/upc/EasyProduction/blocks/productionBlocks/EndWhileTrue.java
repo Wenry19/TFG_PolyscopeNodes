@@ -1,27 +1,28 @@
 package com.upc.EasyProduction.blocks.productionBlocks;
 
+import java.awt.Color;
+
 import com.upc.EasyProduction.blocks.Block;
 
-public class CallPutBase extends Block{
-		
-	public CallPutBase() {
-		
-		identation = "    ";
-		
+public class EndWhileTrue extends Block {
+	
+	public EndWhileTrue() {
 		defaultCode = "\n"
-				+ "      # $ 40 \"Call PUT_BASE_MATRIZ_ASSEMBLY\"\n"
-				+ "      PUT_BASE_MATRIZ_ASSEMBLY()\n";
+				+ "  end\n";
 		
-		name = "CallPutBase";
+		name = "EndWhileTrue";
 		
 		this.setText(name);
 		
+		this.setBackground(new Color(0xaeaebf));
 	}
-		
+	
+
 	@Override
 	protected String generateCode() {
 		code = "";
 		
 		return code;
 	}
+
 }
