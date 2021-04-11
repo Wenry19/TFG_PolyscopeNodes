@@ -1,32 +1,15 @@
 package com.upc.EasyProduction.impl;
 
-import javax.swing.JScrollPane;
 
-
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.upc.EasyProduction.mainPanel.MainPanel;
-import com.upc.EasyProduction.workflow.Workflow;
+import com.upc.EasyProduction.panelManagement.MainPanel;
 import com.ur.urcap.api.contribution.ContributionProvider;
 import com.ur.urcap.api.contribution.ViewAPIProvider;
 import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeView;
 
 public class EasyProductionProgramNodeView implements SwingProgramNodeView<EasyProductionProgramNodeContribution>{
 	
-	private Workflow workflow = Workflow.getInstance();
 	private MainPanel mainPanel = MainPanel.getInstance();
 
 //	// TESTS IN ECLIPSE --------------------------------------------------------
@@ -62,49 +45,6 @@ public class EasyProductionProgramNodeView implements SwingProgramNodeView<EasyP
 		
 		this.apiProvider = apiProvider;
 		
-	}
-	
-	private JComboBox<Float> ioComboBox = new JComboBox<Float>();
-	
-	public void setIOComboBoxItems(Float[] items) { // Contribution will be able to communicate through these methods
-		// first we want to be sure that is empty
-		
-		ioComboBox.removeAllItems();
-		ioComboBox.setModel(new DefaultComboBoxModel<Float>(items));
-		
-	}
-	
-	public void setIOComboBoxSelection(Float item) { // Contribution will be able to communicate through these methods
-		ioComboBox.setSelectedItem(item);
-	}
-	
-	private Box createIOComboBox(final JComboBox<Float> combo, final ContributionProvider<EasyProductionProgramNodeContribution> provider) {
-		Box box = Box.createHorizontalBox();
-		box.setAlignmentX(Component.LEFT_ALIGNMENT);
-		
-		JLabel label = new JLabel(" Velocity of put base ");
-		
-		combo.setPreferredSize(new Dimension(104, 30));
-		combo.setMaximumSize(combo.getPreferredSize());
-		
-		// we want to be notified if user selects one option of the combo box
-		combo.addItemListener(new ItemListener() { // eye!!
-			
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-					provider.get().onNbasesSelection((Float) e.getItem()); // provider.get() returns our active instance of our contribution
-					
-				}
-				
-			}
-		});
-		
-		box.add(label);
-		// following the label: (it is an horizontal box so it will be next to the label on the right)
-		box.add(combo);
-		
-		return box;
 	}
 
 	@Override

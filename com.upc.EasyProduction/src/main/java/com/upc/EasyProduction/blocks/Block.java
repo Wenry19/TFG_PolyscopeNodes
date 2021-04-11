@@ -11,17 +11,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import com.upc.EasyProduction.blocks.operations.Operation;
-import com.upc.EasyProduction.workflow.Workflow;
+import com.upc.EasyProduction.blocks.operationBlocks.Operation;
+import com.upc.EasyProduction.panelManagement.Workflow;
 
 
-public class Block extends JLabel{ // no s'hauria de poder instanciar diria (extend JLabel??)
+public class Block extends JLabel{
 	
 	protected String name;
-	
-	protected String defaultCode; //final?
-	
+	protected String defaultCode;
 	protected String code;
+	protected String identation;
 	
 	protected JFrame frame;
 	
@@ -106,14 +105,13 @@ public class Block extends JLabel{ // no s'hauria de poder instanciar diria (ext
 		
 		public void mouseClicked(MouseEvent e) {
 			
-			Block b = (Block) e.getSource();
+			if (!(e.getSource() instanceof InfoFlowLabel)) {
 			
-			b.getFrame().setVisible(true);
-
-		}
-		
-		public void mousePressed(MouseEvent e) {
+				Block b = (Block) e.getSource();
 				
+				b.getFrame().setVisible(true);
+			}
+
 		}
 		
 		public void mouseDragged(MouseEvent e) {
@@ -124,19 +122,7 @@ public class Block extends JLabel{ // no s'hauria de poder instanciar diria (ext
 				
 				wf.deleteBlock(((Block)e.getSource()).getWorkflowPosition());
 			}
-			
-			System.out.println("dragged block wf");
 	        			
 		}
-		
-		public void mouseReleased(MouseEvent e) {
-			
-		}
-		
-		public void mouseEntered(MouseEvent e) {
-			
-		}
 	}
-	
-	
 }
