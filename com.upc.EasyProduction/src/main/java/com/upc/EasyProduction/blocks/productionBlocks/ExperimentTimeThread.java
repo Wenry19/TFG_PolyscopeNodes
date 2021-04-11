@@ -5,6 +5,8 @@ public class ExperimentTimeThread extends Thread{
 	
 	public ExperimentTimeThread() {
 		
+		identation = "  ";
+		
 		defaultCode = "\n"
 				+ "  # $ 100 \"SubTarea_2\"\n"
 				+ "  thread SubTarea_2():\n"

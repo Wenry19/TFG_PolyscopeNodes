@@ -4,16 +4,19 @@ import java.awt.Color;
 
 import com.upc.EasyProduction.blocks.Block;
 
-public class WhileBases extends Block{
+public class IfBases extends Block{
 	
-	public WhileBases() {
+	public IfBases() {
+		
+		identation = "    ";
+		
 		defaultCode = "\n"
 				+ "    # $ 21 \"'StartPos_Bases= Punto de contacto con el stack=StackPos_Base'\"\n"
 				+ "    # 'StartPos_Bases= Punto de contacto con el stack=StackPos_Base'\n"
 				+ "    # $ 22 \"If N_Bases<4\"\n"
 				+ "    if (N_Bases<4):";
 		
-		name = "WhileBases<4";
+		name = "IfBases<4";
 		
 		this.setText(name);
 		

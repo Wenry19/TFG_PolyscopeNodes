@@ -7,7 +7,7 @@ public class DefPutBearing extends Block {
 	
 	public DefPutBearing() {
 		
-		identation = "    ";
+		identation = "  ";
 		
 		defaultCode = "\n"
 				+ "  def PUT_BEARING_MATRIZ_ASSEMBLY():\n"

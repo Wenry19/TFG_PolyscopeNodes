@@ -6,7 +6,7 @@ public class CallPutProduct extends Block{
 		
 		public CallPutProduct() {
 			
-			identation = "    ";
+			identation = "        ";
 			
 			defaultCode = "\n"
 					+ "        # $ 88 \"Call PUT_PRODUCT_TO_PALLET\"\n"

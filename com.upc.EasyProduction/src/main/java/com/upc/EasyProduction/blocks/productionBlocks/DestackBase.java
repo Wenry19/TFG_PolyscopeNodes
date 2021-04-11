@@ -7,6 +7,8 @@ public class DestackBase extends Block {
 	
 	public DestackBase() {
 		
+		identation = "      ";
+		
 		defaultCode = "\n"
 				+ "      # $ 23 \"BASEtime: Start\"\n"
 				+ "      BASEtime_is_counting = True\n"

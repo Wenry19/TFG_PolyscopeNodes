@@ -7,6 +7,9 @@ import com.upc.EasyProduction.blocks.Block;
 public class EndWhileTrue extends Block {
 	
 	public EndWhileTrue() {
+		
+		identation = "  ";
+		
 		defaultCode = "\n"
 				+ "  end\n";
 		

@@ -18,5 +18,17 @@ public class Operation extends Block{
 	protected String getID() {
 		return id;
 	}
+	
+	@Override
+	public String getDefaultCode() {
+		return "\n" + identation + defaultCode; //ULL!!!!
+	}
+	
+	@Override
+	protected String generateCode() {
+		code = "";
+		
+		return "\n" + identation + code;
+	}
 
 }

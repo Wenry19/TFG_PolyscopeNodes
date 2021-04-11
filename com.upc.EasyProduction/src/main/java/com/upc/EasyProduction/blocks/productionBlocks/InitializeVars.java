@@ -16,6 +16,8 @@ public class InitializeVars extends Block {
 		numberIniBearings = 0;
 		numberIniProducts = 0;
 		
+		identation = "  ";
+		
 		defaultCode = "\n"
 				+ "  global cnt_1=0\n"
 				+ "  global cnt_3=0\n"

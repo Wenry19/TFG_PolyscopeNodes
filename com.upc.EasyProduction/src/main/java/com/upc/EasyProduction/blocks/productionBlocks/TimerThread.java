@@ -5,6 +5,8 @@ public class TimerThread extends Thread { // activate or deactivate timers?
 	
 	public TimerThread() { // maybe it should be singleton
 		
+		identation = "  ";
+		
 		defaultCode = "\n"
 				+ "  thread Timer_Thread():\n"
 				+ "    while (True):\n"

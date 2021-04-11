@@ -9,7 +9,7 @@ public class DefPutBase extends Block {
 	
 	public DefPutBase() {
 		
-		identation = "    ";
+		identation = "  ";
 		
 		defaultCode = "\n"
 				+ "  def PUT_BASE_MATRIZ_ASSEMBLY():\n"

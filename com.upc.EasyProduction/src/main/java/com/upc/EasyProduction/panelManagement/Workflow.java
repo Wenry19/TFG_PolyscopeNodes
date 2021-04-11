@@ -30,16 +30,16 @@ import com.upc.EasyProduction.blocks.productionBlocks.DefPutProduct;
 import com.upc.EasyProduction.blocks.productionBlocks.DespalletizeProduct;
 import com.upc.EasyProduction.blocks.productionBlocks.DestackBase;
 import com.upc.EasyProduction.blocks.productionBlocks.DestackBearing;
-import com.upc.EasyProduction.blocks.productionBlocks.EndWhileBases;
-import com.upc.EasyProduction.blocks.productionBlocks.EndWhileBearings;
+import com.upc.EasyProduction.blocks.productionBlocks.EndIfBases;
+import com.upc.EasyProduction.blocks.productionBlocks.EndIfBearings;
 import com.upc.EasyProduction.blocks.productionBlocks.EndWhileProducts;
 import com.upc.EasyProduction.blocks.productionBlocks.EndWhileTrue;
 import com.upc.EasyProduction.blocks.productionBlocks.ExperimentTimeThread;
 import com.upc.EasyProduction.blocks.productionBlocks.GetCAPs;
 import com.upc.EasyProduction.blocks.productionBlocks.InitializeVars;
 import com.upc.EasyProduction.blocks.productionBlocks.TimerThread;
-import com.upc.EasyProduction.blocks.productionBlocks.WhileBases;
-import com.upc.EasyProduction.blocks.productionBlocks.WhileBearings;
+import com.upc.EasyProduction.blocks.productionBlocks.IfBases;
+import com.upc.EasyProduction.blocks.productionBlocks.IfBearings;
 import com.upc.EasyProduction.blocks.productionBlocks.WhileProducts;
 import com.upc.EasyProduction.blocks.productionBlocks.WhileTrue;
 import com.upc.EasyProduction.blocks.productionBlocks.WriteRegistersThread;
@@ -62,15 +62,15 @@ public class Workflow extends JPanel {
 
 	private WhileTrue whileTrue = new WhileTrue();
 	
-	private WhileBases whileBases = new WhileBases();
+	private IfBases whileBases = new IfBases();
 	private DestackBase destackBase = new DestackBase();
 	private CallPutBase putBase = new CallPutBase();
-	private EndWhileBases endWhileBases = new EndWhileBases();
+	private EndIfBases endWhileBases = new EndIfBases();
 	
-	private WhileBearings whileBearings = new WhileBearings();
+	private IfBearings whileBearings = new IfBearings();
 	private DestackBearing destackBearing = new DestackBearing();
 	private CallPutBearing putBearing = new CallPutBearing();
-	private EndWhileBearings endWhileBearings = new EndWhileBearings();
+	private EndIfBearings endWhileBearings = new EndIfBearings();
 	
 	private GetCAPs getCAPs = new GetCAPs();
 	
@@ -189,6 +189,8 @@ public class Workflow extends JPanel {
 	public void addBlock(String id, int position) {
 		
 		Block block = findBlock(id);
+		
+		block.setIdentation(workflow.get(position).getIdentation());
 		
 		workflow.add(position+1, block);
 		

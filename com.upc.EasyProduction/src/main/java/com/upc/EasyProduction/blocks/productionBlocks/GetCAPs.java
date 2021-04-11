@@ -7,6 +7,8 @@ public class GetCAPs extends Block {
 	
 	public GetCAPs() {
 		
+		identation = "      ";
+		
 		defaultCode = "\n"
 				+ "    # $ 63 \"If N_Bearings≥4\"\n"
 				+ "    if (N_Bearings >= 4):\n"

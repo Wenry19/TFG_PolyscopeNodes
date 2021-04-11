@@ -12,6 +12,8 @@ public class DestackBearing extends Block {
 	
 	public DestackBearing() {
 		
+		identation = "      ";
+		
 		defaultCode = "\n"
 				+ "      # $ 42 \"BEARINGtime: Start\"\n"
 				+ "      BEARINGtime_is_counting = True\n"

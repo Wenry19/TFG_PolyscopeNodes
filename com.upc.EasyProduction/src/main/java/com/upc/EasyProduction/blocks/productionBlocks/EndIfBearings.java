@@ -4,13 +4,16 @@ import java.awt.Color;
 
 import com.upc.EasyProduction.blocks.Block;
 
-public class EndWhileBearings extends Block{
+public class EndIfBearings extends Block{
 	
-	public EndWhileBearings() {
+	public EndIfBearings() {
+		
+		identation = "    ";
+		
 		defaultCode = "\n"
 				+ "    end";
 		
-		name = "EndWhileBearings";
+		name = "EndIfBearings";
 		
 		this.setText(name);
 		

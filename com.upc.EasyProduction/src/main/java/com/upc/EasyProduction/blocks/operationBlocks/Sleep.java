@@ -5,8 +5,7 @@ public class Sleep extends Operation {
 	
 	public Sleep() {
 		
-		defaultCode = "\n"
-				+ "sleep(3.0)\n";
+		defaultCode = "sleep(3.0)\n";
 		
 		name = "Sleep"; // can be whatever
 		

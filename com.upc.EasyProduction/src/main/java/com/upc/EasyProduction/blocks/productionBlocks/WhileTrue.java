@@ -8,6 +8,9 @@ public class WhileTrue extends Block {
 	
 	
 	public WhileTrue() {
+		
+		identation = "    ";
+		
 		defaultCode = "\n"
 				+ "  while (True):\n"
 				+ "    # $ 12 \"Robot Program\"\n"

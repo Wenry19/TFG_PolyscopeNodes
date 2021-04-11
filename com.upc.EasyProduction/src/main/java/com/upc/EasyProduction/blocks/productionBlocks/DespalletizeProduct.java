@@ -7,6 +7,8 @@ public class DespalletizeProduct extends Block{
 	
 	public DespalletizeProduct() {
 		
+		identation = "        ";
+		
 		defaultCode = "\n"
 				+ "        # $ 72 \"MoveJ\"\n"
 				+ "        # $ 73 \"Approach_2\" \"breakAfter\"\n"

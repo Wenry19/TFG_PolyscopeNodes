@@ -8,6 +8,8 @@ public class EndWhileProducts extends Block{
 	
 	public EndWhileProducts() {
 		
+		identation = "    ";
+		
 		defaultCode = "\n"
 				+ "      end  \n"
 				+ "    end";

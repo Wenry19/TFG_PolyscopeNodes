@@ -7,6 +7,9 @@ import com.upc.EasyProduction.blocks.Block;
 public class WhileProducts extends Block {
 	
 	public WhileProducts() {
+		
+	    identation = "      ";
+		
 		defaultCode = "\n"
 				+ "      # $ 71 \"Loop 4 times\"\n"
 				+ "      Loop_1 = 0\n"

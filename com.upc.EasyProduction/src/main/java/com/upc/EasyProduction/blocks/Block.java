@@ -20,7 +20,7 @@ public class Block extends JLabel{
 	protected String name;
 	protected String defaultCode;
 	protected String code;
-	protected String identation;
+	protected String identation = "";
 	
 	protected JFrame frame;
 	
@@ -96,6 +96,14 @@ public class Block extends JLabel{
 		
 		return wfPos;
 		
+	}
+	
+	public String getIdentation() {
+		return identation;
+	}
+	
+	public void setIdentation(String identation) {
+		this.identation = identation;
 	}
 	
 	// inner classes

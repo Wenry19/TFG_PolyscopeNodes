@@ -4,14 +4,18 @@ import java.awt.Color;
 
 import com.upc.EasyProduction.blocks.Block;
 
-public class EndWhileBases extends Block{
+public class IfBearings extends Block{
 	
 	
-	public EndWhileBases() {
-		defaultCode = "\n"
-				+ "    end";
+	public IfBearings() {
 		
-		name = "EndWhileBases";
+		identation = "    ";
+		
+		defaultCode = "\n"
+				+ "    # $ 41 \"If N_Bases≥4\"\n"
+				+ "    if (N_Bases >= 4):";
+		
+		name = "IfBearings<4";
 		
 		this.setText(name);
 		
