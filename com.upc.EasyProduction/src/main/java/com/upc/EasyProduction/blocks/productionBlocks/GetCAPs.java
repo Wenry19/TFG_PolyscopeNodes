@@ -1,5 +1,7 @@
 package com.upc.EasyProduction.blocks.productionBlocks;
 
+import java.awt.Color;
+
 import com.upc.EasyProduction.blocks.Block;
 
 public class GetCAPs extends Block {
@@ -28,6 +30,7 @@ public class GetCAPs extends Block {
 		name = "GetCaps";
 		
 		this.setText(name);
+		this.setBackground(new Color(0xe1e0bd));
 	}
 	
 	@Override
