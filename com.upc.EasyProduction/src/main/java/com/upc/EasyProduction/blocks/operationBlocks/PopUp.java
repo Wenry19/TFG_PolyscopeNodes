@@ -4,8 +4,7 @@ public class PopUp extends Operation{
 	
 	public PopUp() {
 		
-		defaultCode = "\n"
-				+ "\n";
+		defaultCode = "popup(\"Demo message\")";
 		
 		name = "PopUp"; // can be whatever
 		
