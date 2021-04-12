@@ -42,8 +42,8 @@ public class WriteRegistersThread extends Thread {
 	}
 	
 	@Override
-	protected String generateCode() {
-		code = "";
+	public String generateCode() {
+		code = defaultCode;
 		
 		return code;
 	}

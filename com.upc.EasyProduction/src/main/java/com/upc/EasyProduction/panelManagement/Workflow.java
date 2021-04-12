@@ -265,7 +265,7 @@ public class Workflow extends JPanel {
 		String code = "";
 		
 		for (int i = 0; i < workflow.size(); i++) {
-			code += workflow.get(i).getDefaultCode();
+			code += workflow.get(i).generateCode();
 		}
 		
 		return code;
@@ -277,5 +277,9 @@ public class Workflow extends JPanel {
 		
 		updatePanel();
 		
+	}
+	
+	public LinkedList<Block> getWorkflow() {
+		return workflow;
 	}
 }

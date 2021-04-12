@@ -25,8 +25,8 @@ public class Operation extends Block{
 	}
 	
 	@Override
-	protected String generateCode() {
-		code = "";
+	public String generateCode() {
+		code = defaultCode;
 		
 		return "\n" + identation + code;
 	}

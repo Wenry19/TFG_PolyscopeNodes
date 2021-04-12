@@ -39,7 +39,7 @@ public class TimerThread extends Thread { // activate or deactivate timers?
 	}
 	
 	@Override
-	protected String generateCode() {
+	public String generateCode() {
 		code = defaultCode;
 		
 		return code;

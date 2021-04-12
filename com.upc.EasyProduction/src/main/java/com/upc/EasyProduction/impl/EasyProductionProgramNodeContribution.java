@@ -6,6 +6,9 @@ import com.ur.urcap.api.domain.data.DataModel;
 import com.ur.urcap.api.domain.script.ScriptWriter;
 import com.ur.urcap.api.domain.undoredo.UndoRedoManager;
 import com.ur.urcap.api.domain.undoredo.UndoableChanges;
+
+import java.util.LinkedList;
+
 import com.upc.EasyProduction.blocks.*;
 import com.upc.EasyProduction.blocks.productionBlocks.DefPutBase;
 import com.upc.EasyProduction.blocks.productionBlocks.DefPutBearing;
@@ -31,6 +34,10 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	// however when working with program nodes is also important to keep track of UndoRedo
 	private final UndoRedoManager undoRedoManager;
 	
+//	private static final String WORKFLOW_KEY = "workflow"; // keys that register the changes
+//	
+//	private static final LinkedList<Block> DEFAULT_OUTPUT = new LinkedList<Block>(); // default values for each key
+	
 
 	private Workflow wf = Workflow.getInstance();
 	
@@ -41,6 +48,16 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		this.model = model;
 		this.undoRedoManager = this.apiProvider.getProgramAPI().getUndoRedoManager();
 	}
+	
+//	public void onChangeInWF() {
+//		undoRedoManager.recordChanges(new UndoableChanges() {
+//			
+//			@Override
+//			public void executeChanges() { // record changes in data model
+//				model.set(WORKFLOW_KEY, wf.getWorkflow());
+//			}
+//		});
+//	}
 
 	@Override
 	public void openView() {

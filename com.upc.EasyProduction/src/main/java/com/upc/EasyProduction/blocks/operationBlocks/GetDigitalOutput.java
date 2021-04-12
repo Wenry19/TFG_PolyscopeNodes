@@ -14,12 +14,4 @@ public class GetDigitalOutput extends Operation{
 		this.setText(name);
 		
 	}
-	
-	@Override
-	protected String generateCode() {
-		code = "";
-		
-		return code;
-	}
-
 }

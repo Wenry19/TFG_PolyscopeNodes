@@ -23,8 +23,8 @@ public class IfCAPSandProducts extends Block{
 	
 
 	@Override
-	protected String generateCode() {
-		code = "";
+	public String generateCode() {
+		code = defaultCode;
 		
 		return code;
 	}

@@ -151,7 +151,7 @@ public class OptionsPanel extends JPanel {
 				currentOptionSelected = opt;
 			}
 			
-			System.out.println("clicked" + " " + (e.getSource() instanceof Option));
+			//System.out.println("clicked" + " " + (e.getSource() instanceof Option));
 			
 		}
 		
@@ -197,12 +197,12 @@ public class OptionsPanel extends JPanel {
 				
 			}
 			
-			System.out.println("released");
+			//System.out.println("released");
 			
 		}
 		
 		public void mouseEntered(MouseEvent e) {
-			System.out.println("entered"+ ((JLabel)e.getSource()).getText());
+			//System.out.println("entered"+ ((JLabel)e.getSource()).getText());
 		}
 	}
 	

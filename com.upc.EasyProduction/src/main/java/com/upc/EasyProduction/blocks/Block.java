@@ -2,6 +2,7 @@ package com.upc.EasyProduction.blocks;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -10,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import com.upc.EasyProduction.blocks.operationBlocks.Operation;
 import com.upc.EasyProduction.panelManagement.Workflow;
@@ -23,6 +25,7 @@ public class Block extends JLabel{
 	protected String identation = "";
 	
 	protected JFrame frame;
+	protected JPanel panel;
 	
 	protected MouseListener mouseListener;
 	
@@ -40,6 +43,7 @@ public class Block extends JLabel{
 		frame = new JFrame();
 		
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		frame.setLayout(new FlowLayout());
 		frame.setSize(400, 400);
 		frame.setVisible(false);
 		
@@ -71,7 +75,7 @@ public class Block extends JLabel{
 		return defaultCode;
 	}
 	
-	protected String generateCode() {
+	public String generateCode() {
 		code = "";
 		
 		return code;

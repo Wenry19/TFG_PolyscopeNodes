@@ -14,12 +14,4 @@ public class PopUp extends Operation{
 		this.setText(name);
 		
 	}
-	
-	@Override
-	protected String generateCode() {
-		code = "";
-		
-		return code;
-	}
-
 }

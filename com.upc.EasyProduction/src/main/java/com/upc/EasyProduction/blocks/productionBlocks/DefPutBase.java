@@ -2,9 +2,7 @@ package com.upc.EasyProduction.blocks.productionBlocks;
 
 import com.upc.EasyProduction.blocks.Block;
 
-public class DefPutBase extends Block {
-	
-	private Float v = 4.0f;
+public class DefPutBase extends DefPutFuncs {
 	
 	
 	public DefPutBase() {
@@ -59,18 +57,14 @@ public class DefPutBase extends Block {
 		this.setText(name);
 	}
 	
-	public void setVbases(Float v) {
-		this.v = v;
-	}
-	
 	@Override
-	protected String generateCode() {
+	public String generateCode() {
 		code = "\n"
 				+ "    def PUT_BASE_MATRIZ_ASSEMBLY():\n"
 				+ "      # $ 158 \"PUT_BASE_MATRIZ_ASSEMBLY\" \"noBreak\"\n"
 				+ "      # $ 159 \"MoveJ\"\n"
 				+ "      # $ 160 \"Approach_1\" \"breakAfter\"\n"
-				+ "      movej(get_inverse_kin(p[-.050273197644, -.341535366440, .102459786423, -.032924896149, 3.141372266899, -.000292544836], qnear=[-1.385470215474264, -1.690115753804342, -1.558995548878805, -1.463085953389303, 1.5708110332489014, 0.1643647700548172]), a=8.726646259971647, v=" + Float.toString(v) + ")\n"
+				+ "      movej(get_inverse_kin(p[-.050273197644, -.341535366440, .102459786423, -.032924896149, 3.141372266899, -.000292544836], qnear=[-1.385470215474264, -1.690115753804342, -1.558995548878805, -1.463085953389303, 1.5708110332489014, 0.1643647700548172]), a="+Double.toString(acceleration)+", v=" + Double.toString(velocity) + ")\n"
 				+ "      # $ 161 \"Set\"\n"
 				+ "      # $ 162 \"Pallet\"\n"
 				+ "      cnt_1_x = cnt_1 % 2\n"
