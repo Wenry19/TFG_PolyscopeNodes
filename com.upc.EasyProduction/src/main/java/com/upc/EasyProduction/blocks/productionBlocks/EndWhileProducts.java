@@ -3,10 +3,13 @@ package com.upc.EasyProduction.blocks.productionBlocks;
 import java.awt.Color;
 
 import com.upc.EasyProduction.blocks.Block;
+import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class EndWhileProducts extends Block{
 	
-	public EndWhileProducts() {
+	public EndWhileProducts(Workflow wf) {
+		
+		this.wf = wf;
 		
 		identation = "      ";
 		

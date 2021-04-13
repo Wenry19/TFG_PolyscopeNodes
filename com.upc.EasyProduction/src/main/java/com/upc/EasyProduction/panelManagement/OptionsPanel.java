@@ -32,10 +32,12 @@ public class OptionsPanel extends JPanel {
 	
 	private JScrollPane scroll;
 	
+	private Workflow wf;
 	
-	static private OptionsPanel singleton = new OptionsPanel();
-			
-	private OptionsPanel() {
+				
+	public OptionsPanel(Workflow wf) {
+		
+		this.wf = wf;
 		
 		initialize();
 		
@@ -49,9 +51,6 @@ public class OptionsPanel extends JPanel {
 				
 	}
 	
-	static public OptionsPanel getInstance() {
-		return singleton;
-	}
 	
 	private void initialize() {
 		
@@ -178,9 +177,7 @@ public class OptionsPanel extends JPanel {
 				draggedLabel.setVisible(false);
 				
 				// detect in which block of the workflow the mouse has been released
-				
-				Workflow wf = Workflow.getInstance();
-								
+												
 				//System.out.println(((Block) wf.findComponentAt(OptionsPanel.getInstance().getDragDropPanel().getMousePosition(true))).getWorkflowPosition());
 				
 				// in this way works in Polyscope...

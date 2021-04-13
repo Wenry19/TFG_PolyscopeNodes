@@ -1,10 +1,13 @@
 package com.upc.EasyProduction.blocks.productionBlocks;
 
 import com.upc.EasyProduction.blocks.Block;
+import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class CallPutBase extends Block{
 		
-	public CallPutBase() {
+	public CallPutBase(Workflow wf) {
+		
+		this.wf = wf;
 		
 		identation = "      ";
 		

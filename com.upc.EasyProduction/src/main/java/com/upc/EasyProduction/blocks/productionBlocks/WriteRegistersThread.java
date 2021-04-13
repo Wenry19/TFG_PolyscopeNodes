@@ -1,9 +1,13 @@
 package com.upc.EasyProduction.blocks.productionBlocks;
 
+import com.upc.EasyProduction.panelManagement.Workflow;
+
 public class WriteRegistersThread extends Thread {
 	
 	
-	public WriteRegistersThread() {
+	public WriteRegistersThread(Workflow wf) {
+		
+		this.wf = wf;
 		
 		identation = "  ";
 		

@@ -3,6 +3,7 @@ package com.upc.EasyProduction.panelManagement;
 
 import java.awt.Color;
 
+
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -45,54 +46,58 @@ import com.upc.EasyProduction.blocks.productionBlocks.IfCAPSandProducts;
 import com.upc.EasyProduction.blocks.productionBlocks.WhileProducts;
 import com.upc.EasyProduction.blocks.productionBlocks.WhileTrue;
 import com.upc.EasyProduction.blocks.productionBlocks.WriteRegistersThread;
+import com.upc.EasyProduction.impl.EasyProductionProgramNodeContribution;
+import com.upc.EasyProduction.impl.EasyProductionProgramNodeView;
+import com.ur.urcap.api.contribution.ContributionProvider;
+import com.ur.urcap.api.contribution.ViewAPIProvider;
 
 public class Workflow extends JPanel {
 	
 	LinkedList<Block> workflow = new LinkedList<Block>();
 	
+	private ContributionProvider<EasyProductionProgramNodeContribution> provider;
+	
 	private JScrollPane scroll;
 	
 	
-	private InitializeVars initializeVars = new InitializeVars();
-	private TimerThread timerThread = new TimerThread();
-	private WriteRegistersThread writeRegistersThread = new WriteRegistersThread();
-	private ExperimentTimeThread experimentTimeThread = new ExperimentTimeThread();
+	private InitializeVars initializeVars = new InitializeVars(this);
+	private TimerThread timerThread = new TimerThread(this);
+	private WriteRegistersThread writeRegistersThread = new WriteRegistersThread(this);
+	private ExperimentTimeThread experimentTimeThread = new ExperimentTimeThread(this);
 	
-	private DefPutProduct defPutProduct = new DefPutProduct();
-	private DefPutBearing defPutBearing = new DefPutBearing();
-	private DefPutBase defPutBase = new DefPutBase();
+	private DefPutProduct defPutProduct = new DefPutProduct(this);
+	private DefPutBearing defPutBearing = new DefPutBearing(this);
+	private DefPutBase defPutBase = new DefPutBase(this);
 
-	private WhileTrue whileTrue = new WhileTrue();
+	private WhileTrue whileTrue = new WhileTrue(this);
 	
-	private IfBases whileBases = new IfBases();
-	private DestackBase destackBase = new DestackBase();
-	private CallPutBase putBase = new CallPutBase();
-	private EndIfBases endWhileBases = new EndIfBases();
+	private IfBases whileBases = new IfBases(this);
+	private DestackBase destackBase = new DestackBase(this);
+	private CallPutBase putBase = new CallPutBase(this);
+	private EndIfBases endWhileBases = new EndIfBases(this);
 	
-	private IfBearings whileBearings = new IfBearings();
-	private DestackBearing destackBearing = new DestackBearing();
-	private CallPutBearing putBearing = new CallPutBearing();
-	private EndIfBearings endWhileBearings = new EndIfBearings();
+	private IfBearings whileBearings = new IfBearings(this);
+	private DestackBearing destackBearing = new DestackBearing(this);
+	private CallPutBearing putBearing = new CallPutBearing(this);
+	private EndIfBearings endWhileBearings = new EndIfBearings(this);
 	
-	private IfCAPSandProducts ifCAPSandProducts = new IfCAPSandProducts();
-	private GetCAPs getCAPs = new GetCAPs();
+	private IfCAPSandProducts ifCAPSandProducts = new IfCAPSandProducts(this);
+	private GetCAPs getCAPs = new GetCAPs(this);
 	
-	private WhileProducts whileProducts = new WhileProducts();
-	private DespalletizeProduct despalletizeProduct = new DespalletizeProduct();
-	private CallPutProduct putProduct = new CallPutProduct();
-	private EndWhileProducts endWhileProducts = new EndWhileProducts();
+	private WhileProducts whileProducts = new WhileProducts(this);
+	private DespalletizeProduct despalletizeProduct = new DespalletizeProduct(this);
+	private CallPutProduct putProduct = new CallPutProduct(this);
+	private EndWhileProducts endWhileProducts = new EndWhileProducts(this);
 	
-	private EndIfCAPSandProducts endIfCAPSandProducts = new EndIfCAPSandProducts();
+	private EndIfCAPSandProducts endIfCAPSandProducts = new EndIfCAPSandProducts(this);
 	
 	
-	private EndWhileTrue endWhileTrue = new EndWhileTrue();
+	private EndWhileTrue endWhileTrue = new EndWhileTrue(this);
+	
+	
+	public Workflow(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		
-	// Singleton (only one instance)
-	
-	private static Workflow singleton = new Workflow();
-	
-	
-	private Workflow() {
+		this.provider = provider;
 		
 		// default workflow
 		
@@ -105,11 +110,11 @@ public class Workflow extends JPanel {
 		
 	}
 	
-	public static Workflow getInstance() {
-		return singleton;
-	}
-	
-	// End Singleton
+//	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
+//		
+//		this.provider = provider;
+//		
+//	}
 
 	private void iniDefaultWorkflow() {
 		
@@ -213,32 +218,34 @@ public class Workflow extends JPanel {
 		
 		scroll.getViewport().scrollRectToVisible(rect);
 		
+		updateDataModel();
+		
 	}
 	
 	private Block findBlock(String id) {
 				
 		if (id == "GetAnalogInput") {
-			return new GetAnalogInput();
+			return new GetAnalogInput(this);
 		}
 		
 		else if (id == "SetAnalogOutput") {
-			return new SetAnalogOutput();
+			return new SetAnalogOutput(this);
 		}
 		
 		else if (id == "GetDigitalInput") {
-			return new GetDigitalOutput();
+			return new GetDigitalOutput(this);
 		}
 		
 		else if (id == "SetDigitalOutput") {
-			return new SetDigitalOutput();
+			return new SetDigitalOutput(this);
 		}
 		
 		else if (id == "Sleep") {
-			return new Sleep();
+			return new Sleep(this);
 		}
 		
 		else { // if (id == "PopUp"){}
-			return new PopUp();
+			return new PopUp(this);
 		}
 		
 	}
@@ -251,6 +258,8 @@ public class Workflow extends JPanel {
 		updatePanel();
 		updateBlocksPositions();
 		scroll.getViewport().scrollRectToVisible(rect);
+		
+		updateDataModel();
 		
 	}
 	
@@ -271,15 +280,26 @@ public class Workflow extends JPanel {
 		return code;
 	}
 	
-	public void setWorkflow(LinkedList workflow) {
+	public void setWorkflowList(LinkedList workflow) {
 		
 		this.workflow = workflow;
 		
 		updatePanel();
+		updateDataModel();
 		
 	}
 	
-	public LinkedList<Block> getWorkflow() {
+	public LinkedList<Block> getWorkflowList() {
 		return workflow;
+	}
+	
+	private void updateDataModel() {
+		try {
+			provider.get().onChangeInWF();
+		}
+		catch (Exception e) {
+			
+		}
+		finally {}
 	}
 }

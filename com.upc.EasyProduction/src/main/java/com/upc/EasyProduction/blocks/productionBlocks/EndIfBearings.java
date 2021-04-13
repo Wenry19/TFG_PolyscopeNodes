@@ -3,10 +3,13 @@ package com.upc.EasyProduction.blocks.productionBlocks;
 import java.awt.Color;
 
 import com.upc.EasyProduction.blocks.Block;
+import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class EndIfBearings extends Block{
 	
-	public EndIfBearings() {
+	public EndIfBearings(Workflow wf) {
+		
+		this.wf = wf;
 		
 		identation = "    ";
 		

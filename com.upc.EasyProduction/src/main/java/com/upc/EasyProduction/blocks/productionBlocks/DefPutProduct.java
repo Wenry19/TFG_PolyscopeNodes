@@ -1,12 +1,14 @@
 package com.upc.EasyProduction.blocks.productionBlocks;
 
 import com.upc.EasyProduction.blocks.Block;
+import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class DefPutProduct extends DefPutFuncs {
 	
 	
-	public DefPutProduct() {
+	public DefPutProduct(Workflow wf) {
 
+		this.wf = wf;
 		
 		identation = "  ";
 		

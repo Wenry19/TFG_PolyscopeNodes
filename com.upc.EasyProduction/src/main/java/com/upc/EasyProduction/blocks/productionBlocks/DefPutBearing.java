@@ -1,11 +1,14 @@
 package com.upc.EasyProduction.blocks.productionBlocks;
 
 import com.upc.EasyProduction.blocks.Block;
+import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class DefPutBearing extends DefPutFuncs {
 	
 	
-	public DefPutBearing() {
+	public DefPutBearing(Workflow wf) {
+		
+		this.wf = wf;
 		
 		identation = "  ";
 		

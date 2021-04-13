@@ -34,9 +34,11 @@ public class Block extends JLabel{
 	
 	protected int wfPos;
 	
+	protected Workflow wf;
+	
 	
 	public Block() {
-		
+				
 		mouseListener = new MouseListener();
 		//blockLabel = new JLabel();
 		
@@ -129,8 +131,6 @@ public class Block extends JLabel{
 		public void mouseDragged(MouseEvent e) {
 			
 			if (e.getSource() instanceof Operation) {
-
-				Workflow wf = Workflow.getInstance();
 				
 				wf.deleteBlock(((Block)e.getSource()).getWorkflowPosition());
 			}

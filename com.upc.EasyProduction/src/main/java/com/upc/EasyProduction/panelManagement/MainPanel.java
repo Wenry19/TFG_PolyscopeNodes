@@ -7,19 +7,22 @@ import java.awt.Dimension;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 
+import com.upc.EasyProduction.impl.EasyProductionProgramNodeContribution;
+import com.ur.urcap.api.contribution.ContributionProvider;
+import com.ur.urcap.api.contribution.ViewAPIProvider;
+
 public class MainPanel extends JLayeredPane{
 	
 	private OptionsPanel optionsPanel;
 	private Workflow workflow;
 	
-	// start singleton
+	private ContributionProvider<EasyProductionProgramNodeContribution> provider;
 	
-	private static MainPanel mainPanel = new MainPanel();
 	
-	private MainPanel() {
+	public MainPanel(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		
-		optionsPanel = OptionsPanel.getInstance();
-		workflow = Workflow.getInstance();
+		workflow = new Workflow(provider);
+		optionsPanel = new OptionsPanel(workflow);
 		
 		this.setLayout(null);
 		
@@ -33,10 +36,13 @@ public class MainPanel extends JLayeredPane{
 		
 	}
 	
-	public static MainPanel getInstance() {
-		return mainPanel;
+	public Workflow getWorkflowInstance() {
+		return workflow;
 	}
 	
-	// end singleton
-
+//	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
+//		this.provider = provider;
+//		workflow.setProvider(provider);
+//	}
+	
 }

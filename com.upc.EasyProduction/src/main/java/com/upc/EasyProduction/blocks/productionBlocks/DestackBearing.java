@@ -7,10 +7,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
 import com.upc.EasyProduction.blocks.Block;
+import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class DestackBearing extends Block {	
 	
-	public DestackBearing() {
+	public DestackBearing(Workflow wf) {
+		
+		this.wf = wf;
 		
 		identation = "      ";
 		

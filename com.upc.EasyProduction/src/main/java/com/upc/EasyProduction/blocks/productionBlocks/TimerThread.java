@@ -1,9 +1,13 @@
 package com.upc.EasyProduction.blocks.productionBlocks;
 
+import com.upc.EasyProduction.panelManagement.Workflow;
+
 public class TimerThread extends Thread { // activate or deactivate timers?
 	
 	
-	public TimerThread() { // maybe it should be singleton
+	public TimerThread(Workflow wf) { // maybe it should be singleton
+		
+		this.wf = wf;
 		
 		identation = "  ";
 		
@@ -14,7 +18,7 @@ public class TimerThread extends Thread { // activate or deactivate timers?
 				+ "        CAP_time = CAP_time + get_steptime()\n"
 				+ "      end\n"
 				+ "      if (ExperimentTIME_is_counting):\n"
-				+ "        ExperimentTIME = ExperimentTIME + get_steptime()\n"
+				+ "   s     ExperimentTIME = ExperimentTIME + get_steptime()\n"
 				+ "      end\n"
 				+ "      if (TimeWork_is_counting):\n"
 				+ "        TimeWork = TimeWork + get_steptime()\n"

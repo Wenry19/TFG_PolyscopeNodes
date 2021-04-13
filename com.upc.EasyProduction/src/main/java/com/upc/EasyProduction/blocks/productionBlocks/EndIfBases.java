@@ -3,11 +3,14 @@ package com.upc.EasyProduction.blocks.productionBlocks;
 import java.awt.Color;
 
 import com.upc.EasyProduction.blocks.Block;
+import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class EndIfBases extends Block{
 	
 	
-	public EndIfBases() {
+	public EndIfBases(Workflow wf) {
+		
+		this.wf = wf;
 		
 		identation = "    ";
 		

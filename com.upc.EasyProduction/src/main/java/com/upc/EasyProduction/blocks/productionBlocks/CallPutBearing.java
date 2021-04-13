@@ -1,10 +1,13 @@
 package com.upc.EasyProduction.blocks.productionBlocks;
 
 import com.upc.EasyProduction.blocks.Block;
+import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class CallPutBearing extends Block{
 		
-		public CallPutBearing() {
+		public CallPutBearing(Workflow wf) {
+			
+			this.wf = wf;
 			
 			identation = "      ";
 			

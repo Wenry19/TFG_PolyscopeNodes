@@ -1,6 +1,7 @@
 package com.upc.EasyProduction.blocks.productionBlocks;
 
 import com.upc.EasyProduction.blocks.Block;
+import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class InitializeVars extends Block {
 	
@@ -10,7 +11,9 @@ public class InitializeVars extends Block {
 	private int numberIniProducts;
 	
 	
-	public InitializeVars() { // maybe it should be singleton
+	public InitializeVars(Workflow wf) { // maybe it should be singleton
+		
+		this.wf = wf;
 		
 		numberIniBases = 0;
 		numberIniBearings = 0;

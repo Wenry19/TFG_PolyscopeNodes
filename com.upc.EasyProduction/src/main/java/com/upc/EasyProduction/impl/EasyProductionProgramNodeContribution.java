@@ -9,19 +9,9 @@ import com.ur.urcap.api.domain.undoredo.UndoableChanges;
 
 import java.util.LinkedList;
 
-import com.upc.EasyProduction.blocks.*;
-import com.upc.EasyProduction.blocks.productionBlocks.DefPutBase;
-import com.upc.EasyProduction.blocks.productionBlocks.DefPutBearing;
-import com.upc.EasyProduction.blocks.productionBlocks.DefPutProduct;
-import com.upc.EasyProduction.blocks.productionBlocks.DespalletizeProduct;
-import com.upc.EasyProduction.blocks.productionBlocks.DestackBase;
-import com.upc.EasyProduction.blocks.productionBlocks.DestackBearing;
-import com.upc.EasyProduction.blocks.productionBlocks.ExperimentTimeThread;
-import com.upc.EasyProduction.blocks.productionBlocks.GetCAPs;
-import com.upc.EasyProduction.blocks.productionBlocks.InitializeVars;
-import com.upc.EasyProduction.blocks.productionBlocks.TimerThread;
-import com.upc.EasyProduction.blocks.productionBlocks.WhileTrue;
-import com.upc.EasyProduction.blocks.productionBlocks.WriteRegistersThread;
+import org.apache.commons.lang.SerializationUtils;
+
+import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class EasyProductionProgramNodeContribution implements ProgramNodeContribution{
@@ -34,12 +24,12 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	// however when working with program nodes is also important to keep track of UndoRedo
 	private final UndoRedoManager undoRedoManager;
 	
-//	private static final String WORKFLOW_KEY = "workflow"; // keys that register the changes
-//	
-//	private static final LinkedList<Block> DEFAULT_OUTPUT = new LinkedList<Block>(); // default values for each key
+	private static final String WORKFLOW_KEY = "workflow"; // keys that register the changes
+	
+	private static final int[] DEFAULT_WORKFLOW = new int[0]; // default values for each key
 	
 
-	private Workflow wf = Workflow.getInstance();
+	private Workflow wf;
 	
 	
 	public EasyProductionProgramNodeContribution(ProgramAPIProvider apiProvider, EasyProductionProgramNodeView view, DataModel model) {
@@ -47,20 +37,53 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		this.view = view;
 		this.model = model;
 		this.undoRedoManager = this.apiProvider.getProgramAPI().getUndoRedoManager();
+		
+		this.wf = view.getWorkflowInstance();
 	}
 	
-//	public void onChangeInWF() {
-//		undoRedoManager.recordChanges(new UndoableChanges() {
-//			
-//			@Override
-//			public void executeChanges() { // record changes in data model
-//				model.set(WORKFLOW_KEY, wf.getWorkflow());
-//			}
-//		});
-//	}
+	public void onChangeInWF() {
+		undoRedoManager.recordChanges(new UndoableChanges() {
+			
+			@Override
+			public void executeChanges() { // record changes in data model
+				try {
+					byte[] wfData = SerializationUtils.serialize(wf.getWorkflowList());
+					// java.io.NotSerializableException: java.awt.Component$AccessibleAWTComponent$AccessibleAWTComponentHandler
+					int[] wfDataInt = new int[wfData.length];
+					
+					for (int i = 0; i < wfData.length; i++) {
+						wfDataInt[i] = (int) wfData[i];
+					}
+					
+					//System.out.println(wfData.length);
+					
+					model.set(WORKFLOW_KEY, wfDataInt);
+				}
+				catch (Exception e) {
+					System.out.println("F1" + e.getMessage());
+				}
+			}
+		});
+	}
 
 	@Override
 	public void openView() {
+		
+		try {
+			int[] modelData = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
+			byte[] byteModelData = new byte[modelData.length];
+			
+			for (int i = 0; i < modelData.length; i++) {
+				byteModelData[i] = (byte) modelData[i];
+			}
+			
+			LinkedList<Block> workflowList = (LinkedList<Block>) SerializationUtils.deserialize(byteModelData);
+			
+			wf.setWorkflowList(workflowList);
+		}
+		catch (Exception e) {
+			System.out.println("F2" + e.getMessage());
+		}
 		
 	}
 

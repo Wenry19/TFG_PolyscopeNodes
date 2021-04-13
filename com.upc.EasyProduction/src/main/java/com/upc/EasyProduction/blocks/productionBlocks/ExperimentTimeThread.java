@@ -1,9 +1,13 @@
 package com.upc.EasyProduction.blocks.productionBlocks;
 
+import com.upc.EasyProduction.panelManagement.Workflow;
+
 public class ExperimentTimeThread extends Thread{	
 	
 	
-	public ExperimentTimeThread() {
+	public ExperimentTimeThread(Workflow wf) {
+		
+		this.wf = wf;
 		
 		identation = "  ";
 		
