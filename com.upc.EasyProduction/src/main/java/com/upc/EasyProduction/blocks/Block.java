@@ -1,6 +1,7 @@
 package com.upc.EasyProduction.blocks;
 
 import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -14,8 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
 import com.upc.EasyProduction.blocks.operationBlocks.Operation;
-import com.upc.EasyProduction.blocks.productionBlocks.threads.Thread.ThreadData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 
@@ -37,6 +38,9 @@ public class Block extends JLabel{
 	protected int wfPos;
 	
 	protected Workflow wf;
+	
+	protected String className = "";
+
 		
 	
 	public Block() {
@@ -118,6 +122,15 @@ public class Block extends JLabel{
 		
 		return null;
 		
+	}
+	
+	public String getClassName() {
+		String aux = this.getClass().getName();
+		int index = aux.lastIndexOf('.');
+	    if(index > 0) {
+	      className = aux.substring(index + 1);
+	    }
+		return className;
 	}
 	
 	// inner classes

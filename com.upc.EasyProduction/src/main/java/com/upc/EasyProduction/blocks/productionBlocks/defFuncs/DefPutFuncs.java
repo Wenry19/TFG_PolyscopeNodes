@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
+import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
+import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class DefPutFuncs extends Block implements ActionListener{
@@ -84,48 +86,18 @@ public class DefPutFuncs extends Block implements ActionListener{
 		
 	}
 	
-	
-	public BlockData getDataToSerialize() {
-		
-		return new DefPutFuncsData(this.getClass().getName(), velocity, acceleration);
-		
+	public Double getVelocity() {
+		return velocity;
 	}
 	
-	// inner data class
+	public Double getAcceleration() {
+		return acceleration;
+	}
 	
-	public class DefPutFuncsData extends BlockData{
-		
-		private double velocity;
-		private double acceleration;
-		
-		public DefPutFuncsData(String id, double velocity, double acceleration){
-			
-			this.id = id;
-			this.velocity = velocity;
-			this.acceleration = acceleration;
-			
-		}
-		
-		public Block getBlockInstance(Workflow wf) {
-			
-			if (id == "DefPutBase") {
-				return new DefPutBase(wf);
-			}
-			else if (id == "DefPutBearing") {
-				return new DefPutBearing(wf);
-			}
-			else {//if (id == "DefPutProduct") {
-				return new DefPutProduct(wf);
-			}
-		}
-		
-		public Double getVelocity() {
-			return velocity;
-		}
-		
-		public Double getAcceleration() {
-			return acceleration;
-		}
+	
+	public BlockData getDataToSerialize() {
+	    
+		return new DefPutFuncsData(getClassName(), velocity, acceleration);
 		
 	}
 

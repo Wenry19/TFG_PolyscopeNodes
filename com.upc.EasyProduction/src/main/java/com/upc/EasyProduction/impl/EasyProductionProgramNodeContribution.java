@@ -1,17 +1,15 @@
 package com.upc.EasyProduction.impl;
 
 import com.ur.urcap.api.contribution.ProgramNodeContribution;
+
 import com.ur.urcap.api.contribution.program.ProgramAPIProvider;
 import com.ur.urcap.api.domain.data.DataModel;
 import com.ur.urcap.api.domain.script.ScriptWriter;
 import com.ur.urcap.api.domain.undoredo.UndoRedoManager;
 import com.ur.urcap.api.domain.undoredo.UndoableChanges;
 
-import java.util.LinkedList;
-
 import org.apache.commons.lang.SerializationUtils;
 
-import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
@@ -39,7 +37,7 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		this.model = model;
 		this.undoRedoManager = this.apiProvider.getProgramAPI().getUndoRedoManager();
 		
-		this.wf = view.getWorkflowInstance();
+		this.wf = view.getWorkflowInstance(); // only one wf instance for all contribution nodes
 	}
 	
 	public void onChangeInWF() {
@@ -61,7 +59,8 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 					model.set(WORKFLOW_KEY, wfDataInt);
 				}
 				catch (Exception e) {
-					System.out.println("onChangeInWF " + e.getMessage());
+					System.out.println("ENRIC: onChangeInWF " + e.getMessage());
+					System.out.println("ENRIC: onChangeInWF " + e.getCause());
 				}
 			}
 		});
@@ -83,7 +82,8 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 			wf.setWorkflowData(wfData);
 		}
 		catch (Exception e) {
-			System.out.println("openView " + e.getMessage());
+			System.out.println("ENRIC: openView " + e.getMessage());
+			System.out.println("ENRIC: openView " + e.getCause());
 		}
 		
 	}
