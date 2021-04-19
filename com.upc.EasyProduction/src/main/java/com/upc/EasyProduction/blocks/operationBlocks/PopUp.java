@@ -11,9 +11,7 @@ public class PopUp extends Operation{
 		defaultCode = "popup(\"Demo message\")";
 		
 		name = "PopUp"; // can be whatever
-		
-		id = "PopUp"; // has to be equal to class name
-		
+				
 		this.setText(name);
 		
 	}

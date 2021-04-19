@@ -1,8 +1,6 @@
 package com.upc.EasyProduction.panelManagement;
 
 
-import java.awt.Color;
-
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -16,36 +14,37 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import com.upc.EasyProduction.blocks.Block;
+import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.operationBlocks.GetAnalogInput;
-import com.upc.EasyProduction.blocks.operationBlocks.GetDigitalOutput;
+import com.upc.EasyProduction.blocks.operationBlocks.GetDigitalInput;
 import com.upc.EasyProduction.blocks.operationBlocks.PopUp;
 import com.upc.EasyProduction.blocks.operationBlocks.SetAnalogOutput;
 import com.upc.EasyProduction.blocks.operationBlocks.SetDigitalOutput;
 import com.upc.EasyProduction.blocks.operationBlocks.Sleep;
-import com.upc.EasyProduction.blocks.productionBlocks.CallPutBase;
-import com.upc.EasyProduction.blocks.productionBlocks.CallPutBearing;
-import com.upc.EasyProduction.blocks.productionBlocks.CallPutProduct;
-import com.upc.EasyProduction.blocks.productionBlocks.DefPutBase;
-import com.upc.EasyProduction.blocks.productionBlocks.DefPutBearing;
-import com.upc.EasyProduction.blocks.productionBlocks.DefPutProduct;
-import com.upc.EasyProduction.blocks.productionBlocks.DespalletizeProduct;
-import com.upc.EasyProduction.blocks.productionBlocks.DestackBase;
-import com.upc.EasyProduction.blocks.productionBlocks.DestackBearing;
-import com.upc.EasyProduction.blocks.productionBlocks.EndIfBases;
-import com.upc.EasyProduction.blocks.productionBlocks.EndIfBearings;
-import com.upc.EasyProduction.blocks.productionBlocks.EndIfCAPSandProducts;
-import com.upc.EasyProduction.blocks.productionBlocks.EndWhileProducts;
-import com.upc.EasyProduction.blocks.productionBlocks.EndWhileTrue;
-import com.upc.EasyProduction.blocks.productionBlocks.ExperimentTimeThread;
-import com.upc.EasyProduction.blocks.productionBlocks.GetCAPs;
-import com.upc.EasyProduction.blocks.productionBlocks.InitializeVars;
-import com.upc.EasyProduction.blocks.productionBlocks.TimerThread;
-import com.upc.EasyProduction.blocks.productionBlocks.IfBases;
-import com.upc.EasyProduction.blocks.productionBlocks.IfBearings;
-import com.upc.EasyProduction.blocks.productionBlocks.IfCAPSandProducts;
-import com.upc.EasyProduction.blocks.productionBlocks.WhileProducts;
-import com.upc.EasyProduction.blocks.productionBlocks.WhileTrue;
-import com.upc.EasyProduction.blocks.productionBlocks.WriteRegistersThread;
+import com.upc.EasyProduction.blocks.productionBlocks.callFuncs.CallPutBase;
+import com.upc.EasyProduction.blocks.productionBlocks.callFuncs.CallPutBearing;
+import com.upc.EasyProduction.blocks.productionBlocks.callFuncs.CallPutProduct;
+import com.upc.EasyProduction.blocks.productionBlocks.defFuncs.DefPutBase;
+import com.upc.EasyProduction.blocks.productionBlocks.defFuncs.DefPutBearing;
+import com.upc.EasyProduction.blocks.productionBlocks.defFuncs.DefPutProduct;
+import com.upc.EasyProduction.blocks.productionBlocks.flowInstructions.EndIfBases;
+import com.upc.EasyProduction.blocks.productionBlocks.flowInstructions.EndIfBearings;
+import com.upc.EasyProduction.blocks.productionBlocks.flowInstructions.EndIfCAPSandProducts;
+import com.upc.EasyProduction.blocks.productionBlocks.flowInstructions.EndWhileProducts;
+import com.upc.EasyProduction.blocks.productionBlocks.flowInstructions.EndWhileTrue;
+import com.upc.EasyProduction.blocks.productionBlocks.flowInstructions.IfBases;
+import com.upc.EasyProduction.blocks.productionBlocks.flowInstructions.IfBearings;
+import com.upc.EasyProduction.blocks.productionBlocks.flowInstructions.IfCAPSandProducts;
+import com.upc.EasyProduction.blocks.productionBlocks.flowInstructions.WhileProducts;
+import com.upc.EasyProduction.blocks.productionBlocks.flowInstructions.WhileTrue;
+import com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut.DespalletizeProduct;
+import com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut.DestackBase;
+import com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut.DestackBearing;
+import com.upc.EasyProduction.blocks.productionBlocks.humanWork.GetCAPs;
+import com.upc.EasyProduction.blocks.productionBlocks.ini.InitializeVars;
+import com.upc.EasyProduction.blocks.productionBlocks.threads.ExperimentTimeThread;
+import com.upc.EasyProduction.blocks.productionBlocks.threads.TimerThread;
+import com.upc.EasyProduction.blocks.productionBlocks.threads.WriteRegistersThread;
 import com.upc.EasyProduction.impl.EasyProductionProgramNodeContribution;
 import com.upc.EasyProduction.impl.EasyProductionProgramNodeView;
 import com.ur.urcap.api.contribution.ContributionProvider;
@@ -110,6 +109,19 @@ public class Workflow extends JPanel {
 		
 	}
 	
+	public Workflow() { // PROVISIONAL!!
+				
+		// default workflow
+		
+		this.iniDefaultWorkflow();
+		this.updatePanel();
+		
+		scroll = new JScrollPane(this);
+		scroll.setPreferredSize(new Dimension(200, 404));
+		scroll.setSize(new Dimension(200, 404));
+		
+	}
+	
 //	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 //		
 //		this.provider = provider;
@@ -153,6 +165,8 @@ public class Workflow extends JPanel {
 		workflow.add(endWhileTrue);
 		
 		updateBlocksPositions();
+		
+		updateDataModel();
 		
 	}
 	
@@ -233,7 +247,7 @@ public class Workflow extends JPanel {
 		}
 		
 		else if (id == "GetDigitalInput") {
-			return new GetDigitalOutput(this);
+			return new GetDigitalInput(this);
 		}
 		
 		else if (id == "SetDigitalOutput") {
@@ -301,5 +315,34 @@ public class Workflow extends JPanel {
 			
 		}
 		finally {}
+	}
+	
+	public BlockData[] getWorkflowDataToSerialize(){
+		
+		BlockData[] wfData = new BlockData[workflow.size()];
+		
+		for (int i = 0; i < workflow.size(); i++) {
+			
+			wfData[i] = workflow.get(i).getDataToSerialize();
+			
+		}
+		
+		return wfData;
+		
+	}
+	
+	public void setWorkflowData(BlockData[] DataArray) {
+		
+		workflow.clear(); // clear current workflow
+		
+		for (int i = 0; i < DataArray.length; i++) {
+			
+			workflow.add(DataArray[i].getBlockInstance(this));
+			
+		}
+		
+		updatePanel();
+		updateBlocksPositions();
+		
 	}
 }

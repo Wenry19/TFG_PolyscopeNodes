@@ -2,14 +2,12 @@ package com.upc.EasyProduction.panelManagement;
 
 
 
-import java.awt.Dimension;
+
 
 import javax.swing.JLayeredPane;
-import javax.swing.JScrollPane;
 
 import com.upc.EasyProduction.impl.EasyProductionProgramNodeContribution;
 import com.ur.urcap.api.contribution.ContributionProvider;
-import com.ur.urcap.api.contribution.ViewAPIProvider;
 
 public class MainPanel extends JLayeredPane{
 	

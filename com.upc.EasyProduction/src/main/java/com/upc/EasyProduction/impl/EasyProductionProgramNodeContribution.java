@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import org.apache.commons.lang.SerializationUtils;
 
 import com.upc.EasyProduction.blocks.Block;
+import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class EasyProductionProgramNodeContribution implements ProgramNodeContribution{
@@ -47,7 +48,7 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 			@Override
 			public void executeChanges() { // record changes in data model
 				try {
-					byte[] wfData = SerializationUtils.serialize(wf.getWorkflowList());
+					byte[] wfData = SerializationUtils.serialize(wf.getWorkflowDataToSerialize());
 					// java.io.NotSerializableException: java.awt.Component$AccessibleAWTComponent$AccessibleAWTComponentHandler
 					int[] wfDataInt = new int[wfData.length];
 					
@@ -60,7 +61,7 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 					model.set(WORKFLOW_KEY, wfDataInt);
 				}
 				catch (Exception e) {
-					System.out.println("F1" + e.getMessage());
+					System.out.println("onChangeInWF " + e.getMessage());
 				}
 			}
 		});
@@ -70,19 +71,19 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	public void openView() {
 		
 		try {
-			int[] modelData = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
-			byte[] byteModelData = new byte[modelData.length];
+			int[] wfDataInt = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
+			byte[] wfDataByte = new byte[wfDataInt.length];
 			
-			for (int i = 0; i < modelData.length; i++) {
-				byteModelData[i] = (byte) modelData[i];
+			for (int i = 0; i < wfDataInt.length; i++) {
+				wfDataByte[i] = (byte) wfDataInt[i];
 			}
 			
-			LinkedList<Block> workflowList = (LinkedList<Block>) SerializationUtils.deserialize(byteModelData);
+			BlockData[] wfData = (BlockData[]) SerializationUtils.deserialize(wfDataByte);
 			
-			wf.setWorkflowList(workflowList);
+			wf.setWorkflowData(wfData);
 		}
 		catch (Exception e) {
-			System.out.println("F2" + e.getMessage());
+			System.out.println("openView " + e.getMessage());
 		}
 		
 	}

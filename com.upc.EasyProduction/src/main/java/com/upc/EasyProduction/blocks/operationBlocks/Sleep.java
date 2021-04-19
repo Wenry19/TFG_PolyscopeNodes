@@ -12,9 +12,7 @@ public class Sleep extends Operation {
 		defaultCode = "sleep(3.0)\n";
 		
 		name = "Sleep"; // can be whatever
-		
-		id = "Sleep"; // has to be equal to class name
-		
+				
 		this.setText(name);
 		
 	}

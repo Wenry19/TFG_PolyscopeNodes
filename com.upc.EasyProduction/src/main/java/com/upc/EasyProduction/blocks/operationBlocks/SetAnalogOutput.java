@@ -12,9 +12,7 @@ public class SetAnalogOutput extends Operation{
 				+ "\n";
 		
 		name = "SetAnalogInput"; // can be whatever
-		
-		id = "SetAnalogInput"; // has to be equal to class name
-		
+				
 		this.setText(name);
 		
 	}

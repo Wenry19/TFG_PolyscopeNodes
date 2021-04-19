@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Dictionary;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -14,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.upc.EasyProduction.blocks.operationBlocks.Operation;
+import com.upc.EasyProduction.blocks.productionBlocks.threads.Thread.ThreadData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 
@@ -35,7 +37,7 @@ public class Block extends JLabel{
 	protected int wfPos;
 	
 	protected Workflow wf;
-	
+		
 	
 	public Block() {
 				
@@ -110,6 +112,12 @@ public class Block extends JLabel{
 	
 	public void setIdentation(String identation) {
 		this.identation = identation;
+	}
+	
+	public BlockData getDataToSerialize() { // EYE!!!!
+		
+		return null;
+		
 	}
 	
 	// inner classes
