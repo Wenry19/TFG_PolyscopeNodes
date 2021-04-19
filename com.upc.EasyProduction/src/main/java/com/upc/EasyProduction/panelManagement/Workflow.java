@@ -59,41 +59,6 @@ public class Workflow extends JPanel {
 	private JScrollPane scroll;
 	
 	
-	private InitializeVars initializeVars = new InitializeVars(this);
-	private TimerThread timerThread = new TimerThread(this);
-	private WriteRegistersThread writeRegistersThread = new WriteRegistersThread(this);
-	private ExperimentTimeThread experimentTimeThread = new ExperimentTimeThread(this);
-	
-	private DefPutProduct defPutProduct = new DefPutProduct(this);
-	private DefPutBearing defPutBearing = new DefPutBearing(this);
-	private DefPutBase defPutBase = new DefPutBase(this);
-
-	private WhileTrue whileTrue = new WhileTrue(this);
-	
-	private IfBases whileBases = new IfBases(this);
-	private DestackBase destackBase = new DestackBase(this);
-	private CallPutBase putBase = new CallPutBase(this);
-	private EndIfBases endWhileBases = new EndIfBases(this);
-	
-	private IfBearings whileBearings = new IfBearings(this);
-	private DestackBearing destackBearing = new DestackBearing(this);
-	private CallPutBearing putBearing = new CallPutBearing(this);
-	private EndIfBearings endWhileBearings = new EndIfBearings(this);
-	
-	private IfCAPSandProducts ifCAPSandProducts = new IfCAPSandProducts(this);
-	private GetCAPs getCAPs = new GetCAPs(this);
-	
-	private WhileProducts whileProducts = new WhileProducts(this);
-	private DespalletizeProduct despalletizeProduct = new DespalletizeProduct(this);
-	private CallPutProduct putProduct = new CallPutProduct(this);
-	private EndWhileProducts endWhileProducts = new EndWhileProducts(this);
-	
-	private EndIfCAPSandProducts endIfCAPSandProducts = new EndIfCAPSandProducts(this);
-	
-	
-	private EndWhileTrue endWhileTrue = new EndWhileTrue(this);
-	
-	
 	public Workflow(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		
 		this.provider = provider;
@@ -101,7 +66,6 @@ public class Workflow extends JPanel {
 		// default workflow
 		
 		this.iniDefaultWorkflow();
-		this.updatePanel();
 		
 		scroll = new JScrollPane(this);
 		scroll.setPreferredSize(new Dimension(200, 404));
@@ -114,7 +78,6 @@ public class Workflow extends JPanel {
 		// default workflow
 		
 		this.iniDefaultWorkflow();
-		this.updatePanel();
 		
 		scroll = new JScrollPane(this);
 		scroll.setPreferredSize(new Dimension(200, 404));
@@ -128,45 +91,47 @@ public class Workflow extends JPanel {
 //		
 //	}
 
-	private void iniDefaultWorkflow() {
+	public void iniDefaultWorkflow() {
 		
-		workflow.add(initializeVars);
-		workflow.add(timerThread);
-		workflow.add(writeRegistersThread);
-		workflow.add(experimentTimeThread);
+		workflow.add(new InitializeVars(this));
+		workflow.add(new TimerThread(this));
+		workflow.add(new WriteRegistersThread(this));
+		workflow.add(new ExperimentTimeThread(this));
 		
-		workflow.add(defPutProduct);
-		workflow.add(defPutBase);
-		workflow.add(defPutBearing);
+		workflow.add(new DefPutBase(this));
+		workflow.add(new DefPutBearing(this));
+		workflow.add(new DefPutProduct(this));
 		
-		workflow.add(whileTrue);
+		workflow.add(new WhileTrue(this));
 		
-		workflow.add(whileBases);
-		workflow.add(destackBase);
-		workflow.add(putBase);
-		workflow.add(endWhileBases);
+		workflow.add(new IfBases(this));
+		workflow.add(new DestackBase(this));
+		workflow.add(new CallPutBase(this));
+		workflow.add(new EndIfBases(this));
 		
-		workflow.add(whileBearings);
-		workflow.add(destackBearing);
-		workflow.add(putBearing);
-		workflow.add(endWhileBearings);
+		workflow.add(new IfBearings(this));
+		workflow.add(new DestackBearing(this));
+		workflow.add(new CallPutBearing(this));
+		workflow.add(new EndIfBearings(this));
 		
-		workflow.add(ifCAPSandProducts);
+		workflow.add(new IfCAPSandProducts(this));
 		
-		workflow.add(getCAPs);
+		workflow.add(new GetCAPs(this));
 		
-		workflow.add(whileProducts);
-		workflow.add(despalletizeProduct);
-		workflow.add(putProduct);
-		workflow.add(endWhileProducts);
+		workflow.add(new WhileProducts(this));
+		workflow.add(new DespalletizeProduct(this));
+		workflow.add(new CallPutProduct(this));
+		workflow.add(new EndWhileProducts(this));
 		
-		workflow.add(endIfCAPSandProducts);
+		workflow.add(new EndIfCAPSandProducts(this));
 		
-		workflow.add(endWhileTrue);
+		workflow.add(new EndWhileTrue(this));
 		
 		updateBlocksPositions();
 		
 		updateDataModel();
+		
+		updatePanel();
 		
 	}
 	
@@ -277,7 +242,6 @@ public class Workflow extends JPanel {
 		
 	}
 	
-	
 	public JScrollPane getScrollPanel() {
 		
 		return scroll;
@@ -296,6 +260,7 @@ public class Workflow extends JPanel {
 	
 	public void setWorkflowList(LinkedList workflow) {
 		
+		this.workflow.clear();
 		this.workflow = workflow;
 		
 		updatePanel();
@@ -308,6 +273,7 @@ public class Workflow extends JPanel {
 	}
 	
 	private void updateDataModel() {
+
 		try {
 			provider.get().onChangeInWF();
 		}
@@ -331,13 +297,13 @@ public class Workflow extends JPanel {
 		
 	}
 	
-	public void setWorkflowData(BlockData[] DataArray) {
+	public void setWorkflowData(Object[] DataArray) {
 		
 		workflow.clear(); // clear current workflow
-		
+				
 		for (int i = 0; i < DataArray.length; i++) {
 			
-			workflow.add(DataArray[i].getBlockInstance(this));
+			workflow.add((Block)((BlockData)DataArray[i]).getBlockInstance(this));
 			
 		}
 		

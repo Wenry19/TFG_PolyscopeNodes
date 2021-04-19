@@ -36,11 +36,17 @@ public class Main {
 		
 		Workflow wf = new Workflow();
 		DefPutBase ini = new DefPutBase(wf);
+		DefPutBase ini2 = new DefPutBase(wf);
 		
 		//InitializeData iniData = new InitializeData("hola");
 		
+		BlockData[] hola = new BlockData[2];
+		
+		hola[0] = ini.getDataToSerialize();
+		hola[1] = ini2.getDataToSerialize();
+		
 		try {
-			byte[] wfData = SerializationUtils.serialize(ini.getDataToSerialize());
+			byte[] wfData = SerializationUtils.serialize(hola);
 			int[] wfDataInt = new int[wfData.length];
 			
 			for (int i = 0; i < wfData.length; i++) {
@@ -59,9 +65,9 @@ public class Main {
 				
 			}
 			
-			BlockData iniData = (BlockData) SerializationUtils.deserialize(wfDataByte);
-			System.out.println(iniData.getBlockInstance(wf).getName());
-			System.out.println(((DefPutBase)iniData.getBlockInstance(wf)).getVelocity());
+			BlockData[] iniData = (BlockData[]) SerializationUtils.deserialize(wfDataByte);
+			System.out.println(iniData[0].getBlockInstance(wf).getName());
+			System.out.println(((DefPutBase)iniData[1].getBlockInstance(wf)).getVelocity());
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());

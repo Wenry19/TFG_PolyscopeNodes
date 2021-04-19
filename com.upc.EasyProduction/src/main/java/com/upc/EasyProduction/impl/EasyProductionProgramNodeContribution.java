@@ -2,6 +2,7 @@ package com.upc.EasyProduction.impl;
 
 import com.ur.urcap.api.contribution.ProgramNodeContribution;
 
+
 import com.ur.urcap.api.contribution.program.ProgramAPIProvider;
 import com.ur.urcap.api.domain.data.DataModel;
 import com.ur.urcap.api.domain.script.ScriptWriter;
@@ -38,6 +39,8 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		this.undoRedoManager = this.apiProvider.getProgramAPI().getUndoRedoManager();
 		
 		this.wf = view.getWorkflowInstance(); // only one wf instance for all contribution nodes
+		this.wf.iniDefaultWorkflow();
+		onChangeInWF();
 	}
 	
 	public void onChangeInWF() {
@@ -57,6 +60,7 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 					//System.out.println(wfData.length);
 					
 					model.set(WORKFLOW_KEY, wfDataInt);
+					System.out.println("ENRIC: set of model");
 				}
 				catch (Exception e) {
 					System.out.println("ENRIC: onChangeInWF " + e.getMessage());
@@ -77,7 +81,7 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 				wfDataByte[i] = (byte) wfDataInt[i];
 			}
 			
-			BlockData[] wfData = (BlockData[]) SerializationUtils.deserialize(wfDataByte);
+			Object[] wfData = (Object[]) SerializationUtils.deserialize(wfDataByte);
 			
 			wf.setWorkflowData(wfData);
 		}
