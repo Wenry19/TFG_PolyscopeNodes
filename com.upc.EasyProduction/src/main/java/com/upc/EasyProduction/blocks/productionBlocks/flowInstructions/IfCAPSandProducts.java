@@ -7,10 +7,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class IfCAPSandProducts extends FlowInstructions{
 	
-	public IfCAPSandProducts(Workflow wf) {
-		
-		this.wf = wf;
-		
+	public IfCAPSandProducts() {
+				
 		identation = "      ";
 		
 		defaultCode = "\n"

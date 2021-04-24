@@ -34,10 +34,13 @@ public class OptionsPanel extends JPanel {
 	
 	private Workflow wf;
 	
-				
-	public OptionsPanel(Workflow wf) {
+	// singleton
+	
+	private static OptionsPanel singleton = new OptionsPanel();
+	
+	private OptionsPanel() {
 		
-		this.wf = wf;
+		this.wf = Workflow.getInstance();
 		
 		initialize();
 		
@@ -50,6 +53,12 @@ public class OptionsPanel extends JPanel {
 		scroll.setLocation(200, 0);
 				
 	}
+	
+	public static OptionsPanel getInstance() {
+		return singleton;
+	}
+	
+	// end singleton
 	
 	
 	private void initialize() {

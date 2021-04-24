@@ -4,9 +4,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class GetAnalogInput extends Operation{
 	
-	public GetAnalogInput(Workflow wf) {
-		
-		this.wf = wf;
+	public GetAnalogInput() {
 		
 		defaultCode = "\n"
 				+ "\n";

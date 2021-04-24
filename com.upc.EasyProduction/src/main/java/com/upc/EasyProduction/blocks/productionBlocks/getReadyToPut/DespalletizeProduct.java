@@ -6,10 +6,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class DespalletizeProduct extends GetReadyToPut{
 	
 	
-	public DespalletizeProduct(Workflow wf) {
-		
-		this.wf = wf;
-		
+	public DespalletizeProduct() {
+				
 		identation = "        ";
 		
 		defaultCode = "\n"

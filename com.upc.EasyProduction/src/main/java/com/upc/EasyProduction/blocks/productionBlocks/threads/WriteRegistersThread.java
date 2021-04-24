@@ -5,10 +5,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class WriteRegistersThread extends Thread {
 	
 	
-	public WriteRegistersThread(Workflow wf) {
-		
-		this.wf = wf;
-		
+	public WriteRegistersThread() {
+				
 		identation = "  ";
 		
 		defaultCode = "\n"

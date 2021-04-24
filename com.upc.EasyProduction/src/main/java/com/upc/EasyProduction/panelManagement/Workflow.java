@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.operationBlocks.GetAnalogInput;
@@ -46,9 +48,7 @@ import com.upc.EasyProduction.blocks.productionBlocks.threads.ExperimentTimeThre
 import com.upc.EasyProduction.blocks.productionBlocks.threads.TimerThread;
 import com.upc.EasyProduction.blocks.productionBlocks.threads.WriteRegistersThread;
 import com.upc.EasyProduction.impl.EasyProductionProgramNodeContribution;
-import com.upc.EasyProduction.impl.EasyProductionProgramNodeView;
 import com.ur.urcap.api.contribution.ContributionProvider;
-import com.ur.urcap.api.contribution.ViewAPIProvider;
 
 public class Workflow extends JPanel {
 	
@@ -58,26 +58,18 @@ public class Workflow extends JPanel {
 	
 	private JScrollPane scroll;
 	
+	private final String default_workflowData;
 	
-	public Workflow(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
-		
-		this.provider = provider;
-		
-		// default workflow
-		
-		this.iniDefaultWorkflow();
-		
-		scroll = new JScrollPane(this);
-		scroll.setPreferredSize(new Dimension(200, 404));
-		scroll.setSize(new Dimension(200, 404));
-		
-	}
+	// singleton
 	
-	public Workflow() { // PROVISIONAL!!
+	private static Workflow singleton = new Workflow();
+	
+	private Workflow() {
 				
 		// default workflow
 		
 		this.iniDefaultWorkflow();
+		this.default_workflowData = this.generateDEFAULT_WORKFLOWdata();
 		
 		scroll = new JScrollPane(this);
 		scroll.setPreferredSize(new Dimension(200, 404));
@@ -85,54 +77,68 @@ public class Workflow extends JPanel {
 		
 	}
 	
-//	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
-//		
-//		this.provider = provider;
-//		
-//	}
+	public static Workflow getInstance() {
+		return singleton;
+	}
+	
+	// end singleton
+	
+	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
+		
+		this.provider = provider;
+		
+	}
 
 	public void iniDefaultWorkflow() {
 		
-		workflow.add(new InitializeVars(this));
-		workflow.add(new TimerThread(this));
-		workflow.add(new WriteRegistersThread(this));
-		workflow.add(new ExperimentTimeThread(this));
+		workflow.clear();
 		
-		workflow.add(new DefPutBase(this));
-		workflow.add(new DefPutBearing(this));
-		workflow.add(new DefPutProduct(this));
+		workflow.add(new InitializeVars());
+		workflow.add(new TimerThread());
+		workflow.add(new WriteRegistersThread());
+		workflow.add(new ExperimentTimeThread());
 		
-		workflow.add(new WhileTrue(this));
+		workflow.add(new DefPutBase());
+		workflow.add(new DefPutBearing());
+		workflow.add(new DefPutProduct());
 		
-		workflow.add(new IfBases(this));
-		workflow.add(new DestackBase(this));
-		workflow.add(new CallPutBase(this));
-		workflow.add(new EndIfBases(this));
+		workflow.add(new WhileTrue());
 		
-		workflow.add(new IfBearings(this));
-		workflow.add(new DestackBearing(this));
-		workflow.add(new CallPutBearing(this));
-		workflow.add(new EndIfBearings(this));
+		workflow.add(new IfBases());
+		workflow.add(new DestackBase());
+		workflow.add(new CallPutBase());
+		workflow.add(new EndIfBases());
 		
-		workflow.add(new IfCAPSandProducts(this));
+		workflow.add(new IfBearings());
+		workflow.add(new DestackBearing());
+		workflow.add(new CallPutBearing());
+		workflow.add(new EndIfBearings());
 		
-		workflow.add(new GetCAPs(this));
+		workflow.add(new IfCAPSandProducts());
 		
-		workflow.add(new WhileProducts(this));
-		workflow.add(new DespalletizeProduct(this));
-		workflow.add(new CallPutProduct(this));
-		workflow.add(new EndWhileProducts(this));
+		workflow.add(new GetCAPs());
 		
-		workflow.add(new EndIfCAPSandProducts(this));
+		workflow.add(new WhileProducts());
+		workflow.add(new DespalletizeProduct());
+		workflow.add(new CallPutProduct());
+		workflow.add(new EndWhileProducts());
 		
-		workflow.add(new EndWhileTrue(this));
+		workflow.add(new EndIfCAPSandProducts());
+		
+		workflow.add(new EndWhileTrue());
 		
 		updateBlocksPositions();
 		
-		updateDataModel();
-		
-		updatePanel();
-		
+		updatePanel();		
+	}
+	
+	private String generateDEFAULT_WORKFLOWdata() {
+		Gson gson = new GsonBuilder().setPrettyPrinting().create(); 
+		return gson.toJson(this.getWorkflowData());
+	}
+	
+	public String getDEFAULT_WORKFLOWdata() {
+		return default_workflowData;
 	}
 	
 	private void updatePanel() {
@@ -204,27 +210,27 @@ public class Workflow extends JPanel {
 	private Block findBlock(String id) {
 				
 		if (id == "GetAnalogInput") {
-			return new GetAnalogInput(this);
+			return new GetAnalogInput();
 		}
 		
 		else if (id == "SetAnalogOutput") {
-			return new SetAnalogOutput(this);
+			return new SetAnalogOutput();
 		}
 		
 		else if (id == "GetDigitalInput") {
-			return new GetDigitalInput(this);
+			return new GetDigitalInput();
 		}
 		
 		else if (id == "SetDigitalOutput") {
-			return new SetDigitalOutput(this);
+			return new SetDigitalOutput();
 		}
 		
 		else if (id == "Sleep") {
-			return new Sleep(this);
+			return new Sleep();
 		}
 		
 		else { // if (id == "PopUp"){}
-			return new PopUp(this);
+			return new PopUp();
 		}
 		
 	}
@@ -264,6 +270,7 @@ public class Workflow extends JPanel {
 		this.workflow = workflow;
 		
 		updatePanel();
+		updateBlocksPositions();
 		updateDataModel();
 		
 	}
@@ -297,18 +304,18 @@ public class Workflow extends JPanel {
 		
 	}
 	
-	public void setWorkflowData(Object[] DataArray) {
+	public void setWorkflowData(BlockData[] DataArray) {
 		
-//		workflow.clear(); // clear current workflow
-//				
-//		for (int i = 0; i < DataArray.length; i++) {
-//			
-//			workflow.add((Block)((BlockData)DataArray[i]).getBlockInstance(this));
-//			
-//		}
-//		
-//		updatePanel();
-//		updateBlocksPositions();
+		workflow.clear(); // clear current workflow
+				
+		for (int i = 0; i < DataArray.length; i++) {
+			
+			workflow.add((Block)((BlockData)DataArray[i]).getBlockInstance());
+			
+		}
+		
+		updatePanel();
+		updateBlocksPositions();
 		
 	}
 }

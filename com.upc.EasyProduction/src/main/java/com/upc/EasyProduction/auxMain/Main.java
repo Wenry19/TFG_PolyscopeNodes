@@ -21,13 +21,17 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		Workflow wf = new Workflow();
+		Workflow wf = Workflow.getInstance();
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		
 		String jsonStr = gson.toJson(wf.getWorkflowData()); // BlockData[]
 		
 		System.out.print(jsonStr); // :)
+		
+		BlockData[] wf_data = gson.fromJson(jsonStr, BlockData[].class);
+		
+		System.out.println(wf_data[2].getBlockInstance());
 		
 	}
 

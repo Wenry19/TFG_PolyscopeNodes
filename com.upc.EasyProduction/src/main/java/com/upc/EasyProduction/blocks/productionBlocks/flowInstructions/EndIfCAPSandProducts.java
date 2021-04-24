@@ -7,10 +7,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class EndIfCAPSandProducts extends FlowInstructions{
 	
-	public EndIfCAPSandProducts(Workflow wf) {
-		
-		this.wf = wf;
-		
+	public EndIfCAPSandProducts() {
+				
 		identation = "    ";
 		
 		defaultCode = "\n"

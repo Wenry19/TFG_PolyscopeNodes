@@ -4,9 +4,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class SetAnalogOutput extends Operation{
 	
-	public SetAnalogOutput(Workflow wf) {
-		
-		this.wf = wf;
+	public SetAnalogOutput() {
 		
 		defaultCode = "\n"
 				+ "\n";

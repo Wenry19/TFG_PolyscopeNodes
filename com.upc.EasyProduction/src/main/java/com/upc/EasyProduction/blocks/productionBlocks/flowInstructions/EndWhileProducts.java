@@ -7,10 +7,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class EndWhileProducts extends FlowInstructions{
 	
-	public EndWhileProducts(Workflow wf) {
-		
-		this.wf = wf;
-		
+	public EndWhileProducts() {
+				
 		identation = "      ";
 		
 		defaultCode = "\n"

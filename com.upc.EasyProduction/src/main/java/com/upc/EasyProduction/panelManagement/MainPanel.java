@@ -1,9 +1,5 @@
 package com.upc.EasyProduction.panelManagement;
 
-
-
-
-
 import javax.swing.JLayeredPane;
 
 import com.upc.EasyProduction.impl.EasyProductionProgramNodeContribution;
@@ -14,13 +10,14 @@ public class MainPanel extends JLayeredPane{
 	private OptionsPanel optionsPanel;
 	private Workflow workflow;
 	
-	private ContributionProvider<EasyProductionProgramNodeContribution> provider;
+	//private ContributionProvider<EasyProductionProgramNodeContribution> provider;
 	
 	
 	public MainPanel(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		
-		workflow = new Workflow(provider);
-		optionsPanel = new OptionsPanel(workflow);
+		workflow = Workflow.getInstance();
+		workflow.setProvider(provider);
+		optionsPanel = OptionsPanel.getInstance();
 		
 		this.setLayout(null);
 		
@@ -34,9 +31,9 @@ public class MainPanel extends JLayeredPane{
 		
 	}
 	
-	public Workflow getWorkflowInstance() {
-		return workflow;
-	}
+//	public Workflow getWorkflowInstance() {
+//		return workflow;
+//	}
 	
 //	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 //		this.provider = provider;

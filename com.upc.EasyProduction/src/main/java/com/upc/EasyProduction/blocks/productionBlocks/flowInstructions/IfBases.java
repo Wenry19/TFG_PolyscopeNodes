@@ -7,10 +7,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class IfBases extends FlowInstructions{
 	
-	public IfBases(Workflow wf) {
-		
-		this.wf = wf;
-		
+	public IfBases() {
+				
 		identation = "      ";
 		
 		defaultCode = "\n"

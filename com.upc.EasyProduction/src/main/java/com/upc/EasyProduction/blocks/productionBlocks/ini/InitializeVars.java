@@ -11,10 +11,8 @@ public class InitializeVars extends Initialize {
 	private int numberIniProducts;
 	
 	
-	public InitializeVars(Workflow wf) { // maybe it should be singleton
-		
-		this.wf = wf;
-		
+	public InitializeVars() { // maybe it should be singleton
+				
 		numberIniBases = 0;
 		numberIniBearings = 0;
 		numberIniProducts = 0;

@@ -5,10 +5,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class TimerThread extends Thread { // activate or deactivate timers?
 	
 	
-	public TimerThread(Workflow wf) { // maybe it should be singleton
-		
-		this.wf = wf;
-		
+	public TimerThread() { // maybe it should be singleton
+				
 		identation = "  ";
 		
 		defaultCode = "\n"

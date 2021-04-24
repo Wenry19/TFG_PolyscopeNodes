@@ -5,9 +5,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class CallPutProduct extends CallFuncs{		
 		
-		public CallPutProduct(Workflow wf) {
-			
-			this.wf = wf;
+		public CallPutProduct() {
 			
 			identation = "        ";
 			

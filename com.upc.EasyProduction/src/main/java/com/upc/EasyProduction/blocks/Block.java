@@ -39,11 +39,13 @@ public class Block extends JLabel{
 	
 	protected Workflow wf;
 	
-	protected String className = "";
+	//protected String className = "";
 
 		
 	
 	public Block() {
+		
+		wf = Workflow.getInstance();
 				
 		mouseListener = new MouseListener();
 		//blockLabel = new JLabel();
@@ -125,12 +127,7 @@ public class Block extends JLabel{
 	}
 	
 	public String getClassName() {
-		String aux = this.getClass().getName();
-		int index = aux.lastIndexOf('.');
-	    if(index > 0) {
-	      className = aux.substring(index + 1);
-	    }
-		return className;
+		return this.getClass().getName();
 	}
 	
 	// inner classes

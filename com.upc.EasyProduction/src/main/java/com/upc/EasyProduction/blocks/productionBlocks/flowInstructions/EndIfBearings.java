@@ -7,9 +7,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class EndIfBearings extends FlowInstructions{
 	
-	public EndIfBearings(Workflow wf) {
-		
-		this.wf = wf;
+	public EndIfBearings() {
 		
 		identation = "    ";
 		

@@ -4,10 +4,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class GetDigitalInput extends Operation{
 	
-	public GetDigitalInput(Workflow wf) {
-		
-		this.wf = wf;
-		
+	public GetDigitalInput() {
+				
 		defaultCode = "\n"
 				+ "\n";
 		

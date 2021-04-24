@@ -8,10 +8,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class WhileTrue extends FlowInstructions {
 	
 	
-	public WhileTrue(Workflow wf) {
-		
-		this.wf = wf;
-		
+	public WhileTrue() {
+				
 		identation = "    ";
 		
 		defaultCode = "\n"

@@ -5,10 +5,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class ExperimentTimeThread extends Thread{	
 	
 	
-	public ExperimentTimeThread(Workflow wf) {
-		
-		this.wf = wf;
-		
+	public ExperimentTimeThread() {
+				
 		identation = "  ";
 		
 		defaultCode = "\n"

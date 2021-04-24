@@ -5,9 +5,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class CallPutBearing extends CallFuncs{
 		
-		public CallPutBearing(Workflow wf) {
-			
-			this.wf = wf;
+		public CallPutBearing() {
 			
 			identation = "      ";
 			

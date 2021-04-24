@@ -1,6 +1,7 @@
 package com.upc.EasyProduction.blocks.dataBlocks;
 
 import com.upc.EasyProduction.blocks.BlockData;
+import com.upc.EasyProduction.panelManagement.Workflow;
 
 
 public class DefPutFuncsData extends BlockData{
@@ -13,7 +14,7 @@ public class DefPutFuncsData extends BlockData{
 		this.className = className;
 		this.velocity = velocity;
 		this.acceleration = acceleration;
-		
+				
 	}
 	
 	public Double getVelocity() {

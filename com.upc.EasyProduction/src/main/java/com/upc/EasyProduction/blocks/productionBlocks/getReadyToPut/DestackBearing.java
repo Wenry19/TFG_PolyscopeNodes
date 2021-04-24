@@ -11,9 +11,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class DestackBearing extends GetReadyToPut {	
 	
-	public DestackBearing(Workflow wf) {
-		
-		this.wf = wf;
+	public DestackBearing() {
 		
 		identation = "      ";
 		

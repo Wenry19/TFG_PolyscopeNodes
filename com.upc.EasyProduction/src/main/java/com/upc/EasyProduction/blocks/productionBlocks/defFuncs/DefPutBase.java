@@ -6,9 +6,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class DefPutBase extends DefPutFuncs {
 	
 	
-	public DefPutBase(Workflow wf) {
-		
-		this.wf = wf;
+	public DefPutBase() {
 		
 		identation = "  ";
 		

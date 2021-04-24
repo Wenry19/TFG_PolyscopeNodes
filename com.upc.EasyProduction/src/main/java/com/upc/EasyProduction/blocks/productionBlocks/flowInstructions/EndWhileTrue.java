@@ -7,10 +7,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class EndWhileTrue extends FlowInstructions {
 	
-	public EndWhileTrue(Workflow wf) {
-		
-		this.wf = wf;
-		
+	public EndWhileTrue() {
+				
 		identation = "  ";
 		
 		defaultCode = "\n"

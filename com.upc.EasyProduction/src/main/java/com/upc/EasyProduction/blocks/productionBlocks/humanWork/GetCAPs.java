@@ -8,10 +8,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class GetCAPs extends HumanWork {
 	
 	
-	public GetCAPs(Workflow wf) {
-		
-		this.wf = wf;
-		
+	public GetCAPs() {
+				
 		identation = "      ";
 		
 		defaultCode = "\n"

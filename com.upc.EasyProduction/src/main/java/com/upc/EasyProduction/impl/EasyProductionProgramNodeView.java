@@ -22,11 +22,6 @@ public class EasyProductionProgramNodeView implements SwingProgramNodeView<EasyP
 		this.apiProvider = apiProvider;
 		
 	}
-	
-	
-	public Workflow getWorkflowInstance() {
-		return mainPanel.getWorkflowInstance();
-	}
 
 	@Override
 	public void buildUI(JPanel panel, ContributionProvider<EasyProductionProgramNodeContribution> provider) {

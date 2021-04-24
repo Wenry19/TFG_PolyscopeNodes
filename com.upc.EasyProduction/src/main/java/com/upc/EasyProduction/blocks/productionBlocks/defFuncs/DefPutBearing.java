@@ -6,9 +6,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class DefPutBearing extends DefPutFuncs {
 	
 	
-	public DefPutBearing(Workflow wf) {
-		
-		this.wf = wf;
+	public DefPutBearing() {
 		
 		identation = "  ";
 		

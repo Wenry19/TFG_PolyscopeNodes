@@ -8,9 +8,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class EndIfBases extends FlowInstructions{
 	
 	
-	public EndIfBases(Workflow wf) {
-		
-		this.wf = wf;
+	public EndIfBases() {
 		
 		identation = "    ";
 		

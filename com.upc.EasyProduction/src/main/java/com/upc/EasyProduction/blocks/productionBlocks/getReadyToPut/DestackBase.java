@@ -6,10 +6,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class DestackBase extends GetReadyToPut {
 	
 	
-	public DestackBase(Workflow wf) {
-		
-		this.wf = wf;
-		
+	public DestackBase() {
+				
 		identation = "      ";
 		
 		defaultCode = "\n"
