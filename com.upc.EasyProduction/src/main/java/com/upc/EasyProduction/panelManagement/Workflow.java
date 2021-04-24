@@ -279,7 +279,7 @@ public class Workflow extends JPanel {
 		return workflow;
 	}
 	
-	private void updateDataModel() {
+	public void updateDataModel() {
 
 		try {
 			provider.get().onChangeInWF();

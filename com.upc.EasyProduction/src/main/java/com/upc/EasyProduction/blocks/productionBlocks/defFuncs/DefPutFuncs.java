@@ -83,7 +83,7 @@ public class DefPutFuncs extends Block implements ActionListener{
 				acceleration = 2.726646259971647;
 			}			
 		}
-		
+		wf.updateDataModel();
 	}
 	
 	public Double getVelocity() {
