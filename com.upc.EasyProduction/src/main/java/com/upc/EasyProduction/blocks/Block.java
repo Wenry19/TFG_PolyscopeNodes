@@ -118,7 +118,7 @@ public class Block extends JLabel{
 		this.identation = identation;
 	}
 	
-	public BlockData getDataToSerialize() { // EYE!!!!
+	public BlockData getBlockData() { // EYE!!!!
 		
 		return null;
 		

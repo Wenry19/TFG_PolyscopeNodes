@@ -1,19 +1,11 @@
 package com.upc.EasyProduction.blocks;
 
-import java.io.Serializable;
 
-import com.upc.EasyProduction.panelManagement.Workflow;
-
-public class BlockData implements Serializable{
+public class BlockData{
 	
-	protected String id;
+	protected String className;
 	
-	public String getID() {
-		return id;
+	public String getClassName() {
+		return className;
 	}
-	
-	public Block getBlockInstance(Workflow wf) {
-		return null;
-	}
-
 }

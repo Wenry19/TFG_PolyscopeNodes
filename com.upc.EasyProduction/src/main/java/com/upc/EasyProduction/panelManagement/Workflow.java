@@ -283,13 +283,13 @@ public class Workflow extends JPanel {
 		finally {}
 	}
 	
-	public BlockData[] getWorkflowDataToSerialize(){
+	public BlockData[] getWorkflowData(){
 		
 		BlockData[] wfData = new BlockData[workflow.size()];
 		
 		for (int i = 0; i < workflow.size(); i++) {
 			
-			wfData[i] = workflow.get(i).getDataToSerialize();
+			wfData[i] = workflow.get(i).getBlockData();
 			
 		}
 		
@@ -299,16 +299,16 @@ public class Workflow extends JPanel {
 	
 	public void setWorkflowData(Object[] DataArray) {
 		
-		workflow.clear(); // clear current workflow
-				
-		for (int i = 0; i < DataArray.length; i++) {
-			
-			workflow.add((Block)((BlockData)DataArray[i]).getBlockInstance(this));
-			
-		}
-		
-		updatePanel();
-		updateBlocksPositions();
+//		workflow.clear(); // clear current workflow
+//				
+//		for (int i = 0; i < DataArray.length; i++) {
+//			
+//			workflow.add((Block)((BlockData)DataArray[i]).getBlockInstance(this));
+//			
+//		}
+//		
+//		updatePanel();
+//		updateBlocksPositions();
 		
 	}
 }

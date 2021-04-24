@@ -3,13 +3,12 @@ package com.upc.EasyProduction.impl;
 import com.ur.urcap.api.contribution.ProgramNodeContribution;
 
 
+
 import com.ur.urcap.api.contribution.program.ProgramAPIProvider;
 import com.ur.urcap.api.domain.data.DataModel;
 import com.ur.urcap.api.domain.script.ScriptWriter;
 import com.ur.urcap.api.domain.undoredo.UndoRedoManager;
 import com.ur.urcap.api.domain.undoredo.UndoableChanges;
-
-import org.apache.commons.lang.SerializationUtils;
 
 import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.panelManagement.Workflow;
@@ -48,24 +47,24 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 			
 			@Override
 			public void executeChanges() { // record changes in data model
-				try {
-					byte[] wfData = SerializationUtils.serialize(wf.getWorkflowDataToSerialize());
-					// java.io.NotSerializableException: java.awt.Component$AccessibleAWTComponent$AccessibleAWTComponentHandler
-					int[] wfDataInt = new int[wfData.length];
-					
-					for (int i = 0; i < wfData.length; i++) {
-						wfDataInt[i] = (int) wfData[i];
-					}
-					
-					//System.out.println(wfData.length);
-					
-					model.set(WORKFLOW_KEY, wfDataInt);
-					System.out.println("ENRIC: set of model");
-				}
-				catch (Exception e) {
-					System.out.println("ENRIC: onChangeInWF " + e.getMessage());
-					System.out.println("ENRIC: onChangeInWF " + e.getCause());
-				}
+//				try {
+//					byte[] wfData = SerializationUtils.serialize(wf.getWorkflowDataToSerialize());
+//					// java.io.NotSerializableException: java.awt.Component$AccessibleAWTComponent$AccessibleAWTComponentHandler
+//					int[] wfDataInt = new int[wfData.length];
+//					
+//					for (int i = 0; i < wfData.length; i++) {
+//						wfDataInt[i] = (int) wfData[i];
+//					}
+//					
+//					//System.out.println(wfData.length);
+//					
+//					model.set(WORKFLOW_KEY, wfDataInt);
+//					System.out.println("ENRIC: set of model");
+//				}
+//				catch (Exception e) {
+//					System.out.println("ENRIC: onChangeInWF " + e.getMessage());
+//					System.out.println("ENRIC: onChangeInWF " + e.getCause());
+//				}
 			}
 		});
 	}
@@ -73,22 +72,22 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	@Override
 	public void openView() {
 		
-		try {
-			int[] wfDataInt = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
-			byte[] wfDataByte = new byte[wfDataInt.length];
-			
-			for (int i = 0; i < wfDataInt.length; i++) {
-				wfDataByte[i] = (byte) wfDataInt[i];
-			}
-			
-			Object[] wfData = (Object[]) SerializationUtils.deserialize(wfDataByte);
-			
-			wf.setWorkflowData(wfData);
-		}
-		catch (Exception e) {
-			System.out.println("ENRIC: openView " + e.getMessage());
-			System.out.println("ENRIC: openView " + e.getCause());
-		}
+//		try {
+//			int[] wfDataInt = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
+//			byte[] wfDataByte = new byte[wfDataInt.length];
+//			
+//			for (int i = 0; i < wfDataInt.length; i++) {
+//				wfDataByte[i] = (byte) wfDataInt[i];
+//			}
+//			
+//			Object[] wfData = (Object[]) SerializationUtils.deserialize(wfDataByte);
+//			
+//			wf.setWorkflowData(wfData);
+//		}
+//		catch (Exception e) {
+//			System.out.println("ENRIC: openView " + e.getMessage());
+//			System.out.println("ENRIC: openView " + e.getCause());
+//		}
 		
 	}
 

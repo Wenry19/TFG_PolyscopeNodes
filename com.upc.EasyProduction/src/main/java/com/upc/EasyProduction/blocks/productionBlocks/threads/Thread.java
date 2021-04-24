@@ -17,7 +17,7 @@ public class Thread extends Block{
 		this.setBorder(BorderFactory.createDashedBorder(null, 5, 5));
 	}
 	
-	public BlockData getDataToSerialize() {
+	public BlockData getBlockData() {
 		
 		return new ThreadData(getClassName());
 		

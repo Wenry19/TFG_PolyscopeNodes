@@ -95,7 +95,7 @@ public class DefPutFuncs extends Block implements ActionListener{
 	}
 	
 	
-	public BlockData getDataToSerialize() {
+	public BlockData getBlockData() {
 	    
 		return new DefPutFuncsData(getClassName(), velocity, acceleration);
 		

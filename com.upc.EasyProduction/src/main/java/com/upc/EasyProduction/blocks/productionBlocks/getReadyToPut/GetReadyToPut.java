@@ -8,7 +8,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class GetReadyToPut extends Block{
 	
-	public BlockData getDataToSerialize() {
+	public BlockData getBlockData() {
 		
 		return new GetReadyToPutData(getClassName());
 	}

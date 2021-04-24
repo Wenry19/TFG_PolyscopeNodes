@@ -26,7 +26,7 @@ public class Operation extends Block{
 		return "\n" + identation + code;
 	}
 	
-	public BlockData getDataToSerialize() {
+	public BlockData getBlockData() {
 		return new OperationData(getClassName());
 	}
 }

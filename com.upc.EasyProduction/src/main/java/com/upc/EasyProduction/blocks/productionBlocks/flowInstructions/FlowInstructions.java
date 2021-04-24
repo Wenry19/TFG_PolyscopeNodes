@@ -8,7 +8,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class FlowInstructions extends Block {
 	
-	public BlockData getDataToSerialize() {	
+	public BlockData getBlockData() {	
 		return new FlowInstructionsData(getClassName());
 		
 	}

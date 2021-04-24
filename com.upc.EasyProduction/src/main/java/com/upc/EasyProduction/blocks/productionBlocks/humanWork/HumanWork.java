@@ -8,7 +8,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class HumanWork extends Block{
 	
-	public BlockData getDataToSerialize() {
+	public BlockData getBlockData() {
 			
 		return new HumanWorkData(getClassName());
 		
