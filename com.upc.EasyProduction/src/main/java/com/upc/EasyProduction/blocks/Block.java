@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Dictionary;
@@ -17,6 +18,7 @@ import javax.swing.JPanel;
 
 import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
 import com.upc.EasyProduction.blocks.operationBlocks.Operation;
+import com.upc.EasyProduction.panelManagement.MainPanel;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 
@@ -27,8 +29,8 @@ public class Block extends JLabel{
 	protected String code;
 	protected String identation = "";
 	
-	protected JFrame frame;
-	protected JPanel panel;
+	//protected JFrame frame;
+	protected JPanel panel = new JPanel();
 	
 	protected MouseListener mouseListener;
 	
@@ -45,13 +47,17 @@ public class Block extends JLabel{
 		wf = Workflow.getInstance();
 				
 		mouseListener = new MouseListener();
+				
+//		frame = new JFrame();
+//		
+//		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+//		frame.setLayout(new FlowLayout());
+//		frame.setSize(400, 400);
+//		frame.setVisible(false);
 		
-		frame = new JFrame();
-		
-		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		frame.setLayout(new FlowLayout());
-		frame.setSize(400, 400);
-		frame.setVisible(false);
+		panel.setLayout(new GridLayout(0, 1));
+		panel.setBounds(0, 0, 405, 149);
+		panel.setBorder(BorderFactory.createLineBorder(Color.gray));
 		
 		
 		this.addMouseListener(mouseListener);
@@ -92,9 +98,9 @@ public class Block extends JLabel{
 		return name;
 	}
 	
-	public JFrame getFrame() {
-		return frame;
-	}
+//	public JFrame getFrame() {
+//		return frame;
+//	}
 	
 	public void setWorkflowPosition(int pos) {
 		
@@ -137,7 +143,10 @@ public class Block extends JLabel{
 			
 			Block b = (Block) e.getSource();
 				
-			b.getFrame().setVisible(true);
+			//b.getFrame().setVisible(true);
+			
+			MainPanel.getInstance().updateParamPanel(panel);
+			
 			//}
 
 		}

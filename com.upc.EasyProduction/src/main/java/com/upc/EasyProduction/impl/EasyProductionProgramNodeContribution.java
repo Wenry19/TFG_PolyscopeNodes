@@ -64,6 +64,10 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		BlockData[] wfData = gson.fromJson(model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW), BlockData[].class);
 		
 		wf.setWorkflowData(wfData);
+		
+		//System.out.println("open view");
+		
+		//actualitzar els panels de cada bloc!! <------------ IMPORTANT!!
 	}
 
 	@Override

@@ -1,10 +1,12 @@
 package com.upc.EasyProduction.blocks.productionBlocks.defFuncs;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,10 +32,7 @@ public class DefPutFuncs extends Block implements ActionListener{
 		
 		velocity = 4.363323129985823;
 		
-		acceleration = 8.726646259971647;
-		
-		panel = new JPanel();
-		panel.setLayout(new GridLayout(0, 1));
+		acceleration = 8.726646259971647;		
 		
 		String[] Values = {"Default", "Slow"};
 		
@@ -55,7 +54,7 @@ public class DefPutFuncs extends Block implements ActionListener{
 		panel.add(accelerationLabel);
 		panel.add(accelerationComboBox);
 		
-		frame.add(panel);
+		//frame.add(panel);
 		//frame.pack();
 		
 	}
