@@ -1,19 +1,47 @@
 package com.upc.EasyProduction.impl;
 
 
+import java.awt.Dimension;
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
 import com.upc.EasyProduction.panelManagement.MainPanel;
-import com.upc.EasyProduction.panelManagement.Workflow;
 import com.ur.urcap.api.contribution.ContributionProvider;
 import com.ur.urcap.api.contribution.ViewAPIProvider;
 import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeView;
 
 public class EasyProductionProgramNodeView implements SwingProgramNodeView<EasyProductionProgramNodeContribution>{
 	
-	private MainPanel mainPanel;
+
+	// TESTS IN ECLIPSE --------------------------------------------------------
+	public EasyProductionProgramNodeView() {
+		this.apiProvider = null;
+	}
 	
+	public static void main(String [ ] args) { // proving
+		int margin = 8;
+		//Style style = new V5Style();
+		//Style style = new V3Style();
+
+		JPanel jPanel = new JPanel();
+		jPanel.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
+		//new LightUpProgramNodeView(null, style).buildUI(jPanel, null);
+		new EasyProductionProgramNodeView().buildUI(jPanel, null);
+
+		JFrame jFrame = new JFrame();
+		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jFrame.add(jPanel);
+		jFrame.setPreferredSize(new Dimension(606, 407));
+		//jFrame.setSize(new Dimension(200, 24));
+		jFrame.setVisible(true);
+		jFrame.pack();
+	}
+	// TESTS IN ECLIPSE --------------------------------------------------------
+	
+	private MainPanel mainPanel;
 	
 	private final ViewAPIProvider apiProvider;
 	

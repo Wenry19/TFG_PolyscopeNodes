@@ -5,7 +5,8 @@ package com.upc.EasyProduction.panelManagement;
 
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
@@ -34,6 +35,10 @@ public class OptionsPanel extends JPanel {
 	
 	private Workflow wf;
 	
+	private GridBagConstraints c = new GridBagConstraints();
+	
+	private boolean count = false;
+	
 	// singleton
 	
 	private static OptionsPanel singleton = new OptionsPanel();
@@ -48,8 +53,8 @@ public class OptionsPanel extends JPanel {
 		
 		scroll = new JScrollPane(this);
 		
-		scroll.setPreferredSize(new Dimension(406, 404));
-		scroll.setSize(new Dimension(406, 404));
+		scroll.setPreferredSize(new Dimension(406, 254));
+		scroll.setSize(new Dimension(406, 254));
 		scroll.setLocation(200, 0);
 				
 	}
@@ -69,10 +74,11 @@ public class OptionsPanel extends JPanel {
 		
 		// this JPanel which contains the different options
 		
-		this.setLayout(new FlowLayout(FlowLayout.CENTER, 1, 1));
+		//this.setLayout(new FlowLayout(FlowLayout.CENTER, 1, 1));
+		this.setLayout(new GridBagLayout());
 		
-		this.setSize(400, 400);
-		this.setPreferredSize(new Dimension(400, 400)); // 406x407
+		//this.setSize(400, 400);
+		//this.setPreferredSize(new Dimension(400, 400)); // 406x407
 		
 		this.setLocation(200, 0);
 				
@@ -102,7 +108,18 @@ public class OptionsPanel extends JPanel {
 		
 		opt.addMouseListener(mouseListener);
 		
-		this.add(opt);
+		if(count) {
+			c.gridx = GridBagConstraints.RELATIVE;
+			c.gridwidth = GridBagConstraints.REMAINDER;
+		}
+		else {
+			c.gridx = 0; // eye!! xd
+			c.gridwidth = 1;
+		}
+		
+		count = !count;
+		
+		this.add(opt, c);
 		
 		dragDropPanel.add(opt.getDragLabel());
 		
@@ -117,6 +134,29 @@ public class OptionsPanel extends JPanel {
 		addOption("GetDigitalInput");
 		addOption("SetAnalogOutput");
 		addOption("GetAnalogInput");
+		
+//		addOption("Sleep2");
+//		addOption("PopUp2");
+//		addOption("SetDigitalOutput2");
+//		addOption("GetDigitalInput2");
+//		addOption("SetAnalogOutput2");
+//		addOption("GetAnalogInput2");
+//		
+//		addOption("Sleep3");
+//		addOption("PopUp3");
+//		addOption("SetDigitalOutput3");
+//		addOption("GetDigitalInput3");
+//		addOption("SetAnalogOutput3");
+//		addOption("GetAnalogInput3");
+//		
+//		addOption("Sleep4");
+//		addOption("PopUp4");
+//		addOption("SetDigitalOutput4");
+//		addOption("GetDigitalInput4");
+//		addOption("SetAnalogOutput4");
+//		addOption("GetAnalogInput4");
+		
+		
 		
 	}
 	

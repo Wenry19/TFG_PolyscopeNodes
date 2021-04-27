@@ -1,6 +1,7 @@
 package com.upc.EasyProduction.panelManagement;
 
 import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 
 import com.upc.EasyProduction.impl.EasyProductionProgramNodeContribution;
 import com.ur.urcap.api.contribution.ContributionProvider;
@@ -9,9 +10,9 @@ public class MainPanel extends JLayeredPane{
 	
 	private OptionsPanel optionsPanel;
 	private Workflow workflow;
+	private JPanel paramPanel;
 	
 	//private ContributionProvider<EasyProductionProgramNodeContribution> provider;
-	
 	
 	public MainPanel(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		

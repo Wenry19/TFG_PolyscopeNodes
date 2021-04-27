@@ -38,9 +38,6 @@ public class Block extends JLabel{
 	protected int wfPos;
 	
 	protected Workflow wf;
-	
-	//protected String className = "";
-
 		
 	
 	public Block() {
@@ -48,7 +45,6 @@ public class Block extends JLabel{
 		wf = Workflow.getInstance();
 				
 		mouseListener = new MouseListener();
-		//blockLabel = new JLabel();
 		
 		frame = new JFrame();
 		

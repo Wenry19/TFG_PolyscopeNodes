@@ -80,7 +80,7 @@ public class DefPutFuncs extends Block implements ActionListener{
 			}
 			
 			else if (accelerationComboBox.getSelectedItem() == "Slow") {
-				acceleration = 2.726646259971647;
+				acceleration = 2.5;
 			}			
 		}
 		wf.updateDataModel();
