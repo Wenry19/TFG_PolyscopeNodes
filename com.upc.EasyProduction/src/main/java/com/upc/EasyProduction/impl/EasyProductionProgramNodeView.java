@@ -55,7 +55,8 @@ public class EasyProductionProgramNodeView implements SwingProgramNodeView<EasyP
 	public void buildUI(JPanel panel, ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		// provider provides us access to the active instance of contribution
 		
-		this.mainPanel = new MainPanel(provider);
+		this.mainPanel = MainPanel.getInstance();
+		this.mainPanel.setProvider(provider);
 		
 		panel.setLayout(null);
 		

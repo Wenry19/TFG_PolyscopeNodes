@@ -12,12 +12,14 @@ public class MainPanel extends JLayeredPane{
 	private Workflow workflow;
 	private JPanel paramPanel;
 	
-	//private ContributionProvider<EasyProductionProgramNodeContribution> provider;
+	private ContributionProvider<EasyProductionProgramNodeContribution> provider;
 	
-	public MainPanel(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
+	private static MainPanel singleton = new MainPanel();
+	
+	private MainPanel() {
 		
 		workflow = Workflow.getInstance();
-		workflow.setProvider(provider);
+		//workflow.setProvider(provider);
 		optionsPanel = OptionsPanel.getInstance();
 		
 		this.setLayout(null);
@@ -32,13 +34,17 @@ public class MainPanel extends JLayeredPane{
 		
 	}
 	
+	public static MainPanel getInstance() {
+		return singleton;
+	}
+	
 //	public Workflow getWorkflowInstance() {
 //		return workflow;
 //	}
 	
-//	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
-//		this.provider = provider;
-//		workflow.setProvider(provider);
-//	}
+	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
+		this.provider = provider;
+		workflow.setProvider(provider);
+	}
 	
 }
