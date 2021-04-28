@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
 import com.upc.EasyProduction.blocks.operationBlocks.Operation;
@@ -30,6 +31,7 @@ public class Block extends JLabel{
 	protected String identation = "";
 
 	protected JPanel panel = new JPanel();
+	protected JScrollPane scroll = new JScrollPane(panel);
 	
 	protected MouseListener mouseListener = new MouseListener();
 	
@@ -42,11 +44,8 @@ public class Block extends JLabel{
 	
 	
 	public Block() {
-				
-		//panel.setLayout(new GridLayout(0, 1));
-		panel.setBounds(0, 0, 405, 149);
-		panel.setBorder(BorderFactory.createLineBorder(Color.gray));
-		
+
+		scroll.setBounds(0, 0, 406, 150);		
 		
 		this.addMouseListener(mouseListener);
 		this.addMouseMotionListener(mouseListener);
@@ -135,7 +134,7 @@ public class Block extends JLabel{
 						
 			Block b = (Block) e.getSource();
 							
-			MainPanel.getInstance().updateParamPanel(panel);
+			MainPanel.getInstance().updateParamPanel(scroll);
 			
 			Workflow wf = Workflow.getInstance();
 			wf.setSelectedBlock(b);

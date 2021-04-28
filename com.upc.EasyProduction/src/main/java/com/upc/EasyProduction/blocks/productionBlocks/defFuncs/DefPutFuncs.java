@@ -44,10 +44,12 @@ public class DefPutFuncs extends Block implements ChangeListener{
 		panel.setLayout(new GridLayout(0, 1, 0, -5));
 		// vertical gap -5 perquè sinó, no sé per què, es solapa amb el punter de slider...
 		
+		Font labelFont = ultraSlowLabel.getFont();
+		
 		velocityLabel.setHorizontalAlignment(JLabel.CENTER);
 		accelerationLabel.setHorizontalAlignment(JLabel.CENTER);
 		
-		Font labelFont = ultraSlowLabel.getFont();
+		
 		ultraSlowLabel.setFont(new Font(labelFont.getName(), Font.PLAIN, 10));
 		slowLabel.setFont(new Font(labelFont.getName(), Font.PLAIN, 10));
 		defaultLabel.setFont(new Font(labelFont.getName(), Font.PLAIN, 10));

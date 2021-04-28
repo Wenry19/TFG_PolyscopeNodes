@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import com.upc.EasyProduction.impl.EasyProductionProgramNodeContribution;
 import com.ur.urcap.api.contribution.ContributionProvider;
@@ -49,7 +50,7 @@ public class MainPanel extends JLayeredPane{
 		return singleton;
 	}
 	
-	public void updateParamPanel(JPanel panel) {
+	public void updateParamPanel(JScrollPane panel) {
 		paramPanel.removeAll();
 		
 		paramPanel.setLayout(null);
