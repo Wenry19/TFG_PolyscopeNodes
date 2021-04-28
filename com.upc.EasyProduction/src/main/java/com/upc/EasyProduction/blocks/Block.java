@@ -28,34 +28,22 @@ public class Block extends JLabel{
 	protected String defaultCode;
 	protected String code;
 	protected String identation = "";
-	
-	//protected JFrame frame;
+
 	protected JPanel panel = new JPanel();
 	
-	protected MouseListener mouseListener;
+	protected MouseListener mouseListener = new MouseListener();
 	
 	protected final int WIDTH = 180;
 	protected final int HEIGHT = 40;
 	
-	protected int wfPos;
+	protected int wfPos = -1;
 	
-	protected Workflow wf;
-		
+	protected Workflow wf = Workflow.getInstance();
+	
 	
 	public Block() {
-		
-		wf = Workflow.getInstance();
 				
-		mouseListener = new MouseListener();
-				
-//		frame = new JFrame();
-//		
-//		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-//		frame.setLayout(new FlowLayout());
-//		frame.setSize(400, 400);
-//		frame.setVisible(false);
-		
-		panel.setLayout(new GridLayout(0, 1));
+		//panel.setLayout(new GridLayout(0, 1));
 		panel.setBounds(0, 0, 405, 149);
 		panel.setBorder(BorderFactory.createLineBorder(Color.gray));
 		
@@ -73,9 +61,6 @@ public class Block extends JLabel{
 		
 		//this.setFont(new Font("Khmer OS", Font.BOLD, 12));
 		
-		
-		wfPos = -1; // not in workflow
-
 	}
 	
 	
@@ -98,9 +83,6 @@ public class Block extends JLabel{
 		return name;
 	}
 	
-//	public JFrame getFrame() {
-//		return frame;
-//	}
 	
 	public void setWorkflowPosition(int pos) {
 		
@@ -132,29 +114,40 @@ public class Block extends JLabel{
 		return this.getClass().getName();
 	}
 	
+	public void setPanel() {
+		return;
+	}
+	
+	private void selectBlock() {
+		this.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+	}
+	
+	public void unselectBlock() {
+		this.setBorder(BorderFactory.createLineBorder(Color.gray));
+	}
+	
 	// inner classes
 	
 	protected class MouseListener extends MouseAdapter {
 		
 		
 		public void mouseClicked(MouseEvent e) {
-			
-			//if (!(e.getSource() instanceof )) {
-			
+						
 			Block b = (Block) e.getSource();
-				
-			//b.getFrame().setVisible(true);
-			
+							
 			MainPanel.getInstance().updateParamPanel(panel);
 			
-			//}
-
+			Workflow wf = Workflow.getInstance();
+			wf.setSelectedBlock(b);
+			selectBlock();
+			
 		}
 		
 		public void mouseDragged(MouseEvent e) {
 			
 			if (e.getSource() instanceof Operation) {
 				
+				Workflow wf = Workflow.getInstance();
 				wf.deleteBlock(((Block)e.getSource()).getWorkflowPosition());
 			}
 	        			

@@ -58,7 +58,7 @@ public class MainPanel extends JLayeredPane{
 		paramPanel.revalidate();
 		paramPanel.repaint();
 		
-		System.out.println("param panel");
+		//System.out.println("param panel");
 	}
 	
 //	public Workflow getWorkflowInstance() {

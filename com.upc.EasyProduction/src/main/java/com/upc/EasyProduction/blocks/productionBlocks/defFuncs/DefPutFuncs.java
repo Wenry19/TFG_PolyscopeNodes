@@ -1,88 +1,88 @@
 package com.upc.EasyProduction.blocks.productionBlocks.defFuncs;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Hashtable;
 
-import javax.swing.BorderFactory;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
-import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
-import com.upc.EasyProduction.panelManagement.Workflow;
 
-public class DefPutFuncs extends Block implements ActionListener{
+
+public class DefPutFuncs extends Block implements ChangeListener{
 	
-	JComboBox velocityComboBox;
-	JLabel velocityLabel;
+	private final Double DEFAULT_VELOCITY = 4.363323129985823;
+	private final Double DEFAULT_ACCELERATION = 8.726646259971647;
 	
-	JComboBox accelerationComboBox;
-	JLabel accelerationLabel;
+	private final Double SLOW_VELOCITY = DEFAULT_VELOCITY/2.0;
+	private final Double SLOW_ACCELERATION = DEFAULT_ACCELERATION/2.0;
 	
-	Double velocity;
-	Double acceleration;
+	private final Double ULTRA_SLOW_VELOCITY = DEFAULT_VELOCITY/8.0;
+	private final Double ULTRA_SLOW_ACCELERATION = DEFAULT_ACCELERATION/8.0;
+	
+	protected Double velocity = DEFAULT_VELOCITY;
+	protected Double acceleration = DEFAULT_ACCELERATION;
+	
+	private JSlider velocitySlider = new JSlider(JSlider.HORIZONTAL, 0, 2, 2);
+	private JSlider accelerationSlider = new JSlider(JSlider.HORIZONTAL, 0, 2, 2);
+	
+	private Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
+	private JLabel ultraSlowLabel = new JLabel("UltraSlow");
+	private JLabel slowLabel = new JLabel("Slow");
+	private JLabel defaultLabel = new JLabel("Default");
+	
+	private JLabel velocityLabel = new JLabel("Velocity");
+	private JLabel accelerationLabel = new JLabel("Acceleration");
 	
 	public DefPutFuncs() {
 		
-		velocity = 4.363323129985823;
+		panel.setLayout(new GridLayout(0, 1, 0, -5));
+		// vertical gap -5 perquè sinó, no sé per què, es solapa amb el punter de slider...
 		
-		acceleration = 8.726646259971647;		
+		velocityLabel.setHorizontalAlignment(JLabel.CENTER);
+		accelerationLabel.setHorizontalAlignment(JLabel.CENTER);
 		
-		String[] Values = {"Default", "Slow"};
+		Font labelFont = ultraSlowLabel.getFont();
+		ultraSlowLabel.setFont(new Font(labelFont.getName(), Font.PLAIN, 10));
+		slowLabel.setFont(new Font(labelFont.getName(), Font.PLAIN, 10));
+		defaultLabel.setFont(new Font(labelFont.getName(), Font.PLAIN, 10));
 		
 		// velocity
-		velocityComboBox = new JComboBox(Values);
-		velocityComboBox.addActionListener(this);
-		velocityComboBox.setPreferredSize(new Dimension(100, 20));
 		
-		velocityLabel = new JLabel("Velocity");
-
+		velocitySlider.addChangeListener(this);
+		velocitySlider.setMajorTickSpacing(1);
+		velocitySlider.setPaintTicks(true);
+		
+		labelTable.put(0, ultraSlowLabel);
+		labelTable.put(1, slowLabel);
+		labelTable.put(2, defaultLabel);
+		
+		velocitySlider.setLabelTable(labelTable);
+		
+		velocitySlider.setPaintLabels(true);
+		
 		// acceleration
-		accelerationComboBox = new JComboBox(Values);
-		accelerationComboBox.addActionListener(this);
 		
-		accelerationLabel = new JLabel("Acceleration");
+		accelerationSlider.addChangeListener(this);
+		accelerationSlider.setMajorTickSpacing(1);
+		accelerationSlider.setPaintTicks(true);
+		
+		accelerationSlider.setLabelTable(labelTable);
+		
+		accelerationSlider.setPaintLabels(true);
+		
+		// panel
 		
 		panel.add(velocityLabel);
-		panel.add(velocityComboBox);
+		panel.add(velocitySlider);
 		panel.add(accelerationLabel);
-		panel.add(accelerationComboBox);
+		panel.add(accelerationSlider);
 		
-		//frame.add(panel);
-		//frame.pack();
-		
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == velocityComboBox) {
-			
-			if (velocityComboBox.getSelectedItem() == "Default") {
-				velocity = 4.363323129985823;
-			}
-			
-			else if (velocityComboBox.getSelectedItem() == "Slow") {
-				velocity = 0.5;
-			}			
-		}
-		
-		else if (e.getSource() == accelerationComboBox) {
-			
-			if (accelerationComboBox.getSelectedItem() == "Default") {
-				acceleration = 8.726646259971647;
-			}
-			
-			else if (accelerationComboBox.getSelectedItem() == "Slow") {
-				acceleration = 2.5;
-			}			
-		}
-		wf.updateDataModel();
 	}
 	
 	public Double getVelocity() {
@@ -97,6 +97,17 @@ public class DefPutFuncs extends Block implements ActionListener{
 	public BlockData getBlockData() {
 	    
 		return new DefPutFuncsData(getClassName(), velocity, acceleration);
+		
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void setPanel() {
 		
 	}
 

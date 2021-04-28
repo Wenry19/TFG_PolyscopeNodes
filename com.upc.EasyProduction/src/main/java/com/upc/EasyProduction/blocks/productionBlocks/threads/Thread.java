@@ -22,4 +22,8 @@ public class Thread extends Block{
 		return new ThreadData(getClassName());
 		
 	}
+	@Override
+	public void unselectBlock() {
+		this.setBorder(BorderFactory.createDashedBorder(null, 5, 5));
+	}
 }
