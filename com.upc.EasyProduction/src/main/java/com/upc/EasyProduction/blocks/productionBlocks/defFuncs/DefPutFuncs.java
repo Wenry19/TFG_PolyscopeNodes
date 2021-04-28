@@ -12,6 +12,7 @@ import javax.swing.event.ChangeListener;
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
+import com.upc.EasyProduction.panelManagement.Workflow;
 
 
 public class DefPutFuncs extends Block implements ChangeListener{
@@ -95,22 +96,78 @@ public class DefPutFuncs extends Block implements ChangeListener{
 		return acceleration;
 	}
 	
+	public void setVelocity(Double velocity) {
+		this.velocity = velocity;
+	}
+	
+	public void setAcceleration(Double acceleration) {
+		this.acceleration = acceleration;
+	}
+	
 	
 	public BlockData getBlockData() {
 	    
-		return new DefPutFuncsData(getClassName(), velocity, acceleration);
+		return new DefPutFuncsData(getClassName(), isSelected, velocity, acceleration);
 		
 	}
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		// TODO Auto-generated method stub
+		if (e.getSource() == velocitySlider) {
+			switch (velocitySlider.getValue()) {
+			case 0:
+				velocity = ULTRA_SLOW_VELOCITY;
+				break;
+			case 1:
+				velocity = SLOW_VELOCITY;
+				break;
+			case 2:
+				velocity = DEFAULT_VELOCITY;
+				break;
+			default:
+				velocity = DEFAULT_VELOCITY;
+				break;
+			}
+		}
+		else { // acceleration
+			
+			switch (accelerationSlider.getValue()) {
+			case 0:
+				acceleration = ULTRA_SLOW_ACCELERATION;
+				break;
+			case 1:
+				acceleration = SLOW_ACCELERATION;
+				break;
+			case 2:
+				acceleration = DEFAULT_ACCELERATION;
+				break;
+			default:
+				acceleration = DEFAULT_ACCELERATION;
+				break;
+			}
+			
+		}
+		
+		Workflow.getInstance().updateDataModel();
 		
 	}
 	
 	@Override
 	public void setPanel() {
-		
+		// set velocity
+		if (velocity == DEFAULT_VELOCITY)
+			velocitySlider.setValue(2);
+		else if (velocity == SLOW_VELOCITY)
+			velocitySlider.setValue(1);
+		else if (velocity == ULTRA_SLOW_VELOCITY)
+			velocitySlider.setValue(0);
+		// set acceleration
+		if (acceleration == DEFAULT_VELOCITY)
+			accelerationSlider.setValue(2);
+		else if (acceleration == SLOW_VELOCITY)
+			accelerationSlider.setValue(1);
+		else if (acceleration == ULTRA_SLOW_VELOCITY)
+			accelerationSlider.setValue(0);
 	}
 
 }

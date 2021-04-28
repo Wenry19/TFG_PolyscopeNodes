@@ -6,7 +6,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class CallFuncsData extends BlockData{
 	
-	public CallFuncsData(String className) {
+	public CallFuncsData(String className, Boolean isSelected) {
 		this.className = className;
 	}
 }

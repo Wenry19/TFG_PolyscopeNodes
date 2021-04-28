@@ -10,7 +10,7 @@ public class HumanWork extends Block{
 	
 	public BlockData getBlockData() {
 			
-		return new HumanWorkData(getClassName());
+		return new HumanWorkData(getClassName(), isSelected);
 		
 	}
 

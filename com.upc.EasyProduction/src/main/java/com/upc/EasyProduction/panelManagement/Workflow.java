@@ -327,11 +327,13 @@ public class Workflow extends JPanel {
 		if (currentSelectedBlock!= null) {
 			currentSelectedBlock.unselectBlock();
 		}
+		updateDataModel();
 	}
 	
 	public void setSelectedBlock(Block b) {
 		unselectBlock();
 		currentSelectedBlock = b;
+		updateDataModel();
 		
 	}
 }

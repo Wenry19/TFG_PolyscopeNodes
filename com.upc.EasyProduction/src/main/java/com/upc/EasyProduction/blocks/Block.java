@@ -40,7 +40,9 @@ public class Block extends JLabel{
 	
 	protected int wfPos = -1;
 	
-	protected Workflow wf = Workflow.getInstance();
+	protected Boolean isSelected = false;
+	
+	//protected Workflow wf = Workflow.getInstance(); // dona problemes... diu que es null wtf
 	
 	
 	public Block() {
@@ -119,10 +121,19 @@ public class Block extends JLabel{
 	
 	private void selectBlock() {
 		this.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+		isSelected = true;
 	}
 	
 	public void unselectBlock() {
 		this.setBorder(BorderFactory.createLineBorder(Color.gray));
+		isSelected = false;
+	}
+	
+	public void setIsSelected(Boolean isSelected) {
+		this.isSelected = isSelected;
+		if (isSelected) {
+			selectBlock();
+		}
 	}
 	
 	// inner classes

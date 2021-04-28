@@ -19,7 +19,7 @@ public class Thread extends Block{
 	
 	public BlockData getBlockData() {
 		
-		return new ThreadData(getClassName());
+		return new ThreadData(getClassName(), isSelected);
 		
 	}
 	@Override

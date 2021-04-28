@@ -6,7 +6,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class OperationData extends BlockData{
 	
 	
-	public OperationData(String className) {
+	public OperationData(String className, Boolean isSelected) {
 		
 		this.className = className;
 	}

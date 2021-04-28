@@ -6,7 +6,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class FlowInstructionsData extends BlockData{
 			
-	public FlowInstructionsData(String className) {
+	public FlowInstructionsData(String className, Boolean isSelected) {
 		
 		this.className = className;		
 	}

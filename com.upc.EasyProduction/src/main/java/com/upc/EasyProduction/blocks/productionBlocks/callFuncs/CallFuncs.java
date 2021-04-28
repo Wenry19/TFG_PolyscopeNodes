@@ -10,7 +10,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class CallFuncs extends Block{
 	
 	public BlockData getBlockData() {
-		return new CallFuncsData(getClassName());
+		return new CallFuncsData(getClassName(), isSelected);
 	}
 	
 }

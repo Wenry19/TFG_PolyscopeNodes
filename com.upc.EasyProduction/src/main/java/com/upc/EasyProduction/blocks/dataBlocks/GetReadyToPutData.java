@@ -7,7 +7,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class GetReadyToPutData extends BlockData{
 			
-	public GetReadyToPutData(String className) {
+	public GetReadyToPutData(String className, Boolean isSelected) {
 		
 		this.className = className;
 				

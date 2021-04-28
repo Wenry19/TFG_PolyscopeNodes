@@ -10,7 +10,7 @@ public class Initialize extends Block{
 	
 	public BlockData getBlockData() {
 		
-		return new InitializeData(getClassName());
+		return new InitializeData(getClassName(), isSelected);
 		
 	}
 

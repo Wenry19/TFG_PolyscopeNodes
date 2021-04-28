@@ -5,6 +5,8 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class BlockData{
 	
 	protected String className;
+	
+	protected Boolean isSelected = false;
 		
 	public String getClassName() {
 		return className;

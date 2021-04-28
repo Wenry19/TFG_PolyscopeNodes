@@ -27,6 +27,6 @@ public class Operation extends Block{
 	}
 	
 	public BlockData getBlockData() {
-		return new OperationData(getClassName());
+		return new OperationData(getClassName(), isSelected);
 	}
 }

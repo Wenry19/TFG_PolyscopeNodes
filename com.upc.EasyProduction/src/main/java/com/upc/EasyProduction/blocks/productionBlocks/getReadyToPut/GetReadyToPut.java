@@ -10,7 +10,7 @@ public class GetReadyToPut extends Block{
 	
 	public BlockData getBlockData() {
 		
-		return new GetReadyToPutData(getClassName());
+		return new GetReadyToPutData(getClassName(), isSelected);
 	}
 
 }

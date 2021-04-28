@@ -6,7 +6,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class HumanWorkData extends BlockData{
 		
-	public HumanWorkData(String className) {
+	public HumanWorkData(String className, Boolean isSelected) {
 		
 		this.className = className;		
 	}
