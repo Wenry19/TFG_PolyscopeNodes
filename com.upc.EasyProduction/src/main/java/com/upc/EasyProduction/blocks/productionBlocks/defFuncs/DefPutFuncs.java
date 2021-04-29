@@ -113,6 +113,7 @@ public class DefPutFuncs extends Block implements ChangeListener{
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
+		
 		if (e.getSource() == velocitySlider) {
 			switch (velocitySlider.getValue()) {
 			case 0:
@@ -154,6 +155,7 @@ public class DefPutFuncs extends Block implements ChangeListener{
 	
 	@Override
 	public void setPanel() {
+		
 		// set velocity
 		if (velocity == DEFAULT_VELOCITY)
 			velocitySlider.setValue(2);
@@ -161,6 +163,7 @@ public class DefPutFuncs extends Block implements ChangeListener{
 			velocitySlider.setValue(1);
 		else if (velocity == ULTRA_SLOW_VELOCITY)
 			velocitySlider.setValue(0);
+		
 		// set acceleration
 		if (acceleration == DEFAULT_VELOCITY)
 			accelerationSlider.setValue(2);

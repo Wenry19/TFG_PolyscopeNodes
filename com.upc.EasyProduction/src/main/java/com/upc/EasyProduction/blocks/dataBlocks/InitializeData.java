@@ -9,5 +9,6 @@ public class InitializeData extends BlockData{
 	public InitializeData(String className, Boolean isSelected) {
 		
 		this.className = className;
+		this.isSelected = isSelected;
 	}
 }

@@ -1,6 +1,5 @@
 package com.upc.EasyProduction.blocks;
 
-import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class BlockData{
 	
@@ -19,6 +18,8 @@ public class BlockData{
 		try {
 			Class c = Class.forName(className);
 			b = (Block) c.getDeclaredConstructor().newInstance();
+			
+			b.setIsSelected(isSelected);
 		}
 		catch (Exception e) {
 			
@@ -26,6 +27,8 @@ public class BlockData{
 			
 		}
 		finally {}
+		
+		System.out.println("ADEUUUUUUUUUUUUUUUUUUUUUUUUUUU");
 		
 		return b;
 	}

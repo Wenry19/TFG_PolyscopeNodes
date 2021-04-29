@@ -52,6 +52,12 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 				
 				model.set(WORKFLOW_KEY, jsonStr);
 				
+				System.out.println("ON CHANGE ________________________________");
+				
+				System.out.println(model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW));
+				
+				System.out.println("END ON CHANGE ________________________________");
+				
 			}
 		});
 	}
@@ -65,7 +71,11 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		
 		wf.setWorkflowData(wfData);
 		
-		//System.out.println("open view");
+		System.out.println("OPEN VIEW ________________________________");
+		
+		System.out.println(model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW));
+		
+		System.out.println("END OPEN VIEW ________________________________");
 		
 		//actualitzar els panels de cada bloc!! <------------ IMPORTANT!!
 	}

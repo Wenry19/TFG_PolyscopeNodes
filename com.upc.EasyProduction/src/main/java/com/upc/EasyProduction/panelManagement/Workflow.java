@@ -314,7 +314,16 @@ public class Workflow extends JPanel {
 				
 		for (int i = 0; i < DataArray.length; i++) {
 			
-			workflow.add((Block)((BlockData)DataArray[i]).getBlockInstance());
+			Block aux = DataArray[i].getBlockInstance();
+			
+			
+			if (aux.getIsSelected()) {
+				currentSelectedBlock = aux;
+				currentSelectedBlock.setIsSelected(true);
+				System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOdetecta quin es el seleccionat :D");
+			}
+			
+			workflow.add(aux);
 			
 		}
 		
@@ -323,17 +332,11 @@ public class Workflow extends JPanel {
 		
 	}
 	
-	private void unselectBlock() {
-		if (currentSelectedBlock!= null) {
-			currentSelectedBlock.unselectBlock();
-		}
-		updateDataModel();
-	}
-	
 	public void setSelectedBlock(Block b) {
-		unselectBlock();
+		if (currentSelectedBlock != null) {
+			currentSelectedBlock.setIsSelected(false);
+		}
 		currentSelectedBlock = b;
-		updateDataModel();
 		
 	}
 }

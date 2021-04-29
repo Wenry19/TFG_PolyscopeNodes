@@ -119,21 +119,32 @@ public class Block extends JLabel{
 		return;
 	}
 	
-	private void selectBlock() {
+	protected void selectBlock() {
 		this.setBorder(BorderFactory.createLineBorder(Color.black, 2));
 		isSelected = true;
 	}
 	
-	public void unselectBlock() {
+	protected void unselectBlock() {
 		this.setBorder(BorderFactory.createLineBorder(Color.gray));
 		isSelected = false;
 	}
 	
 	public void setIsSelected(Boolean isSelected) {
+		
 		this.isSelected = isSelected;
+		
 		if (isSelected) {
+			MainPanel.getInstance().updateParamPanel(scroll);
+			Workflow.getInstance().setSelectedBlock(this);
 			selectBlock();
 		}
+		else {
+			unselectBlock();
+		}
+	}
+	
+	public Boolean getIsSelected() {
+		return isSelected;
 	}
 	
 	// inner classes
@@ -144,12 +155,10 @@ public class Block extends JLabel{
 		public void mouseClicked(MouseEvent e) {
 						
 			Block b = (Block) e.getSource();
-							
-			MainPanel.getInstance().updateParamPanel(scroll);
 			
-			Workflow wf = Workflow.getInstance();
-			wf.setSelectedBlock(b);
-			selectBlock();
+			b.setIsSelected(true);
+			
+			Workflow.getInstance().updateDataModel(); // important!! acostumar-me a fer updates de datamodel als listeners
 			
 		}
 		
@@ -158,7 +167,9 @@ public class Block extends JLabel{
 			if (e.getSource() instanceof Operation) {
 				
 				Workflow wf = Workflow.getInstance();
+				
 				wf.deleteBlock(((Block)e.getSource()).getWorkflowPosition());
+				
 			}
 	        			
 		}

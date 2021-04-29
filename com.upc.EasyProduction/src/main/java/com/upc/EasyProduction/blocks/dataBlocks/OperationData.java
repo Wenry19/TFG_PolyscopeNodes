@@ -9,5 +9,6 @@ public class OperationData extends BlockData{
 	public OperationData(String className, Boolean isSelected) {
 		
 		this.className = className;
+		this.isSelected = isSelected;
 	}
 }

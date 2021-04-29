@@ -8,6 +8,7 @@ public class HumanWorkData extends BlockData{
 		
 	public HumanWorkData(String className, Boolean isSelected) {
 		
-		this.className = className;		
+		this.className = className;
+		this.isSelected = isSelected;
 	}
 }

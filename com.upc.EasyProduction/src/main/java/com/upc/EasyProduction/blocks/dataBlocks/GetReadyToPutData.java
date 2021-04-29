@@ -10,6 +10,7 @@ public class GetReadyToPutData extends BlockData{
 	public GetReadyToPutData(String className, Boolean isSelected) {
 		
 		this.className = className;
+		this.isSelected = isSelected;
 				
 	}
 }

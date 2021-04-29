@@ -8,6 +8,7 @@ public class FlowInstructionsData extends BlockData{
 			
 	public FlowInstructionsData(String className, Boolean isSelected) {
 		
-		this.className = className;		
+		this.className = className;
+		this.isSelected = isSelected;
 	}
 }
