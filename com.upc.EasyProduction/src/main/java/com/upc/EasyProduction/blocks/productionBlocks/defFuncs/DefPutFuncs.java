@@ -40,6 +40,8 @@ public class DefPutFuncs extends Block implements ChangeListener{
 	private JLabel velocityLabel = new JLabel("Velocity");
 	private JLabel accelerationLabel = new JLabel("Acceleration");
 	
+	private boolean controlUpdateDataModel = true;
+	
 	public DefPutFuncs() {
 		
 		panel.setLayout(new GridLayout(0, 1, 0, -5));
@@ -114,47 +116,58 @@ public class DefPutFuncs extends Block implements ChangeListener{
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		
-		if (e.getSource() == velocitySlider) {
-			switch (velocitySlider.getValue()) {
-			case 0:
-				velocity = ULTRA_SLOW_VELOCITY;
-				break;
-			case 1:
-				velocity = SLOW_VELOCITY;
-				break;
-			case 2:
-				velocity = DEFAULT_VELOCITY;
-				break;
-			default:
-				velocity = DEFAULT_VELOCITY;
-				break;
-			}
-		}
-		else { // acceleration
-			
-			switch (accelerationSlider.getValue()) {
-			case 0:
-				acceleration = ULTRA_SLOW_ACCELERATION;
-				break;
-			case 1:
-				acceleration = SLOW_ACCELERATION;
-				break;
-			case 2:
-				acceleration = DEFAULT_ACCELERATION;
-				break;
-			default:
-				acceleration = DEFAULT_ACCELERATION;
-				break;
-			}
-			
-		}
+		JSlider source = (JSlider)e.getSource();
 		
-		Workflow.getInstance().updateDataModel();
+		if (!source.getValueIsAdjusting()) {
+		
+			if (source == velocitySlider) {
+				switch (velocitySlider.getValue()) {
+				case 0:
+					velocity = ULTRA_SLOW_VELOCITY;
+					break;
+				case 1:
+					velocity = SLOW_VELOCITY;
+					break;
+				case 2:
+					velocity = DEFAULT_VELOCITY;
+					break;
+				default:
+					velocity = DEFAULT_VELOCITY;
+					break;
+				}
+			}
+			else { // acceleration
+				
+				switch (accelerationSlider.getValue()) {
+				case 0:
+					acceleration = ULTRA_SLOW_ACCELERATION;
+					break;
+				case 1:
+					acceleration = SLOW_ACCELERATION;
+					break;
+				case 2:
+					acceleration = DEFAULT_ACCELERATION;
+					break;
+				default:
+					acceleration = DEFAULT_ACCELERATION;
+					break;
+				}
+				
+			}
+			
+			if (controlUpdateDataModel) {
+				Workflow.getInstance().updateDataModel();
+				
+				System.out.println(this.getClassName());
+			}
+		}
 		
 	}
 	
 	@Override
 	public void setPanel() {
+		
+		controlUpdateDataModel = false;
 		
 		// set velocity
 		if (velocity == DEFAULT_VELOCITY)
@@ -171,6 +184,8 @@ public class DefPutFuncs extends Block implements ChangeListener{
 			accelerationSlider.setValue(1);
 		else if (acceleration == ULTRA_SLOW_VELOCITY)
 			accelerationSlider.setValue(0);
+		
+		controlUpdateDataModel = true;
 	}
 
 }

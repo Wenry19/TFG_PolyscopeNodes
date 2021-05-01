@@ -2,14 +2,12 @@ package com.upc.EasyProduction.panelManagement;
 
 
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -338,7 +336,6 @@ public class Workflow extends JPanel {
 			if (aux.getIsSelected()) {
 				currentSelectedBlock = aux;
 				currentSelectedBlock.setIsSelected(true);
-				System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOdetecta quin es el seleccionat :D");
 			}
 			
 			workflow.add(aux);
@@ -355,6 +352,5 @@ public class Workflow extends JPanel {
 			currentSelectedBlock.setIsSelected(false);
 		}
 		currentSelectedBlock = b;
-		
 	}
 }

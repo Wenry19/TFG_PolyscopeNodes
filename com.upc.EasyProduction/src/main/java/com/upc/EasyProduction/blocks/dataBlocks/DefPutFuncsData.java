@@ -30,18 +30,14 @@ public class DefPutFuncsData extends BlockData{
 	
 	@Override
 	public Block getBlockInstance() {
-		
-		// NO ES CRIDA TOT I SOBREESCRIURE AL METODE DE LA SUPERCLASSE
-		
+				
 		DefPutFuncs b = (DefPutFuncs) super.getBlockInstance();
 		
 		b.setVelocity(velocity);
 		b.setAcceleration(acceleration);
 		
 		b.setPanel();
-		
-		System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-		
+				
 		return (Block) b;
 	}
 	
