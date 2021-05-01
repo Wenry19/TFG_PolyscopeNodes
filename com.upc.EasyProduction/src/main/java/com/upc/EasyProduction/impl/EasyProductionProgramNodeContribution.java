@@ -9,16 +9,7 @@ import com.ur.urcap.api.domain.undoredo.UndoRedoManager;
 import com.ur.urcap.api.domain.undoredo.UndoableChanges;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.blocks.dataBlocks.CallFuncsData;
-import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
-import com.upc.EasyProduction.blocks.dataBlocks.FlowInstructionsData;
-import com.upc.EasyProduction.blocks.dataBlocks.GetReadyToPutData;
-import com.upc.EasyProduction.blocks.dataBlocks.HumanWorkData;
-import com.upc.EasyProduction.blocks.dataBlocks.InitializeData;
-import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
-import com.upc.EasyProduction.blocks.dataBlocks.ThreadData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class EasyProductionProgramNodeContribution implements ProgramNodeContribution{
@@ -35,21 +26,26 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	
 	private static final String WORKFLOW_KEY = "workflow"; // keys that register the changes
 	
-	private static final String DEFAULT_WORKFLOW = Workflow.getInstance().getDEFAULT_WORKFLOWdata(); // default values for each key
+	private static final String[] DEFAULT_WORKFLOW = Workflow.getInstance().getDEFAULT_WORKFLOWdata(); // default values for each key
 	
 	
+	private static final String TYPES_KEY = "types";
 	
-	private final RuntimeTypeAdapterFactory<BlockData> BlockDataAdapterFactory = RuntimeTypeAdapterFactory.of(BlockData.class, "type")
-		    .registerSubtype(CallFuncsData.class, "CallFuncsData")
-		    .registerSubtype(DefPutFuncsData.class, "DefPutFuncsData")
-		    .registerSubtype(FlowInstructionsData.class, "FlowInstructionsData")
-		    .registerSubtype(GetReadyToPutData.class, "GetReadyToPutData")
-		    .registerSubtype(HumanWorkData.class, "HumanWorkData")
-		    .registerSubtype(InitializeData.class, "InitializeData")
-		    .registerSubtype(OperationData.class, "OperationData")
-		    .registerSubtype(ThreadData.class, "ThreadData");
+	private static final String[] DEFAULT_TYPES = Workflow.getInstance().getDEFAULT_TYPESdata();
 	
-	private final Gson gson = new GsonBuilder().registerTypeAdapterFactory(BlockDataAdapterFactory).setPrettyPrinting().create();
+//	private final RuntimeTypeAdapterFactory<BlockData> BlockDataAdapterFactory = RuntimeTypeAdapterFactory.of(BlockData.class, "type")
+//		    .registerSubtype(CallFuncsData.class, "CallFuncsData")
+//		    .registerSubtype(DefPutFuncsData.class, "DefPutFuncsData")
+//		    .registerSubtype(FlowInstructionsData.class, "FlowInstructionsData")
+//		    .registerSubtype(GetReadyToPutData.class, "GetReadyToPutData")
+//		    .registerSubtype(HumanWorkData.class, "HumanWorkData")
+//		    .registerSubtype(InitializeData.class, "InitializeData")
+//		    .registerSubtype(OperationData.class, "OperationData")
+//		    .registerSubtype(ThreadData.class, "ThreadData");
+	
+//	private final Gson gson = new GsonBuilder().registerTypeAdapterFactory(BlockDataAdapterFactory).setPrettyPrinting().create();
+	
+	private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	
 	
 	public EasyProductionProgramNodeContribution(ProgramAPIProvider apiProvider, EasyProductionProgramNodeView view, DataModel model) {
@@ -61,19 +57,35 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		this.wf = Workflow.getInstance();
 	}
 	
+	
 	public void onChangeInWF() {
 		undoRedoManager.recordChanges(new UndoableChanges() {
 			
 			@Override
 			public void executeChanges() { // record changes in data model
-								
-				String jsonStr = gson.toJson(wf.getWorkflowData());
 				
-				model.set(WORKFLOW_KEY, jsonStr);
+				BlockData[] blockDataArray = wf.getWorkflowData();
+				
+				String[] blockDataStringArray = new String[blockDataArray.length];
+				String[] typesDataStringArray = new String[blockDataArray.length];
+				
+				for (int i = 0; i < blockDataArray.length; i++) {
+					
+					blockDataStringArray[i] = gson.toJson(blockDataArray[i]);
+					typesDataStringArray[i] = blockDataArray[i].getClass().getName();
+					
+				}
+				
+				model.set(WORKFLOW_KEY, blockDataStringArray);
+				model.set(TYPES_KEY, typesDataStringArray);
 				
 				System.out.println("ON CHANGE ________________________________");
 				
-				System.out.println(model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW));
+				String[] aux = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
+				
+				for (int i = 0; i < aux.length; i++) {
+					System.out.println(aux[i]);
+				}
 				
 				System.out.println("END ON CHANGE ________________________________");
 				
@@ -83,18 +95,35 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 
 	@Override
 	public void openView() {
-						
-		BlockData[] wfData = gson.fromJson(model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW), BlockData[].class);
 		
-		wf.setWorkflowData(wfData);
+		String[] blockDataStringArray = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
+		String[] typesDataStringArray = model.get(TYPES_KEY, DEFAULT_TYPES);
+		
+		BlockData[] blockDataArray = new BlockData[blockDataStringArray.length];
+				
+		for (int i = 0; i < blockDataStringArray.length; i++) {
+			
+			try {
+				
+				blockDataArray[i] = (BlockData) gson.fromJson(blockDataStringArray[i], Class.forName(typesDataStringArray[i]));
+				
+			}
+			catch(Exception e){
+				System.out.println(e.toString());
+			}
+		}
+		
+		wf.setWorkflowData(blockDataArray);
 		
 		System.out.println("OPEN VIEW ________________________________");
 		
-		System.out.println(model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW));
+		String[] aux = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
+		
+		for (int i = 0; i < aux.length; i++) {
+			System.out.println(aux[i]);
+		}
 		
 		System.out.println("END OPEN VIEW ________________________________");
-		
-		//actualitzar els panels de cada bloc!! <------------ IMPORTANT!!
 	}
 
 	@Override

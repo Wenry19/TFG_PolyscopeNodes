@@ -60,7 +60,8 @@ public class Workflow extends JPanel {
 	
 	private JScrollPane scroll;
 	
-	private final String default_workflowData;
+	private String[] default_workflowData;
+	private String[] default_typesData;
 	
 	private Block currentSelectedBlock = null;
 	
@@ -73,7 +74,7 @@ public class Workflow extends JPanel {
 		// default workflow
 		
 		this.iniDefaultWorkflow();
-		this.default_workflowData = this.generateDEFAULT_WORKFLOWdata();
+		this.generateDEFAULTdata();
 		
 		scroll = new JScrollPane(this);
 		scroll.setPreferredSize(new Dimension(200, 404));
@@ -136,13 +137,29 @@ public class Workflow extends JPanel {
 		updatePanel();		
 	}
 	
-	private String generateDEFAULT_WORKFLOWdata() {
-		Gson gson = new GsonBuilder().setPrettyPrinting().create(); 
-		return gson.toJson(this.getWorkflowData());
+	private void generateDEFAULTdata() {
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		
+		BlockData[] blockDataArray = this.getWorkflowData();
+		
+		default_workflowData = new String[blockDataArray.length];
+		default_typesData= new String[blockDataArray.length];
+		
+		for (int i = 0; i < blockDataArray.length; i++) {
+			
+			default_workflowData[i] = gson.toJson(blockDataArray[i]);
+			default_typesData[i] = blockDataArray[i].getClass().getName();
+			
+		}
 	}
 	
-	public String getDEFAULT_WORKFLOWdata() {
+	public String[] getDEFAULT_WORKFLOWdata() {
 		return default_workflowData;
+	}
+	
+	public String[] getDEFAULT_TYPESdata() {
+		return default_typesData;
 	}
 	
 	private void updatePanel() {

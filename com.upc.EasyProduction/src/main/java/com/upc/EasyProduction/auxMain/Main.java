@@ -1,8 +1,8 @@
 package com.upc.EasyProduction.auxMain;
 
 import com.google.gson.Gson;
+
 import com.google.gson.GsonBuilder;
-import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.dataBlocks.CallFuncsData;
 import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
@@ -18,29 +18,29 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		RuntimeTypeAdapterFactory<BlockData> BlockDataAdapterFactory = RuntimeTypeAdapterFactory.of(BlockData.class, "type")
-			    .registerSubtype(CallFuncsData.class, "CallFuncsData")
-			    .registerSubtype(DefPutFuncsData.class, "DefPutFuncsData")
-			    .registerSubtype(FlowInstructionsData.class, "FlowInstructionsData")
-			    .registerSubtype(GetReadyToPutData.class, "GetReadyToPutData")
-			    .registerSubtype(HumanWorkData.class, "HumanWorkData")
-			    .registerSubtype(InitializeData.class, "InitializeData")
-			    .registerSubtype(OperationData.class, "OperationData")
-			    .registerSubtype(ThreadData.class, "ThreadData");
-		
-		Gson gson = new GsonBuilder().registerTypeAdapterFactory(BlockDataAdapterFactory).setPrettyPrinting().create();
-		
-		BlockData[] array = new BlockData[3];
-		
-		CallFuncsData callfuncdata = new CallFuncsData("hola", false);
-		DefPutFuncsData deffuncdata = new DefPutFuncsData("quetal", false, 3, 3);
-		FlowInstructionsData flowinstr = new FlowInstructionsData("adeu", true);
-		
-		array[0] = callfuncdata;
-		array[1] = deffuncdata;
-		array[2] = flowinstr;
-		
-		System.out.println(gson.toJson(array));
+//		RuntimeTypeAdapterFactory<BlockData> BlockDataAdapterFactory = RuntimeTypeAdapterFactory.of(BlockData.class, "type")
+//			    .registerSubtype(CallFuncsData.class, "CallFuncsData")
+//			    .registerSubtype(DefPutFuncsData.class, "DefPutFuncsData")
+//			    .registerSubtype(FlowInstructionsData.class, "FlowInstructionsData")
+//			    .registerSubtype(GetReadyToPutData.class, "GetReadyToPutData")
+//			    .registerSubtype(HumanWorkData.class, "HumanWorkData")
+//			    .registerSubtype(InitializeData.class, "InitializeData")
+//			    .registerSubtype(OperationData.class, "OperationData")
+//			    .registerSubtype(ThreadData.class, "ThreadData");
+//		
+//		Gson gson = new GsonBuilder().registerTypeAdapterFactory(BlockDataAdapterFactory).setPrettyPrinting().create();
+//		
+//		BlockData[] array = new BlockData[3];
+//		
+//		CallFuncsData callfuncdata = new CallFuncsData("hola", false);
+//		DefPutFuncsData deffuncdata = new DefPutFuncsData("quetal", false, 3, 3);
+//		FlowInstructionsData flowinstr = new FlowInstructionsData("adeu", true);
+//		
+//		array[0] = callfuncdata;
+//		array[1] = deffuncdata;
+//		array[2] = flowinstr;
+//		
+//		System.out.println(gson.toJson(array));
 		
 	}
 	

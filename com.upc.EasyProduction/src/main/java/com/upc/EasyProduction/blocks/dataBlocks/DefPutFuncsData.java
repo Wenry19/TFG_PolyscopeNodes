@@ -17,7 +17,7 @@ public class DefPutFuncsData extends BlockData{
 		this.velocity = velocity;
 		this.acceleration = acceleration;
 		this.isSelected = isSelected;
-				
+		
 	}
 	
 	public Double getVelocity() {
@@ -29,7 +29,7 @@ public class DefPutFuncsData extends BlockData{
 	}
 	
 	@Override
-	public Block getBlockInstance() { // ??????????????????????????!!!!!!!!!!!!!!!!!!!
+	public Block getBlockInstance() {
 		
 		// NO ES CRIDA TOT I SOBREESCRIURE AL METODE DE LA SUPERCLASSE
 		

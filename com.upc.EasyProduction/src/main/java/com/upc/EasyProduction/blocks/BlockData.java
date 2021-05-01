@@ -6,6 +6,8 @@ public class BlockData{
 	protected String className;
 	
 	protected Boolean isSelected = false;
+	
+	//protected int wfPos; // it will be used to identify the blockdata in the datamodel (key)
 		
 	public String getClassName() {
 		return className;
