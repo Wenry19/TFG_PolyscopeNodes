@@ -11,12 +11,18 @@ public class DefPutFuncsData extends BlockData{
 	private double velocity;
 	private double acceleration;
 	
-	public DefPutFuncsData(String className, Boolean isSelected, double velocity, double acceleration){
+	private int velocity_tag;
+	private int acceleration_tag;
+	
+	public DefPutFuncsData(String className, Boolean isSelected, double velocity, double acceleration, int velocity_tag, int acceleration_tag){
 		
 		this.className = className;
 		this.velocity = velocity;
 		this.acceleration = acceleration;
 		this.isSelected = isSelected;
+		
+		this.velocity_tag = velocity_tag;
+		this.acceleration_tag = acceleration_tag;
 		
 	}
 	
@@ -33,8 +39,8 @@ public class DefPutFuncsData extends BlockData{
 				
 		DefPutFuncs b = (DefPutFuncs) super.getBlockInstance();
 		
-		b.setVelocity(velocity);
-		b.setAcceleration(acceleration);
+		b.setVelocity(velocity, velocity_tag);
+		b.setAcceleration(acceleration, acceleration_tag);
 		
 		b.setPanel();
 				

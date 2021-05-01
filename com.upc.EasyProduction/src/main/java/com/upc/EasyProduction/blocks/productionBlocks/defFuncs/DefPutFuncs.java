@@ -29,6 +29,9 @@ public class DefPutFuncs extends Block implements ChangeListener{
 	protected Double velocity = DEFAULT_VELOCITY;
 	protected Double acceleration = DEFAULT_ACCELERATION;
 	
+	protected int velocity_tag = 2; // evitar errors de precisió
+	protected int acceleration_tag = 2;
+	
 	private JSlider velocitySlider = new JSlider(JSlider.HORIZONTAL, 0, 2, 2);
 	private JSlider accelerationSlider = new JSlider(JSlider.HORIZONTAL, 0, 2, 2);
 	
@@ -98,18 +101,20 @@ public class DefPutFuncs extends Block implements ChangeListener{
 		return acceleration;
 	}
 	
-	public void setVelocity(Double velocity) {
+	public void setVelocity(Double velocity, int velocity_tag) {
 		this.velocity = velocity;
+		this.velocity_tag = velocity_tag;
 	}
 	
-	public void setAcceleration(Double acceleration) {
+	public void setAcceleration(Double acceleration, int acceleration_tag) {
 		this.acceleration = acceleration;
+		this.acceleration_tag = acceleration_tag;
 	}
 	
 	
 	public BlockData getBlockData() {
 	    
-		return new DefPutFuncsData(getClassName(), isSelected, velocity, acceleration);
+		return new DefPutFuncsData(getClassName(), isSelected, velocity, acceleration, velocity_tag, acceleration_tag);
 		
 	}
 
@@ -118,18 +123,21 @@ public class DefPutFuncs extends Block implements ChangeListener{
 		
 		JSlider source = (JSlider)e.getSource();
 		
-		if (!source.getValueIsAdjusting()) {
+		if (!source.getValueIsAdjusting()) { // IMPORTANT!!
 		
 			if (source == velocitySlider) {
 				switch (velocitySlider.getValue()) {
 				case 0:
 					velocity = ULTRA_SLOW_VELOCITY;
+					velocity_tag = 0;
 					break;
 				case 1:
 					velocity = SLOW_VELOCITY;
+					velocity_tag = 1;
 					break;
 				case 2:
 					velocity = DEFAULT_VELOCITY;
+					velocity_tag = 2;
 					break;
 				default:
 					velocity = DEFAULT_VELOCITY;
@@ -141,12 +149,15 @@ public class DefPutFuncs extends Block implements ChangeListener{
 				switch (accelerationSlider.getValue()) {
 				case 0:
 					acceleration = ULTRA_SLOW_ACCELERATION;
+					acceleration_tag = 0;
 					break;
 				case 1:
 					acceleration = SLOW_ACCELERATION;
+					acceleration_tag = 1;
 					break;
 				case 2:
 					acceleration = DEFAULT_ACCELERATION;
+					acceleration_tag = 2;
 					break;
 				default:
 					acceleration = DEFAULT_ACCELERATION;
@@ -167,23 +178,12 @@ public class DefPutFuncs extends Block implements ChangeListener{
 	@Override
 	public void setPanel() {
 		
-		controlUpdateDataModel = false;
+		controlUpdateDataModel = false; //ULL!! FER PROVES SENSE?
 		
-		// set velocity
-		if (velocity == DEFAULT_VELOCITY)
-			velocitySlider.setValue(2);
-		else if (velocity == SLOW_VELOCITY)
-			velocitySlider.setValue(1);
-		else if (velocity == ULTRA_SLOW_VELOCITY)
-			velocitySlider.setValue(0);
+		velocitySlider.setValue(velocity_tag);
+		accelerationSlider.setValue(acceleration_tag);
 		
-		// set acceleration
-		if (acceleration == DEFAULT_VELOCITY)
-			accelerationSlider.setValue(2);
-		else if (acceleration == SLOW_VELOCITY)
-			accelerationSlider.setValue(1);
-		else if (acceleration == ULTRA_SLOW_VELOCITY)
-			accelerationSlider.setValue(0);
+		System.out.println("SET PANEL <-------------------------------------------------------------------");
 		
 		controlUpdateDataModel = true;
 	}
