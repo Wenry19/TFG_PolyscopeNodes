@@ -142,13 +142,13 @@
 	
 		<!-- start added byEnric -->
 		
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
-	      <groupId>com.google.code.gson</groupId>
-	      <artifactId>gson</artifactId>
-	      <version>2.8.6</version>
-	      <scope>compile</scope>
-	    </dependency>
-	
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.6</version>
+		</dependency>
+	    
 		<!-- end added byEnric -->
 	
 		<dependency>

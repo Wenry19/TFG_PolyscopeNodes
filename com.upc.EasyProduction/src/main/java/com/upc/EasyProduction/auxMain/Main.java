@@ -1,39 +1,64 @@
 package com.upc.EasyProduction.auxMain;
 
-import java.awt.Dimension;
-
-
-import java.io.Serializable;
-
-import javax.swing.JFrame;
-import javax.swing.JLayeredPane;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.blocks.productionBlocks.callFuncs.CallPutBase;
-import com.upc.EasyProduction.blocks.productionBlocks.defFuncs.DefPutBase;
-import com.upc.EasyProduction.blocks.productionBlocks.ini.InitializeVars;
-import com.upc.EasyProduction.panelManagement.MainPanel;
-import com.upc.EasyProduction.panelManagement.Workflow;
+import com.upc.EasyProduction.blocks.dataBlocks.CallFuncsData;
+import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
+import com.upc.EasyProduction.blocks.dataBlocks.FlowInstructionsData;
+import com.upc.EasyProduction.blocks.dataBlocks.GetReadyToPutData;
+import com.upc.EasyProduction.blocks.dataBlocks.HumanWorkData;
+import com.upc.EasyProduction.blocks.dataBlocks.InitializeData;
+import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
+import com.upc.EasyProduction.blocks.dataBlocks.ThreadData;
 
 public class Main {
 	
+	
 	public static void main(String[] args) {
 		
-		Workflow wf = Workflow.getInstance();
+		RuntimeTypeAdapterFactory<BlockData> BlockDataAdapterFactory = RuntimeTypeAdapterFactory.of(BlockData.class, "type")
+			    .registerSubtype(CallFuncsData.class, "CallFuncsData")
+			    .registerSubtype(DefPutFuncsData.class, "DefPutFuncsData")
+			    .registerSubtype(FlowInstructionsData.class, "FlowInstructionsData")
+			    .registerSubtype(GetReadyToPutData.class, "GetReadyToPutData")
+			    .registerSubtype(HumanWorkData.class, "HumanWorkData")
+			    .registerSubtype(InitializeData.class, "InitializeData")
+			    .registerSubtype(OperationData.class, "OperationData")
+			    .registerSubtype(ThreadData.class, "ThreadData");
 		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		Gson gson = new GsonBuilder().registerTypeAdapterFactory(BlockDataAdapterFactory).setPrettyPrinting().create();
 		
-		String jsonStr = gson.toJson(wf.getWorkflowData()); // BlockData[]
+		BlockData[] array = new BlockData[3];
 		
-		System.out.print(jsonStr); // :)
+		CallFuncsData callfuncdata = new CallFuncsData("hola", false);
+		DefPutFuncsData deffuncdata = new DefPutFuncsData("quetal", false, 3, 3);
+		FlowInstructionsData flowinstr = new FlowInstructionsData("adeu", true);
 		
-		BlockData[] wf_data = gson.fromJson(jsonStr, BlockData[].class);
+		array[0] = callfuncdata;
+		array[1] = deffuncdata;
+		array[2] = flowinstr;
 		
-		System.out.println(wf_data[2].getBlockInstance());
+		System.out.println(gson.toJson(array));
 		
 	}
+	
+//	public static void main(String[] args) {
+//		
+//		Workflow wf = Workflow.getInstance();
+//		
+//		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//		
+//		String jsonStr = gson.toJson(wf.getWorkflowData()); // BlockData[]
+//		
+//		System.out.print(jsonStr); // :)
+//		
+//		BlockData[] wf_data = gson.fromJson(jsonStr, BlockData[].class);
+//		
+//		System.out.println(wf_data[2].getBlockInstance());
+//		
+//	}
 
 //	public static void main(String[] args) {
 //		JFrame frame = new JFrame();

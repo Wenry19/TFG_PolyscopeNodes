@@ -268,7 +268,7 @@ public class Workflow extends JPanel {
 		return code;
 	}
 	
-	public void setWorkflowList(LinkedList workflow) {
+	public void setWorkflowList(LinkedList<Block> workflow) {
 		
 		this.workflow.clear();
 		this.workflow = workflow;
@@ -313,6 +313,7 @@ public class Workflow extends JPanel {
 		workflow.clear(); // clear current workflow
 				
 		for (int i = 0; i < DataArray.length; i++) {
+			
 			
 			Block aux = DataArray[i].getBlockInstance();
 			

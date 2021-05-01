@@ -2,7 +2,6 @@ package com.upc.EasyProduction.impl;
 
 import com.ur.urcap.api.contribution.ProgramNodeContribution;
 
-
 import com.ur.urcap.api.contribution.program.ProgramAPIProvider;
 import com.ur.urcap.api.domain.data.DataModel;
 import com.ur.urcap.api.domain.script.ScriptWriter;
@@ -10,7 +9,16 @@ import com.ur.urcap.api.domain.undoredo.UndoRedoManager;
 import com.ur.urcap.api.domain.undoredo.UndoableChanges;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 import com.upc.EasyProduction.blocks.BlockData;
+import com.upc.EasyProduction.blocks.dataBlocks.CallFuncsData;
+import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
+import com.upc.EasyProduction.blocks.dataBlocks.FlowInstructionsData;
+import com.upc.EasyProduction.blocks.dataBlocks.GetReadyToPutData;
+import com.upc.EasyProduction.blocks.dataBlocks.HumanWorkData;
+import com.upc.EasyProduction.blocks.dataBlocks.InitializeData;
+import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
+import com.upc.EasyProduction.blocks.dataBlocks.ThreadData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class EasyProductionProgramNodeContribution implements ProgramNodeContribution{
@@ -31,6 +39,19 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	
 	
 	
+	private final RuntimeTypeAdapterFactory<BlockData> BlockDataAdapterFactory = RuntimeTypeAdapterFactory.of(BlockData.class, "type")
+		    .registerSubtype(CallFuncsData.class, "CallFuncsData")
+		    .registerSubtype(DefPutFuncsData.class, "DefPutFuncsData")
+		    .registerSubtype(FlowInstructionsData.class, "FlowInstructionsData")
+		    .registerSubtype(GetReadyToPutData.class, "GetReadyToPutData")
+		    .registerSubtype(HumanWorkData.class, "HumanWorkData")
+		    .registerSubtype(InitializeData.class, "InitializeData")
+		    .registerSubtype(OperationData.class, "OperationData")
+		    .registerSubtype(ThreadData.class, "ThreadData");
+	
+	private final Gson gson = new GsonBuilder().registerTypeAdapterFactory(BlockDataAdapterFactory).setPrettyPrinting().create();
+	
+	
 	public EasyProductionProgramNodeContribution(ProgramAPIProvider apiProvider, EasyProductionProgramNodeView view, DataModel model) {
 		this.apiProvider = apiProvider;
 		this.view = view;
@@ -45,9 +66,7 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 			
 			@Override
 			public void executeChanges() { // record changes in data model
-				
-				Gson gson = new GsonBuilder().setPrettyPrinting().create();
-				
+								
 				String jsonStr = gson.toJson(wf.getWorkflowData());
 				
 				model.set(WORKFLOW_KEY, jsonStr);
@@ -64,9 +83,7 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 
 	@Override
 	public void openView() {
-		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-				
+						
 		BlockData[] wfData = gson.fromJson(model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW), BlockData[].class);
 		
 		wf.setWorkflowData(wfData);
