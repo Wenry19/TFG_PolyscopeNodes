@@ -6,16 +6,7 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 public class InitializeVars extends Initialize {
 	
 	
-	private int numberIniBases;
-	private int numberIniBearings;
-	private int numberIniProducts;
-	
-	
 	public InitializeVars() { // maybe it should be singleton
-				
-		numberIniBases = 0;
-		numberIniBearings = 0;
-		numberIniProducts = 0;
 		
 		identation = "  ";
 		
@@ -64,35 +55,12 @@ public class InitializeVars extends Initialize {
 		
 		this.setText(name);
 		
+		infoLabel.setText("Initialization of some relevant variables.");
+		
+		panel.add(infoLabel);
+		
 	}
 	
-	
-	public void setNumberIniBases(int numberIniBases) {
-		if (numberIniBases > 4) numberIniBases = 4;
-		this.numberIniBases = numberIniBases;
-	}
-	
-	public void setNumberIniBearings(int numberIniBearings) {
-		if (numberIniBearings > 4) numberIniBearings = 4;
-		this.numberIniBearings = numberIniBearings;
-	}
-
-	public void setNumberIniProducts(int numberIniProducts) {
-		if (numberIniProducts > 4) numberIniProducts = 4;
-		this.numberIniProducts = numberIniProducts;
-	}
-	
-	public int getNumberIniBases() {
-		return this.numberIniBases;
-	}
-	
-	public int getNumberIniBeaings() {
-		return this.numberIniBearings;
-	}
-	
-	public int getNumberIniProducts() {
-		return this.numberIniProducts;
-	}
 	
 	@Override
 	public String generateCode() {

@@ -12,11 +12,14 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class Thread extends Block{
 	
+	protected boolean activateExperimentTimer = false;
+	
 	public Thread() {
 		this.setBackground(new Color(0xd3caca));
 		this.setBorder(BorderFactory.createDashedBorder(null, 5, 5));
 	}
 	
+	@Override
 	public BlockData getBlockData() {
 		
 		return new ThreadData(getClassName(), isSelected);
