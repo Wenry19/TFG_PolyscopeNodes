@@ -17,6 +17,10 @@ public class CallPutBearing extends CallFuncs{
 			
 			this.setText(name);
 			
+			infoLabel.setText("Call of the function PutBearing defined previously.");
+			
+			panel.add(infoLabel);
+			
 		}
 				
 		@Override

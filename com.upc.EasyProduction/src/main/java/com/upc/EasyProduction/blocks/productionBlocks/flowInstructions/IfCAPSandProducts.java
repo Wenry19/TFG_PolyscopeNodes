@@ -20,6 +20,10 @@ public class IfCAPSandProducts extends FlowInstructions{
 		this.setText(name);
 		
 		this.setBackground(new Color(0xb2c2b1));
+		
+		infoLabel.setText("If of CAPs and Products placement.");
+		
+		panel.add(infoLabel);
 	}
 	
 

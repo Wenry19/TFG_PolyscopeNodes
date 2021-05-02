@@ -21,6 +21,10 @@ public class WhileProducts extends FlowInstructions {
 		this.setText(name);
 		
 		this.setBackground(new Color(0xb2c2b1));
+		
+		infoLabel.setText("While of products placement.");
+		
+		panel.add(infoLabel);
 	}
 	
 

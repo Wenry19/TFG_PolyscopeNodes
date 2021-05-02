@@ -21,6 +21,10 @@ public class IfBearings extends FlowInstructions{
 		this.setText(name);
 		
 		this.setBackground(new Color(0xb2c2b1));
+		
+		infoLabel.setText("If of bearings placement.");
+		
+		panel.add(infoLabel);
 	}
 	
 

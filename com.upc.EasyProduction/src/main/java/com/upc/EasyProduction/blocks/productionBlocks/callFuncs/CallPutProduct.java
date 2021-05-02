@@ -18,6 +18,10 @@ public class CallPutProduct extends CallFuncs{
 			
 			this.setText(name);
 			
+			infoLabel.setText("Call of the function PutProduct defined previously.");
+			
+			panel.add(infoLabel);
+			
 			
 		}
 		

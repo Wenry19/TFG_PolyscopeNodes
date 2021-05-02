@@ -19,6 +19,10 @@ public class EndWhileTrue extends FlowInstructions {
 		this.setText(name);
 		
 		this.setBackground(new Color(0xaeaebf));
+		
+		infoLabel.setText("End While True.");
+		
+		panel.add(infoLabel);
 	}
 	
 

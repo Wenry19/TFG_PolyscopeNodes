@@ -32,6 +32,10 @@ public class GetCAPs extends HumanWork {
 		
 		this.setText(name);
 		this.setBackground(new Color(0xe1e0bd));
+		
+		infoLabel.setText("Operator must place CAPs to finalize products and continue.");
+		
+		panel.add(infoLabel);
 	}
 	
 	@Override

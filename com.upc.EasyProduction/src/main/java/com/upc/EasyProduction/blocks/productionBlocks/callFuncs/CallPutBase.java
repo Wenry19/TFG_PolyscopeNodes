@@ -17,6 +17,10 @@ public class CallPutBase extends CallFuncs{
 		
 		this.setText(name);
 		
+		infoLabel.setText("Call of the function PutBase defined previously.");
+		
+		panel.add(infoLabel);
+		
 	}
 		
 	@Override
