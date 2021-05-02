@@ -3,21 +3,14 @@ package com.upc.EasyProduction.blocks;
 import java.awt.Color;
 
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Dictionary;
 
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
 import com.upc.EasyProduction.blocks.operationBlocks.Operation;
 import com.upc.EasyProduction.panelManagement.MainPanel;
 import com.upc.EasyProduction.panelManagement.Workflow;
@@ -80,6 +73,7 @@ public class Block extends JLabel{
 	}
 	
 	
+	
 	public String getName() {
 		return name;
 	}
@@ -134,8 +128,8 @@ public class Block extends JLabel{
 		this.isSelected = isSelected;
 		
 		if (isSelected) {
+			
 			MainPanel.getInstance().updateParamPanel(scroll);
-			Workflow.getInstance().setSelectedBlock(this);
 			selectBlock();
 		}
 		else {
@@ -155,10 +149,10 @@ public class Block extends JLabel{
 		public void mouseClicked(MouseEvent e) {
 						
 			Block b = (Block) e.getSource();
-			
-			b.setIsSelected(true);
-			
-			Workflow.getInstance().updateDataModel(); // important!! acostumar-me a fer updates de datamodel als listeners
+				
+			Workflow.getInstance().setSelectedBlock(b);
+				
+			Workflow.getInstance().updateDataModel();
 			
 		}
 		

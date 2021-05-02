@@ -59,12 +59,13 @@ public class MainPanel extends JLayeredPane{
 		paramPanel.revalidate();
 		paramPanel.repaint();
 		
-		//System.out.println("param panel");
 	}
 	
-//	public Workflow getWorkflowInstance() {
-//		return workflow;
-//	}
+	public void clearParamPanel() {
+		paramPanel.removeAll();
+		paramPanel.revalidate();
+		paramPanel.repaint();
+	}
 	
 	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		this.provider = provider;

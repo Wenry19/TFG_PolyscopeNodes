@@ -168,8 +168,6 @@ public class DefPutFuncs extends Block implements ChangeListener{
 			
 			if (controlUpdateDataModel) {
 				Workflow.getInstance().updateDataModel();
-				
-				System.out.println(this.getClassName());
 			}
 		}
 		
@@ -178,13 +176,11 @@ public class DefPutFuncs extends Block implements ChangeListener{
 	@Override
 	public void setPanel() {
 		
-		controlUpdateDataModel = false; //ULL!! FER PROVES SENSE?
+		controlUpdateDataModel = false; // per evitar que en faci update de la datamodel al fer setValue...
 		
 		velocitySlider.setValue(velocity_tag);
 		accelerationSlider.setValue(acceleration_tag);
-		
-		System.out.println("SET PANEL <-------------------------------------------------------------------");
-		
+				
 		controlUpdateDataModel = true;
 	}
 
