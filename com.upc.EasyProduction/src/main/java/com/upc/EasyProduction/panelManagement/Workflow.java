@@ -63,6 +63,8 @@ public class Workflow extends JPanel {
 	
 	private Block currentSelectedBlock = null;
 	
+	private boolean sim = true; // sim or real exec
+	
 	// singleton
 	
 	private static Workflow singleton = new Workflow();
@@ -362,5 +364,13 @@ public class Workflow extends JPanel {
 		}
 		currentSelectedBlock = b;
 		currentSelectedBlock.setIsSelected(true);
+	}
+	
+	public void setSim(boolean sim) {
+		this.sim = sim;
+	}
+	
+	public boolean getSim() {
+		return sim;
 	}
 }

@@ -33,18 +33,6 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	
 	private static final String[] DEFAULT_TYPES = Workflow.getInstance().getDEFAULT_TYPESdata();
 	
-//	private final RuntimeTypeAdapterFactory<BlockData> BlockDataAdapterFactory = RuntimeTypeAdapterFactory.of(BlockData.class, "type")
-//		    .registerSubtype(CallFuncsData.class, "CallFuncsData")
-//		    .registerSubtype(DefPutFuncsData.class, "DefPutFuncsData")
-//		    .registerSubtype(FlowInstructionsData.class, "FlowInstructionsData")
-//		    .registerSubtype(GetReadyToPutData.class, "GetReadyToPutData")
-//		    .registerSubtype(HumanWorkData.class, "HumanWorkData")
-//		    .registerSubtype(InitializeData.class, "InitializeData")
-//		    .registerSubtype(OperationData.class, "OperationData")
-//		    .registerSubtype(ThreadData.class, "ThreadData");
-	
-//	private final Gson gson = new GsonBuilder().registerTypeAdapterFactory(BlockDataAdapterFactory).setPrettyPrinting().create();
-	
 	private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	
 	

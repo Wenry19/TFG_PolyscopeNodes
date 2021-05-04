@@ -53,9 +53,9 @@ public class OptionsPanel extends JPanel {
 		
 		scroll = new JScrollPane(this);
 		
-		scroll.setPreferredSize(new Dimension(406, 254));
-		scroll.setSize(new Dimension(406, 254));
-		scroll.setLocation(200, 0);
+		scroll.setPreferredSize(new Dimension(406, 224));
+		scroll.setSize(new Dimension(406, 224));
+		scroll.setLocation(200, 30);
 				
 	}
 	
@@ -177,7 +177,8 @@ public class OptionsPanel extends JPanel {
 		private int prevX;
 		private int prevY;
 		
-		private int offsetOptionsPanel = 200; // ULL!!
+		private int offsetOptionsPanelX = 201; // ULL!!
+		private int offsetOptionsPanelY = 31; // ULL!!
 		
 		private Option currentOptionSelected;
 		
@@ -194,7 +195,7 @@ public class OptionsPanel extends JPanel {
 				
 				opt.getDragLabel().setVisible(true);
 				
-				opt.getDragLabel().setLocation(opt.getLocation().x + offsetOptionsPanel, opt.getLocation().y);
+				opt.getDragLabel().setLocation(opt.getLocation().x + offsetOptionsPanelX, opt.getLocation().y + offsetOptionsPanelY);
 				
 				currentOptionSelected = opt;
 			}
