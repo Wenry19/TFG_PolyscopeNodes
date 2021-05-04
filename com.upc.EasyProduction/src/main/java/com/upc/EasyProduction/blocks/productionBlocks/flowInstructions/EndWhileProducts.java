@@ -12,6 +12,7 @@ public class EndWhileProducts extends FlowInstructions{
 		identation = "      ";
 		
 		defaultCode = "\n"
+				+ "        Loop_1 = Loop_1 + 1\n"
 				+ "      end";
 		
 		name = "EndWhile";

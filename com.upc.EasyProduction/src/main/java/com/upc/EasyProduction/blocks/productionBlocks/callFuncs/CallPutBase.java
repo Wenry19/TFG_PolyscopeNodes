@@ -10,8 +10,8 @@ public class CallPutBase extends CallFuncs{
 		identation = "      ";
 		
 		defaultCode = "\n"
-				+ "      # $ 40 \"Call PUT_BASE_MATRIZ_ASSEMBLY\"\n"
-				+ "      PUT_BASE_MATRIZ_ASSEMBLY()\n";
+				+ "      $ 38 \"Invocar PUT_BASE_MATRIZ_ASSEMBLY\"\n"
+				+ "      PUT_BASE_MATRIZ_ASSEMBLY()";
 		
 		name = "CallPutBase";
 		

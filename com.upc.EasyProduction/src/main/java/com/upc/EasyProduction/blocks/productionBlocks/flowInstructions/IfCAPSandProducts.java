@@ -12,8 +12,8 @@ public class IfCAPSandProducts extends FlowInstructions{
 		identation = "      ";
 		
 		defaultCode = "\n"
-				+ "    # $ 63 \"If N_Bearings≥4\"\n"
-				+ "    if (N_Bearings >= 4):\n";
+				+ "    $ 59 \"If N_Bearings≥4\"\n"
+				+ "    if (N_Bearings >= 4):";
 		
 		name = "If(Bearings>=4)";
 		

@@ -33,7 +33,7 @@ public class Option extends JLabel {
 		this.dragOption.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		this.dragOption.setSize(new Dimension(WIDTH, HEIGHT));
 		this.dragOption.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-		this.dragOption.setBackground(Color.GRAY);
+		this.dragOption.setBackground(Color.LIGHT_GRAY);
 		this.dragOption.setVisible(false);
 		
 		

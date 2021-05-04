@@ -373,4 +373,13 @@ public class Workflow extends JPanel {
 	public boolean getSim() {
 		return sim;
 	}
+	
+	public String getSimOrNot() {
+		if (sim) {
+			return "#";
+		}
+		else {
+			return "";
+		}
+	}
 }

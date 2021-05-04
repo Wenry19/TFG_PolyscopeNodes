@@ -12,7 +12,7 @@ public class WhileProducts extends FlowInstructions {
 	    identation = "        ";
 		
 		defaultCode = "\n"
-				+ "      # $ 71 \"Loop 4 times\"\n"
+				+ "      $ 67 \"Bucle 4 veces\"\n"
 				+ "      Loop_1 = 0\n"
 				+ "      while (Loop_1 < 4):";
 		

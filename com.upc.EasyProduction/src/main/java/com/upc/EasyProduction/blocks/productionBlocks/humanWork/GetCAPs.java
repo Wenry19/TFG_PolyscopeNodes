@@ -13,19 +13,19 @@ public class GetCAPs extends HumanWork {
 		identation = "      ";
 		
 		defaultCode = "\n"
-				+ "      # $ 64 \"'(((( GET CAPs )))))'\"\n"
+				+ "      $ 60 \"'(((( GET CAPs )))))'\"\n"
 				+ "      # '(((( GET CAPs )))))'\n"
-				+ "      # $ 65 \"Set DO[2]=On\"\n"
+				+ "      $ 61 \"Ajustar L_Verde=Encender\"\n"
 				+ "      set_standard_digital_out(2, True)\n"
-				+ "      # $ 66 \"CAP_time: Start\"\n"
+				+ "      $ 62 \"CAP_time: Iniciar\"\n"
 				+ "      CAP_time_is_counting = True\n"
-				+ "      # $ 67 \"Popup: OPERATOR:  *** Place CAP on ASSEMBLY ***\"\n"
-				+ "      popup(\"OPERATOR:  *** Place CAP on ASSEMBLY ***\", \"Message\", False, False, blocking=True)\n"
-				+ "      # $ 68 \"CAPs≔CAPs+4\"\n"
+				+ "      $ 63 \"Aviso: OPERATOR:  *** Place CAP on ASSEMBLY ***\"\n"
+				+ "      popup(\"OPERATOR:  *** Place CAP on ASSEMBLY ***\", \"Mensaje\", False, False, blocking=True)\n"
+				+ "      $ 64 \"CAPs≔CAPs+4\"\n"
 				+ "      global CAPs=CAPs+4\n"
-				+ "      # $ 69 \"CAP_time: Stop\"\n"
+				+ "      $ 65 \"CAP_time: Detener\"\n"
 				+ "      CAP_time_is_counting = False\n"
-				+ "      # $ 70 \"Set DO[2]=Off\"\n"
+				+ "      $ 66 \"Ajustar L_Verde=Apagar\"\n"
 				+ "      set_standard_digital_out(2, False)";
 		
 		name = "GetCaps";

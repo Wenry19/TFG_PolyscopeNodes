@@ -12,9 +12,7 @@ public class IfBases extends FlowInstructions{
 		identation = "      ";
 		
 		defaultCode = "\n"
-				+ "    # $ 21 \"'StartPos_Bases= Punto de contacto con el stack=StackPos_Base'\"\n"
-				+ "    # 'StartPos_Bases= Punto de contacto con el stack=StackPos_Base'\n"
-				+ "    # $ 22 \"If N_Bases<4\"\n"
+				+ "    $ 22 \"If N_Bases<4\"\n"
 				+ "    if (N_Bases<4):";
 		
 		name = "If(Bases<4)";

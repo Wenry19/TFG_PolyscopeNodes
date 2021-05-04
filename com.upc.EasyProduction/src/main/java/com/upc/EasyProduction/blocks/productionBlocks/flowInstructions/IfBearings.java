@@ -13,7 +13,7 @@ public class IfBearings extends FlowInstructions{
 		identation = "      ";
 		
 		defaultCode = "\n"
-				+ "    # $ 41 \"If N_Bases≥4\"\n"
+				+ "    $ 39 \"If N_Bases≥4\"\n"
 				+ "    if (N_Bases >= 4):";
 		
 		name = "If(Bases>=4)";
