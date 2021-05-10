@@ -6,8 +6,10 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -89,9 +91,7 @@ public class Workflow extends JPanel {
 	// end singleton
 	
 	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
-		
 		this.provider = provider;
-		
 	}
 
 	public void iniDefaultWorkflow() {
@@ -183,15 +183,24 @@ public class Workflow extends JPanel {
 			this.add(workflow.get(i), c);
 			
 			if (i != workflow.size()-1) {
-				JLabel arrow = new JLabel();
-				// ULL!!!!
-				ImageIcon icon = new ImageIcon("/home/enric/eclipse-workspace/TFG_PolyscopeNodes/com.upc.EasyProduction/arrow_down32.png");
 				
-				arrow.setPreferredSize(new Dimension(24, 12));
-				arrow.setSize(new Dimension(24, 12));
-				arrow.setIcon(icon);
+				// ULL!!!
 				
-				this.add(arrow, c);
+				try {
+					JLabel arrow = new JLabel();
+					
+					BufferedImage image = ImageIO.read(this.getClass().getResource("/arrow_down32.png"));
+					ImageIcon icon = new ImageIcon(image);
+					
+					arrow.setPreferredSize(new Dimension(24, 12));
+					arrow.setSize(new Dimension(24, 12));
+					arrow.setIcon(icon);
+					
+					this.add(arrow, c);
+				}
+				catch(Exception e) {
+					System.out.println(e.toString());
+				}
 			}
 		}
 		

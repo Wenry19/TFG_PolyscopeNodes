@@ -2,8 +2,11 @@ package com.upc.EasyProduction.impl;
 
 
 import java.awt.Dimension;
+import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -41,6 +44,7 @@ public class EasyProductionProgramNodeView implements SwingProgramNodeView<EasyP
 	}
 	// TESTS IN ECLIPSE --------------------------------------------------------
 	
+	
 	private MainPanel mainPanel;
 	
 	private final ViewAPIProvider apiProvider;
@@ -54,14 +58,13 @@ public class EasyProductionProgramNodeView implements SwingProgramNodeView<EasyP
 	@Override
 	public void buildUI(JPanel panel, ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		// provider provides us access to the active instance of contribution
-		
+						
 		this.mainPanel = MainPanel.getInstance();
 		this.mainPanel.setProvider(provider);
 		
 		panel.setLayout(null);
 		
 		panel.add(mainPanel);
-		
 		
 	}
 
