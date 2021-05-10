@@ -6,10 +6,16 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JToggleButton;
 
+import com.upc.EasyProduction.blocks.BlockData;
+import com.upc.EasyProduction.blocks.dataBlocks.ExperimentTimeThreadData;
+import com.upc.EasyProduction.panelManagement.Workflow;
+
 
 public class ExperimentTimeThread extends Thread implements ItemListener{
 	
-	private JToggleButton toggleButton = new JToggleButton("Activate Experiment Timer", false);	
+	private JToggleButton toggleButton = new JToggleButton("Activate Experiment Timer", false);
+	
+	private boolean controlUpdateDataModel = true;
 	
 	public ExperimentTimeThread() {
 				
@@ -81,5 +87,28 @@ public class ExperimentTimeThread extends Thread implements ItemListener{
 			this.setEnabled(false);
 		}
 		
+		if(controlUpdateDataModel) {
+			Workflow.getInstance().updateDataModel();
+		}
+	}
+	
+	@Override
+	public BlockData getBlockData() {
+		return new ExperimentTimeThreadData(getClassName(), isSelected, activateExperimentTimer);
+	}
+	
+	public void setActivateExperimentTimer(Boolean activateExperimentTimer) {
+		this.activateExperimentTimer = activateExperimentTimer;
+	}
+	
+	@Override
+	public void setPanel() {
+		
+		controlUpdateDataModel = false;
+		
+		toggleButton.setSelected(activateExperimentTimer); // this does not trigger an action event
+		this.setEnabled(activateExperimentTimer);
+		
+		controlUpdateDataModel = true;
 	}
 }
