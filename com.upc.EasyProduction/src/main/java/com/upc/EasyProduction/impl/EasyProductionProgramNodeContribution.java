@@ -13,9 +13,7 @@ import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class EasyProductionProgramNodeContribution implements ProgramNodeContribution{
-	
-	private Workflow wf;
-	
+		
 	final private ProgramAPIProvider apiProvider;
 	final private EasyProductionProgramNodeView view;
 	final private DataModel model;
@@ -33,7 +31,8 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	
 	private static final String[] DEFAULT_TYPES = Workflow.getInstance().getDEFAULT_TYPESdata();
 	
-	private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	//private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	private final Gson gson = new GsonBuilder().create(); // ULL!!
 	
 	
 	public EasyProductionProgramNodeContribution(ProgramAPIProvider apiProvider, EasyProductionProgramNodeView view, DataModel model) {
@@ -41,8 +40,6 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		this.view = view;
 		this.model = model;
 		this.undoRedoManager = this.apiProvider.getProgramAPI().getUndoRedoManager();
-		
-		this.wf = Workflow.getInstance();
 	}
 	
 	
@@ -52,7 +49,7 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 			@Override
 			public void executeChanges() { // record changes in data model
 				
-				BlockData[] blockDataArray = wf.getWorkflowData();
+				BlockData[] blockDataArray = Workflow.getInstance().getWorkflowData();
 				
 				String[] blockDataStringArray = new String[blockDataArray.length];
 				String[] typesDataStringArray = new String[blockDataArray.length];
@@ -83,12 +80,12 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 
 	@Override
 	public void openView() {
-		
+				
 		String[] blockDataStringArray = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
 		String[] typesDataStringArray = model.get(TYPES_KEY, DEFAULT_TYPES);
 		
 		BlockData[] blockDataArray = new BlockData[blockDataStringArray.length];
-				
+								
 		for (int i = 0; i < blockDataStringArray.length; i++) {
 			
 			try {
@@ -101,7 +98,7 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 			}
 		}
 		
-		wf.setWorkflowData(blockDataArray);
+		Workflow.getInstance().setWorkflowData(blockDataArray);
 		
 		System.out.println("OPEN VIEW ________________________________");
 		
@@ -135,7 +132,7 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	@Override
 	public void generateScript(ScriptWriter writer) {
 		
-		writer.appendRaw(wf.generateCode());
+		writer.appendRaw(Workflow.getInstance().generateCode());
 		
 	}
 

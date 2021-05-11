@@ -139,7 +139,7 @@ public class Workflow extends JPanel {
 	
 	private void generateDEFAULTdata() {
 		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		Gson gson = new GsonBuilder().create();
 		
 		BlockData[] blockDataArray = this.getWorkflowData();
 		
