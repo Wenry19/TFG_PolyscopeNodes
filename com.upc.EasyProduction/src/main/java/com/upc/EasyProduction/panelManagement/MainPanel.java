@@ -19,8 +19,6 @@ import com.ur.urcap.api.contribution.ContributionProvider;
 
 public class MainPanel extends JLayeredPane implements ActionListener{
 	
-	private OptionsPanel optionsPanel;
-	private Workflow workflow;
 	private JPanel paramPanel = new JPanel();
 	
 	private JPanel simOrRealPanel = new JPanel();
@@ -33,16 +31,13 @@ public class MainPanel extends JLayeredPane implements ActionListener{
 	
 	private MainPanel() {
 		
-		workflow = Workflow.getInstance();
-		optionsPanel = OptionsPanel.getInstance();
-		
 		this.setLayout(null);
 		
-		this.add(optionsPanel.getScrollPanel(), JLayeredPane.DEFAULT_LAYER);
+		this.add(OptionsPanel.getInstance().getScrollPanel(), JLayeredPane.DEFAULT_LAYER);
 		
-		this.add(optionsPanel.getDragDropPanel(), JLayeredPane.DRAG_LAYER);
+		this.add(OptionsPanel.getInstance().getDragDropPanel(), JLayeredPane.DRAG_LAYER);
 		
-		this.add(workflow.getScrollPanel(), JLayeredPane.DRAG_LAYER);
+		this.add(Workflow.getInstance().getScrollPanel(), JLayeredPane.DRAG_LAYER);
 		
 		 
 		paramPanel.setBounds(200, 254, 405, 149);
@@ -78,7 +73,7 @@ public class MainPanel extends JLayeredPane implements ActionListener{
 	
 	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		this.provider = provider;
-		workflow.setProvider(provider);
+		Workflow.getInstance().setProvider(provider);
 	}
 	
 	private void iniSimOrRealPanel() {

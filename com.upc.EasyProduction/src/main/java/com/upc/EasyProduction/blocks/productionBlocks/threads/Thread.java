@@ -16,7 +16,7 @@ public class Thread extends Block{
 	
 	public Thread() {
 		this.setBackground(new Color(0xd3caca));
-		this.setBorder(BorderFactory.createDashedBorder(null, 5, 5));
+		//this.setBorder(BorderFactory.createDashedBorder(null, 5, 5)); // no li agrada a polyscope
 	}
 	
 	@Override
@@ -25,8 +25,8 @@ public class Thread extends Block{
 		return new ThreadData(getClassName(), isSelected);
 		
 	}
-	@Override
+	/*@Override
 	public void unselectBlock() {
 		this.setBorder(BorderFactory.createDashedBorder(null, 5, 5));
-	}
+	}*/
 }
