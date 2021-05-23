@@ -88,7 +88,7 @@ public class ExperimentTimeThread extends Thread implements ItemListener{
 		}
 		
 		if(controlUpdateDataModel) {
-			Workflow.getInstance().updateDataModel();
+			Workflow.getInstance().updateDataModel(wfPos);
 		}
 	}
 	

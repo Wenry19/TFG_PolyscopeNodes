@@ -134,7 +134,9 @@ public class Workflow extends JPanel {
 		
 		updateBlocksPositions();
 		
-		updatePanel();		
+		updatePanel();
+		
+		//updateDataModel(-1); // ull!!
 	}
 	
 	private void generateDEFAULTdata() {
@@ -233,7 +235,7 @@ public class Workflow extends JPanel {
 		
 		scroll.getViewport().scrollRectToVisible(rect);
 		
-		updateDataModel();
+		updateDataModel(position+1);
 		
 	}
 	
@@ -274,7 +276,7 @@ public class Workflow extends JPanel {
 		updateBlocksPositions();
 		scroll.getViewport().scrollRectToVisible(rect);
 		
-		updateDataModel();
+		updateDataModel(i);
 		
 	}
 	
@@ -301,7 +303,7 @@ public class Workflow extends JPanel {
 		
 		updatePanel();
 		updateBlocksPositions();
-		updateDataModel();
+		updateDataModel(-1);
 		
 	}
 	
@@ -309,10 +311,10 @@ public class Workflow extends JPanel {
 		return workflow;
 	}
 	
-	public void updateDataModel() {
+	public void updateDataModel(int wfPos) {
 
 		try {
-			provider.get().onChangeInWF();
+			provider.get().onChangeInWF(wfPos);
 		}
 		catch (Exception e) {
 			
@@ -390,5 +392,13 @@ public class Workflow extends JPanel {
 		else {
 			return "";
 		}
+	}
+	
+	public BlockData getWorkflowData(int wfPos) {
+		return workflow.get(wfPos).getBlockData();
+	}
+	
+	public int getLen() {
+		return workflow.size();
 	}
 }
