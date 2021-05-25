@@ -93,14 +93,6 @@ public class DefPutFuncs extends Block implements ChangeListener{
 		
 	}
 	
-	public Double getVelocity() {
-		return velocity;
-	}
-	
-	public Double getAcceleration() {
-		return acceleration;
-	}
-	
 	public void setVelocity(Double velocity, int velocity_tag) {
 		this.velocity = velocity;
 		this.velocity_tag = velocity_tag;
@@ -116,6 +108,17 @@ public class DefPutFuncs extends Block implements ChangeListener{
 	    
 		return new DefPutFuncsData(getClassName(), isSelected, velocity, acceleration, velocity_tag, acceleration_tag);
 		
+	}
+	
+	@Override
+	public void setPanel() {
+		
+		controlUpdateDataModel = false; // per evitar que faci update de la datamodel al fer setValue...
+		
+		velocitySlider.setValue(velocity_tag);
+		accelerationSlider.setValue(acceleration_tag);
+				
+		controlUpdateDataModel = true;
 	}
 
 	@Override
@@ -171,17 +174,6 @@ public class DefPutFuncs extends Block implements ChangeListener{
 			}
 		}
 		
-	}
-	
-	@Override
-	public void setPanel() {
-		
-		controlUpdateDataModel = false; // per evitar que en faci update de la datamodel al fer setValue...
-		
-		velocitySlider.setValue(velocity_tag);
-		accelerationSlider.setValue(acceleration_tag);
-				
-		controlUpdateDataModel = true;
 	}
 
 }

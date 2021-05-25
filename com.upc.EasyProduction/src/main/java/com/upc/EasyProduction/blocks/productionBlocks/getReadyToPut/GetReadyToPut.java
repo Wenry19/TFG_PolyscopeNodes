@@ -93,14 +93,6 @@ public class GetReadyToPut extends Block implements ChangeListener{
 		
 	}
 	
-	public Double getVelocity() {
-		return velocity;
-	}
-	
-	public Double getAcceleration() {
-		return acceleration;
-	}
-	
 	public void setVelocity(Double velocity, int velocity_tag) {
 		this.velocity = velocity;
 		this.velocity_tag = velocity_tag;
@@ -109,6 +101,22 @@ public class GetReadyToPut extends Block implements ChangeListener{
 	public void setAcceleration(Double acceleration, int acceleration_tag) {
 		this.acceleration = acceleration;
 		this.acceleration_tag = acceleration_tag;
+	}
+	
+	public BlockData getBlockData() {
+		
+		return new GetReadyToPutData(getClassName(), isSelected, velocity, acceleration, velocity_tag, acceleration_tag);
+	}
+	
+	@Override
+	public void setPanel() {
+		
+		controlUpdateDataModel = false; // per evitar que en faci update de la datamodel al fer setValue...
+		
+		velocitySlider.setValue(velocity_tag);
+		accelerationSlider.setValue(acceleration_tag);
+				
+		controlUpdateDataModel = true;
 	}
 
 	@Override
@@ -164,22 +172,6 @@ public class GetReadyToPut extends Block implements ChangeListener{
 			}
 		}
 		
-	}
-	
-	@Override
-	public void setPanel() {
-		
-		controlUpdateDataModel = false; // per evitar que en faci update de la datamodel al fer setValue...
-		
-		velocitySlider.setValue(velocity_tag);
-		accelerationSlider.setValue(acceleration_tag);
-				
-		controlUpdateDataModel = true;
-	}
-	
-	public BlockData getBlockData() {
-		
-		return new GetReadyToPutData(getClassName(), isSelected, velocity, acceleration, velocity_tag, acceleration_tag);
 	}
 
 }

@@ -17,8 +17,8 @@ public class BlockData{
 		Block b = null;
 		
 		try {
-			Class c = Class.forName(className);
-			b = (Block) c.getDeclaredConstructor().newInstance();
+			
+			b = (Block) Class.forName(className).getDeclaredConstructor().newInstance();
 			
 			b.setIsSelected(isSelected);
 		}
@@ -27,8 +27,7 @@ public class BlockData{
 			System.out.println(e.toString());
 			
 		}
-		finally {}
-				
+		
 		return b;
 	}
 }

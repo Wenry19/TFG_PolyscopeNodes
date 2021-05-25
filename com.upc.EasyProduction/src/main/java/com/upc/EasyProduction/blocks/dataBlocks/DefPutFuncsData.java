@@ -26,14 +26,6 @@ public class DefPutFuncsData extends BlockData{
 		
 	}
 	
-	public Double getVelocity() {
-		return velocity;
-	}
-	
-	public Double getAcceleration() {
-		return acceleration;
-	}
-	
 	@Override
 	public Block getBlockInstance() {
 				

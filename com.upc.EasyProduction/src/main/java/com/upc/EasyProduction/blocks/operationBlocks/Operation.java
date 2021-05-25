@@ -16,7 +16,7 @@ public class Operation extends Block{
 	
 	@Override
 	public String getDefaultCode() {
-		return "\n" + identation + defaultCode; //ULL!!!!
+		return "\n" + identation + defaultCode; //ULL!!!! (funciona només si és una línia de codi)
 	}
 	
 	@Override

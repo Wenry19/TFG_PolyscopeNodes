@@ -1,6 +1,5 @@
 package com.upc.EasyProduction.blocks.operationBlocks;
 
-import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class GetAnalogInput extends Operation{
 	

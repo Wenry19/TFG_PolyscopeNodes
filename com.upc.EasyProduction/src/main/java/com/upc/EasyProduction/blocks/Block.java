@@ -34,32 +34,30 @@ public class Block extends JLabel{
 	protected int wfPos = -1;
 	
 	protected Boolean isSelected = false;
-	
-	//protected Workflow wf = Workflow.getInstance(); // dona problemes... diu que es null wtf
-	
+		
 	
 	public Block() {
 
 		scroll.setBounds(0, 0, 406, 150);		
 		
-		this.addMouseListener(mouseListener);
-		this.addMouseMotionListener(mouseListener);
+		addMouseListener(mouseListener);
+		addMouseMotionListener(mouseListener);
 		
-		this.setOpaque(true);
-		this.setVerticalAlignment(JLabel.CENTER);
-		this.setHorizontalAlignment(JLabel.CENTER);
-		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		this.setSize(new Dimension(WIDTH, HEIGHT));
-		this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-		this.setBackground(Color.LIGHT_GRAY);
-		
-		//this.setFont(new Font("Khmer OS", Font.BOLD, 12));
-		
+		setOpaque(true);
+		setVerticalAlignment(JLabel.CENTER);
+		setHorizontalAlignment(JLabel.CENTER);
+		setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		setSize(new Dimension(WIDTH, HEIGHT));
+		setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+		setBackground(Color.LIGHT_GRAY);
+				
 	}
 	
 	
-	public String getCode() {
-		return generateCode();
+	// getters
+	
+	public String getName() {
+		return name;
 	}
 	
 	public String getDefaultCode() {
@@ -72,46 +70,49 @@ public class Block extends JLabel{
 		return code;
 	}
 	
-	
-	
-	public String getName() {
-		return name;
-	}
-	
-	
-	public void setWorkflowPosition(int pos) {
-		
-		wfPos = pos;
-		
-	}
-	
-	public int getWorkflowPosition() {
-		
-		return wfPos;
-		
+	public String getCode() {
+		return generateCode();
 	}
 	
 	public String getIdentation() {
 		return identation;
 	}
 	
-	public void setIdentation(String identation) {
-		this.identation = identation;
+	public int getWorkflowPosition() {
+		return wfPos;
 	}
 	
 	public BlockData getBlockData() { // EYE!!!!
-		
 		return null;
-		
 	}
 	
 	public String getClassName() {
 		return this.getClass().getName();
 	}
 	
+	public Boolean getIsSelected() {
+		return isSelected;
+	}
+	
+	
+	// setters
+	
+	public void setWorkflowPosition(int pos) {
+		wfPos = pos;
+	}
+	
+
+	public void setIdentation(String identation) {
+		this.identation = identation;
+	}
+	
+	
 	public void setPanel() {
 		return;
 	}
+	
+	
+	// select/unselect block management
 	
 	protected void selectBlock() {
 		this.setBorder(BorderFactory.createLineBorder(Color.black, 2));
@@ -137,16 +138,12 @@ public class Block extends JLabel{
 		}
 	}
 	
-	public Boolean getIsSelected() {
-		return isSelected;
-	}
-	
 	// inner classes
 	
 	protected class MouseListener extends MouseAdapter {
 		
 		
-		public void mouseClicked(MouseEvent e) {
+		public void mouseClicked(MouseEvent e) { // select block
 						
 			Block b = (Block) e.getSource();
 				
@@ -156,7 +153,7 @@ public class Block extends JLabel{
 			
 		}
 		
-		public void mouseDragged(MouseEvent e) {
+		public void mouseDragged(MouseEvent e) { // delete block
 			
 			if (e.getSource() instanceof Operation) {
 				

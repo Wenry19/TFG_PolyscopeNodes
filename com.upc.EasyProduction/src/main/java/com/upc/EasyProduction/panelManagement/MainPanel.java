@@ -67,6 +67,8 @@ public class MainPanel extends JLayeredPane{
 		paramPanel.repaint();
 	}
 	
+	// setters
+	
 	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		this.provider = provider;
 		Workflow.getInstance().setProvider(provider);

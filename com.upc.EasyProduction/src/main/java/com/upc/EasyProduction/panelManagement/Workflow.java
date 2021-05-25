@@ -91,6 +91,8 @@ public class Workflow extends JPanel {
 	
 	// end singleton
 	
+	// setters
+	
 	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		this.provider = provider;
 	}
@@ -98,7 +100,112 @@ public class Workflow extends JPanel {
 	public void setSystemAPI(SystemAPI sysAPI) {
 		this.sysAPI = sysAPI;
 	}
-
+	
+	// generate default data for data model!!
+	
+	private void generateDEFAULTdata() {
+		
+		Gson gson = new GsonBuilder().create();
+		
+		BlockData[] blockDataArray = this.getWorkflowData();
+		
+		default_workflowData = new String[blockDataArray.length];
+		default_typesData= new String[blockDataArray.length];
+		
+		for (int i = 0; i < blockDataArray.length; i++) {
+			
+			default_workflowData[i] = gson.toJson(blockDataArray[i]);
+			default_typesData[i] = blockDataArray[i].getClass().getName();
+			
+		}
+	}
+	
+	public String[] getDEFAULT_WORKFLOWdata() {
+		return default_workflowData;
+	}
+	
+	public String[] getDEFAULT_TYPESdata() {
+		return default_typesData;
+	}
+	
+	// simulation or real robot management
+	
+	public boolean getSim() {
+		return !sysAPI.getRobotSimulation().isRealRobot();
+	}
+	
+	public String getSimOrNot() {
+						
+		if (!sysAPI.getRobotSimulation().isRealRobot()) {
+			return "#";
+		}
+		else {
+			return "";
+		}
+	}
+	
+	
+	// update blocks positions
+	
+	private void updateBlocksPositions() {
+		for(int i = 0; i < workflow.size(); i++) {
+			workflow.get(i).setWorkflowPosition(i);
+		}
+	}
+	
+	// set selected block
+	
+	public void setSelectedBlock(Block b) {
+		if (currentSelectedBlock != null) {
+			currentSelectedBlock.setIsSelected(false);
+		}
+		currentSelectedBlock = b;
+		currentSelectedBlock.setIsSelected(true);
+	}
+	
+	
+	// ADD BLOCK
+	public void addBlock(String id, int position) {
+		
+		if (position == workflow.size() - 1) return;
+		
+		Block block = findBlock(id);
+		
+		block.setIdentation(workflow.get(position).getIdentation());
+		
+		workflow.add(position+1, block);
+		
+		Rectangle rect = this.scroll.getViewport().getViewRect();
+		
+		updateBlocksPositions();
+		
+		updatePanel();
+		
+		scroll.getViewport().scrollRectToVisible(rect);
+		
+		updateDataModel();
+		
+	}
+	
+	// DELETE BLOCK
+	public void deleteBlock(int i) {
+		
+		workflow.remove(i);
+		
+		Rectangle rect = this.scroll.getViewport().getViewRect();
+		
+		updatePanel();
+		
+		updateBlocksPositions();
+		
+		scroll.getViewport().scrollRectToVisible(rect);
+		
+		updateDataModel();
+		
+	}
+	
+	// ________________________________________________________________
+	
 	public void iniDefaultWorkflow() {
 		
 		workflow.clear();
@@ -142,31 +249,6 @@ public class Workflow extends JPanel {
 		updatePanel();		
 	}
 	
-	private void generateDEFAULTdata() {
-		
-		Gson gson = new GsonBuilder().create();
-		
-		BlockData[] blockDataArray = this.getWorkflowData();
-		
-		default_workflowData = new String[blockDataArray.length];
-		default_typesData= new String[blockDataArray.length];
-		
-		for (int i = 0; i < blockDataArray.length; i++) {
-			
-			default_workflowData[i] = gson.toJson(blockDataArray[i]);
-			default_typesData[i] = blockDataArray[i].getClass().getName();
-			
-		}
-	}
-	
-	public String[] getDEFAULT_WORKFLOWdata() {
-		return default_workflowData;
-	}
-	
-	public String[] getDEFAULT_TYPESdata() {
-		return default_typesData;
-	}
-	
 	private void updatePanel() {
 		
 		this.removeAll();
@@ -188,9 +270,7 @@ public class Workflow extends JPanel {
 			this.add(workflow.get(i), c);
 			
 			if (i != workflow.size()-1) {
-				
-				// ULL!!!
-				
+								
 				try {
 					JLabel arrow = new JLabel();
 					
@@ -214,75 +294,6 @@ public class Workflow extends JPanel {
 		
 	}
 	
-	private void updateBlocksPositions() {
-		for(int i = 0; i < workflow.size(); i++) {
-			workflow.get(i).setWorkflowPosition(i);
-		}
-	}
-	
-	public void addBlock(String id, int position) {
-		
-		if (position == workflow.size() - 1) return;
-		
-		Block block = findBlock(id);
-		
-		block.setIdentation(workflow.get(position).getIdentation());
-		
-		workflow.add(position+1, block);
-		
-		Rectangle rect = this.scroll.getViewport().getViewRect();
-		
-		updateBlocksPositions();
-		
-		updatePanel();
-		
-		scroll.getViewport().scrollRectToVisible(rect);
-		
-		updateDataModel();
-		
-	}
-	
-	private Block findBlock(String id) {
-				
-		if (id == "GetAnalogInput") {
-			return new GetAnalogInput();
-		}
-		
-		else if (id == "SetAnalogOutput") {
-			return new SetAnalogOutput();
-		}
-		
-		else if (id == "GetDigitalInput") {
-			return new GetDigitalInput();
-		}
-		
-		else if (id == "SetDigitalOutput") {
-			return new SetDigitalOutput();
-		}
-		
-		else if (id == "Sleep") {
-			return new Sleep();
-		}
-		
-		else { // if (id == "PopUp"){}
-			return new PopUp();
-		}
-		
-	}
-	
-	public void deleteBlock(int i) {
-		
-		workflow.remove(i);
-		
-		Rectangle rect = this.scroll.getViewport().getViewRect();
-		updatePanel();
-		updateBlocksPositions();
-		scroll.getViewport().scrollRectToVisible(rect);
-		
-		updateDataModel();
-		
-	}
-	
 	public JScrollPane getScrollPanel() {
 		
 		return scroll;
@@ -299,20 +310,6 @@ public class Workflow extends JPanel {
 		return code;
 	}
 	
-	public void setWorkflowList(LinkedList<Block> workflow) {
-		
-		this.workflow.clear();
-		this.workflow = workflow;
-		
-		updatePanel();
-		updateBlocksPositions();
-		updateDataModel();
-		
-	}
-	
-	public LinkedList<Block> getWorkflowList() {
-		return workflow;
-	}
 	
 	public void updateDataModel() {
 
@@ -322,7 +319,6 @@ public class Workflow extends JPanel {
 		catch (Exception e) {
 			
 		}
-		finally {}
 	}
 	
 	public BlockData[] getWorkflowData(){
@@ -370,27 +366,37 @@ public class Workflow extends JPanel {
 		
 		scroll.getViewport().scrollRectToVisible(rect);
 		
+		// es crida des de data model, per tant no s'ha de fer update de la data model!!
+		
 	}
 	
-	public void setSelectedBlock(Block b) {
-		if (currentSelectedBlock != null) {
-			currentSelectedBlock.setIsSelected(false);
+	
+	private Block findBlock(String id) { // canviar...
+		
+		if (id == "GetAnalogInput") {
+			return new GetAnalogInput();
 		}
-		currentSelectedBlock = b;
-		currentSelectedBlock.setIsSelected(true);
+		
+		else if (id == "SetAnalogOutput") {
+			return new SetAnalogOutput();
+		}
+		
+		else if (id == "GetDigitalInput") {
+			return new GetDigitalInput();
+		}
+		
+		else if (id == "SetDigitalOutput") {
+			return new SetDigitalOutput();
+		}
+		
+		else if (id == "Sleep") {
+			return new Sleep();
+		}
+		
+		else { // if (id == "PopUp"){}
+			return new PopUp();
+		}
+		
 	}
 	
-	public boolean getSim() {
-		return !sysAPI.getRobotSimulation().isRealRobot();
-	}
-	
-	public String getSimOrNot() {
-						
-		if (!sysAPI.getRobotSimulation().isRealRobot()) {
-			return "#";
-		}
-		else {
-			return "";
-		}
-	}
 }

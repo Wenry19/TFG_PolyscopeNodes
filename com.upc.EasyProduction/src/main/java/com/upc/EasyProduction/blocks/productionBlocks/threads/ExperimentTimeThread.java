@@ -15,6 +15,8 @@ public class ExperimentTimeThread extends Thread implements ItemListener{
 	
 	private JToggleButton toggleButton = new JToggleButton("Activate Experiment Timer", false);
 	
+	protected boolean activateExperimentTimer = false;
+	
 	private boolean controlUpdateDataModel = true;
 	
 	public ExperimentTimeThread() {
@@ -71,26 +73,6 @@ public class ExperimentTimeThread extends Thread implements ItemListener{
 		
 		return code;
 	}
-
-	@Override
-	public void itemStateChanged(ItemEvent e) {
-		
-		int state = e.getStateChange();
-		
-		if (state == ItemEvent.SELECTED) {
-			activateExperimentTimer = true;
-			this.setEnabled(true);
-		}
-		else {
-			activateExperimentTimer = false;
-			
-			this.setEnabled(false);
-		}
-		
-		if(controlUpdateDataModel) {
-			Workflow.getInstance().updateDataModel();
-		}
-	}
 	
 	@Override
 	public BlockData getBlockData() {
@@ -110,5 +92,25 @@ public class ExperimentTimeThread extends Thread implements ItemListener{
 		this.setEnabled(activateExperimentTimer);
 		
 		controlUpdateDataModel = true;
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		
+		int state = e.getStateChange();
+		
+		if (state == ItemEvent.SELECTED) {
+			activateExperimentTimer = true;
+			this.setEnabled(true);
+		}
+		else {
+			activateExperimentTimer = false;
+			
+			this.setEnabled(false);
+		}
+		
+		if(controlUpdateDataModel) {
+			Workflow.getInstance().updateDataModel();
+		}
 	}
 }
