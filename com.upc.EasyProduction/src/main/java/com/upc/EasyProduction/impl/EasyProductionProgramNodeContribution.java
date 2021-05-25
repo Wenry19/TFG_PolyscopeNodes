@@ -40,14 +40,42 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		this.view = view;
 		this.model = model;
 		this.undoRedoManager = this.apiProvider.getProgramAPI().getUndoRedoManager();
-		
-		this.model.set(WORKFLOW_KEY, DEFAULT_WORKFLOW); // ini datamodel with default values for undo redo
-		this.model.set(TYPES_KEY, DEFAULT_TYPES);
 	}
 	
 	
-	public void onChangeInWF(int pos) {
-		undoRedoManager.recordChanges(new MyUndoableChanges(pos));
+	public void onChangeInWF() {
+		undoRedoManager.recordChanges(new UndoableChanges() {
+			
+			@Override
+			public void executeChanges() { // record changes in data model
+				
+				BlockData[] blockDataArray = Workflow.getInstance().getWorkflowData();
+				
+				String[] blockDataStringArray = new String[blockDataArray.length];
+				String[] typesDataStringArray = new String[blockDataArray.length];
+				
+				for (int i = 0; i < blockDataArray.length; i++) {
+					
+					blockDataStringArray[i] = gson.toJson(blockDataArray[i]);
+					typesDataStringArray[i] = blockDataArray[i].getClass().getName();
+					
+				}
+				
+				model.set(WORKFLOW_KEY, blockDataStringArray);
+				model.set(TYPES_KEY, typesDataStringArray);
+				
+				System.out.println("ON CHANGE ________________________________");
+				
+				String[] aux = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
+				
+				for (int i = 0; i < aux.length; i++) {
+					System.out.println(aux[i]);
+				}
+				
+				System.out.println("END ON CHANGE ________________________________");
+				
+			}
+		});
 	}
 
 	@Override
@@ -106,133 +134,6 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		
 		writer.appendRaw(Workflow.getInstance().generateCode());
 		
-	}
-	
-	// inner class per poder passar paràmetre a la constructora de UndoableChanges(), el param és la posició del bloc que ha fet canvis
-	
-	private class MyUndoableChanges implements UndoableChanges{
-		
-		private int wfPos;
-		
-		MyUndoableChanges(int wfPos){
-			
-			this.wfPos = wfPos;
-			
-		}
-		
-		@Override
-		public void executeChanges() { // record changes in data model
-			
-			if (wfPos == -1) { // update all
-				
-				BlockData[] blockDataArray = Workflow.getInstance().getWorkflowData();
-				
-				String[] blockDataStringArray = new String[blockDataArray.length];
-				String[] typesDataStringArray = new String[blockDataArray.length];
-				
-				for (int i = 0; i < blockDataArray.length; i++) {
-					
-					blockDataStringArray[i] = gson.toJson(blockDataArray[i]);
-					typesDataStringArray[i] = blockDataArray[i].getClass().getName();
-					
-				}
-				
-				model.set(WORKFLOW_KEY, blockDataStringArray);
-				model.set(TYPES_KEY, typesDataStringArray);
-				
-			}
-			
-			else {
-				
-				String[] currentWfData = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
-				String[] currentTypesData = model.get(TYPES_KEY, DEFAULT_TYPES);
-				
-				BlockData bd = Workflow.getInstance().getWorkflowData(wfPos);
-				
-				int realWfLen = Workflow.getInstance().getLen();
-				
-				int currentWfDataLen = currentWfData.length;
-				
-				
-				
-				if (realWfLen == currentWfDataLen) { // param changed in pos block
-					
-					currentWfData[wfPos] = gson.toJson(bd);
-					
-					model.set(WORKFLOW_KEY, currentWfData);
-									
-				}
-				else if (realWfLen > currentWfDataLen) { // block added in wf in pos
-					
-					String[] newWfData = new String[currentWfData.length + 1];
-					String[] newTypesData = new String[currentTypesData.length + 1];
-					
-					Boolean added = false;
-					
-					for (int i = 0; i < newWfData.length; i++) {
-						if (i == wfPos) {
-							newWfData[i] = gson.toJson(bd);
-							newTypesData[i] = bd.getClass().getName();
-							added = true;
-						}
-						else {
-							if (!added) {
-								newWfData[i] = currentWfData[i];
-								newTypesData[i] = currentTypesData[i];
-							}
-							else {
-								newWfData[i] = currentWfData[i-1];
-								newTypesData[i] = currentTypesData[i-1];
-							}
-						}
-					}
-					
-					model.set(WORKFLOW_KEY, newWfData);
-					model.set(TYPES_KEY, newTypesData);
-					
-				}
-				else if (realWfLen < currentWfDataLen) { // block deleted in wf in pos
-					
-					String[] newWfData = new String[currentWfData.length - 1];
-					String[] newTypesData = new String[currentTypesData.length - 1];
-					
-					Boolean deleted = false;
-					
-					for (int i = 0; i < currentWfData.length; i++) {
-						
-						if (i == wfPos) {
-							deleted = true;
-						}
-						
-						else {
-							
-							if (!deleted) {
-								newWfData[i] = currentWfData[i];
-								newTypesData[i] = currentTypesData[i];
-							}
-							else {
-								newWfData[i - 1] = currentWfData[i];
-								newTypesData[i - 1] = currentTypesData[i];
-							}	
-						}	
-					}
-					
-					model.set(WORKFLOW_KEY, newWfData);
-					model.set(TYPES_KEY, newTypesData);
-				}
-			}						
-			
-			System.out.println("ON CHANGE ________________________________");
-			
-			String[] aux = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
-			
-			for (int i = 0; i < aux.length; i++) {
-				System.out.println(aux[i]);
-			}
-						
-			System.out.println("END ON CHANGE ________________________________");
-			
-		}
 	}
 
 }

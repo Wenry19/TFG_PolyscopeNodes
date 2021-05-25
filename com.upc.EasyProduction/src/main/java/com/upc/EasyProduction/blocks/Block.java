@@ -152,7 +152,7 @@ public class Block extends JLabel{
 				
 			Workflow.getInstance().setSelectedBlock(b);
 				
-			Workflow.getInstance().updateDataModel(wfPos);
+			Workflow.getInstance().updateDataModel();
 			
 		}
 		
