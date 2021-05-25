@@ -50,13 +50,16 @@ import com.upc.EasyProduction.blocks.productionBlocks.threads.ExperimentTimeThre
 import com.upc.EasyProduction.blocks.productionBlocks.threads.TimerThread;
 import com.upc.EasyProduction.blocks.productionBlocks.threads.WriteRegistersThread;
 import com.upc.EasyProduction.impl.EasyProductionProgramNodeContribution;
+
 import com.ur.urcap.api.contribution.ContributionProvider;
+import com.ur.urcap.api.domain.SystemAPI;
 
 public class Workflow extends JPanel {
 	
 	LinkedList<Block> workflow = new LinkedList<Block>();
 	
 	private ContributionProvider<EasyProductionProgramNodeContribution> provider;
+	private SystemAPI sysAPI;
 	
 	private JScrollPane scroll;
 	
@@ -64,9 +67,7 @@ public class Workflow extends JPanel {
 	private String[] default_typesData;
 	
 	private Block currentSelectedBlock = null;
-	
-	private boolean sim = true; // sim or real exec
-	
+		
 	// singleton
 	
 	private static Workflow singleton = new Workflow();
@@ -92,6 +93,10 @@ public class Workflow extends JPanel {
 	
 	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		this.provider = provider;
+	}
+	
+	public void setSystemAPI(SystemAPI sysAPI) {
+		this.sysAPI = sysAPI;
 	}
 
 	public void iniDefaultWorkflow() {
@@ -375,16 +380,13 @@ public class Workflow extends JPanel {
 		currentSelectedBlock.setIsSelected(true);
 	}
 	
-	public void setSim(boolean sim) {
-		this.sim = sim;
-	}
-	
 	public boolean getSim() {
-		return sim;
+		return !sysAPI.getRobotSimulation().isRealRobot();
 	}
 	
 	public String getSimOrNot() {
-		if (sim) {
+						
+		if (!sysAPI.getRobotSimulation().isRealRobot()) {
 			return "#";
 		}
 		else {

@@ -61,6 +61,7 @@ public class EasyProductionProgramNodeView implements SwingProgramNodeView<EasyP
 						
 		this.mainPanel = MainPanel.getInstance();
 		this.mainPanel.setProvider(provider);
+		this.mainPanel.setSystemAPI(apiProvider.getSystemAPI());
 		
 		panel.setLayout(null);
 		

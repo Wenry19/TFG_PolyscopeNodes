@@ -16,16 +16,14 @@ import javax.swing.JScrollPane;
 
 import com.upc.EasyProduction.impl.EasyProductionProgramNodeContribution;
 import com.ur.urcap.api.contribution.ContributionProvider;
+import com.ur.urcap.api.domain.SystemAPI;
 
-public class MainPanel extends JLayeredPane implements ActionListener{
+public class MainPanel extends JLayeredPane{
 	
 	private JPanel paramPanel = new JPanel();
 	
-	private JPanel simOrRealPanel = new JPanel();
-	JRadioButton simulationButton = new JRadioButton("Sim");
-	JRadioButton realExecButton = new JRadioButton("Real");
-	
 	private ContributionProvider<EasyProductionProgramNodeContribution> provider;
+	private SystemAPI sysAPI;
 	
 	private static MainPanel singleton = new MainPanel();
 	
@@ -45,9 +43,7 @@ public class MainPanel extends JLayeredPane implements ActionListener{
 		this.add(paramPanel, JLayeredPane.DEFAULT_LAYER);
 		
 		this.setBounds(0, 0, 606, 407);
-		
-		iniSimOrRealPanel();
-		
+				
 	}
 	
 	public static MainPanel getInstance() {
@@ -76,40 +72,9 @@ public class MainPanel extends JLayeredPane implements ActionListener{
 		Workflow.getInstance().setProvider(provider);
 	}
 	
-	private void iniSimOrRealPanel() {
-		
-		simOrRealPanel.setLayout(new FlowLayout());
-		
-		simOrRealPanel.setSize(406, 30);
-		simOrRealPanel.setPreferredSize(new Dimension(406, 30));
-		simOrRealPanel.setLocation(200, 0);
-		
-		ButtonGroup group = new ButtonGroup();
-		group.add(simulationButton);
-		group.add(realExecButton);
-		
-		simulationButton.addActionListener(this);
-		realExecButton.addActionListener(this);
-		
-		simOrRealPanel.add(simulationButton);
-		simOrRealPanel.add(realExecButton);
-		
-		this.add(simOrRealPanel, JLayeredPane.DEFAULT_LAYER);
-		
-		simulationButton.setSelected(true); // default option (does not trigger an action event!!)
-		
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		if(e.getSource() == simulationButton) {
-			Workflow.getInstance().setSim(true);
-		}
-		else { // real execution
-			Workflow.getInstance().setSim(false);
-		}
-		//Workflow.getInstance().updateDataModel(); // ULL!!
+	public void setSystemAPI(SystemAPI sysAPI) {
+		this.sysAPI = sysAPI;
+		Workflow.getInstance().setSystemAPI(sysAPI);
 	}
 	
 }
