@@ -8,6 +8,7 @@ import javax.swing.JToggleButton;
 
 import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.dataBlocks.ExperimentTimeThreadData;
+import com.upc.EasyProduction.blocks.dataBlocks.ThreadData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 
@@ -59,6 +60,11 @@ public class ExperimentTimeThread extends Thread implements ItemListener{
 		
 		panel.add(toggleButton);
 		
+		
+		ExperimentTimeThreadData aux = new ExperimentTimeThreadData(getClassName(), isSelected, activateExperimentTimer);
+		blockDataString = gson.toJson(aux);
+		blockDataTypeString = aux.getClass().getName();
+				
 	}
 	
 	@Override
@@ -75,8 +81,10 @@ public class ExperimentTimeThread extends Thread implements ItemListener{
 	}
 	
 	@Override
-	public BlockData getBlockData() {
-		return new ExperimentTimeThreadData(getClassName(), isSelected, activateExperimentTimer);
+	protected void updateBlockData() {
+		
+		blockDataString = gson.toJson(new ExperimentTimeThreadData(getClassName(), isSelected, activateExperimentTimer));
+		
 	}
 	
 	public void setActivateExperimentTimer(Boolean activateExperimentTimer) {
@@ -110,6 +118,7 @@ public class ExperimentTimeThread extends Thread implements ItemListener{
 		}
 		
 		if(controlUpdateDataModel) {
+			updateBlockData();
 			Workflow.getInstance().updateDataModel();
 		}
 	}

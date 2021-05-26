@@ -11,6 +11,7 @@ import javax.swing.event.ChangeListener;
 
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
+import com.upc.EasyProduction.blocks.dataBlocks.CallFuncsData;
 import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
@@ -91,6 +92,12 @@ public class DefPutFuncs extends Block implements ChangeListener{
 		panel.add(accelerationLabel);
 		panel.add(accelerationSlider);
 		
+		
+		DefPutFuncsData aux = new DefPutFuncsData(getClassName(), isSelected, velocity, acceleration, velocity_tag, acceleration_tag);
+		blockDataString = gson.toJson(aux);
+		blockDataTypeString = aux.getClass().getName();
+
+		
 	}
 	
 	public void setVelocity(Double velocity, int velocity_tag) {
@@ -104,9 +111,10 @@ public class DefPutFuncs extends Block implements ChangeListener{
 	}
 	
 	
-	public BlockData getBlockData() {
-	    
-		return new DefPutFuncsData(getClassName(), isSelected, velocity, acceleration, velocity_tag, acceleration_tag);
+	@Override
+	protected void updateBlockData() {
+		
+		blockDataString = gson.toJson(new DefPutFuncsData(getClassName(), isSelected, velocity, acceleration, velocity_tag, acceleration_tag));
 		
 	}
 	
@@ -170,6 +178,7 @@ public class DefPutFuncs extends Block implements ChangeListener{
 			}
 			
 			if (controlUpdateDataModel) {
+				updateBlockData();
 				Workflow.getInstance().updateDataModel();
 			}
 		}

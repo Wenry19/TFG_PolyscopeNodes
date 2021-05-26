@@ -12,7 +12,7 @@ public class BlockData{
 		return className;
 	}
 	
-	public Block getBlockInstance() {
+	public Block getBlockInstance(String BlockDataString) {
 		
 		Block b = null;
 		
@@ -21,6 +21,8 @@ public class BlockData{
 			b = (Block) Class.forName(className).getDeclaredConstructor().newInstance();
 			
 			b.setIsSelected(isSelected);
+			
+			b.setBlockDataString(BlockDataString);
 		}
 		catch (Exception e) {
 			
