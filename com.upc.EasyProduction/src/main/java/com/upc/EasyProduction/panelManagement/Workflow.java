@@ -142,13 +142,17 @@ public class Workflow extends JPanel {
 		}
 	}
 	
+	// some getters
 	
-	// update blocks positions
+	public int getLen() {
+		return workflow.size();
+	}
 	
-	private void updateBlocksPositions() {
-		for(int i = 0; i < workflow.size(); i++) {
-			workflow.get(i).setWorkflowPosition(i);
+	public int getCurrentSelectedBlockPos() {
+		if (currentSelectedBlock != null) {
+			return currentSelectedBlock.getWorkflowPosition();
 		}
+		return -1; // no selected position
 	}
 	
 	// set selected block
@@ -175,13 +179,12 @@ public class Workflow extends JPanel {
 		
 		Rectangle rect = this.scroll.getViewport().getViewRect();
 		
-		updateBlocksPositions();
 		
 		updatePanel();
 		
 		scroll.getViewport().scrollRectToVisible(rect);
 		
-		updateDataModel();
+		updateDataModel(new int[] {position+1});
 		
 	}
 	
@@ -193,12 +196,10 @@ public class Workflow extends JPanel {
 		Rectangle rect = this.scroll.getViewport().getViewRect();
 		
 		updatePanel();
-		
-		updateBlocksPositions();
-		
+				
 		scroll.getViewport().scrollRectToVisible(rect);
 		
-		updateDataModel();
+		updateDataModel(new int[] {i});
 		
 	}
 	
@@ -241,9 +242,7 @@ public class Workflow extends JPanel {
 		workflow.add(new EndIfCAPSandProducts());
 		
 		workflow.add(new EndWhileTrue());
-		
-		updateBlocksPositions();
-		
+				
 		updatePanel();		
 	}
 	
@@ -265,7 +264,11 @@ public class Workflow extends JPanel {
 		
 		for(int i = 0; i < workflow.size(); i++) {
 			
-			this.add(workflow.get(i), c);
+			Block aux = workflow.get(i);
+			
+			this.add(aux, c);
+			
+			aux.setWorkflowPosition(i);
 			
 			if (i != workflow.size()-1) {
 								
@@ -309,10 +312,10 @@ public class Workflow extends JPanel {
 	}
 	
 	
-	public void updateDataModel() {
+	public void updateDataModel(int[] wfPositions) {
 
 		try {
-			provider.get().onChangeInWF();
+			provider.get().onChangeInWF(wfPositions);
 		}
 		catch (Exception e) {
 			
@@ -331,6 +334,10 @@ public class Workflow extends JPanel {
 		
 		return wfData;
 		
+	}
+	
+	public BlockData getWorkflowDataBlock(int wfPos) {
+		return workflow.get(wfPos).getBlockData();
 	}
 	
 	public void setWorkflowData(BlockData[] DataArray) {
@@ -360,7 +367,6 @@ public class Workflow extends JPanel {
 		}
 		
 		updatePanel();
-		updateBlocksPositions();
 		
 		scroll.getViewport().scrollRectToVisible(rect);
 		

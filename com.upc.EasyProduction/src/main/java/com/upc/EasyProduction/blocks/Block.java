@@ -107,9 +107,7 @@ public class Block extends JLabel{
 	}
 	
 	
-	public void setPanel() {
-		return;
-	}
+	public void setPanel() {}
 	
 	
 	// select/unselect block management
@@ -146,10 +144,13 @@ public class Block extends JLabel{
 		public void mouseClicked(MouseEvent e) { // select block
 						
 			Block b = (Block) e.getSource();
+			
+			// save position of the selected block before the change
+			int beforeSelectedBlockPos = Workflow.getInstance().getCurrentSelectedBlockPos();
 				
 			Workflow.getInstance().setSelectedBlock(b);
-				
-			Workflow.getInstance().updateDataModel();
+			
+			Workflow.getInstance().updateDataModel(new int[]{wfPos, beforeSelectedBlockPos});
 			
 		}
 		

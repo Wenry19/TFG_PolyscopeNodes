@@ -170,7 +170,7 @@ public class DefPutFuncs extends Block implements ChangeListener{
 			}
 			
 			if (controlUpdateDataModel) {
-				Workflow.getInstance().updateDataModel();
+				Workflow.getInstance().updateDataModel(new int[] {wfPos});
 			}
 		}
 		
