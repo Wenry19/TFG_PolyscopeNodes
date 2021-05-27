@@ -53,9 +53,9 @@ public class OptionsPanel extends JPanel {
 		
 		scroll = new JScrollPane(this);
 		
-		scroll.setPreferredSize(new Dimension(406, 224));
-		scroll.setSize(new Dimension(406, 224));
-		scroll.setLocation(200, 30);
+		scroll.setPreferredSize(new Dimension(406, 254));
+		scroll.setSize(new Dimension(406, 254));
+		scroll.setLocation(200, 0);
 				
 	}
 	
@@ -131,32 +131,7 @@ public class OptionsPanel extends JPanel {
 		addOption("Sleep");
 		addOption("PopUp");
 		addOption("SetDigitalOutput");
-		addOption("GetDigitalInput");
 		addOption("SetAnalogOutput");
-		addOption("GetAnalogInput");
-		
-//		addOption("Sleep2");
-//		addOption("PopUp2");
-//		addOption("SetDigitalOutput2");
-//		addOption("GetDigitalInput2");
-//		addOption("SetAnalogOutput2");
-//		addOption("GetAnalogInput2");
-//		
-//		addOption("Sleep3");
-//		addOption("PopUp3");
-//		addOption("SetDigitalOutput3");
-//		addOption("GetDigitalInput3");
-//		addOption("SetAnalogOutput3");
-//		addOption("GetAnalogInput3");
-//		
-//		addOption("Sleep4");
-//		addOption("PopUp4");
-//		addOption("SetDigitalOutput4");
-//		addOption("GetDigitalInput4");
-//		addOption("SetAnalogOutput4");
-//		addOption("GetAnalogInput4");
-		
-		
 		
 	}
 	
@@ -178,7 +153,7 @@ public class OptionsPanel extends JPanel {
 		private int prevY;
 		
 		private int offsetOptionsPanelX = 201; // ULL!!
-		private int offsetOptionsPanelY = 31; // ULL!!
+		private int offsetOptionsPanelY = 1; // ULL!!
 		
 		private Option currentOptionSelected;
 		

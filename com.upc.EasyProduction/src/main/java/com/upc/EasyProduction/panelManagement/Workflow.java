@@ -19,8 +19,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.blocks.operationBlocks.GetAnalogInput;
-import com.upc.EasyProduction.blocks.operationBlocks.GetDigitalInput;
 import com.upc.EasyProduction.blocks.operationBlocks.PopUp;
 import com.upc.EasyProduction.blocks.operationBlocks.SetAnalogOutput;
 import com.upc.EasyProduction.blocks.operationBlocks.SetDigitalOutput;
@@ -373,16 +371,8 @@ public class Workflow extends JPanel {
 	
 	private Block findBlock(String id) { // canviar...
 		
-		if (id == "GetAnalogInput") {
-			return new GetAnalogInput();
-		}
-		
-		else if (id == "SetAnalogOutput") {
+		if (id == "SetAnalogOutput") {
 			return new SetAnalogOutput();
-		}
-		
-		else if (id == "GetDigitalInput") {
-			return new GetDigitalInput();
 		}
 		
 		else if (id == "SetDigitalOutput") {
