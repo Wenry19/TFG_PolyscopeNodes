@@ -16,9 +16,9 @@ public class ExperimentTimeThreadData extends ThreadData {
 	}
 	
 	@Override
-	public Block getBlockInstance(String BlockDataString) {
+	public Block getBlockInstance() {
 				
-		ExperimentTimeThread b = (ExperimentTimeThread) super.getBlockInstance(BlockDataString);
+		ExperimentTimeThread b = (ExperimentTimeThread) super.getBlockInstance();
 		
 		b.setActivateExperimentTimer(activateExperimentTimer); // order is important!!
 		

@@ -10,12 +10,7 @@ public class Operation extends Block{
 		
 	public Operation() {
 		
-		setBackground(new Color(0xeae7e7));
-		
-		OperationData aux = new OperationData(getClassName(), isSelected);
-		blockDataString = gson.toJson(aux);
-		blockDataTypeString = aux.getClass().getName();
-		
+		this.setBackground(new Color(0xeae7e7));
 	}
 	
 	
@@ -31,10 +26,7 @@ public class Operation extends Block{
 		return "\n" + identation + code;
 	}
 	
-	@Override
-	protected void updateBlockData() {
-		
-		blockDataString = gson.toJson(new OperationData(getClassName(), isSelected));
-		
+	public BlockData getBlockData() {
+		return new OperationData(getClassName(), isSelected);
 	}
 }

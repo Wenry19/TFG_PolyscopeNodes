@@ -27,9 +27,9 @@ public class DefPutFuncsData extends BlockData{
 	}
 	
 	@Override
-	public Block getBlockInstance(String BlockDataString) {
+	public Block getBlockInstance() {
 				
-		DefPutFuncs b = (DefPutFuncs) super.getBlockInstance(BlockDataString);
+		DefPutFuncs b = (DefPutFuncs) super.getBlockInstance();
 		
 		b.setVelocity(velocity, velocity_tag);
 		b.setAcceleration(acceleration, acceleration_tag);

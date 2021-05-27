@@ -15,9 +15,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
+import com.upc.EasyProduction.blocks.operationBlocks.GetAnalogInput;
+import com.upc.EasyProduction.blocks.operationBlocks.GetDigitalInput;
 import com.upc.EasyProduction.blocks.operationBlocks.PopUp;
 import com.upc.EasyProduction.blocks.operationBlocks.SetAnalogOutput;
 import com.upc.EasyProduction.blocks.operationBlocks.SetDigitalOutput;
@@ -63,11 +66,6 @@ public class Workflow extends JPanel {
 	private String[] default_workflowData;
 	private String[] default_typesData;
 	
-	
-	private String[] current_workflowData;
-	private String[] current_typesData;
-	
-	
 	private Block currentSelectedBlock = null;
 		
 	// singleton
@@ -75,8 +73,6 @@ public class Workflow extends JPanel {
 	private static Workflow singleton = new Workflow();
 	
 	private Workflow() {
-		
-		System.out.println("CONSTRUCTORA WORKFLOW INI<------------------------");
 				
 		// default workflow
 		
@@ -86,8 +82,6 @@ public class Workflow extends JPanel {
 		scroll = new JScrollPane(this);
 		scroll.setPreferredSize(new Dimension(200, 404));
 		scroll.setSize(new Dimension(200, 404));
-		
-		System.out.println("CONSTRUCTORA WORKFLOW END<------------------------");
 		
 	}
 	
@@ -107,29 +101,23 @@ public class Workflow extends JPanel {
 		this.sysAPI = sysAPI;
 	}
 	
-	// getters
-	
-	public String[][] getCurrentWorkflowDataAndTypes() { // abans de fer aquest get s'hauria de fer updateWorkflowDataAndTypes!!
-		
-		updateWorkflowDataAndTypes();
-		
-		return new String[][] {current_workflowData, current_typesData};
-	}
-	
 	// generate default data for data model!!
 	
 	private void generateDEFAULTdata() {
 		
-		default_workflowData = new String[workflow.size()];
-		default_typesData = new String[workflow.size()];
+		Gson gson = new GsonBuilder().create();
 		
-		for (int i = 0; i < workflow.size(); i++) {
+		BlockData[] blockDataArray = this.getWorkflowData();
+		
+		default_workflowData = new String[blockDataArray.length];
+		default_typesData= new String[blockDataArray.length];
+		
+		for (int i = 0; i < blockDataArray.length; i++) {
 			
-			default_workflowData[i] = workflow.get(i).getBlockDataString();
-			default_typesData[i] = workflow.get(i).getBlockDataTypeString();
+			default_workflowData[i] = gson.toJson(blockDataArray[i]);
+			default_typesData[i] = blockDataArray[i].getClass().getName();
 			
 		}
-		
 	}
 	
 	public String[] getDEFAULT_WORKFLOWdata() {
@@ -333,25 +321,21 @@ public class Workflow extends JPanel {
 		}
 	}
 	
-	public void updateWorkflowDataAndTypes(){
+	public BlockData[] getWorkflowData(){
 		
-		current_workflowData = new String[workflow.size()];
-		current_typesData = new String[workflow.size()];
-		
+		BlockData[] wfData = new BlockData[workflow.size()];
 		
 		for (int i = 0; i < workflow.size(); i++) {
 			
-			current_workflowData[i] = workflow.get(i).getBlockDataString();
-			
-			current_typesData[i] = workflow.get(i).getBlockDataTypeString();
+			wfData[i] = workflow.get(i).getBlockData();
 			
 		}
-	}
-
-	
-	public void setWorkflowData(BlockData[] DataArray, String[] DataStringArray) {		
 		
-		// DataArray és array provinent de open view
+		return wfData;
+		
+	}
+	
+	public void setWorkflowData(BlockData[] DataArray) {
 		
 		Rectangle rect = this.scroll.getViewport().getViewRect();
 		
@@ -362,9 +346,8 @@ public class Workflow extends JPanel {
 		for (int i = 0; i < DataArray.length; i++) {
 			
 			
-			Block aux = DataArray[i].getBlockInstance(DataStringArray[i]);
-			// data string array conté els jsons de la data model que ha carregat open view, daquesta manera els actualitzem als nous blocs afegits
-			// els tipus dels data blocks no calen perk sempre seran els mateixos... ja sinicialitzen a les ocnstructores dels blocks
+			Block aux = DataArray[i].getBlockInstance();
+			
 			
 			if (aux.getIsSelected()) {
 				setSelectedBlock(aux);
@@ -390,8 +373,16 @@ public class Workflow extends JPanel {
 	
 	private Block findBlock(String id) { // canviar...
 		
-		if (id == "SetAnalogOutput") {
+		if (id == "GetAnalogInput") {
+			return new GetAnalogInput();
+		}
+		
+		else if (id == "SetAnalogOutput") {
 			return new SetAnalogOutput();
+		}
+		
+		else if (id == "GetDigitalInput") {
+			return new GetDigitalInput();
 		}
 		
 		else if (id == "SetDigitalOutput") {

@@ -131,7 +131,33 @@ public class OptionsPanel extends JPanel {
 		addOption("Sleep");
 		addOption("PopUp");
 		addOption("SetDigitalOutput");
+		addOption("GetDigitalInput");
 		addOption("SetAnalogOutput");
+		addOption("GetAnalogInput");
+		
+//		addOption("Sleep2");
+//		addOption("PopUp2");
+//		addOption("SetDigitalOutput2");
+//		addOption("GetDigitalInput2");
+//		addOption("SetAnalogOutput2");
+//		addOption("GetAnalogInput2");
+//		
+//		addOption("Sleep3");
+//		addOption("PopUp3");
+//		addOption("SetDigitalOutput3");
+//		addOption("GetDigitalInput3");
+//		addOption("SetAnalogOutput3");
+//		addOption("GetAnalogInput3");
+//		
+//		addOption("Sleep4");
+//		addOption("PopUp4");
+//		addOption("SetDigitalOutput4");
+//		addOption("GetDigitalInput4");
+//		addOption("SetAnalogOutput4");
+//		addOption("GetAnalogInput4");
+		
+		
+		
 	}
 	
 	public void printOptions() {

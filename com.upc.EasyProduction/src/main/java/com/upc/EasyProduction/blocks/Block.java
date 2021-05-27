@@ -11,8 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.upc.EasyProduction.blocks.operationBlocks.Operation;
 import com.upc.EasyProduction.panelManagement.MainPanel;
 import com.upc.EasyProduction.panelManagement.Workflow;
@@ -24,10 +22,6 @@ public class Block extends JLabel{
 	protected String defaultCode;
 	protected String code;
 	protected String identation = "";
-	
-	protected String blockDataString; // ull!!
-	protected String blockDataTypeString; // ull!!
-	protected final Gson gson = new GsonBuilder().create(); // ull!!
 
 	protected JPanel panel = new JPanel();
 	protected JScrollPane scroll = new JScrollPane(panel);
@@ -88,12 +82,8 @@ public class Block extends JLabel{
 		return wfPos;
 	}
 	
-	public String getBlockDataString() {
-		return blockDataString;
-	}
-	
-	public String getBlockDataTypeString() {
-		return blockDataTypeString;
+	public BlockData getBlockData() { // EYE!!!!
+		return null;
 	}
 	
 	public String getClassName() {
@@ -116,8 +106,9 @@ public class Block extends JLabel{
 		this.identation = identation;
 	}
 	
-	public void setBlockDataString(String dataBlockString) {
-		this.blockDataString = dataBlockString;
+	
+	public void setPanel() {
+		return;
 	}
 	
 	
@@ -131,9 +122,6 @@ public class Block extends JLabel{
 	protected void unselectBlock() {
 		this.setBorder(BorderFactory.createLineBorder(Color.gray));
 		isSelected = false;
-		
-		// cas especial!!! ULL!!
-		updateBlockData(); // IMP <-----------------
 	}
 	
 	public void setIsSelected(Boolean isSelected) {
@@ -150,12 +138,6 @@ public class Block extends JLabel{
 		}
 	}
 	
-	// methods
-	
-	protected void updateBlockData() {} // ull!!
-	
-	public void setPanel() {}
-	
 	// inner classes
 	
 	protected class MouseListener extends MouseAdapter {
@@ -166,8 +148,6 @@ public class Block extends JLabel{
 			Block b = (Block) e.getSource();
 				
 			Workflow.getInstance().setSelectedBlock(b);
-			
-			updateBlockData(); // sempre abans de fer updateDataModel!!
 				
 			Workflow.getInstance().updateDataModel();
 			

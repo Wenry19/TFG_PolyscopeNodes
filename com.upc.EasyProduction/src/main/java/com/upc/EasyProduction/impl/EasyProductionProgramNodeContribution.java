@@ -40,8 +40,6 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		this.view = view;
 		this.model = model;
 		this.undoRedoManager = this.apiProvider.getProgramAPI().getUndoRedoManager();
-		
-		System.out.println("CONTRUCTOR CONTRIBUTION EASY PRODUCTION");
 	}
 	
 	
@@ -51,10 +49,20 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 			@Override
 			public void executeChanges() { // record changes in data model
 				
-				String[][] workflowDataStringArray = Workflow.getInstance().getCurrentWorkflowDataAndTypes();
+				BlockData[] blockDataArray = Workflow.getInstance().getWorkflowData();
 				
-				model.set(WORKFLOW_KEY, workflowDataStringArray[0]);
-				model.set(TYPES_KEY, workflowDataStringArray[1]);
+				String[] blockDataStringArray = new String[blockDataArray.length];
+				String[] typesDataStringArray = new String[blockDataArray.length];
+				
+				for (int i = 0; i < blockDataArray.length; i++) {
+					
+					blockDataStringArray[i] = gson.toJson(blockDataArray[i]);
+					typesDataStringArray[i] = blockDataArray[i].getClass().getName();
+					
+				}
+				
+				model.set(WORKFLOW_KEY, blockDataStringArray);
+				model.set(TYPES_KEY, typesDataStringArray);
 				
 				System.out.println("ON CHANGE ________________________________");
 				
@@ -72,7 +80,7 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 
 	@Override
 	public void openView() {
-		
+				
 		String[] blockDataStringArray = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
 		String[] typesDataStringArray = model.get(TYPES_KEY, DEFAULT_TYPES);
 		
@@ -90,7 +98,7 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 			}
 		}
 		
-		Workflow.getInstance().setWorkflowData(blockDataArray, blockDataStringArray);
+		Workflow.getInstance().setWorkflowData(blockDataArray);
 		
 		System.out.println("OPEN VIEW ________________________________");
 		

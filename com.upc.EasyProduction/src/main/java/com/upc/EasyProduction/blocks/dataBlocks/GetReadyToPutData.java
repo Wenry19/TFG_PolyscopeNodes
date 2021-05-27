@@ -27,9 +27,9 @@ public class GetReadyToPutData extends BlockData{
 	}
 	
 	@Override
-	public Block getBlockInstance(String BlockDataString) {
+	public Block getBlockInstance() {
 				
-		GetReadyToPut b = (GetReadyToPut) super.getBlockInstance(BlockDataString);
+		GetReadyToPut b = (GetReadyToPut) super.getBlockInstance();
 		
 		b.setVelocity(velocity, velocity_tag);
 		b.setAcceleration(acceleration, acceleration_tag);
