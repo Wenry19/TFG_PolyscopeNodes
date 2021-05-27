@@ -53,9 +53,9 @@ public class OptionsPanel extends JPanel {
 		
 		scroll = new JScrollPane(this);
 		
-		scroll.setPreferredSize(new Dimension(406, 254));
-		scroll.setSize(new Dimension(406, 254));
-		scroll.setLocation(200, 0);
+		scroll.setPreferredSize(new Dimension(406, 224));
+		scroll.setSize(new Dimension(406, 224));
+		scroll.setLocation(200, 30);
 				
 	}
 	
@@ -152,7 +152,7 @@ public class OptionsPanel extends JPanel {
 		private int prevY;
 		
 		private int offsetOptionsPanelX = 201; // ULL!!
-		private int offsetOptionsPanelY = 1; // ULL!!
+		private int offsetOptionsPanelY = 31; // ULL!!
 		
 		private Option currentOptionSelected;
 		
