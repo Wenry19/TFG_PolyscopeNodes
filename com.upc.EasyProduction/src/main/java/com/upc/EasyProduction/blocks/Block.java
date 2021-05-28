@@ -21,7 +21,7 @@ public class Block extends JLabel{
 	protected String name;
 	protected String defaultCode;
 	protected String code;
-	protected String identation = "";
+	protected String indentation = "";
 
 	protected JPanel panel = new JPanel();
 	protected JScrollPane scroll = new JScrollPane(panel);
@@ -74,8 +74,8 @@ public class Block extends JLabel{
 		return generateCode();
 	}
 	
-	public String getIdentation() {
-		return identation;
+	public String getIndentation() {
+		return indentation;
 	}
 	
 	public int getWorkflowPosition() {
@@ -102,8 +102,8 @@ public class Block extends JLabel{
 	}
 	
 
-	public void setIdentation(String identation) {
-		this.identation = identation;
+	public void setIndentation(String indentation) {
+		this.indentation = indentation;
 	}
 	
 	

@@ -6,7 +6,7 @@ public class BlockData{
 	protected String className;
 	
 	protected Boolean isSelected = false;
-	
+		
 	
 	public String getClassName() {
 		return className;
@@ -21,6 +21,7 @@ public class BlockData{
 			b = (Block) Class.forName(className).getDeclaredConstructor().newInstance();
 			
 			b.setIsSelected(isSelected);
+			
 		}
 		catch (Exception e) {
 			

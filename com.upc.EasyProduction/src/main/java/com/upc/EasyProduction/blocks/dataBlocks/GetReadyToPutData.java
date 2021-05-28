@@ -22,8 +22,7 @@ public class GetReadyToPutData extends BlockData{
 		this.isSelected = isSelected;
 		
 		this.velocity_tag = velocity_tag;
-		this.acceleration_tag = acceleration_tag;
-				
+		this.acceleration_tag = acceleration_tag;						
 	}
 	
 	@Override

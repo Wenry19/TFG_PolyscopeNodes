@@ -10,7 +10,7 @@ public class IfBearings extends FlowInstructions{
 	
 	public IfBearings() {
 		
-		identation = "      ";
+		indentation = "      ";
 		
 		defaultCode = "\n"
 				+ "    $ 39 \"If N_Bases≥4\"\n"

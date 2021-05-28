@@ -7,7 +7,7 @@ public class WriteRegistersThread extends Thread {
 	
 	public WriteRegistersThread() {
 				
-		identation = "  ";
+		indentation = "  ";
 		
 		defaultCode = "\n"
 				+ "  # $ 89 \"SubTarea_1\"\n"

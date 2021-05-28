@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.blocks.dataBlocks.HumanWorkData;
+import com.upc.EasyProduction.blocks.dataBlocks.BasicBlockData;
 
 public class HumanWork extends Block{
 	
@@ -18,7 +18,7 @@ public class HumanWork extends Block{
 	
 	public BlockData getBlockData() {
 			
-		return new HumanWorkData(getClassName(), isSelected);
+		return new BasicBlockData(getClassName(), isSelected);
 		
 	}
 

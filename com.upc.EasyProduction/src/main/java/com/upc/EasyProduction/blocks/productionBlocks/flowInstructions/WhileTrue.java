@@ -10,7 +10,7 @@ public class WhileTrue extends FlowInstructions {
 	
 	public WhileTrue() {
 				
-		identation = "    ";
+		indentation = "    ";
 		
 		defaultCode = "\n"
 				+ "  while (True):\n"

@@ -1,13 +1,11 @@
 package com.upc.EasyProduction.blocks.productionBlocks.callFuncs;
 
-import com.upc.EasyProduction.blocks.Block;
-import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class CallPutProduct extends CallFuncs{		
 		
 		public CallPutProduct() {
 			
-			identation = "        ";
+			indentation = "        ";
 			
 			defaultCode = "\n"
 					+ "        $ 84 \"Invocar PUT_PRODUCT_TO_PALLET\"\n"

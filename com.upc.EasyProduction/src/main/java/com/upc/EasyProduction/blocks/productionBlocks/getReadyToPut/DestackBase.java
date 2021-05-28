@@ -8,7 +8,7 @@ public class DestackBase extends GetReadyToPut {
 	
 	public DestackBase() {
 				
-		identation = "      ";
+		indentation = "      ";
 		
 		defaultCode = "\n"
 				+ "      $ 23 \"BASEtime: Iniciar\"\n"

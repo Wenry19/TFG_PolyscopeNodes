@@ -8,7 +8,7 @@ public class DefPutProduct extends DefPutFuncs {
 	
 	public DefPutProduct() {
 		
-		identation = "  ";
+		indentation = "  ";
 		
 		defaultCode = "\n"
 				+ "  def PUT_PRODUCT_TO_PALLET():\n"

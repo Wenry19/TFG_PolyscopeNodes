@@ -8,7 +8,7 @@ public class DefPutBase extends DefPutFuncs {
 	
 	public DefPutBase() {
 		
-		identation = "  ";
+		indentation = "  ";
 		
 		defaultCode = "\n"
 				+ "  def PUT_BASE_MATRIZ_ASSEMBLY():\n"

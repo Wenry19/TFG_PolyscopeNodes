@@ -6,7 +6,7 @@ public class InitializeVars extends Initialize {
 	
 	public InitializeVars() { // maybe it should be singleton
 		
-		identation = "  ";
+		indentation = "  ";
 		
 		defaultCode = "\n"
 				+ "  global cnt_1=0\n"

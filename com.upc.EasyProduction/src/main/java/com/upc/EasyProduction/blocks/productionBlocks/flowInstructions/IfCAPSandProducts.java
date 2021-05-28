@@ -9,7 +9,7 @@ public class IfCAPSandProducts extends FlowInstructions{
 	
 	public IfCAPSandProducts() {
 				
-		identation = "      ";
+		indentation = "      ";
 		
 		defaultCode = "\n"
 				+ "    $ 59 \"If N_Bearings≥4\"\n"

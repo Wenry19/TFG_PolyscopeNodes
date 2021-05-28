@@ -21,7 +21,7 @@ public class ExperimentTimeThread extends Thread implements ItemListener{
 	
 	public ExperimentTimeThread() {
 				
-		identation = "  ";
+		indentation = "  ";
 		
 		defaultCode = "\n"
 				+ "  # $ 100 \"SubTarea_2\"\n"

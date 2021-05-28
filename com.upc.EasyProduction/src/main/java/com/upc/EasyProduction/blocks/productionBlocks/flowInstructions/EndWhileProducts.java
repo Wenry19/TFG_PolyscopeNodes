@@ -9,7 +9,7 @@ public class EndWhileProducts extends FlowInstructions{
 	
 	public EndWhileProducts() {
 				
-		identation = "      ";
+		indentation = "      ";
 		
 		defaultCode = "\n"
 				+ "        Loop_1 = Loop_1 + 1\n"

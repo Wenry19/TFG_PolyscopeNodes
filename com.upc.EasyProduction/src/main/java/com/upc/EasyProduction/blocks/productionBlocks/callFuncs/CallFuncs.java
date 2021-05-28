@@ -7,7 +7,8 @@ import javax.swing.JLabel;
 import com.upc.EasyProduction.blocks.Block;
 
 import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.blocks.dataBlocks.CallFuncsData;
+import com.upc.EasyProduction.blocks.dataBlocks.BasicBlockData;
+
 
 public class CallFuncs extends Block{
 	
@@ -19,7 +20,7 @@ public class CallFuncs extends Block{
 	}
 	
 	public BlockData getBlockData() {
-		return new CallFuncsData(getClassName(), isSelected);
+		return new BasicBlockData(getClassName(), isSelected);
 	}
 	
 }

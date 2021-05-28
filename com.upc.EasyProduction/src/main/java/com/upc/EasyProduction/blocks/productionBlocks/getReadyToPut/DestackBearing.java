@@ -13,7 +13,7 @@ public class DestackBearing extends GetReadyToPut {
 	
 	public DestackBearing() {
 		
-		identation = "      ";
+		indentation = "      ";
 		
 		defaultCode = "\n"
 				+ "      $ 40 \"BEARINGtime: Iniciar\"\n"

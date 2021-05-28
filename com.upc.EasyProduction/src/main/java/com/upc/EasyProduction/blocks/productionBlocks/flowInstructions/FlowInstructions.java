@@ -6,9 +6,8 @@ import javax.swing.JLabel;
 
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.blocks.dataBlocks.FlowInstructionsData;
-import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
-import com.upc.EasyProduction.panelManagement.Workflow;
+import com.upc.EasyProduction.blocks.dataBlocks.BasicBlockData;
+
 
 public class FlowInstructions extends Block {
 	
@@ -21,7 +20,7 @@ public class FlowInstructions extends Block {
 	}
 	
 	public BlockData getBlockData() {	
-		return new FlowInstructionsData(getClassName(), isSelected);
+		return new BasicBlockData(getClassName(), isSelected);
 		
 	}
 }

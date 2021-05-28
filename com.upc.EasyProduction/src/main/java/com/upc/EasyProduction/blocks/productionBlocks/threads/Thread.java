@@ -7,8 +7,8 @@ import javax.swing.BorderFactory;
 
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.blocks.dataBlocks.ThreadData;
-import com.upc.EasyProduction.panelManagement.Workflow;
+import com.upc.EasyProduction.blocks.dataBlocks.BasicBlockData;
+
 
 public class Thread extends Block{
 	
@@ -20,7 +20,7 @@ public class Thread extends Block{
 	@Override
 	public BlockData getBlockData() {
 		
-		return new ThreadData(getClassName(), isSelected);
+		return new BasicBlockData(getClassName(), isSelected);
 		
 	}
 	/*@Override

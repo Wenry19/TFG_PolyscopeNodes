@@ -1,14 +1,31 @@
 package com.upc.EasyProduction.blocks.dataBlocks;
 
+import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.panelManagement.Workflow;
+import com.upc.EasyProduction.blocks.operationBlocks.Operation;
+
 
 public class OperationData extends BlockData{
 	
+	private String indentation;
 	
-	public OperationData(String className, Boolean isSelected) {
+	public OperationData(String className, Boolean isSelected, String indentation) {
 		
 		this.className = className;
 		this.isSelected = isSelected;
+		
+		this.indentation = indentation;
+	}
+	
+	@Override
+	public Block getBlockInstance() {
+				
+		Operation b = (Operation) super.getBlockInstance();
+		
+		b.setIndentation(indentation);
+		
+		b.setPanel();
+				
+		return (Block) b;
 	}
 }

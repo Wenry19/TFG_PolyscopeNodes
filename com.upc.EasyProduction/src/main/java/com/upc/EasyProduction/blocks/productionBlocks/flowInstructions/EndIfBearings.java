@@ -9,7 +9,7 @@ public class EndIfBearings extends FlowInstructions{
 	
 	public EndIfBearings() {
 		
-		identation = "    ";
+		indentation = "    ";
 		
 		defaultCode = "\n"
 				+ "    end";

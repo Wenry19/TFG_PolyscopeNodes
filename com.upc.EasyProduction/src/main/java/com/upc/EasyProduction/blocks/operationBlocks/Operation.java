@@ -16,17 +16,17 @@ public class Operation extends Block{
 	
 	@Override
 	public String getDefaultCode() {
-		return "\n" + identation + defaultCode; //ULL!!!! (funciona només si és una línia de codi)
+		return "\n" + indentation + defaultCode; //ULL!!!! (funciona només si és una línia de codi)
 	}
 	
 	@Override
 	public String generateCode() {
 		code = defaultCode;
 		
-		return "\n" + identation + code;
+		return "\n" + indentation + code;
 	}
 	
 	public BlockData getBlockData() {
-		return new OperationData(getClassName(), isSelected);
+		return new OperationData(getClassName(), isSelected, indentation);
 	}
 }

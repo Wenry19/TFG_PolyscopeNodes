@@ -7,7 +7,7 @@ public class DefPutBearing extends DefPutFuncs {
 	
 	public DefPutBearing() {
 		
-		identation = "  ";
+		indentation = "  ";
 		
 		defaultCode = "\n"
 				+ "  def PUT_BEARING_MATRIZ_ASSEMBLY():\n"

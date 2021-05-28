@@ -173,7 +173,7 @@ public class Workflow extends JPanel {
 		
 		Block block = findBlock(id);
 		
-		block.setIdentation(workflow.get(position).getIdentation());
+		block.setIndentation(workflow.get(position).getIndentation());
 		
 		workflow.add(position+1, block);
 		

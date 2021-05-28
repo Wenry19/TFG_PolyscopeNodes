@@ -9,7 +9,7 @@ public class EndWhileTrue extends FlowInstructions {
 	
 	public EndWhileTrue() {
 				
-		identation = "  ";
+		indentation = "  ";
 		
 		defaultCode = "\n"
 				+ "  end\n";

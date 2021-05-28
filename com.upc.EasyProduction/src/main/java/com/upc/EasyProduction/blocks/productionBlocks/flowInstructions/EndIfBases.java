@@ -10,7 +10,7 @@ public class EndIfBases extends FlowInstructions{
 	
 	public EndIfBases() {
 		
-		identation = "    ";
+		indentation = "    ";
 		
 		defaultCode = "\n"
 				+ "    end";

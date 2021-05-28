@@ -8,7 +8,7 @@ public class DespalletizeProduct extends GetReadyToPut{
 	
 	public DespalletizeProduct() {
 				
-		identation = "        ";
+		indentation = "        ";
 		
 		defaultCode = "\n"
 				+ "        $ 68 \"MoverJ\"\n"

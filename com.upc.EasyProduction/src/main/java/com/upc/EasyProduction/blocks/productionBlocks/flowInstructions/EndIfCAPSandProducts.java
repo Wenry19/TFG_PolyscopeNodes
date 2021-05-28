@@ -9,7 +9,7 @@ public class EndIfCAPSandProducts extends FlowInstructions{
 	
 	public EndIfCAPSandProducts() {
 				
-		identation = "    ";
+		indentation = "    ";
 		
 		defaultCode = "\n"
 				+ "    end\n";

@@ -9,7 +9,7 @@ public class IfBases extends FlowInstructions{
 	
 	public IfBases() {
 				
-		identation = "      ";
+		indentation = "      ";
 		
 		defaultCode = "\n"
 				+ "    $ 22 \"If N_Bases<4\"\n"

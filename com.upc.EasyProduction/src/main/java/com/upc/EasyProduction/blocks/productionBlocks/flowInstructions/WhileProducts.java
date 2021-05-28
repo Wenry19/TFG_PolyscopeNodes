@@ -9,7 +9,7 @@ public class WhileProducts extends FlowInstructions {
 	
 	public WhileProducts() {
 				
-	    identation = "        ";
+	    indentation = "        ";
 		
 		defaultCode = "\n"
 				+ "      $ 67 \"Bucle 4 veces\"\n"

@@ -10,7 +10,7 @@ public class GetCAPs extends HumanWork {
 	
 	public GetCAPs() {
 				
-		identation = "      ";
+		indentation = "      ";
 		
 		defaultCode = "\n"
 				+ "      $ 60 \"'(((( GET CAPs )))))'\"\n"
