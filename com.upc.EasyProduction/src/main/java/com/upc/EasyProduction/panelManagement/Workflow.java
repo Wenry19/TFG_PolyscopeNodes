@@ -42,6 +42,7 @@ import com.upc.EasyProduction.blocks.productionBlocks.flowInstructions.WhileTrue
 import com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut.DespalletizeProduct;
 import com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut.DestackBase;
 import com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut.DestackBearing;
+import com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut.GoToReadyWayPoint;
 import com.upc.EasyProduction.blocks.productionBlocks.humanWork.GetCAPs;
 import com.upc.EasyProduction.blocks.productionBlocks.ini.InitializeVars;
 import com.upc.EasyProduction.blocks.productionBlocks.threads.ExperimentTimeThread;
@@ -219,6 +220,7 @@ public class Workflow extends JPanel {
 		workflow.add(new DefPutProduct());
 		
 		workflow.add(new WhileTrue());
+		workflow.add(new GoToReadyWayPoint());
 		
 		workflow.add(new IfBases());
 		workflow.add(new DestackBase());

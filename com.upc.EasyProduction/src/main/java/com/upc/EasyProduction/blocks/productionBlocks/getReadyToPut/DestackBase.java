@@ -1,5 +1,9 @@
 package com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut;
 
+import java.awt.FlowLayout;
+
+import javax.swing.JLabel;
+
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
@@ -70,6 +74,16 @@ public class DestackBase extends GetReadyToPut {
 				+ "      end";
 		
 		name = "DestackBase";
+		
+		this.panel.removeAll(); // no es pot ajustar velocitat ni acceleració...
+		
+		JLabel infoLabel = new JLabel();
+		
+		infoLabel.setText("<html>Destack Base, do not has an approximation point,<br/>because it has been already executed in GoToReadyWayPoint.</html>");
+		
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		panel.add(infoLabel);
 		
 		this.setText(name);
 		

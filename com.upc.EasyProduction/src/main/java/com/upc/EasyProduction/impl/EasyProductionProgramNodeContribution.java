@@ -49,6 +49,7 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	
 	
 	public void onChangeInWF(int[] wfPositions) {
+		
 		undoRedoManager.recordChanges(new MyUndoableChanges(wfPositions));
 		
 		System.out.println("ON CHANGE ________________________________");
