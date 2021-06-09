@@ -32,7 +32,7 @@ public class WhileTrue extends FlowInstructions {
 		
 		this.setBackground(new Color(0xaeaebf)); // ull!
 		
-		infoLabel.setText("Main While True. It is necessary to disable Polyscope infinite loop for good indentation of the generated script.");
+		infoLabel.setText("<html>Main While True. It is necessary to disable Polyscope infinite<br/>loop for good indentation of the generated script.</html>");
 		
 		panel.add(infoLabel);
 	}

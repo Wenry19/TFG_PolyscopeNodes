@@ -29,8 +29,6 @@ public class Thread extends Block implements ItemListener {
 		
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		panel.setAlignmentY(CENTER_ALIGNMENT);
-		
 		toggleButton.addItemListener(this);
 		
 		this.setEnabled(false);
