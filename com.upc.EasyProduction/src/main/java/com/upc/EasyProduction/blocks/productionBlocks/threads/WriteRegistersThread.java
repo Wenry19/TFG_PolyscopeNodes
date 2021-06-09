@@ -1,7 +1,5 @@
 package com.upc.EasyProduction.blocks.productionBlocks.threads;
 
-import com.upc.EasyProduction.panelManagement.Workflow;
-
 public class WriteRegistersThread extends Thread {
 	
 	
@@ -45,7 +43,13 @@ public class WriteRegistersThread extends Thread {
 	
 	@Override
 	public String generateCode() {
-		code = defaultCode;
+		
+		if (activateThread) {
+			code = defaultCode; // falta fer tests de script generat!!
+		}
+		else {
+			code = "\n";
+		}
 		
 		return code;
 	}

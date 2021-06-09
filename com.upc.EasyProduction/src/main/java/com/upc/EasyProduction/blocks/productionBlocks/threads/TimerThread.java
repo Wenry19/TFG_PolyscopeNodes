@@ -1,7 +1,5 @@
 package com.upc.EasyProduction.blocks.productionBlocks.threads;
 
-import com.upc.EasyProduction.panelManagement.Workflow;
-
 public class TimerThread extends Thread { // activate or deactivate timers?
 	
 	
@@ -42,7 +40,13 @@ public class TimerThread extends Thread { // activate or deactivate timers?
 	
 	@Override
 	public String generateCode() {
-		code = defaultCode;
+		
+		if (activateThread) {
+			code = defaultCode; // falta fer tests de script generat!!
+		}
+		else {
+			code = "\n";
+		}
 		
 		return code;
 	}

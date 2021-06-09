@@ -2,13 +2,13 @@ package com.upc.EasyProduction.blocks.dataBlocks;
 
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.blocks.productionBlocks.threads.ExperimentTimeThread;
+import com.upc.EasyProduction.blocks.productionBlocks.threads.Thread;
 
-public class ExperimentTimeThreadData extends BlockData {
+public class ThreadData extends BlockData {
 	
 	private Boolean activateExperimentTimer = false;
 	
-	public ExperimentTimeThreadData(String className, Boolean isSelected, Boolean activateExperimentTimer) {
+	public ThreadData(String className, Boolean isSelected, Boolean activateExperimentTimer) {
 		
 		this.className = className; // només per aconseguir instància del bloc
 		this.isSelected = isSelected; // s'encarrega el workflow
@@ -18,9 +18,9 @@ public class ExperimentTimeThreadData extends BlockData {
 	@Override
 	public Block getBlockInstance() {
 				
-		ExperimentTimeThread b = (ExperimentTimeThread) super.getBlockInstance();
+		Thread b = (Thread) super.getBlockInstance();
 		
-		b.setActivateExperimentTimer(activateExperimentTimer); // order is important!!
+		b.setActivateThread(activateExperimentTimer); // order is important!!
 		
 		b.setPanel(); // order is important!!
 						

@@ -7,17 +7,11 @@ import java.awt.event.ItemListener;
 import javax.swing.JToggleButton;
 
 import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.blocks.dataBlocks.ExperimentTimeThreadData;
+import com.upc.EasyProduction.blocks.dataBlocks.ThreadData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 
-public class ExperimentTimeThread extends Thread implements ItemListener{
-	
-	private JToggleButton toggleButton = new JToggleButton("Activate Experiment Timer", false);
-	
-	protected boolean activateExperimentTimer = false;
-	
-	private boolean controlUpdateDataModel = true;
+public class ExperimentTimeThread extends Thread {
 	
 	public ExperimentTimeThread() {
 				
@@ -49,22 +43,12 @@ public class ExperimentTimeThread extends Thread implements ItemListener{
 		
 		this.setText(name);
 		
-		// param panel
-		
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		toggleButton.addItemListener(this);
-		
-		this.setEnabled(false);
-		
-		panel.add(toggleButton);
-		
 	}
 	
 	@Override
 	public String generateCode() {
 		
-		if (activateExperimentTimer) {
+		if (activateThread) {
 			code = defaultCode; // falta fer tests de script generat!!
 		}
 		else {
@@ -72,45 +56,5 @@ public class ExperimentTimeThread extends Thread implements ItemListener{
 		}
 		
 		return code;
-	}
-	
-	@Override
-	public BlockData getBlockData() {
-		return new ExperimentTimeThreadData(getClassName(), isSelected, activateExperimentTimer);
-	}
-	
-	public void setActivateExperimentTimer(Boolean activateExperimentTimer) {
-		this.activateExperimentTimer = activateExperimentTimer;
-	}
-	
-	@Override
-	public void setPanel() {
-		
-		controlUpdateDataModel = false;
-		
-		toggleButton.setSelected(activateExperimentTimer); // this does not trigger an action event
-		this.setEnabled(activateExperimentTimer);
-		
-		controlUpdateDataModel = true;
-	}
-
-	@Override
-	public void itemStateChanged(ItemEvent e) {
-		
-		int state = e.getStateChange();
-		
-		if (state == ItemEvent.SELECTED) {
-			activateExperimentTimer = true;
-			this.setEnabled(true);
-		}
-		else {
-			activateExperimentTimer = false;
-			
-			this.setEnabled(false);
-		}
-		
-		if(controlUpdateDataModel) {
-			Workflow.getInstance().updateDataModel(new int[] {wfPos});
-		}
 	}
 }
