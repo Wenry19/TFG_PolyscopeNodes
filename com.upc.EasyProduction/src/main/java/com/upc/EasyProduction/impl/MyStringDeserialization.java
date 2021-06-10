@@ -8,6 +8,7 @@ import com.upc.EasyProduction.blocks.dataBlocks.BasicBlockData;
 import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
 import com.upc.EasyProduction.blocks.dataBlocks.GetReadyToPutData;
 import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
+import com.upc.EasyProduction.blocks.dataBlocks.SleepData;
 import com.upc.EasyProduction.blocks.dataBlocks.ThreadData;
 
 public class MyStringDeserialization {
@@ -30,10 +31,12 @@ public class MyStringDeserialization {
 		else if(type.contains("ThreadData")) {
 			return getThreadData(data);
 		}
+		else if(type.contains("SleepData")) {
+			return getSleepData(data);
+		}
 		else {
 			return null;
 		}
-		
 	}
 	
 	private String getVal(String attributeName, String data) {
@@ -76,4 +79,7 @@ public class MyStringDeserialization {
 		return new ThreadData(getVal("className", data), Boolean.parseBoolean(getVal("isSelected", data)), Boolean.parseBoolean(getVal("activateExperimentTimer", data)));
 	}
 	
+	private BlockData getSleepData(String data) {
+		return new SleepData(getVal("className", data), Boolean.parseBoolean(getVal("isSelected", data)), getVal("indentation", data), Integer.parseInt(getVal("duration", data)));
+	}
 }
