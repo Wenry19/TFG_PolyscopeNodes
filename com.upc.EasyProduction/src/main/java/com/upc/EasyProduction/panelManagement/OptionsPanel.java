@@ -135,9 +135,6 @@ public class OptionsPanel extends JPanel {
 		
 	}
 	
-	public void printOptions() {
-		System.out.println(options);
-	}
 	
 	public JScrollPane getScrollPanel() {
 		return scroll;
