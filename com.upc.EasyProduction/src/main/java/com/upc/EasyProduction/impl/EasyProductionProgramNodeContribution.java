@@ -34,6 +34,8 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	//private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	private final Gson gson = new GsonBuilder().create(); // ULL!!
 	
+	private final MyStringDeserialization d = new MyStringDeserialization();
+	
 	
 	public EasyProductionProgramNodeContribution(ProgramAPIProvider apiProvider, EasyProductionProgramNodeView view, DataModel model) {
 		this.apiProvider = apiProvider;
@@ -75,7 +77,8 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 			
 			try {
 				
-				blockDataArray[i] = (BlockData) gson.fromJson(blockDataStringArray[i], Class.forName(typesDataStringArray[i]));
+				//blockDataArray[i] = (BlockData) gson.fromJson(blockDataStringArray[i], Class.forName(typesDataStringArray[i]));
+				blockDataArray[i] = (BlockData) d.deserializeBlockData(blockDataStringArray[i], typesDataStringArray[i]);
 				
 			}
 			catch(Exception e){
