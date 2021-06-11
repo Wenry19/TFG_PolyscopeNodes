@@ -341,6 +341,16 @@ public class Workflow extends JPanel {
 	
 	public void setWorkflowData(BlockData[] DataArray) {
 		
+		// also does update panel in the same loop
+		
+		this.removeAll();
+		
+		this.setLayout(new GridLayout(0, 1, 0, 5));
+		
+		this.setLocation(0, 0);
+		
+		this.setVisible(true);
+		
 		Rectangle rect = this.scroll.getViewport().getViewRect();
 		
 		workflow.clear(); // clear current workflow
@@ -352,12 +362,15 @@ public class Workflow extends JPanel {
 			
 			Block aux = DataArray[i].getBlockInstance();
 			
-			
 			if (aux.getIsSelected()) {
 				setSelectedBlock(aux);
 			}
 			
 			workflow.add(aux);
+			
+			aux.setWorkflowPosition(i);
+			
+			this.add(aux);
 			
 		}
 		
@@ -365,7 +378,10 @@ public class Workflow extends JPanel {
 			MainPanel.getInstance().clearParamPanel();
 		}
 		
-		updatePanel();
+		//updatePanel();
+		
+		this.revalidate();
+		this.repaint();
 		
 		scroll.getViewport().scrollRectToVisible(rect);
 		

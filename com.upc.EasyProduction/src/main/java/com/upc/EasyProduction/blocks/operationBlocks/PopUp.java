@@ -10,5 +10,7 @@ public class PopUp extends Operation{
 				
 		this.setText(name);
 		
+		// param panel
+		
 	}
 }
