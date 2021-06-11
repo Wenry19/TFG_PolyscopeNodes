@@ -1,7 +1,11 @@
 package com.upc.EasyProduction.blocks.productionBlocks.threads;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -27,13 +31,21 @@ public class Thread extends Block implements ItemListener {
 		
 		// param panel
 		
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel.setLayout(new GridBagLayout());
+		
+		GridBagConstraints c = new GridBagConstraints();
+		
+		c.gridwidth = 3;
+		c.gridheight = 3;
+		
+		c.gridx = 1;
+		c.gridy = 1;
 		
 		toggleButton.addItemListener(this);
-		
+				
 		this.setEnabled(false);
 		
-		panel.add(toggleButton);
+		panel.add(toggleButton, c);
 	}
 	
 	@Override

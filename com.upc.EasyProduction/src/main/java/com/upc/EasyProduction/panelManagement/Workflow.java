@@ -3,15 +3,11 @@ package com.upc.EasyProduction.panelManagement;
 
 
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
+
 import java.util.LinkedList;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -192,6 +188,11 @@ public class Workflow extends JPanel {
 	// DELETE BLOCK
 	public void deleteBlock(int i) {
 		
+		if (workflow.get(i) == currentSelectedBlock) {
+			MainPanel.getInstance().clearParamPanel();
+			currentSelectedBlock = null;
+		}
+		
 		workflow.remove(i);
 		
 		Rectangle rect = this.scroll.getViewport().getViewRect();
@@ -251,13 +252,8 @@ public class Workflow extends JPanel {
 	private void updatePanel() {
 		
 		this.removeAll();
-		
-		this.setLayout(new GridBagLayout());
-		
-		GridBagConstraints c = new GridBagConstraints();
-		
-		c.gridheight = 1;
-		c.gridwidth = 0;
+				
+		this.setLayout(new GridLayout(0, 1, 0, 5));
 		
 		this.setLocation(0, 0);
 		
@@ -268,11 +264,12 @@ public class Workflow extends JPanel {
 			
 			Block aux = workflow.get(i);
 			
-			this.add(aux, c);
-			
 			aux.setWorkflowPosition(i);
 			
-			if (i != workflow.size()-1) {
+			this.add(aux);
+			
+			
+			/*if (i != workflow.size()-1) {
 								
 				try {
 					JLabel arrow = new JLabel();
@@ -289,7 +286,7 @@ public class Workflow extends JPanel {
 				catch(Exception e) {
 					System.out.println(e.toString());
 				}
-			}
+			}*/
 		}
 		
 		this.revalidate();
@@ -379,22 +376,20 @@ public class Workflow extends JPanel {
 	
 	private Block findBlock(String id) { // canviar...
 		
-		if (id == "SetAnalogOutput") {
+		if (id.equals("SetAnalogOutput")) {
 			return new SetAnalogOutput();
 		}
 		
-		else if (id == "SetDigitalOutput") {
+		else if (id.equals("SetDigitalOutput")) {
 			return new SetDigitalOutput();
 		}
 		
-		else if (id == "Sleep") {
+		else if (id.equals("Sleep")) {
 			return new Sleep();
 		}
 		
 		else { // if (id == "PopUp"){}
 			return new PopUp();
 		}
-		
 	}
-	
 }

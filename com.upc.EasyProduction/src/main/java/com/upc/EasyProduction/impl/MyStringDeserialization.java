@@ -39,7 +39,7 @@ public class MyStringDeserialization {
 		}
 	}
 	
-	private String getVal(String attributeName, String data) {
+	public String getVal(String attributeName, String data) {
 		
 		Pattern pattern = Pattern.compile("\"" + attributeName + "\":\"?([^,}{\"]*)");
 		

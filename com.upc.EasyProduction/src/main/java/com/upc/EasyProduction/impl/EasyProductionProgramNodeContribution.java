@@ -31,8 +31,8 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	
 	private static final String[] DEFAULT_TYPES = Workflow.getInstance().getDEFAULT_TYPESdata();
 	
-	//private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
-	private final Gson gson = new GsonBuilder().create(); // ULL!!
+	
+	private final Gson gson = new GsonBuilder().create();
 	
 	private final MyStringDeserialization d = new MyStringDeserialization();
 	
@@ -42,11 +42,6 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		this.view = view;
 		this.model = model;
 		this.undoRedoManager = this.apiProvider.getProgramAPI().getUndoRedoManager();
-		
-		
-		/*for (int i = 0; i < Workflow.getInstance().getDEFAULT_WORKFLOWdata().length; i++) {
-			System.out.println(Workflow.getInstance().getDEFAULT_WORKFLOWdata()[i]);
-		}*/
 	}
 	
 	
@@ -54,14 +49,14 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		
 		undoRedoManager.recordChanges(new MyUndoableChanges(wfPositions));
 		
-		System.out.println("ON CHANGE ________________________________");
+		// debugging
 		
+		System.out.println("ON CHANGE ________________________________");
 		String[] aux = model.get(WORKFLOW_KEY, DEFAULT_WORKFLOW);
 		
 		for (int i = 0; i < aux.length; i++) {
 			System.out.println(aux[i]);
 		}
-		
 		System.out.println("END ON CHANGE ________________________________");
 	}
 
@@ -262,8 +257,6 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 					model.set(TYPES_KEY, newTypesData);
 				}
 			}
-			
 		}
 	}
-
 }
