@@ -1,6 +1,7 @@
 package com.upc.EasyProduction.blocks.productionBlocks.humanWork;
 
 import java.awt.Color;
+import java.awt.GridBagConstraints;
 
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.panelManagement.Workflow;
@@ -35,7 +36,15 @@ public class GetCAPs extends HumanWork {
 		
 		infoLabel.setText("Operator must place CAPs to finalize products and continue.");
 		
-		panel.add(infoLabel);
+		GridBagConstraints c = new GridBagConstraints();
+		
+		c.gridwidth = 3;
+		c.gridheight = 3;
+		
+		c.gridx = 1;
+		c.gridy = 1;
+		
+		panel.add(infoLabel, c);
 	}
 	
 	@Override

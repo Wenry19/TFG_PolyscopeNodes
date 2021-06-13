@@ -7,8 +7,9 @@ import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.dataBlocks.BasicBlockData;
 import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
 import com.upc.EasyProduction.blocks.dataBlocks.GetReadyToPutData;
-import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
+import com.upc.EasyProduction.blocks.dataBlocks.EmptyOperationData;
 import com.upc.EasyProduction.blocks.dataBlocks.PopUpData;
+import com.upc.EasyProduction.blocks.dataBlocks.SetAnalogOutputData;
 import com.upc.EasyProduction.blocks.dataBlocks.SetDigitalOutputData;
 import com.upc.EasyProduction.blocks.dataBlocks.SleepData;
 import com.upc.EasyProduction.blocks.dataBlocks.ThreadData;
@@ -41,6 +42,9 @@ public class MyStringDeserialization {
 		}
 		else if(type.contains("SetDigitalOutputData")) {
 			return getSetDigitalOutputData(data);
+		}
+		else if(type.contains("SetAnalogOutputData")) {
+			return getSetAnalogOutputData(data);
 		}
 		else {
 			return null;
@@ -80,7 +84,7 @@ public class MyStringDeserialization {
 	}
 	
 	private BlockData getOperationData(String data) {
-		return new OperationData(getVal("className", data), Boolean.parseBoolean(getVal("isSelected", data)), getVal("indentation", data));
+		return new EmptyOperationData(getVal("className", data), Boolean.parseBoolean(getVal("isSelected", data)), getVal("indentation", data));
 	}
 	
 	private BlockData getThreadData(String data) {
@@ -100,5 +104,9 @@ public class MyStringDeserialization {
 	
 	private BlockData getSetDigitalOutputData(String data) {
 		return new SetDigitalOutputData(getVal("className", data), Boolean.parseBoolean(getVal("isSelected", data)), getVal("indentation", data), getVal("out", data), getVal("value", data));
+	}
+	
+	private BlockData getSetAnalogOutputData(String data) {
+		return new SetAnalogOutputData(getVal("className", data), Boolean.parseBoolean(getVal("isSelected", data)), getVal("indentation", data), getVal("out", data), getVal("value", data));
 	}
 }

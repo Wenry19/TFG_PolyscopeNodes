@@ -1,6 +1,7 @@
 package com.upc.EasyProduction.blocks.productionBlocks.flowInstructions;
 
 import java.awt.Color;
+import java.awt.GridBagConstraints;
 
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.panelManagement.Workflow;
@@ -34,7 +35,15 @@ public class WhileTrue extends FlowInstructions {
 		
 		infoLabel.setText("<html>Main While True. It is necessary to disable Polyscope infinite<br/>loop for good indentation of the generated script.</html>");
 		
-		panel.add(infoLabel);
+		GridBagConstraints c = new GridBagConstraints();
+		
+		c.gridwidth = 3;
+		c.gridheight = 3;
+		
+		c.gridx = 1;
+		c.gridy = 1;
+		
+		panel.add(infoLabel, c);
 	}
 	
 

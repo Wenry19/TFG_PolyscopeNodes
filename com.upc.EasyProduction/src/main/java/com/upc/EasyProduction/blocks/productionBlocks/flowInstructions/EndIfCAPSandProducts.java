@@ -1,6 +1,7 @@
 package com.upc.EasyProduction.blocks.productionBlocks.flowInstructions;
 
 import java.awt.Color;
+import java.awt.GridBagConstraints;
 
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.panelManagement.Workflow;
@@ -22,7 +23,15 @@ public class EndIfCAPSandProducts extends FlowInstructions{
 		
 		infoLabel.setText("End If of CAPs and Products placement.");
 		
-		panel.add(infoLabel);
+		GridBagConstraints c = new GridBagConstraints();
+		
+		c.gridwidth = 3;
+		c.gridheight = 3;
+		
+		c.gridx = 1;
+		c.gridy = 1;
+		
+		panel.add(infoLabel, c);
 	}
 	
 

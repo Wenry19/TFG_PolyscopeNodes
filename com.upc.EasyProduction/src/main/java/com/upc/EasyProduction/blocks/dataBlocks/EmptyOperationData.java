@@ -5,11 +5,11 @@ import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.operationBlocks.Operation;
 
 
-public class OperationData extends BlockData{
+public class EmptyOperationData extends BlockData{
 	
 	private String indentation;
 	
-	public OperationData(String className, Boolean isSelected, String indentation) {
+	public EmptyOperationData(String className, Boolean isSelected, String indentation) {
 		
 		this.className = className;
 		this.isSelected = isSelected;

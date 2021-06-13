@@ -1,5 +1,6 @@
 package com.upc.EasyProduction.blocks.productionBlocks.ini;
 
+import java.awt.GridBagConstraints;
 
 public class InitializeVars extends Initialize {
 	
@@ -55,7 +56,15 @@ public class InitializeVars extends Initialize {
 		
 		infoLabel.setText("Initialization of some relevant variables.");
 		
-		panel.add(infoLabel);
+		GridBagConstraints c = new GridBagConstraints();
+		
+		c.gridwidth = 3;
+		c.gridheight = 3;
+		
+		c.gridx = 1;
+		c.gridy = 1;
+		
+		panel.add(infoLabel, c);
 		
 	}
 	

@@ -37,7 +37,7 @@ public class SetDigitalOutput extends Operation implements ActionListener{
 	
 	public SetDigitalOutput() {
 		
-		defaultCode = "set_standard_digital_out(0,False)";
+		defaultCode = "set_standard_digital_out(0, False)";
 		
 		name = "SetDigitalOutput";
 				
@@ -155,7 +155,7 @@ public class SetDigitalOutput extends Operation implements ActionListener{
 	
 	@Override
 	public String generateCode() {
-		code = "set_standard_digital_out(" + out + "," + value + ")\n";
+		code = "set_standard_digital_out(" + out + ", " + value + ")\n";
 		
 		return "\n" + indentation + code;
 	}

@@ -1,6 +1,7 @@
 package com.upc.EasyProduction.blocks.productionBlocks.humanWork;
 
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 
 import javax.swing.JLabel;
 
@@ -13,7 +14,7 @@ public class HumanWork extends Block{
 	protected JLabel infoLabel = new JLabel();
 	
 	public HumanWork() {
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel.setLayout(new GridBagLayout());
 	}
 	
 	public BlockData getBlockData() {

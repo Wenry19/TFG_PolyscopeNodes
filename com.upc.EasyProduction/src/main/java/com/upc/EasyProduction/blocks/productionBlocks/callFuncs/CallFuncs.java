@@ -1,6 +1,6 @@
 package com.upc.EasyProduction.blocks.productionBlocks.callFuncs;
 
-import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 
 import javax.swing.JLabel;
 
@@ -16,7 +16,7 @@ public class CallFuncs extends Block{
 	
 	public CallFuncs() {
 		
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel.setLayout(new GridBagLayout());
 	}
 	
 	public BlockData getBlockData() {

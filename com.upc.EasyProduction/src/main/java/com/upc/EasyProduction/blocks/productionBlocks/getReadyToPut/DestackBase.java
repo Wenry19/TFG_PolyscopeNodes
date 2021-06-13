@@ -1,6 +1,8 @@
 package com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut;
 
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.JLabel;
 
@@ -81,9 +83,17 @@ public class DestackBase extends GetReadyToPut {
 		
 		infoLabel.setText("<html>Destack Base, do not has an approximation point,<br/>because it has been already executed in GoToReadyWayPoint.</html>");
 		
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel.setLayout(new GridBagLayout());
 		
-		panel.add(infoLabel);
+		GridBagConstraints c = new GridBagConstraints();
+		
+		c.gridwidth = 3;
+		c.gridheight = 3;
+		
+		c.gridx = 1;
+		c.gridy = 1;
+		
+		panel.add(infoLabel, c);
 		
 		this.setText(name);
 		

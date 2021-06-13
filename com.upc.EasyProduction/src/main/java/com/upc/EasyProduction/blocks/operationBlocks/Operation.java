@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
+import com.upc.EasyProduction.blocks.dataBlocks.EmptyOperationData;
 
 public class Operation extends Block{
 		
@@ -27,6 +27,6 @@ public class Operation extends Block{
 	}
 	
 	public BlockData getBlockData() {
-		return new OperationData(getClassName(), isSelected, indentation);
+		return new EmptyOperationData(getClassName(), isSelected, indentation);
 	}
 }

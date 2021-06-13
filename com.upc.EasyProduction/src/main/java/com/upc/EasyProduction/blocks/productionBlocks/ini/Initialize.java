@@ -1,6 +1,7 @@
 package com.upc.EasyProduction.blocks.productionBlocks.ini;
 
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 
 import javax.swing.JLabel;
 
@@ -15,7 +16,7 @@ public class Initialize extends Block{
 	
 	public Initialize() {
 		
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel.setLayout(new GridBagLayout());
 		
 	}
 	

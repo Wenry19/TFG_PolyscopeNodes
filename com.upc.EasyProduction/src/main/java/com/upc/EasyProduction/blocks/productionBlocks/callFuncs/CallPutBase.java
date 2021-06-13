@@ -1,6 +1,7 @@
 package com.upc.EasyProduction.blocks.productionBlocks.callFuncs;
 
-
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 public class CallPutBase extends CallFuncs{
 		
@@ -18,7 +19,16 @@ public class CallPutBase extends CallFuncs{
 		
 		infoLabel.setText("Call of the function PutBase defined previously.");
 		
-		panel.add(infoLabel);
+		
+		GridBagConstraints c = new GridBagConstraints();
+		
+		c.gridwidth = 3;
+		c.gridheight = 3;
+		
+		c.gridx = 1;
+		c.gridy = 1;
+		
+		panel.add(infoLabel, c);
 		
 	}
 		

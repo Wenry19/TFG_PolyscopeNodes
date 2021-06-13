@@ -1,15 +1,189 @@
 package com.upc.EasyProduction.blocks.operationBlocks;
 
-public class SetAnalogOutput extends Operation{
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Hashtable;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import com.upc.EasyProduction.blocks.BlockData;
+import com.upc.EasyProduction.blocks.dataBlocks.SetAnalogOutputData;
+import com.upc.EasyProduction.blocks.dataBlocks.SetDigitalOutputData;
+import com.upc.EasyProduction.panelManagement.Workflow;
+
+public class SetAnalogOutput extends Operation implements ActionListener, ChangeListener{
+	
+	private JRadioButton out0 = new JRadioButton("0");
+	private JRadioButton out1 = new JRadioButton("1");
+	
+	private JLabel outsLabel = new JLabel("Select analog output:");
+	private JLabel valueLabel = new JLabel("Select value (1.0 = 10v or 20mA, see I/O tab): 0.50");
+	
+	private JSlider valueSlider = new JSlider();
+	private Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
+	
+	private String out = "0";
+	private String value = "0.50"; // false -> low, true -> high
+	
+	private boolean controlUpdateDataModel = true;
 	
 	public SetAnalogOutput() {
 		
-		defaultCode = "\n"
-				+ "\n";
+		defaultCode = "set_standard_analog_out(0, 0.50)";
 		
 		name = "SetAnalogInput"; // can be whatever
 				
 		this.setText(name);
+		
+		// param panel
+		
+		valueSlider.setMinimum(0);
+		valueSlider.setMaximum(100);
+		
+		// abans de posar listener així que no cal controlUpdateDataModel
+		valueSlider.setValue(50);
+		
+		valueSlider.addChangeListener(this);
+		
+		valueSlider.setMajorTickSpacing(50);
+		valueSlider.setPaintTicks(true);
+		
+		labelTable.put(0, new JLabel("0.00"));
+		labelTable.put(50, new JLabel("0.50"));
+		labelTable.put(100, new JLabel("1.00"));
+		
+		valueSlider.setLabelTable(labelTable);
+		
+		valueSlider.setPaintLabels(true);
+		
+		//__
+		
+		out0.setSelected(true);
+		
+		out0.addActionListener(this);
+		out1.addActionListener(this);
+		
+		out0.setAlignmentX(JRadioButton.CENTER_ALIGNMENT);
+		out1.setAlignmentX(JRadioButton.CENTER_ALIGNMENT);
+		
+		ButtonGroup buttonGroup1 = new ButtonGroup();
+		ButtonGroup buttonGroup2 = new ButtonGroup();
+		
+		buttonGroup1.add(out0);
+		buttonGroup1.add(out1);
+		
+		
+		panel.setLayout(new GridBagLayout());
+		
+		GridBagConstraints c = new GridBagConstraints();
+		
+		c.ipady = 10;
+		
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 0;
+		
+		panel.add(outsLabel, c);
+		
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 2;
+		
+		panel.add(valueLabel, c);
+		
+		c.gridwidth = 1;
+		
+		c.gridx = 0;
+		c.gridy = 1;
+		
+		panel.add(out0, c);
+		
+		c.gridx = 1;
+		c.gridy = 1;
+		
+		panel.add(out1, c);
+		
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 3;
+		
+		panel.add(valueSlider, c);
+		
+		
+	}
+	
+	public void setOut(String out) {
+		this.out = out;
+	}
+	
+	public void setValue(String value) {
+		this.value = value;
+	}
+	
+	@Override
+	public String generateCode() {
+		code = "set_standard_analog_out(" + out + ", " + value + ")\n";
+		
+		return "\n" + indentation + code;
+	}
+	
+	@Override
+	public BlockData getBlockData() {
+		return new SetAnalogOutputData(getClassName(), isSelected, indentation, out, value);
+	}
+	
+	@Override
+	public void setPanel() {
+		
+		controlUpdateDataModel = false; // per evitar que faci update de la datamodel al fer setValue...
+		
+		out0.setSelected(out.equals("0"));
+		out1.setSelected(out.equals("1"));
+		
+		valueSlider.setValue((int)(Float.parseFloat(value) * 100));
+						
+		controlUpdateDataModel = true;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) { // radioButtons
+		
+		JRadioButton source = (JRadioButton) e.getSource();
+		
+		if (source == out0) {
+			out = "0";
+		}
+		else if(source == out1) {
+			out = "1";
+		}
+		
+		if (controlUpdateDataModel) {
+			Workflow.getInstance().updateDataModel(new int[] {wfPos});
+		}
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent e) { // slider
+		
+		JSlider source = (JSlider) e.getSource();
+		
+		if (!source.getValueIsAdjusting()) { 
+			
+			value = String.valueOf((float)source.getValue()/(100.0));
+			
+			valueLabel.setText("Select value (1.0 = 10v or 20mA, see I/O tab): " + value);
+			
+			if (controlUpdateDataModel) {
+				Workflow.getInstance().updateDataModel(new int[] {wfPos});
+			}
+		}
 		
 	}
 
