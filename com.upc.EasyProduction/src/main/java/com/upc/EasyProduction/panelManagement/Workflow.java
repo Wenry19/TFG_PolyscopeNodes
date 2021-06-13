@@ -400,7 +400,7 @@ public class Workflow extends JPanel {
 	}
 	
 	
-	private Block findBlock(String id) { // canviar...
+	private Block findBlock(String id) {
 		
 		if (id.equals("SetAnalogOutput")) {
 			return new SetAnalogOutput();
@@ -414,7 +414,7 @@ public class Workflow extends JPanel {
 			return new Sleep();
 		}
 		
-		else { // if (id == "PopUp"){}
+		else { // if (id.equals("PopUp"))
 			return new PopUp();
 		}
 	}

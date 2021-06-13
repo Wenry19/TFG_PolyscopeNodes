@@ -9,6 +9,7 @@ import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
 import com.upc.EasyProduction.blocks.dataBlocks.GetReadyToPutData;
 import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
 import com.upc.EasyProduction.blocks.dataBlocks.PopUpData;
+import com.upc.EasyProduction.blocks.dataBlocks.SetDigitalOutputData;
 import com.upc.EasyProduction.blocks.dataBlocks.SleepData;
 import com.upc.EasyProduction.blocks.dataBlocks.ThreadData;
 
@@ -37,6 +38,9 @@ public class MyStringDeserialization {
 		}
 		else if(type.contains("PopUpData")) {
 			return getPopUpData(data);
+		}
+		else if(type.contains("SetDigitalOutputData")) {
+			return getSetDigitalOutputData(data);
 		}
 		else {
 			return null;
@@ -92,5 +96,9 @@ public class MyStringDeserialization {
 				getVal("indentation", data), getVal("title", data), getVal("message", data), Boolean.parseBoolean(getVal("isMessage", data)),
 				Boolean.parseBoolean(getVal("isWarning", data)), Boolean.parseBoolean(getVal("isError", data)),
 				Boolean.parseBoolean(getVal("isBlocking", data)));
+	}
+	
+	private BlockData getSetDigitalOutputData(String data) {
+		return new SetDigitalOutputData(getVal("className", data), Boolean.parseBoolean(getVal("isSelected", data)), getVal("indentation", data), getVal("out", data), getVal("value", data));
 	}
 }
