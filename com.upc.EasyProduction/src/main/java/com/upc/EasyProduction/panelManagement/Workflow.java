@@ -1,7 +1,5 @@
 package com.upc.EasyProduction.panelManagement;
 
-
-
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
@@ -48,6 +46,7 @@ import com.upc.EasyProduction.impl.EasyProductionProgramNodeContribution;
 
 import com.ur.urcap.api.contribution.ContributionProvider;
 import com.ur.urcap.api.domain.SystemAPI;
+import com.ur.urcap.api.domain.userinteraction.UserInteraction;
 
 public class Workflow extends JPanel {
 	
@@ -55,6 +54,7 @@ public class Workflow extends JPanel {
 	
 	private ContributionProvider<EasyProductionProgramNodeContribution> provider;
 	private SystemAPI sysAPI;
+	private UserInteraction userInteraction;
 	
 	private JScrollPane scroll;
 	
@@ -94,6 +94,10 @@ public class Workflow extends JPanel {
 	
 	public void setSystemAPI(SystemAPI sysAPI) {
 		this.sysAPI = sysAPI;
+	}
+	
+	public void setUserInteraction(UserInteraction userInteraction){
+		this.userInteraction = userInteraction;
 	}
 	
 	// generate default data for data model!!
@@ -139,7 +143,12 @@ public class Workflow extends JPanel {
 		}
 	}
 	
+	
 	// some getters
+	
+	public UserInteraction getUserInteraction() {
+		return userInteraction;
+	}
 	
 	public int getLen() {
 		return workflow.size();
@@ -343,6 +352,8 @@ public class Workflow extends JPanel {
 		
 		// also does update panel in the same loop
 		
+		Rectangle rect = this.scroll.getViewport().getViewRect();
+		
 		this.removeAll();
 		
 		this.setLayout(new GridLayout(0, 1, 0, 5));
@@ -351,7 +362,6 @@ public class Workflow extends JPanel {
 		
 		this.setVisible(true);
 		
-		Rectangle rect = this.scroll.getViewport().getViewRect();
 		
 		workflow.clear(); // clear current workflow
 		

@@ -8,6 +8,7 @@ import com.upc.EasyProduction.blocks.dataBlocks.BasicBlockData;
 import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
 import com.upc.EasyProduction.blocks.dataBlocks.GetReadyToPutData;
 import com.upc.EasyProduction.blocks.dataBlocks.OperationData;
+import com.upc.EasyProduction.blocks.dataBlocks.PopUpData;
 import com.upc.EasyProduction.blocks.dataBlocks.SleepData;
 import com.upc.EasyProduction.blocks.dataBlocks.ThreadData;
 
@@ -34,6 +35,9 @@ public class MyStringDeserialization {
 		else if(type.contains("SleepData")) {
 			return getSleepData(data);
 		}
+		else if(type.contains("PopUpData")) {
+			return getPopUpData(data);
+		}
 		else {
 			return null;
 		}
@@ -47,8 +51,8 @@ public class MyStringDeserialization {
 		
 		if (matcher.find()) {
 			
-			System.out.println("DATA " + data);
-			System.out.println(attributeName + " " + matcher.group(1));
+			//System.out.println("DATA " + data);
+			//System.out.println(attributeName + " " + matcher.group(1));
 			
 		    return matcher.group(1);
 		    
@@ -81,5 +85,12 @@ public class MyStringDeserialization {
 	
 	private BlockData getSleepData(String data) {
 		return new SleepData(getVal("className", data), Boolean.parseBoolean(getVal("isSelected", data)), getVal("indentation", data), Integer.parseInt(getVal("duration", data)));
+	}
+	
+	private BlockData getPopUpData(String data) {
+		return new PopUpData(getVal("className", data), Boolean.parseBoolean(getVal("isSelected", data)),
+				getVal("indentation", data), getVal("title", data), getVal("message", data), Boolean.parseBoolean(getVal("isMessage", data)),
+				Boolean.parseBoolean(getVal("isWarning", data)), Boolean.parseBoolean(getVal("isError", data)),
+				Boolean.parseBoolean(getVal("isBlocking", data)));
 	}
 }

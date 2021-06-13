@@ -17,6 +17,7 @@ import javax.swing.JScrollPane;
 import com.upc.EasyProduction.impl.EasyProductionProgramNodeContribution;
 import com.ur.urcap.api.contribution.ContributionProvider;
 import com.ur.urcap.api.domain.SystemAPI;
+import com.ur.urcap.api.domain.userinteraction.UserInteraction;
 
 public class MainPanel extends JLayeredPane{
 	
@@ -24,6 +25,7 @@ public class MainPanel extends JLayeredPane{
 	
 	private ContributionProvider<EasyProductionProgramNodeContribution> provider;
 	private SystemAPI sysAPI;
+	private UserInteraction userInteraction;
 	
 	private static MainPanel singleton = new MainPanel();
 	
@@ -79,4 +81,8 @@ public class MainPanel extends JLayeredPane{
 		Workflow.getInstance().setSystemAPI(sysAPI);
 	}
 	
+	public void setUserInteraction(UserInteraction userInteraction){
+		this.userInteraction = userInteraction;
+		Workflow.getInstance().setUserInteraction(userInteraction);
+	}
 }

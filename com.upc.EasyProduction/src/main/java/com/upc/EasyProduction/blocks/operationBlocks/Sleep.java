@@ -1,10 +1,6 @@
 package com.upc.EasyProduction.blocks.operationBlocks;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,7 +19,7 @@ public class Sleep extends Operation implements ChangeListener{
 	
 	private boolean controlUpdateDataModel = true;
 	
-	private int duration = 0;
+	private int duration = 15;
 	
 	public Sleep() {
 		
