@@ -6,13 +6,13 @@ import com.upc.EasyProduction.blocks.productionBlocks.threads.Thread;
 
 public class ThreadData extends BlockData {
 	
-	private Boolean activateExperimentTimer = false;
+	private Boolean activateThread = false;
 	
-	public ThreadData(String className, Boolean isSelected, Boolean activateExperimentTimer) {
+	public ThreadData(String className, Boolean isSelected, Boolean activateThread) {
 		
 		this.className = className; // només per aconseguir instància del bloc
 		this.isSelected = isSelected; // s'encarrega el workflow
-		this.activateExperimentTimer = activateExperimentTimer; // s'ha de fer set d'això a la nova instància
+		this.activateThread = activateThread; // s'ha de fer set d'això a la nova instància
 	}
 	
 	@Override
@@ -20,7 +20,7 @@ public class ThreadData extends BlockData {
 				
 		Thread b = (Thread) super.getBlockInstance();
 		
-		b.setActivateThread(activateExperimentTimer); // order is important!!
+		b.setActivateThread(activateThread); // order is important!!
 		
 		b.setPanel(); // order is important!!
 						

@@ -4,8 +4,6 @@ import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut.GetReadyToPut;
 
-// inner data class
-
 public class GetReadyToPutData extends BlockData{
 	
 	private double velocity;
@@ -17,9 +15,10 @@ public class GetReadyToPutData extends BlockData{
 	public GetReadyToPutData(String className, Boolean isSelected, double velocity, double acceleration, int velocity_tag, int acceleration_tag) {
 		
 		this.className = className;
+		this.isSelected = isSelected;
+		
 		this.velocity = velocity;
 		this.acceleration = acceleration;
-		this.isSelected = isSelected;
 		
 		this.velocity_tag = velocity_tag;
 		this.acceleration_tag = acceleration_tag;						

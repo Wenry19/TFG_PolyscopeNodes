@@ -17,9 +17,10 @@ public class DefPutFuncsData extends BlockData{
 	public DefPutFuncsData(String className, Boolean isSelected, double velocity, double acceleration, int velocity_tag, int acceleration_tag){
 		
 		this.className = className;
+		this.isSelected = isSelected;
+		
 		this.velocity = velocity;
 		this.acceleration = acceleration;
-		this.isSelected = isSelected;
 		
 		this.velocity_tag = velocity_tag;
 		this.acceleration_tag = acceleration_tag;

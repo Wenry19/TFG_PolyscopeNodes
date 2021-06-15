@@ -106,22 +106,6 @@ public class Block extends JLabel{
 		this.indentation = indentation;
 	}
 	
-	
-	public void setPanel() {}
-	
-	
-	// select/unselect block management
-	
-	protected void selectBlock() {
-		this.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-		isSelected = true;
-	}
-	
-	protected void unselectBlock() {
-		this.setBorder(BorderFactory.createLineBorder(Color.gray));
-		isSelected = false;
-	}
-	
 	public void setIsSelected(Boolean isSelected) {
 		
 		this.isSelected = isSelected;
@@ -136,7 +120,23 @@ public class Block extends JLabel{
 		}
 	}
 	
-	// inner classes
+	public void setPanel() {}
+	
+	
+	// methods
+	
+	protected void selectBlock() {
+		this.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+		isSelected = true;
+	}
+	
+	protected void unselectBlock() {
+		this.setBorder(BorderFactory.createLineBorder(Color.gray));
+		isSelected = false;
+	}
+	
+	
+	// inner class
 	
 	protected class MouseListener extends MouseAdapter {
 		

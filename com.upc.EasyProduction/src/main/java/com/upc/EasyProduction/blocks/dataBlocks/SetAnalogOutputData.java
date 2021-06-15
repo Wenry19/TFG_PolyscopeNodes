@@ -6,7 +6,7 @@ import com.upc.EasyProduction.blocks.operationBlocks.SetAnalogOutput;
 
 public class SetAnalogOutputData extends BlockData {
 	
-private String indentation;
+	private String indentation;
 	
 	private String out;
 	private String value;

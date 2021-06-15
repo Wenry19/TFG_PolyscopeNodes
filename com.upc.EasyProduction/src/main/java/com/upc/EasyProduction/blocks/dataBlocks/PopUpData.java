@@ -10,6 +10,7 @@ public class PopUpData extends BlockData{
 	
 	private String title;
 	private String message;
+	
 	private boolean isMessage;
 	private boolean isWarning;
 	private boolean isError;
