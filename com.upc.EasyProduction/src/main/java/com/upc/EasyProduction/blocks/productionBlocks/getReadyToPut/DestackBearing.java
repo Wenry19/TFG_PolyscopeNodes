@@ -1,12 +1,5 @@
 package com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut;
 
-import java.awt.Color;
-import java.awt.Dimension;
-
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-
-import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class DestackBearing extends GetReadyToPut {	

@@ -16,7 +16,7 @@ public class Option extends JLabel {
 	
 	private JLabel dragOption;
 	
-	Option(String name){
+	public Option(String name){
 		
 		this.name = name;
 		
@@ -51,6 +51,8 @@ public class Option extends JLabel {
 		this.setOpaque(true);
 		
 	}
+	
+	// getters
 	
 	public String getName() {
 		return this.name;

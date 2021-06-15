@@ -17,9 +17,9 @@ public class Sleep extends Operation implements ChangeListener{
 	private JSlider durationSlider = new JSlider();
 	private JLabel durationLabel  = new JLabel();
 	
-	private boolean controlUpdateDataModel = true;
-	
 	private int duration = 15;
+	
+	private boolean controlUpdateDataModel = true;
 	
 	public Sleep() {
 		
@@ -66,6 +66,21 @@ public class Sleep extends Operation implements ChangeListener{
 		
 		return "\n" + indentation + code;
 	}
+	
+	@Override
+	public BlockData getBlockData() {
+		return new SleepData(getClassName(), isSelected, indentation, duration);
+	}
+	
+	@Override
+	public void setPanel() {
+		
+		controlUpdateDataModel = false; // per evitar que faci update de la datamodel al fer setValue...
+		
+		durationSlider.setValue(duration);
+				
+		controlUpdateDataModel = true;
+	}
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
@@ -84,23 +99,9 @@ public class Sleep extends Operation implements ChangeListener{
 		}
 	}
 	
-	@Override
-	public void setPanel() {
-		
-		controlUpdateDataModel = false; // per evitar que faci update de la datamodel al fer setValue...
-		
-		durationSlider.setValue(duration);
-				
-		controlUpdateDataModel = true;
-	}
+	// setters
 	
 	public void setDuration(int duration) {
 		this.duration = duration;
-	}
-	
-	public BlockData getBlockData() {
-	    
-		return new SleepData(getClassName(), isSelected, indentation, duration);
-		
 	}
 }

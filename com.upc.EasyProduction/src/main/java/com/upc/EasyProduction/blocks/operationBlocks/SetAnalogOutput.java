@@ -119,14 +119,6 @@ public class SetAnalogOutput extends Operation implements ActionListener, Change
 		
 	}
 	
-	public void setOut(String out) {
-		this.out = out;
-	}
-	
-	public void setValue(String value) {
-		this.value = value;
-	}
-	
 	@Override
 	public String generateCode() {
 		code = "set_standard_analog_out(" + out + ", " + value + ")\n";
@@ -185,6 +177,16 @@ public class SetAnalogOutput extends Operation implements ActionListener, Change
 			}
 		}
 		
+	}
+	
+	// setters
+	
+	public void setOut(String out) {
+		this.out = out;
+	}
+	
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 }

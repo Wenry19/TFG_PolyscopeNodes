@@ -19,6 +19,7 @@ public class CallFuncs extends Block{
 		panel.setLayout(new GridBagLayout());
 	}
 	
+	@Override
 	public BlockData getBlockData() {
 		return new BasicBlockData(getClassName(), isSelected);
 	}

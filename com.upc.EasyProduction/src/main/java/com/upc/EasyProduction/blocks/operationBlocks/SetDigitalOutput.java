@@ -145,14 +145,6 @@ public class SetDigitalOutput extends Operation implements ActionListener{
 		panel.add(high, c);
 	}
 	
-	public void setOut(String out) {
-		this.out = out;
-	}
-	
-	public void setValue(String value) {
-		this.value = value;
-	}
-	
 	@Override
 	public String generateCode() {
 		code = "set_standard_digital_out(" + out + ", " + value + ")\n";
@@ -224,5 +216,15 @@ public class SetDigitalOutput extends Operation implements ActionListener{
 		if (controlUpdateDataModel) {
 			Workflow.getInstance().updateDataModel(new int[] {wfPos});
 		}
+	}
+	
+	// setters
+	
+	public void setOut(String out) {
+		this.out = out;
+	}
+	
+	public void setValue(String value) {
+		this.value = value;
 	}
 }

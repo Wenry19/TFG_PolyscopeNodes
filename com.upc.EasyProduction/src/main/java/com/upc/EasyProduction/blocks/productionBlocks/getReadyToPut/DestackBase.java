@@ -1,12 +1,10 @@
 package com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut;
 
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.JLabel;
 
-import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 public class DestackBase extends GetReadyToPut {
@@ -76,6 +74,9 @@ public class DestackBase extends GetReadyToPut {
 				+ "      end";
 		
 		name = "DestackBase";
+		
+		
+		// param panel
 		
 		this.panel.removeAll(); // no es pot ajustar velocitat ni acceleració...
 		

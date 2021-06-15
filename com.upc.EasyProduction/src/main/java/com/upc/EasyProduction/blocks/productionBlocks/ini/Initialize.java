@@ -1,6 +1,5 @@
 package com.upc.EasyProduction.blocks.productionBlocks.ini;
 
-import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 
 import javax.swing.JLabel;
@@ -20,6 +19,7 @@ public class Initialize extends Block{
 		
 	}
 	
+	@Override
 	public BlockData getBlockData() {
 		
 		return new BasicBlockData(getClassName(), isSelected);

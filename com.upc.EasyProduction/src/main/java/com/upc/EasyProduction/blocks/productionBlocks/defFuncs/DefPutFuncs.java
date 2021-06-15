@@ -84,7 +84,7 @@ public class DefPutFuncs extends Block implements ChangeListener{
 		
 		accelerationSlider.setPaintLabels(true);
 		
-		// panel
+		// param panel
 		
 		panel.add(velocityLabel);
 		panel.add(velocitySlider);
@@ -93,21 +93,9 @@ public class DefPutFuncs extends Block implements ChangeListener{
 		
 	}
 	
-	public void setVelocity(Double velocity, int velocity_tag) {
-		this.velocity = velocity;
-		this.velocity_tag = velocity_tag;
-	}
-	
-	public void setAcceleration(Double acceleration, int acceleration_tag) {
-		this.acceleration = acceleration;
-		this.acceleration_tag = acceleration_tag;
-	}
-	
-	
+	@Override
 	public BlockData getBlockData() {
-	    
 		return new DefPutFuncsData(getClassName(), isSelected, velocity, acceleration, velocity_tag, acceleration_tag);
-		
 	}
 	
 	@Override
@@ -174,6 +162,18 @@ public class DefPutFuncs extends Block implements ChangeListener{
 			}
 		}
 		
+	}
+	
+	// setters
+	
+	public void setVelocity(Double velocity, int velocity_tag) {
+		this.velocity = velocity;
+		this.velocity_tag = velocity_tag;
+	}
+	
+	public void setAcceleration(Double acceleration, int acceleration_tag) {
+		this.acceleration = acceleration;
+		this.acceleration_tag = acceleration_tag;
 	}
 
 }

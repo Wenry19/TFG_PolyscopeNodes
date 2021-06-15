@@ -53,10 +53,6 @@ public class Thread extends Block implements ItemListener {
 		return new ThreadData(getClassName(), isSelected, activateThread);
 	}
 	
-	public void setActivateThread(Boolean activateThread) {
-		this.activateThread = activateThread;
-	}
-	
 	@Override
 	public void setPanel() {
 		
@@ -86,5 +82,11 @@ public class Thread extends Block implements ItemListener {
 		if(controlUpdateDataModel) {
 			Workflow.getInstance().updateDataModel(new int[] {wfPos});
 		}
+	}
+	
+	// setters
+	
+	public void setActivateThread(Boolean activateThread) {
+		this.activateThread = activateThread;
 	}
 }

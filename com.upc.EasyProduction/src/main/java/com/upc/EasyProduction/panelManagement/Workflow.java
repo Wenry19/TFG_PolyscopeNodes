@@ -100,23 +100,31 @@ public class Workflow extends JPanel {
 		this.userInteraction = userInteraction;
 	}
 	
-	// generate default data for data model!!
+	// set selected block
 	
-	private void generateDEFAULTdata() {
-		
-		Gson gson = new GsonBuilder().create();
-		
-		BlockData[] blockDataArray = this.getWorkflowData();
-		
-		default_workflowData = new String[blockDataArray.length];
-		default_typesData= new String[blockDataArray.length];
-		
-		for (int i = 0; i < blockDataArray.length; i++) {
-			
-			default_workflowData[i] = gson.toJson(blockDataArray[i]);
-			default_typesData[i] = blockDataArray[i].getClass().getName();
-			
+	public void setSelectedBlock(Block b) {
+		if (currentSelectedBlock != null) {
+			currentSelectedBlock.setIsSelected(false);
 		}
+		currentSelectedBlock = b;
+		currentSelectedBlock.setIsSelected(true);
+	}
+	
+	// getters
+	
+	public UserInteraction getUserInteraction() {
+		return userInteraction;
+	}
+	
+	public int getLen() {
+		return workflow.size();
+	}
+	
+	public int getCurrentSelectedBlockPos() {
+		if (currentSelectedBlock != null) {
+			return currentSelectedBlock.getWorkflowPosition();
+		}
+		return -1; // no selected position
 	}
 	
 	public String[] getDEFAULT_WORKFLOWdata() {
@@ -125,6 +133,11 @@ public class Workflow extends JPanel {
 	
 	public String[] getDEFAULT_TYPESdata() {
 		return default_typesData;
+	}
+	
+	public JScrollPane getScrollPanel() {
+		
+		return scroll;
 	}
 	
 	// simulation or real robot management
@@ -143,34 +156,26 @@ public class Workflow extends JPanel {
 		}
 	}
 	
+	// methods
 	
-	// some getters
+	// generate default data for data model!!
 	
-	public UserInteraction getUserInteraction() {
-		return userInteraction;
-	}
-	
-	public int getLen() {
-		return workflow.size();
-	}
-	
-	public int getCurrentSelectedBlockPos() {
-		if (currentSelectedBlock != null) {
-			return currentSelectedBlock.getWorkflowPosition();
+	private void generateDEFAULTdata() {
+		
+		Gson gson = new GsonBuilder().create();
+		
+		BlockData[] blockDataArray = this.getWorkflowData();
+		
+		default_workflowData = new String[blockDataArray.length];
+		default_typesData= new String[blockDataArray.length];
+		
+		for (int i = 0; i < blockDataArray.length; i++) {
+			
+			default_workflowData[i] = gson.toJson(blockDataArray[i]);
+			default_typesData[i] = blockDataArray[i].getClass().getName();
+			
 		}
-		return -1; // no selected position
 	}
-	
-	// set selected block
-	
-	public void setSelectedBlock(Block b) {
-		if (currentSelectedBlock != null) {
-			currentSelectedBlock.setIsSelected(false);
-		}
-		currentSelectedBlock = b;
-		currentSelectedBlock.setIsSelected(true);
-	}
-	
 	
 	// ADD BLOCK
 	public void addBlock(String id, int position) {
@@ -213,9 +218,7 @@ public class Workflow extends JPanel {
 		updateDataModel(new int[] {i});
 		
 	}
-	
-	// ________________________________________________________________
-	
+		
 	public void iniDefaultWorkflow() {
 		
 		workflow.clear();
@@ -303,11 +306,6 @@ public class Workflow extends JPanel {
 		
 	}
 	
-	public JScrollPane getScrollPanel() {
-		
-		return scroll;
-	}
-	
 	public String generateCode() {
 		
 		String code = "";
@@ -319,7 +317,6 @@ public class Workflow extends JPanel {
 		return code;
 	}
 	
-	
 	public void updateDataModel(int[] wfPositions) {
 
 		try {
@@ -329,6 +326,8 @@ public class Workflow extends JPanel {
 			
 		}
 	}
+	
+	// getters wf data
 	
 	public BlockData[] getWorkflowData(){
 		
@@ -347,6 +346,8 @@ public class Workflow extends JPanel {
 	public BlockData getWorkflowDataBlock(int wfPos) {
 		return workflow.get(wfPos).getBlockData();
 	}
+	
+	// setters wf data
 	
 	public void setWorkflowData(BlockData[] DataArray) {
 		
@@ -399,6 +400,7 @@ public class Workflow extends JPanel {
 		
 	}
 	
+	// aux methods
 	
 	private Block findBlock(String id) {
 		

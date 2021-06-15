@@ -205,7 +205,22 @@ public class PopUp extends Operation implements ActionListener{
 	public BlockData getBlockData() {
 		return new PopUpData(getClassName(), isSelected, indentation, title, message, isMessage, isWarning, isError, isBlocking);
 	}
+	
+	@Override
+	public void setPanel() {
+		
+		controlUpdateDataModel = false; // per evitar que faci update de la datamodel al fer setValue...
+		
+		messageButton.setSelected(isMessage); // diria que no fan action event però per si de cas
+		warningButton.setSelected(isWarning);
+		errorButton.setSelected(isError);
+		blockingButton.setSelected(isBlocking);
+		
+		titleField.setText(title);
+		messageField.setText(message);
 
+		controlUpdateDataModel = true;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -223,22 +238,6 @@ public class PopUp extends Operation implements ActionListener{
 		if (controlUpdateDataModel) {
 			Workflow.getInstance().updateDataModel(new int[] {wfPos});
 		}
-	}
-	
-	@Override
-	public void setPanel() {
-		
-		controlUpdateDataModel = false; // per evitar que faci update de la datamodel al fer setValue...
-		
-		messageButton.setSelected(isMessage); // diria que no fan action event però per si de cas
-		warningButton.setSelected(isWarning);
-		errorButton.setSelected(isError);
-		blockingButton.setSelected(isBlocking);
-		
-		titleField.setText(title);
-		messageField.setText(message);
-
-		controlUpdateDataModel = true;
 	}
 	
 	// setters

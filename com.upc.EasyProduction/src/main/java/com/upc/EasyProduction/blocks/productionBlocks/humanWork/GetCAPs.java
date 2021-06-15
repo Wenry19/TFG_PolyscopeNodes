@@ -3,9 +3,6 @@ package com.upc.EasyProduction.blocks.productionBlocks.humanWork;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 
-import com.upc.EasyProduction.blocks.Block;
-import com.upc.EasyProduction.panelManagement.Workflow;
-
 public class GetCAPs extends HumanWork {
 	
 	

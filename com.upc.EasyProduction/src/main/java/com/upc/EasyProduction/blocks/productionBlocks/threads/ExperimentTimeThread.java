@@ -1,16 +1,5 @@
 package com.upc.EasyProduction.blocks.productionBlocks.threads;
 
-import java.awt.FlowLayout;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
-import javax.swing.JToggleButton;
-
-import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.blocks.dataBlocks.ThreadData;
-import com.upc.EasyProduction.panelManagement.Workflow;
-
-
 public class ExperimentTimeThread extends Thread {
 	
 	public ExperimentTimeThread() {

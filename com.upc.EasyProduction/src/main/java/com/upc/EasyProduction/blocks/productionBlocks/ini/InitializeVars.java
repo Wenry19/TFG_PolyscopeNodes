@@ -56,6 +56,8 @@ public class InitializeVars extends Initialize {
 		
 		infoLabel.setText("Initialization of some relevant variables.");
 		
+		// param panel
+		
 		GridBagConstraints c = new GridBagConstraints();
 		
 		c.gridwidth = 3;

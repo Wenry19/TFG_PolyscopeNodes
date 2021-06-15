@@ -1,8 +1,6 @@
 
 package com.upc.EasyProduction.panelManagement;
 
-
-
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -21,7 +19,6 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 
 import com.upc.EasyProduction.blocks.Block;
-
 
 public class OptionsPanel extends JPanel {
 	
@@ -74,7 +71,6 @@ public class OptionsPanel extends JPanel {
 		
 		// this JPanel which contains the different options
 		
-		//this.setLayout(new FlowLayout(FlowLayout.CENTER, 1, 1));
 		this.setLayout(new GridBagLayout());
 		
 		//this.setSize(400, 400);
@@ -94,11 +90,28 @@ public class OptionsPanel extends JPanel {
 		
 	}
 	
+	private void addDefaultOptions() {
+		
+		addOption("Sleep");
+		addOption("PopUp");
+		addOption("SetDigitalOutput");
+		addOption("SetAnalogOutput");
+		
+	}
+	
+	// getters
+	
+	public JScrollPane getScrollPanel() {
+		return scroll;
+	}
+	
 	public JPanel getDragDropPanel() {
 		return dragDropPanel;
 	}
 	
-	public void addOption(String name) {
+	// methods
+	
+	private void addOption(String name) {
 		
 		Option opt = new Option(name);
 		
@@ -126,21 +139,6 @@ public class OptionsPanel extends JPanel {
 		options.add(opt);
 	}
 	
-	private void addDefaultOptions() {
-		
-		addOption("Sleep");
-		addOption("PopUp");
-		addOption("SetDigitalOutput");
-		addOption("SetAnalogOutput");
-		
-	}
-	
-	
-	public JScrollPane getScrollPanel() {
-		return scroll;
-	}
-	
-	
 	
 	// inner classes
 	
@@ -154,7 +152,7 @@ public class OptionsPanel extends JPanel {
 		
 		private Option currentOptionSelected;
 		
-		
+		@Override
 		public void mouseClicked(MouseEvent e) {
 			
 			if (e.getSource() instanceof Option) {
@@ -176,6 +174,7 @@ public class OptionsPanel extends JPanel {
 			
 		}
 		
+		@Override
 		public void mousePressed(MouseEvent e) {
 						
 			prevX = e.getX();
@@ -183,6 +182,7 @@ public class OptionsPanel extends JPanel {
 				
 		}
 		
+		@Override
 		public void mouseDragged(MouseEvent e) {
 			
 			JComponent jc = (JComponent) e.getSource();
@@ -192,6 +192,7 @@ public class OptionsPanel extends JPanel {
 	        			
 		}
 		
+		@Override
 		public void mouseReleased(MouseEvent e) {
 			
 			if (!(e.getSource() instanceof Option)) {
@@ -220,6 +221,7 @@ public class OptionsPanel extends JPanel {
 			
 		}
 		
+		@Override
 		public void mouseEntered(MouseEvent e) {
 			//System.out.println("entered"+ ((JLabel)e.getSource()).getText());
 		}
