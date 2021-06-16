@@ -38,7 +38,7 @@ public class SetAnalogOutput extends Operation implements ActionListener, Change
 		
 		defaultCode = "set_standard_analog_out(0, 0.50)";
 		
-		name = "SetAnalogInput"; // can be whatever
+		name = "SetAnalogOutput"; // can be whatever
 				
 		this.setText(name);
 		
