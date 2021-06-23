@@ -3,9 +3,16 @@ package com.upc.EasyProduction.blocks.productionBlocks.humanWork;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 
+/**
+ * This class represents the GetCAPs block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class GetCAPs extends HumanWork {
 	
-	
+	/**
+	 * Constructor.
+	 */
 	public GetCAPs() {
 				
 		indentation = "      ";

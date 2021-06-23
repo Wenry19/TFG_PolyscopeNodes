@@ -2,9 +2,16 @@ package com.upc.EasyProduction.blocks.productionBlocks.ini;
 
 import java.awt.GridBagConstraints;
 
+/**
+ * This class represents the InitializeVars block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class InitializeVars extends Initialize {
 	
-	
+	/**
+	 * Constructor.
+	 */
 	public InitializeVars() { // maybe it should be singleton
 		
 		indentation = "  ";
