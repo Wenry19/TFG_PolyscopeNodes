@@ -32,7 +32,7 @@ public class Block extends JLabel{
 	 */
 	protected String defaultCode;
 	/**
-	 * Code with the correspondent parameters of the block.
+	 * Code generated with the parameters of the block.
 	 */
 	protected String code;
 	/**
@@ -114,8 +114,8 @@ public class Block extends JLabel{
 	}
 	
 	/**
-	 * Generates the code with the correspondent parameters of the block.
-	 * @return code with the correspondent parameters of the block.
+	 * Generates the code with the parameters of the block.
+	 * @return code generated with the parameters of the block.
 	 */
 	public String generateCode() {
 		code = "";
@@ -125,7 +125,7 @@ public class Block extends JLabel{
 	
 	/**
 	 * Getter of the block generated code.
-	 * @return code with the correspondent parameters of the block.
+	 * @return code generated with the parameters of the block.
 	 */
 	public String getCode() {
 		return generateCode();
