@@ -20,26 +20,57 @@ import javax.swing.SwingUtilities;
 
 import com.upc.EasyProduction.blocks.Block;
 
+/**
+ * This class implements the OptionsPanel.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class OptionsPanel extends JPanel {
 	
+	/**
+	 * JPanel that manages the drag and drop.
+	 */
 	private JPanel dragDropPanel;
 	
+	/**
+	 * Instance of the inner class.
+	 */
 	private MouseListener mouseListener;
 	
+	/**
+	 * List of Options in OptionsPanel.
+	 */
 	private LinkedList<Option> options;
 	
+	/**
+	 * Scroll pane that makes OptionsPanel scrollable.
+	 */
 	private JScrollPane scroll;
 	
+	/**
+	 * Workflow singleton instance.
+	 */
 	private Workflow wf;
 	
+	/**
+	 * GridBagConstraints of the GridBagLayout.
+	 */
 	private GridBagConstraints c = new GridBagConstraints();
 	
+	/**
+	 * Auxiliary boolean used when a new Option is added in the OptionsPanel.
+	 */
 	private boolean count = false;
 	
 	// singleton
-	
+	/**
+	 * Singleton pattern.
+	 */
 	private static OptionsPanel singleton = new OptionsPanel();
 	
+	/**
+	 * Constructor.
+	 */
 	private OptionsPanel() {
 		
 		this.wf = Workflow.getInstance();
@@ -56,13 +87,19 @@ public class OptionsPanel extends JPanel {
 				
 	}
 	
+	/**
+	 * Getter of the singleton instance of this class.
+	 * @return singleton instance of this class.
+	 */
 	public static OptionsPanel getInstance() {
 		return singleton;
 	}
 	
 	// end singleton
 	
-	
+	/**
+	 * Initializes some attributes.
+	 */
 	private void initialize() {
 		
 		mouseListener = new MouseListener();
@@ -90,6 +127,9 @@ public class OptionsPanel extends JPanel {
 		
 	}
 	
+	/**
+	 * Adds default Options.
+	 */
 	private void addDefaultOptions() {
 		
 		addOption("Sleep");
@@ -101,16 +141,28 @@ public class OptionsPanel extends JPanel {
 	
 	// getters
 	
+	/**
+	 * Getter of the scrollable OptionsPanel.
+	 * @return scrollable OptionsPanel.
+	 */
 	public JScrollPane getScrollPanel() {
 		return scroll;
 	}
 	
+	/**
+	 * Getter of the drag and drop panel.
+	 * @return JPanel that manages the drag and drop.
+	 */
 	public JPanel getDragDropPanel() {
 		return dragDropPanel;
 	}
 	
 	// methods
 	
+	/**
+	 * Adds a new Option in the OptionsPanel.
+	 * @param name name of the new Option.
+	 */
 	private void addOption(String name) {
 		
 		Option opt = new Option(name);
@@ -142,14 +194,33 @@ public class OptionsPanel extends JPanel {
 	
 	// inner classes
 	
+	/**
+	 * This class extends MouseAdapter.
+	 * @author Enric Lamarca Ferrés
+	 *
+	 */
 	private class MouseListener extends MouseAdapter {
 		
+		/**
+		 * Internal use.
+		 */
 		private int prevX;
+		/**
+		 * Internal use.
+		 */
 		private int prevY;
-		
+		/**
+		 * Horizontal offset OptionsPanel.
+		 */
 		private int offsetOptionsPanelX = 201; // ULL!!
+		/**
+		 * Vertical offset OptionsPanel.
+		 */
 		private int offsetOptionsPanelY = 1; // ULL!!
 		
+		/**
+		 * Current Option selected.
+		 */
 		private Option currentOptionSelected;
 		
 		@Override

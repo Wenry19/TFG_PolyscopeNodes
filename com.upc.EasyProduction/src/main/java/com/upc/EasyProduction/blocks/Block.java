@@ -50,7 +50,7 @@ public class Block extends JLabel{
 	protected JScrollPane scroll = new JScrollPane(panel);
 	
 	/**
-	 * Instance of the inner class implemented.
+	 * Instance of the inner class.
 	 */
 	protected MouseListener mouseListener = new MouseListener();
 	
@@ -98,7 +98,7 @@ public class Block extends JLabel{
 	// getters
 	
 	/**
-	 * Getter of the block's name.
+	 * Getter of the block name.
 	 * @return name of the block.
 	 */
 	public String getName() {
@@ -106,7 +106,7 @@ public class Block extends JLabel{
 	}
 	
 	/**
-	 * Getter of the block's default code.
+	 * Getter of the block default code.
 	 * @return default code of the block.
 	 */
 	public String getDefaultCode() {
@@ -124,7 +124,7 @@ public class Block extends JLabel{
 	}
 	
 	/**
-	 * Getter of the block's generated code.
+	 * Getter of the block generated code.
 	 * @return code with the correspondent parameters of the block.
 	 */
 	public String getCode() {
@@ -132,7 +132,7 @@ public class Block extends JLabel{
 	}
 	
 	/**
-	 * Getter of the block's indentation.
+	 * Getter of the block indentation.
 	 * @return indentation of the block.
 	 */
 	public String getIndentation() {
@@ -140,7 +140,7 @@ public class Block extends JLabel{
 	}
 	
 	/**
-	 * Getter of the block's workflow position.
+	 * Getter of the block workflow position.
 	 * @return workflow position of the block.
 	 */
 	public int getWorkflowPosition() {
@@ -164,7 +164,7 @@ public class Block extends JLabel{
 	}
 	
 	/**
-	 * Getter of the block's boolean that indicates if the block is selected or not.
+	 * Getter of the block boolean that indicates if the block is selected or not.
 	 * @return boolean that indicates if the block is selected or not.
 	 */
 	public Boolean getIsSelected() {
@@ -175,7 +175,7 @@ public class Block extends JLabel{
 	// setters
 	
 	/**
-	 * Setter of the block's workflow position.
+	 * Setter of the block workflow position.
 	 * @param pos position of the block in the workflow.
 	 */
 	public void setWorkflowPosition(int pos) {
@@ -183,7 +183,7 @@ public class Block extends JLabel{
 	}
 	
 	/**
-	 * Setter of the block's indentation.
+	 * Setter of the block indentation.
 	 * @param indentation indentation of the block.
 	 */
 	public void setIndentation(String indentation) {
@@ -209,7 +209,7 @@ public class Block extends JLabel{
 	}
 	
 	/**
-	 * Updates the block's parameters panel to show the correct visualization that corresponds to the current parameters of the block.
+	 * Updates the block parameters panel to show the correct visualization that corresponds to the current parameters of the block.
 	 */
 	public void setPanel() {}
 	
@@ -236,7 +236,7 @@ public class Block extends JLabel{
 	// inner class
 	
 	/**
-	 * Class that implements a MouseAdapter.
+	 * Class that extends MouseAdapter.
 	 * 
 	 * @author Enric Lamarca Ferrés
 	 *

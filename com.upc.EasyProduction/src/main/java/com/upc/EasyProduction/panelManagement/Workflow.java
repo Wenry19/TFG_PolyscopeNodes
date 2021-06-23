@@ -48,25 +48,60 @@ import com.ur.urcap.api.contribution.ContributionProvider;
 import com.ur.urcap.api.domain.SystemAPI;
 import com.ur.urcap.api.domain.userinteraction.UserInteraction;
 
+/**
+ * This class implements the Workflow.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class Workflow extends JPanel {
 	
+	/**
+	 * List of Blocks of the Workflow.
+	 */
 	LinkedList<Block> workflow = new LinkedList<Block>();
 	
+	/**
+	 * Contribution provider.
+	 */
 	private ContributionProvider<EasyProductionProgramNodeContribution> provider;
+	/**
+	 * System API.
+	 */
 	private SystemAPI sysAPI;
+	/**
+	 * UserInteraction.
+	 */
 	private UserInteraction userInteraction;
 	
+	/**
+	 * JScrollPane that makes Workflow panel scrollable.
+	 */
 	private JScrollPane scroll;
 	
+	/**
+	 * Data (array of BlockData JSons) of the default Workflow.
+	 */
 	private String[] default_workflowData;
+	/**
+	 * Types data of the default Workflow.
+	 */
 	private String[] default_typesData;
 	
+	/**
+	 * Current selected Block.
+	 */
 	private Block currentSelectedBlock = null;
 		
 	// singleton
 	
+	/**
+	 * Singleton pattern.
+	 */
 	private static Workflow singleton = new Workflow();
 	
+	/**
+	 * Constructor.
+	 */
 	private Workflow() {
 				
 		// default workflow
@@ -80,6 +115,10 @@ public class Workflow extends JPanel {
 		
 	}
 	
+	/**
+	 * Getter of the singleton instance of this class.
+	 * @return singleton instance of this class.
+	 */
 	public static Workflow getInstance() {
 		return singleton;
 	}
@@ -88,20 +127,34 @@ public class Workflow extends JPanel {
 	
 	// setters
 	
+	/**
+	 * Setter of the Contribution Provider.
+	 * @param provider Contribution Provider of the node.
+	 */
 	public void setProvider(ContributionProvider<EasyProductionProgramNodeContribution> provider) {
 		this.provider = provider;
 	}
-	
+	/**
+	 * Setter of the System API.
+	 * @param sysAPI System API.
+	 */
 	public void setSystemAPI(SystemAPI sysAPI) {
 		this.sysAPI = sysAPI;
 	}
-	
+	/**
+	 * Setter of the UserInteraction.
+	 * @param userInteraction UserInteraction.
+	 */
 	public void setUserInteraction(UserInteraction userInteraction){
 		this.userInteraction = userInteraction;
 	}
 	
 	// set selected block
 	
+	/**
+	 * Sets the selected Block.
+	 * @param b the new selected Block.
+	 */
 	public void setSelectedBlock(Block b) {
 		if (currentSelectedBlock != null) {
 			currentSelectedBlock.setIsSelected(false);
@@ -112,29 +165,49 @@ public class Workflow extends JPanel {
 	
 	// getters
 	
+	/**
+	 * Getter of UserInteraction.
+	 * @return UserInteraction.
+	 */
 	public UserInteraction getUserInteraction() {
 		return userInteraction;
 	}
-	
+	/**
+	 * Getter of the length of the Workflow.
+	 * @return length of the Workflow.
+	 */
 	public int getLen() {
 		return workflow.size();
 	}
 	
+	/**
+	 * Getter of the current selected Block position in Workflow.
+	 * @return current selected Block position in Workflow.
+	 */
 	public int getCurrentSelectedBlockPos() {
 		if (currentSelectedBlock != null) {
 			return currentSelectedBlock.getWorkflowPosition();
 		}
 		return -1; // no selected position
 	}
-	
+	/**
+	 * Getter of the default Workflow data (string array of BlockData JSons).
+	 * @return default Workflow data.
+	 */
 	public String[] getDEFAULT_WORKFLOWdata() {
 		return default_workflowData;
 	}
-	
+	/**
+	 * Getter of the default Workflow types data.
+	 * @return default Workflow types data.
+	 */
 	public String[] getDEFAULT_TYPESdata() {
 		return default_typesData;
 	}
-	
+	/**
+	 * Getter of the scrollable Workflow panel.
+	 * @return scrollable Workflow panel.
+	 */
 	public JScrollPane getScrollPanel() {
 		
 		return scroll;
@@ -142,10 +215,15 @@ public class Workflow extends JPanel {
 	
 	// simulation or real robot management
 	
+	/**
+	 * @return if the Workflow is simulated or not.
+	 */
 	public boolean getSim() {
 		return !sysAPI.getRobotSimulation().isRealRobot();
 	}
-	
+	/**
+	 * @return special chars to modify the generated code of the blocks depending on if the Workflow is simulated or not.
+	 */
 	public String getSimOrNot() {
 						
 		if (!sysAPI.getRobotSimulation().isRealRobot()) {
@@ -160,6 +238,9 @@ public class Workflow extends JPanel {
 	
 	// generate default data for data model!!
 	
+	/**
+	 * Generates the default Workflow data.
+	 */
 	private void generateDEFAULTdata() {
 		
 		Gson gson = new GsonBuilder().create();
@@ -177,6 +258,11 @@ public class Workflow extends JPanel {
 		}
 	}
 	
+	/**
+	 * Adds a Block in the Workflow.
+	 * @param id id of the Block that has to be added.
+	 * @param position position where the Block has to be added.
+	 */
 	// ADD BLOCK
 	public void addBlock(String id, int position) {
 		
@@ -199,6 +285,10 @@ public class Workflow extends JPanel {
 		
 	}
 	
+	/**
+	 * Deletes a Block in the Workflow.
+	 * @param i position of the Block that has to be deleted.
+	 */
 	// DELETE BLOCK
 	public void deleteBlock(int i) {
 		
@@ -218,7 +308,10 @@ public class Workflow extends JPanel {
 		updateDataModel(new int[] {i});
 		
 	}
-		
+	
+	/**
+	 * Initialize default Workflow.
+	 */
 	public void iniDefaultWorkflow() {
 		
 		workflow.clear();
@@ -261,6 +354,9 @@ public class Workflow extends JPanel {
 		updatePanel();		
 	}
 	
+	/**
+	 * Updates Workflow panel.
+	 */
 	private void updatePanel() {
 		
 		this.removeAll();
@@ -306,6 +402,10 @@ public class Workflow extends JPanel {
 		
 	}
 	
+	/**
+	 * Generates the Workflow code.
+	 * @return Workflow code.
+	 */
 	public String generateCode() {
 		
 		String code = "";
@@ -317,6 +417,10 @@ public class Workflow extends JPanel {
 		return code;
 	}
 	
+	/**
+	 * Updates contribution DataModel.
+	 * @param wfPositions Workflow positions that have to be updated.
+	 */
 	public void updateDataModel(int[] wfPositions) {
 
 		try {
@@ -329,6 +433,9 @@ public class Workflow extends JPanel {
 	
 	// getters wf data
 	
+	/**
+	 * @return BlockData array of the Workflow.
+	 */
 	public BlockData[] getWorkflowData(){
 		
 		BlockData[] wfData = new BlockData[workflow.size()];
@@ -342,13 +449,19 @@ public class Workflow extends JPanel {
 		return wfData;
 		
 	}
-	
+	/**
+	 * @param wfPos position of the Block that we want to get its BlockData.
+	 * @return BlockData of the Block in the specified position.
+	 */
 	public BlockData getWorkflowDataBlock(int wfPos) {
 		return workflow.get(wfPos).getBlockData();
 	}
 	
 	// setters wf data
-	
+	/**
+	 * Sets the Workflow according to the BlockData array passed as parameter.
+	 * @param DataArray BlockData array that defines the new Workflow.
+	 */
 	public void setWorkflowData(BlockData[] DataArray) {
 		
 		// also does update panel in the same loop
@@ -402,6 +515,11 @@ public class Workflow extends JPanel {
 	
 	// aux methods
 	
+	/**
+	 * Auxiliary method that identifies an Operation block.
+	 * @param id id of the block.
+	 * @return a new instance of an Operation block (depending on the id).
+	 */
 	private Block findBlock(String id) {
 		
 		if (id.equals("SetAnalogOutput")) {
