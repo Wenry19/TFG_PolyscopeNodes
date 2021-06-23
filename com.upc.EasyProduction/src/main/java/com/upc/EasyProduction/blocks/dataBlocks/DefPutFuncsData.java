@@ -6,7 +6,7 @@ import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.productionBlocks.defFuncs.DefPutFuncs;
 
 /**
- * This class represents the block data corresponding to the DefPutFuncs block.
+ * This class represents the data of the DefPutFuncs block.
  * 
  * @author Enric Lamarca Ferrés
  *

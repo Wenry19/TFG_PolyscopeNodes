@@ -3,7 +3,7 @@ package com.upc.EasyProduction.blocks.dataBlocks;
 import com.upc.EasyProduction.blocks.BlockData;
 
 /**
- * This class represents a basic block data which is a block data that contains the common data of all the blocks.
+ * This class represents the basic data of a block.
  * 
  * @author Enric Lamarca Ferrés
  *
