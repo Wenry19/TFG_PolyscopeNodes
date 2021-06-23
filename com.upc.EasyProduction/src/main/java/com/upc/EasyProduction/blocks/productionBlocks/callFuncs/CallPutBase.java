@@ -3,8 +3,16 @@ package com.upc.EasyProduction.blocks.productionBlocks.callFuncs;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
+/**
+ * This class represents the CallPutBase block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class CallPutBase extends CallFuncs{
-		
+	
+	/**
+	 * Constructor.
+	 */
 	public CallPutBase() {
 		
 		indentation = "      ";
