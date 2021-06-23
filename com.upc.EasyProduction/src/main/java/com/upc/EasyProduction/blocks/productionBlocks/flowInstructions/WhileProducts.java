@@ -3,8 +3,15 @@ package com.upc.EasyProduction.blocks.productionBlocks.flowInstructions;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 
+/**
+ * This class represents the WhileProducts block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class WhileProducts extends FlowInstructions {
-	
+	/**
+	 * Constructor.
+	 */
 	public WhileProducts() {
 				
 	    indentation = "        ";

@@ -3,9 +3,16 @@ package com.upc.EasyProduction.blocks.productionBlocks.flowInstructions;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 
+/**
+ * This class represents the EndIfBases block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class EndIfBases extends FlowInstructions{
 	
-	
+	/**
+	 * Constructor.
+	 */
 	public EndIfBases() {
 		
 		indentation = "    ";

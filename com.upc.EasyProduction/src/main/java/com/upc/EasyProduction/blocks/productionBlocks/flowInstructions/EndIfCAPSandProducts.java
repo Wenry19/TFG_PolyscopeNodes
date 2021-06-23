@@ -3,8 +3,16 @@ package com.upc.EasyProduction.blocks.productionBlocks.flowInstructions;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 
+/**
+ * This class represents the EndIfCAPSandProducts block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class EndIfCAPSandProducts extends FlowInstructions{
 	
+	/**
+	 * Constructor.
+	 */
 	public EndIfCAPSandProducts() {
 				
 		indentation = "    ";

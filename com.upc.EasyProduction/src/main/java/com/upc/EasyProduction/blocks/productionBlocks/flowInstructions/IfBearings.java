@@ -3,9 +3,16 @@ package com.upc.EasyProduction.blocks.productionBlocks.flowInstructions;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 
+/**
+ * This class represents the IfBearings block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class IfBearings extends FlowInstructions{
 	
-	
+	/**
+	 * Constructor.
+	 */
 	public IfBearings() {
 		
 		indentation = "      ";

@@ -3,8 +3,16 @@ package com.upc.EasyProduction.blocks.productionBlocks.flowInstructions;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 
+/**
+ * This class represents the EndWhileProducts block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class EndWhileProducts extends FlowInstructions{
 	
+	/**
+	 * Constructor.
+	 */
 	public EndWhileProducts() {
 				
 		indentation = "      ";
