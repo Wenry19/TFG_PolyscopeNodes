@@ -16,12 +16,27 @@ import com.ur.urcap.api.contribution.ContributionProvider;
 import com.ur.urcap.api.contribution.ViewAPIProvider;
 import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeView;
 
+/**
+ * This class implements the view of the program node.
+ * @author Enric Lamarca Ferrés.
+ *
+ */
 public class EasyProductionProgramNodeView implements SwingProgramNodeView<EasyProductionProgramNodeContribution>{
 	
+	/**
+	 * Singleton instance of MainPanel.
+	 */
 	private MainPanel mainPanel;
 	
+	/**
+	 * View API provider.
+	 */
 	private final ViewAPIProvider apiProvider;
 	
+	/**
+	 * Constructor.
+	 * @param apiProvider View API provider.
+	 */
 	public EasyProductionProgramNodeView(ViewAPIProvider apiProvider) {
 		
 		this.apiProvider = apiProvider;

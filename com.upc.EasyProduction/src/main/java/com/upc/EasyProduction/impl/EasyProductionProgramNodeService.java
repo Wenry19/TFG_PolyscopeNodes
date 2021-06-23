@@ -8,7 +8,11 @@ import com.ur.urcap.api.contribution.program.CreationContext;
 import com.ur.urcap.api.contribution.program.ProgramAPIProvider;
 import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeService;
 import com.ur.urcap.api.domain.data.DataModel;
-
+/**
+ * This class implements the service of the program node.
+ * @author Enric Lamarca Ferrés.
+ *
+ */
 public class EasyProductionProgramNodeService implements SwingProgramNodeService<EasyProductionProgramNodeContribution, EasyProductionProgramNodeView>{
 
 	@Override

@@ -12,31 +12,67 @@ import com.google.gson.GsonBuilder;
 import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
+/**
+ * This class implements the contribution of the program node.
+ * @author Enric Lamarca Ferrés.
+ *
+ */
 public class EasyProductionProgramNodeContribution implements ProgramNodeContribution{
-		
+	/**
+	 * Program API provider.
+	 */
 	final private ProgramAPIProvider apiProvider;
+	/**
+	 * View instance of the node.
+	 */
 	final private EasyProductionProgramNodeView view;
+	/**
+	 * DataModel of the node.
+	 */
 	final private DataModel model;
 	// we want to store values of duration and output in our data model
 	// data model is what we use to keep track of the settings of this particular node
 	// however when working with program nodes is also important to keep track of UndoRedo
+	/**
+	 * UndoRedoManager of the node.
+	 */
 	private final UndoRedoManager undoRedoManager;
 	
+	/**
+	 * Workflow key used to save workflow data in DataModel.
+	 */
 	private static final String WORKFLOW_KEY = "workflow"; // keys that register the changes
-	
+	/**
+	 * Workflow data saved in DataModel using the corresponding key.
+	 */
 	private static final String[] DEFAULT_WORKFLOW = Workflow.getInstance().getDEFAULT_WORKFLOWdata(); // default values for each key
 	
-	
+	/**
+	 * Types key used to save types data in DataModel.
+	 */
 	private static final String TYPES_KEY = "types";
 	
+	/**
+	 * Types data saved in DataModel using the corresponding key.
+	 */
 	private static final String[] DEFAULT_TYPES = Workflow.getInstance().getDEFAULT_TYPESdata();
 	
-	
+	/**
+	 * gson instance that generates the JSons of the BlockData instances.
+	 */
 	private final Gson gson = new GsonBuilder().create();
 	
+	/**
+	 * MyStringDeserialization instance that builds BlockData instances from their JSons.
+	 */
 	private final MyStringDeserialization d = new MyStringDeserialization();
 	
-	
+	/**
+	 * Constructor.
+	 * @param apiProvider API provider.
+	 * @param view view instance of the node.
+	 * @param model DataModel of the node.
+	 */
 	public EasyProductionProgramNodeContribution(ProgramAPIProvider apiProvider, EasyProductionProgramNodeView view, DataModel model) {
 		this.apiProvider = apiProvider;
 		this.view = view;
@@ -44,7 +80,10 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 		this.undoRedoManager = this.apiProvider.getProgramAPI().getUndoRedoManager();
 	}
 	
-	
+	/**
+	 * Called when a change on workflow has to be reflected on the DataModel.
+	 * @param wfPositions array of the workflow positions in where there are the changed blocks.
+	 */
 	public void onChangeInWF(int[] wfPositions) {
 		
 		undoRedoManager.recordChanges(new MyUndoableChanges(wfPositions));
@@ -122,12 +161,24 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 	
 	// inner class per poder passar paràmetre a la constructora de UndoableChanges(), el param és la posició del bloc que ha fet canvis
 	
+	/**
+	 * Inner class that implements UndoableChanges.
+	 * @author Enric Lamarca Ferrés
+	 *
+	 */
 	private class MyUndoableChanges implements UndoableChanges{
 		
+		/**
+		 * Array of the changed workflow positions.
+		 */
 		private int[] wfPositions; // changed positions, only the case of select has two changed positions, the rest only 1 changed position!!
 		
 		// in the case of two positions, if the second is -1, means that we select a block, and no block was selected before
 		
+		/**
+		 * Constructor.
+		 * @param wfPositions array of the changed workflow positions.
+		 */
 		MyUndoableChanges(int[] wfPositions){
 			
 			this.wfPositions = wfPositions;
