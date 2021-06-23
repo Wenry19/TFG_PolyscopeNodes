@@ -51,8 +51,6 @@
 		        <version>3.3.0</version>
 		        <configuration>
 		        <show>private</show>
-		        <show>public</show>
-		        <show>protected</show>
 		        </configuration>
 		      </plugin>
 		
