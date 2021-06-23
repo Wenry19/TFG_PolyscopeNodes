@@ -16,15 +16,31 @@ import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.dataBlocks.ThreadData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
-
+/**
+ * This class represents the Thread block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class Thread extends Block implements ItemListener {
 	
+	/**
+	 * Activate Thread JToggleButton of the parameters panel.
+	 */
 	private JToggleButton toggleButton = new JToggleButton("Activate Thread", false);
 	
+	/*
+	 * Boolean that indicates if the thread is activated.
+	 */
 	protected boolean activateThread = false;
 	
+	/**
+	 * Auxiliary boolean that is used to avoid updating the contribution DataModel when it is not the intention.
+	 */
 	private boolean controlUpdateDataModel = true;
 	
+	/**
+	 * Constructor.
+	 */
 	public Thread() {
 		
 		this.setBackground(new Color(0xd3caca));
@@ -85,7 +101,10 @@ public class Thread extends Block implements ItemListener {
 	}
 	
 	// setters
-	
+	/**
+	 * Setter of the boolean that indicates if the thread is activated.
+	 * @param activateThread boolean that indicates if the thread is activated.
+	 */
 	public void setActivateThread(Boolean activateThread) {
 		this.activateThread = activateThread;
 	}

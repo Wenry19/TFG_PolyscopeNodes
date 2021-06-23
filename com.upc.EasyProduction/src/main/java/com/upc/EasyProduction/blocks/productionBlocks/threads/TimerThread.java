@@ -1,8 +1,15 @@
 package com.upc.EasyProduction.blocks.productionBlocks.threads;
 
+/**
+ * This class represents the TimerThread block.
+ * @author enric
+ *
+ */
 public class TimerThread extends Thread { // activate or deactivate timers?
 	
-	
+	/**
+	 * Constructor.
+	 */
 	public TimerThread() { // maybe it should be singleton
 				
 		indentation = "  ";

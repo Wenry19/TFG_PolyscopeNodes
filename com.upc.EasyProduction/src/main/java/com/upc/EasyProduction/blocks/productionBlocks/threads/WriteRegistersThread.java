@@ -1,8 +1,15 @@
 package com.upc.EasyProduction.blocks.productionBlocks.threads;
 
+/**
+ * This class represents the WriteRegistersThread block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class WriteRegistersThread extends Thread {
 	
-	
+	/**
+	 * Constructor.
+	 */
 	public WriteRegistersThread() {
 				
 		indentation = "  ";

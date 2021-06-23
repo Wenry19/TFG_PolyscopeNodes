@@ -1,7 +1,15 @@
 package com.upc.EasyProduction.blocks.productionBlocks.threads;
 
+/**
+ * This class represents the ExperimentTimeThread block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class ExperimentTimeThread extends Thread {
 	
+	/**
+	 * Constructor.
+	 */
 	public ExperimentTimeThread() {
 				
 		indentation = "  ";
