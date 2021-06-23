@@ -2,9 +2,16 @@ package com.upc.EasyProduction.blocks.productionBlocks.defFuncs;
 
 import com.upc.EasyProduction.panelManagement.Workflow;
 
+/**
+ * This class represents the DefPutBearing block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class DefPutBearing extends DefPutFuncs {
 	
-	
+	/**
+	 * Constructor.
+	 */
 	public DefPutBearing() {
 		
 		indentation = "  ";

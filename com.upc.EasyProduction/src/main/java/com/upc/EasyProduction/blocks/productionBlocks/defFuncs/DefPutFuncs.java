@@ -15,36 +15,101 @@ import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
 
+/**
+ * This class represents the DefPutFuncs block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class DefPutFuncs extends Block implements ChangeListener{
 	
+	/**
+	 * Default level velocity of the robot movement to the approximation point that defines the function.
+	 */
 	private final Double DEFAULT_VELOCITY = 4.363323129985823;
+	/**
+	 * Default level acceleration of the robot movement to the approximation point that defines the function.
+	 */
 	private final Double DEFAULT_ACCELERATION = 8.726646259971647;
 	
+	/**
+	 * Slow level velocity of the robot movement to the approximation point that defines the function.
+	 */
 	private final Double SLOW_VELOCITY = DEFAULT_VELOCITY/2.0;
+	/**
+	 * Slow level acceleration of the robot movement to the approximation point that defines the function.
+	 */
 	private final Double SLOW_ACCELERATION = DEFAULT_ACCELERATION/2.0;
 	
+	/**
+	 * Ultra slow level velocity of the robot movement to the approximation point that defines the function.
+	 */
 	private final Double ULTRA_SLOW_VELOCITY = DEFAULT_VELOCITY/8.0;
+	/**
+	 * Ultra slow level acceleration of the robot movement to the approximation point that defines the function.
+	 */
 	private final Double ULTRA_SLOW_ACCELERATION = DEFAULT_ACCELERATION/8.0;
 	
+	/**
+	 * Velocity of the robot movement to the approximation point that defines the function.
+	 */
 	protected Double velocity = DEFAULT_VELOCITY;
+	/**
+	 * Acceleration of the robot movement to the approximation point that defines the function.
+	 */
 	protected Double acceleration = DEFAULT_ACCELERATION;
 	
+	/**
+	 * Velocity tag (0 corresponds to ultra slow level, 1 corresponds to slow level and 2 corresponds to default level).
+	 */
 	protected int velocity_tag = 2; // evitar errors de precisió
+	/**
+	 * Acceleration tag (0 corresponds to ultra slow level, 1 corresponds to slow level and 2 corresponds to default level).
+	 */
 	protected int acceleration_tag = 2;
 	
+	/**
+	 * Velocity JSlider of the parameters panel.
+	 */
 	private JSlider velocitySlider = new JSlider(JSlider.HORIZONTAL, 0, 2, 2);
+	/**
+	 * Acceleration JSlider of the parameters panel.
+	 */
 	private JSlider accelerationSlider = new JSlider(JSlider.HORIZONTAL, 0, 2, 2);
 	
+	/**
+	 * Used to put labels in the sliders of the parameters panel.
+	 */
 	private Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
+	/**
+	 * Ultra slow level JLabel of the parameters panel.
+	 */
 	private JLabel ultraSlowLabel = new JLabel("UltraSlow");
+	/**
+	 * Slow level JLabel of the parameters panel.
+	 */
 	private JLabel slowLabel = new JLabel("Slow");
+	/**
+	 * Default level JLabel of the parameters panel.
+	 */
 	private JLabel defaultLabel = new JLabel("Default");
 	
+	/**
+	 * Velocity JLabel of the parameters panel.
+	 */
 	private JLabel velocityLabel = new JLabel("Velocity");
+	/**
+	 * Acceleration JLabel of the parameters panel.
+	 */
 	private JLabel accelerationLabel = new JLabel("Acceleration");
 	
+	/**
+	 * Auxiliary boolean that is used to avoid updating the contribution DataModel when it is not the intention.
+	 */
 	private boolean controlUpdateDataModel = true;
 	
+	/**
+	 * Constructor.
+	 */
 	public DefPutFuncs() {
 		
 		panel.setLayout(new GridLayout(0, 1, 0, -5));
@@ -166,11 +231,21 @@ public class DefPutFuncs extends Block implements ChangeListener{
 	
 	// setters
 	
+	/**
+	 * Setter of the velocity.
+	 * @param velocity velocity value.
+	 * @param velocity_tag the correspondent velocity tag.
+	 */
 	public void setVelocity(Double velocity, int velocity_tag) {
 		this.velocity = velocity;
 		this.velocity_tag = velocity_tag;
 	}
 	
+	/**
+	 * Setter of the acceleration.
+	 * @param acceleration acceleration value.
+	 * @param acceleration_tag the correspondent acceleration tag.
+	 */
 	public void setAcceleration(Double acceleration, int acceleration_tag) {
 		this.acceleration = acceleration;
 		this.acceleration_tag = acceleration_tag;

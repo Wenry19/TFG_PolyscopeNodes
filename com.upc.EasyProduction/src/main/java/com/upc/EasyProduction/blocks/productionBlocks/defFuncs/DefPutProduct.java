@@ -1,11 +1,17 @@
 package com.upc.EasyProduction.blocks.productionBlocks.defFuncs;
 
-import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
+/**
+ * This class represents the DefPutProduct block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class DefPutProduct extends DefPutFuncs {
 	
-	
+	/**
+	 * Constructor.
+	 */
 	public DefPutProduct() {
 		
 		indentation = "  ";

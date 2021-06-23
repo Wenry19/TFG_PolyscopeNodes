@@ -48,7 +48,7 @@ public class SetAnalogOutput extends Operation implements ActionListener, Change
 	 */
 	private JSlider valueSlider = new JSlider();
 	/**
-	 * Used to set the labels in the value slider.
+	 * Used to put labels in the value slider.
 	 */
 	private Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
 	
