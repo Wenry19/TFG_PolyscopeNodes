@@ -7,9 +7,16 @@ import javax.swing.JLabel;
 
 import com.upc.EasyProduction.panelManagement.Workflow;
 
+/**
+ * This class represents the DestackBase block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class DestackBase extends GetReadyToPut {
 	
-	
+	/**
+	 * Constructor.
+	 */
 	public DestackBase() {
 				
 		indentation = "      ";

@@ -2,8 +2,16 @@ package com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut;
 
 import com.upc.EasyProduction.panelManagement.Workflow;
 
+/**
+ * This class represents the DestackBearing block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class DestackBearing extends GetReadyToPut {	
 	
+	/**
+	 * Constructor.
+	 */
 	public DestackBearing() {
 		
 		indentation = "      ";

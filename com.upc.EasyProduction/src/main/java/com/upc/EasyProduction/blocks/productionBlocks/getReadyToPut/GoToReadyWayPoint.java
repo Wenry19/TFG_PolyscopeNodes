@@ -2,8 +2,15 @@ package com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut;
 
 import com.upc.EasyProduction.panelManagement.Workflow;
 
+/**
+ * This class represents the GoToReadyWayPoint block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class GoToReadyWayPoint extends GetReadyToPut{
-		
+	/**
+	 * Constructor.
+	 */
 	public GoToReadyWayPoint() {
 					
 		indentation = "    ";

@@ -2,9 +2,16 @@ package com.upc.EasyProduction.blocks.productionBlocks.getReadyToPut;
 
 import com.upc.EasyProduction.panelManagement.Workflow;
 
+/**
+ * This class represents the DespalletizeProduct block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class DespalletizeProduct extends GetReadyToPut{
 	
-	
+	/**
+	 * Constructor.
+	 */
 	public DespalletizeProduct() {
 				
 		indentation = "        ";
