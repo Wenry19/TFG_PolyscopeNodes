@@ -13,28 +13,81 @@ import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.dataBlocks.SetDigitalOutputData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
+/**
+ * This class represents the SetDigitalOutput block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class SetDigitalOutput extends Operation implements ActionListener{
 	
+	/**
+	 * Out 0 JRadioButton of the parameters panel.
+	 */
 	private JRadioButton out0 = new JRadioButton("0");
+	/**
+	 * Out 1 JRadioButton of the parameters panel.
+	 */
 	private JRadioButton out1 = new JRadioButton("1");
+	/**
+	 * Out 2 JRadioButton of the parameters panel.
+	 */
 	private JRadioButton out2 = new JRadioButton("2");
+	/**
+	 * Out 3 JRadioButton of the parameters panel.
+	 */
 	private JRadioButton out3 = new JRadioButton("3");
+	/**
+	 * Out 4 JRadioButton of the parameters panel.
+	 */
 	private JRadioButton out4 = new JRadioButton("4");
+	/**
+	 * Out 5 JRadioButton of the parameters panel.
+	 */
 	private JRadioButton out5 = new JRadioButton("5");
+	/**
+	 * Out 6 JRadioButton of the parameters panel.
+	 */
 	private JRadioButton out6 = new JRadioButton("6");
+	/**
+	 * Out 7 JRadioButton of the parameters panel.
+	 */
 	private JRadioButton out7 = new JRadioButton("7");
 	
+	/**
+	 * High JRadioButton of the parameters panel.
+	 */
 	private JRadioButton high = new JRadioButton("H");
+	/**
+	 * Low JRadioButton of the parameters panel.
+	 */
 	private JRadioButton low = new JRadioButton("L");
 	
+	/**
+	 * Outs JLabel of the parameters panel.
+	 */
 	private JLabel outsLabel = new JLabel("Select digital output:");
+	/**
+	 * Value JLable of the parameters panel.
+	 */
 	private JLabel valueLabel = new JLabel("Select value:");
 	
+	/**
+	 * Selected out.
+	 */
 	private String out = "0";
+	/**
+	 * Value.
+	 */
 	private String value = "False"; // false -> low, true -> high
 	
+	/**
+	 * Auxiliary boolean that is used to avoid updating the contribution DataModel when it is not the intention.
+	 */
 	private boolean controlUpdateDataModel = true;
 	
+	/**
+	 * Constructor.
+	 */
 	public SetDigitalOutput() {
 		
 		defaultCode = "set_standard_digital_out(0, False)";
@@ -220,10 +273,18 @@ public class SetDigitalOutput extends Operation implements ActionListener{
 	
 	// setters
 	
+	/**
+	 * Setter of the selected out.
+	 * @param out selected out.
+	 */
 	public void setOut(String out) {
 		this.out = out;
 	}
 	
+	/**
+	 * Setter of the value.
+	 * @param value value of the out.
+	 */
 	public void setValue(String value) {
 		this.value = value;
 	}

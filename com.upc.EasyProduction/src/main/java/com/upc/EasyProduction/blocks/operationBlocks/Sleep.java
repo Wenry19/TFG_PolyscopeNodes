@@ -12,15 +12,34 @@ import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.dataBlocks.SleepData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
+/**
+ * This class represents the Sleep block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class Sleep extends Operation implements ChangeListener{
 	
+	/**
+	 * Duration JSlider of the parameters panel.
+	 */
 	private JSlider durationSlider = new JSlider();
+	/**
+	 * Duration JLabel of the parameters panel.
+	 */
 	private JLabel durationLabel  = new JLabel();
 	
+	/**
+	 * Duration.
+	 */
 	private int duration = 15;
-	
+	/**
+	 * Auxiliary boolean that is used to avoid updating the contribution DataModel when it is not the intention.
+	 */
 	private boolean controlUpdateDataModel = true;
 	
+	/**
+	 * Constructor
+	 */
 	public Sleep() {
 		
 		defaultCode = "sleep(15)\n";
@@ -101,6 +120,10 @@ public class Sleep extends Operation implements ChangeListener{
 	
 	// setters
 	
+	/**
+	 * Setter of the duration.
+	 * @param duration duration of the sleep.
+	 */
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}

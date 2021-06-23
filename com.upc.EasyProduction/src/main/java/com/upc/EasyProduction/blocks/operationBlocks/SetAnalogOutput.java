@@ -18,22 +18,57 @@ import com.upc.EasyProduction.blocks.dataBlocks.SetAnalogOutputData;
 import com.upc.EasyProduction.blocks.dataBlocks.SetDigitalOutputData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 
+/**
+ * This class represents the SetAnalogOutput block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class SetAnalogOutput extends Operation implements ActionListener, ChangeListener{
 	
+	/**
+	 * Out 0 JRadioButton of the parameters panel.
+	 */
 	private JRadioButton out0 = new JRadioButton("0");
+	/**
+	 * Out 1 JRadioButton of the parameters panel.
+	 */
 	private JRadioButton out1 = new JRadioButton("1");
 	
+	/**
+	 * Outs JLabel of the parameters panel.
+	 */
 	private JLabel outsLabel = new JLabel("Select analog output:");
+	/**
+	 * Value JLable of the parameters panel.
+	 */
 	private JLabel valueLabel = new JLabel("Select value (1.0 = 10v or 20mA, see I/O tab): 0.50");
 	
+	/**
+	 * Value JSLider of the parameters panel.
+	 */
 	private JSlider valueSlider = new JSlider();
+	/**
+	 * Used to set the labels in the value slider.
+	 */
 	private Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
 	
+	/**
+	 * Selected out.
+	 */
 	private String out = "0";
+	/**
+	 * Value.
+	 */
 	private String value = "0.50"; // false -> low, true -> high
 	
+	/**
+	 * Auxiliary boolean that is used to avoid updating the contribution DataModel when it is not the intention.
+	 */
 	private boolean controlUpdateDataModel = true;
 	
+	/**
+	 * Constructor.
+	 */
 	public SetAnalogOutput() {
 		
 		defaultCode = "set_standard_analog_out(0, 0.50)";
@@ -181,10 +216,18 @@ public class SetAnalogOutput extends Operation implements ActionListener, Change
 	
 	// setters
 	
+	/**
+	 * Setter of the selected out.
+	 * @param out selected out.
+	 */
 	public void setOut(String out) {
 		this.out = out;
 	}
 	
+	/**
+	 * Setter of the value.
+	 * @param value value of the out.
+	 */
 	public void setValue(String value) {
 		this.value = value;
 	}

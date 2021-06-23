@@ -19,31 +19,82 @@ import com.upc.EasyProduction.panelManagement.Workflow;
 import com.ur.urcap.api.domain.userinteraction.keyboard.KeyboardInputCallback;
 import com.ur.urcap.api.domain.userinteraction.keyboard.KeyboardTextInput;
 
-
+/**
+ * This class represents the PopUp block.
+ * @author Enric Lamarca Ferrés
+ *
+ */
 public class PopUp extends Operation implements ActionListener{
 	
+	/**
+	 * Title JLabel of the parameters panel.
+	 */
 	private JLabel titleLabel = new JLabel("Title");
+	/**
+	 * Message JLabel of the parameters panel.
+	 */
 	private JLabel messageLabel = new JLabel("Message");
 	
+	/**
+	 * Title JTextField of the parameters panel.
+	 */
 	private JTextField titleField = new JTextField();
+	/**
+	 * Message JTextField of the parameters panel.
+	 */
 	private JTextField messageField = new JTextField();
 	
+	/**
+	 * Message JRadioButton of the parameters panel.
+	 */
 	private JRadioButton messageButton = new JRadioButton("Message");
+	/**
+	 * Warning JRadioButton of the parameters panel.
+	 */
 	private JRadioButton warningButton = new JRadioButton("Warning");
+	/**
+	 * Error JRadioButton of the parameters panel.
+	 */
 	private JRadioButton errorButton = new JRadioButton("Error");
+	/**
+	 * Blocking JRadioButton of the parameters panel.
+	 */
 	private JRadioButton blockingButton = new JRadioButton("Blocking");
 	
+	/**
+	 * Title of the popup.
+	 */
 	private String title = "";
+	/**
+	 * Message of the popup.
+	 */
 	private String message = "";
 	
+	/**
+	 * Boolean that indicates if the popup is a message.
+	 */
 	private boolean isMessage = true;
+	/**
+	 * Boolean that indicates if the popup is a warning.
+	 */
 	private boolean isWarning = false;
+	/**
+	 * Boolean that indicates if the popup is an error.
+	 */
 	private boolean isError = false;
+	/**
+	 * Boolean that indicates if the popup is blocking.
+	 */
 	private boolean isBlocking = false;
 	
+	/**
+	 * Auxiliary boolean that is used to avoid updating the contribution DataModel when it is not the intention.
+	 */
 	private boolean controlUpdateDataModel = true;
 	
-	
+	/**
+	 * Constructor.
+	 */
 	public PopUp() {
 				
 		defaultCode = "popup(\"Demo message\")";
@@ -242,21 +293,45 @@ public class PopUp extends Operation implements ActionListener{
 	
 	// setters
 	
+	/**
+	 * Setter of the message text.
+	 * @param message message text.
+	 */
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	/**
+	 * Setter of the title text.
+	 * @param title title text.
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	/**
+	 * Setter of the boolean that indicates if the popup is a message.
+	 * @param isMessage boolean that indicates if the popup is a message.
+	 */
 	public void setIsMessage(boolean isMessage) {
 		this.isMessage = isMessage;
 	}
+	/**
+	 * Setter of the boolean that indicates if the popup is a warning.
+	 * @param isWarning boolean that indicates if the popup is a warning.
+	 */
 	public void setIsWarning(boolean isWarning) {
 		this.isWarning = isWarning;
 	}
+	/**
+	 * Setter of the boolean that indicates if the popup is an error.
+	 * @param isError boolean that indicates if the popup is an error.
+	 */
 	public void setIsError(boolean isError) {
 		this.isError = isError;
 	}
+	/**
+	 * Setter of the boolean that indicates if the popup is blocking.
+	 * @param isBlocking boolean that indicates if the popup is blocking
+	 */
 	public void setIsBlocking(boolean isBlocking) {
 		this.isBlocking = isBlocking;
 	}
