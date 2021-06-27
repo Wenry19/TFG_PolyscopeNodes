@@ -129,7 +129,7 @@ public class MyStringDeserialization {
 	 * @return ThreadData instance.
 	 */
 	private BlockData getThreadData(String data) {
-		return new ThreadData(getVal("className", data), Boolean.parseBoolean(getVal("isSelected", data)), Boolean.parseBoolean(getVal("activateExperimentTimer", data)));
+		return new ThreadData(getVal("className", data), Boolean.parseBoolean(getVal("isSelected", data)), Boolean.parseBoolean(getVal("activateThread", data)));
 	}
 	
 	/**
