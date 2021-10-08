@@ -14,6 +14,7 @@ import com.google.gson.GsonBuilder;
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.operationBlocks.PopUp;
+import com.upc.EasyProduction.blocks.operationBlocks.Script;
 import com.upc.EasyProduction.blocks.operationBlocks.SetAnalogOutput;
 import com.upc.EasyProduction.blocks.operationBlocks.SetDigitalOutput;
 import com.upc.EasyProduction.blocks.operationBlocks.Sleep;
@@ -534,8 +535,12 @@ public class Workflow extends JPanel {
 			return new Sleep();
 		}
 		
-		else { // if (id.equals("PopUp"))
+		else if (id.equals("PopUp")) {
 			return new PopUp();
+		}
+		
+		else {
+			return new Script();
 		}
 	}
 }
