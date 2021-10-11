@@ -15,6 +15,7 @@ import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.operationBlocks.MoveJ;
 import com.upc.EasyProduction.blocks.operationBlocks.MoveL;
+import com.upc.EasyProduction.blocks.operationBlocks.MoveP;
 import com.upc.EasyProduction.blocks.operationBlocks.PopUp;
 import com.upc.EasyProduction.blocks.operationBlocks.Script;
 import com.upc.EasyProduction.blocks.operationBlocks.SetAnalogOutput;
@@ -547,8 +548,11 @@ public class Workflow extends JPanel {
 		else if (id.equals("MoveJ")) {
 			return new MoveJ();
 		}
-		else {
+		else if (id.equals("MoveL")) {
 			return new MoveL();
+		}
+		else {
+			return new MoveP();
 		}
 	}
 }

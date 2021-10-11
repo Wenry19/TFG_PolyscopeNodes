@@ -9,12 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.blocks.dataBlocks.MoveLData;
+import com.upc.EasyProduction.blocks.dataBlocks.MovePData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 import com.ur.urcap.api.domain.userinteraction.RobotPositionCallback2;
 import com.ur.urcap.api.domain.value.robotposition.PositionParameters;
 
-public class MoveL extends Operation{
+public class MoveP extends Operation{
 	
 	private JButton setWayPointButton = new JButton("SetWayPoint");
 	
@@ -27,11 +27,11 @@ public class MoveL extends Operation{
 	 */
 	private boolean controlUpdateDataModel = true;
 	
-	public MoveL() {
+	public MoveP() {
 		
-		defaultCode = "\n# Insert movel\n";
+		defaultCode = "\n# Insert movep\n";
 		
-		name = "MoveL"; // can be whatever
+		name = "MoveP"; // can be whatever
 				
 		this.setText(name);
 		
@@ -78,7 +78,7 @@ public class MoveL extends Operation{
 	@Override
 	public String generateCode() {
 		
-		code = "movel(" + pos + ")\n";
+		code = "movep(" + pos + ")\n";
 		
 		return "\n" + indentation + code;
 		
@@ -87,7 +87,7 @@ public class MoveL extends Operation{
 	
 	@Override
 	public BlockData getBlockData() {		
-		return new MoveLData(getClassName(), isSelected, indentation, pos);
+		return new MovePData(getClassName(), isSelected, indentation, pos);
 	}
 	
 	@Override
@@ -125,5 +125,5 @@ public class MoveL extends Operation{
 		}
 		
 	}
-
+	
 }

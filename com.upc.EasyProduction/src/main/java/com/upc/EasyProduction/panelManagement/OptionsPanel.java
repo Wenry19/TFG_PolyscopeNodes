@@ -139,6 +139,7 @@ public class OptionsPanel extends JPanel {
 		addOption("Script");
 		addOption("MoveJ");
 		addOption("MoveL");
+		addOption("MoveP");
 		
 	}
 	
