@@ -14,6 +14,7 @@ import com.google.gson.GsonBuilder;
 import com.upc.EasyProduction.blocks.Block;
 import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.operationBlocks.MoveJ;
+import com.upc.EasyProduction.blocks.operationBlocks.MoveL;
 import com.upc.EasyProduction.blocks.operationBlocks.PopUp;
 import com.upc.EasyProduction.blocks.operationBlocks.Script;
 import com.upc.EasyProduction.blocks.operationBlocks.SetAnalogOutput;
@@ -543,8 +544,11 @@ public class Workflow extends JPanel {
 		else if (id.equals("Script")) {
 			return new Script();
 		}
-		else {
+		else if (id.equals("MoveJ")) {
 			return new MoveJ();
+		}
+		else {
+			return new MoveL();
 		}
 	}
 }

@@ -1,0 +1,38 @@
+package com.upc.EasyProduction.blocks.dataBlocks;
+
+import com.upc.EasyProduction.blocks.Block;
+import com.upc.EasyProduction.blocks.BlockData;
+import com.upc.EasyProduction.blocks.operationBlocks.MoveL;
+
+public class MoveLData extends BlockData{
+	
+	private String indentation;
+	
+	private String pos;
+	
+	public MoveLData(String className, Boolean isSelected, String indentation, String pos) {
+		
+		this.className = className;
+		this.isSelected = isSelected;
+		
+		this.indentation = indentation;
+				
+		this.pos = pos;
+		
+	}
+	
+	@Override
+	public Block getBlockInstance() {
+				
+		MoveL b = (MoveL) super.getBlockInstance();
+		
+		b.setIndentation(indentation);
+				
+		b.setPos(pos);
+		
+		b.setPanel();
+						
+		return (Block) b;
+	}
+
+}

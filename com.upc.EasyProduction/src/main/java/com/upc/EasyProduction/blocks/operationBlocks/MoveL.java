@@ -9,14 +9,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import com.upc.EasyProduction.blocks.BlockData;
-import com.upc.EasyProduction.blocks.dataBlocks.MoveJData;
+import com.upc.EasyProduction.blocks.dataBlocks.MoveLData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 import com.ur.urcap.api.domain.userinteraction.RobotPositionCallback2;
 import com.ur.urcap.api.domain.value.robotposition.PositionParameters;
 
-public class MoveJ extends Operation{
+public class MoveL extends Operation{
 	
-	private JButton setWayPointButton = new JButton("SetWayPoint");
+private JButton setWayPointButton = new JButton("SetWayPoint");
 	
 	private JLabel wayPointLabel = new JLabel("WayPoint: -");
 	
@@ -27,11 +27,11 @@ public class MoveJ extends Operation{
 	 */
 	private boolean controlUpdateDataModel = true;
 	
-	public MoveJ() {
+	public MoveL() {
 		
-		defaultCode = "\n# Insert moveJ\n";
+		defaultCode = "\n# Insert moveL\n";
 		
-		name = "MoveJ"; // can be whatever
+		name = "MoveL"; // can be whatever
 				
 		this.setText(name);
 		
@@ -78,7 +78,7 @@ public class MoveJ extends Operation{
 	@Override
 	public String generateCode() {
 		
-		code = "movej(get_inverse_kin(" + pos + "))\n";
+		code = "movel(" + pos + ")\n";
 		
 		return "\n" + indentation + code;
 		
@@ -87,7 +87,7 @@ public class MoveJ extends Operation{
 	
 	@Override
 	public BlockData getBlockData() {		
-		return new MoveJData(getClassName(), isSelected, indentation, pos);
+		return new MoveLData(getClassName(), isSelected, indentation, pos);
 	}
 	
 	@Override
@@ -128,7 +128,5 @@ public class MoveJ extends Operation{
 		}
 		
 	}
-	
-	
-	
+
 }
