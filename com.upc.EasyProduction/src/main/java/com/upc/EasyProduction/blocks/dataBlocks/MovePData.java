@@ -10,10 +10,11 @@ public class MovePData extends BlockData{
 	
 	private String pos;
 	
-	public MovePData(String className, Boolean isSelected, String indentation, String pos) {
+	public MovePData(String className, Boolean isSelected, Boolean readyToExecute, String indentation, String pos) {
 		
 		this.className = className;
 		this.isSelected = isSelected;
+		this.readyToExecute = readyToExecute;
 		
 		this.indentation = indentation;
 				

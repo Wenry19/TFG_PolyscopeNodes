@@ -35,6 +35,8 @@ public class MoveP extends Operation{
 				
 		this.setText(name);
 		
+		readyToExecute = false;
+		
 		// param panel
 		
 		setWayPointButton.addActionListener(new ActionListener() {
@@ -87,7 +89,7 @@ public class MoveP extends Operation{
 	
 	@Override
 	public BlockData getBlockData() {		
-		return new MovePData(getClassName(), isSelected, indentation, pos);
+		return new MovePData(getClassName(), isSelected, readyToExecute, indentation, pos);
 	}
 	
 	@Override
@@ -116,6 +118,8 @@ public class MoveP extends Operation{
 			pos = parameters.getPose().toString();
 						
 			wayPointLabel.setText("WayPoint: " + pos);
+			
+			readyToExecute = true;
 			
 			if (controlUpdateDataModel) {
 				Workflow.getInstance().updateDataModel(new int[] {wfPos});

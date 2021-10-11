@@ -19,6 +19,8 @@ public class BlockData{
 	 */
 	protected Boolean isSelected = false;
 	
+	protected Boolean readyToExecute = true;
+	
 	/**
 	 * Getter of the class name.	
 	 * @return class name.
@@ -40,6 +42,7 @@ public class BlockData{
 			b = (Block) Class.forName(className).getDeclaredConstructor().newInstance();
 			
 			b.setIsSelected(isSelected);
+			b.setReadyToExecute(readyToExecute);
 			
 		}
 		catch (Exception e) {

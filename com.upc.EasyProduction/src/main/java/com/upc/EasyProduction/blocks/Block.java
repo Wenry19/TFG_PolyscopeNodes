@@ -72,6 +72,8 @@ public class Block extends JLabel{
 	 * Boolean that indicates if the block is selected in the workflow.
 	 */
 	protected Boolean isSelected = false;
+	
+	protected Boolean readyToExecute = true;
 		
 	
 	/**
@@ -171,6 +173,10 @@ public class Block extends JLabel{
 		return isSelected;
 	}
 	
+	public Boolean getReadyToExecute() {
+		return readyToExecute;
+	}
+	
 	
 	// setters
 	
@@ -188,6 +194,10 @@ public class Block extends JLabel{
 	 */
 	public void setIndentation(String indentation) {
 		this.indentation = indentation;
+	}
+	
+	public void setReadyToExecute(Boolean readyToExecute) {
+		this.readyToExecute = readyToExecute;
 	}
 	
 	/**

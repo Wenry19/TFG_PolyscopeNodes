@@ -555,4 +555,17 @@ public class Workflow extends JPanel {
 			return new MoveP();
 		}
 	}
+	
+	public Boolean getReadyToExecute() {
+		
+		Boolean result = true;
+		
+		for (int i = 0; i < workflow.size(); i++) {
+		
+			result = result & workflow.get(i).getReadyToExecute();
+			
+		}
+		
+		return result;
+	}
 }

@@ -146,9 +146,9 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 
 	@Override
 	public boolean isDefined() { // eye!!
-		// since we have the DEFAULT VALUES!!
 		// node able to execute
-		return true;
+		
+		return Workflow.getInstance().getReadyToExecute();
 	}
 
 	@Override
