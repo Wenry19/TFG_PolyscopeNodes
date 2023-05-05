@@ -29,7 +29,7 @@ public class MoveJ extends Operation{
 	
 	public MoveJ() {
 		
-		defaultCode = "\n# Insert movej\n";
+		defaultCode = "\n# Insert moveJ\n";
 		
 		name = "MoveJ"; // can be whatever
 				

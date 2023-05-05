@@ -16,7 +16,7 @@ import com.ur.urcap.api.domain.value.robotposition.PositionParameters;
 
 public class MoveL extends Operation{
 	
-	private JButton setWayPointButton = new JButton("SetWayPoint");
+private JButton setWayPointButton = new JButton("SetWayPoint");
 	
 	private JLabel wayPointLabel = new JLabel("WayPoint: -");
 	
@@ -29,7 +29,7 @@ public class MoveL extends Operation{
 	
 	public MoveL() {
 		
-		defaultCode = "\n# Insert movel\n";
+		defaultCode = "\n# Insert moveL\n";
 		
 		name = "MoveL"; // can be whatever
 				
@@ -112,7 +112,10 @@ public class MoveL extends Operation{
 
 		@Override
 		public void onOk(PositionParameters parameters) {
-						
+			
+			
+			//pos = parameters.getJointPositions().toString().replace(" rad,", "").replace(" rad", ""); // trec comes perk sembla que donen problemes al serialitzar-les i guardar-les al datamode...
+			
 			pos = parameters.getPose().toString();
 						
 			wayPointLabel.setText("WayPoint: " + pos);
