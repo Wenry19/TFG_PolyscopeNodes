@@ -111,8 +111,8 @@ public class EasyProductionProgramNodeContribution implements ProgramNodeContrib
 			
 			try {
 				
-				blockDataArray[i] = (BlockData) gson.fromJson(blockDataStringArray[i], Class.forName(typesDataStringArray[i]));
-				//blockDataArray[i] = (BlockData) d.deserializeBlockData(blockDataStringArray[i], typesDataStringArray[i]);
+				//blockDataArray[i] = (BlockData) gson.fromJson(blockDataStringArray[i], Class.forName(typesDataStringArray[i]));
+				blockDataArray[i] = (BlockData) d.deserializeBlockData(blockDataStringArray[i], typesDataStringArray[i]);
 				
 			}
 			catch(Exception e){
