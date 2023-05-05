@@ -12,6 +12,7 @@ import com.upc.EasyProduction.blocks.BlockData;
 import com.upc.EasyProduction.blocks.dataBlocks.MoveJData;
 import com.upc.EasyProduction.panelManagement.Workflow;
 import com.ur.urcap.api.domain.userinteraction.RobotPositionCallback2;
+import com.ur.urcap.api.domain.value.jointposition.JointPositions;
 import com.ur.urcap.api.domain.value.robotposition.PositionParameters;
 
 public class MoveJ extends Operation{
@@ -118,7 +119,7 @@ public class MoveJ extends Operation{
 			
 			pos = parameters.getPose().toString();
 						
-			wayPointLabel.setText("WayPoint: " + pos);
+			wayPointLabel.setText("WayPoint (rad): " + pos);
 			
 			if (controlUpdateDataModel) {
 				Workflow.getInstance().updateDataModel(new int[] {wfPos});

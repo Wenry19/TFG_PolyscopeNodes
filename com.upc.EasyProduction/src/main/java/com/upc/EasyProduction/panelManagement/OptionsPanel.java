@@ -138,7 +138,6 @@ public class OptionsPanel extends JPanel {
 		addOption("SetAnalogOutput");
 		addOption("Script");
 		addOption("MoveJ");
-		addOption("MoveL");
 		
 	}
 	
