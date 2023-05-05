@@ -128,6 +128,7 @@ public class MoveJ extends Operation{
 				Workflow.getInstance().updateDataModel(new int[] {wfPos});
 			}
 			
+			
 		}
 		
 	}

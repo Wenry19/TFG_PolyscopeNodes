@@ -125,6 +125,7 @@ public class MoveL extends Operation{
 				Workflow.getInstance().updateDataModel(new int[] {wfPos});
 			}
 			
+			
 		}
 		
 	}
