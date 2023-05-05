@@ -17,7 +17,9 @@ public class MoveJData extends BlockData{
 		this.isSelected = isSelected;
 		
 		this.indentation = indentation;
-				
+		
+		System.out.print("DEBUG2 -------------------> " + pos + "\n");
+		
 		this.pos = pos;
 		
 	}

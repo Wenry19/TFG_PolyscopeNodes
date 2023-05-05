@@ -79,7 +79,7 @@ public class MoveJ extends Operation{
 	@Override
 	public String generateCode() {
 		
-		code = "movej(get_inverse_kin(" + pos + "))\n";
+		code = "movej(" + pos.replace(" ", ", ") + ")\n"; // afegeixo comes
 		
 		return "\n" + indentation + code;
 		
@@ -87,7 +87,10 @@ public class MoveJ extends Operation{
 	
 	
 	@Override
-	public BlockData getBlockData() {		
+	public BlockData getBlockData() {
+		
+		System.out.print("DEBUG1 -------------------> " + pos + "\n");
+		
 		return new MoveJData(getClassName(), isSelected, indentation, pos);
 	}
 	
@@ -115,11 +118,9 @@ public class MoveJ extends Operation{
 		public void onOk(PositionParameters parameters) {
 			
 			
-			//pos = parameters.getJointPositions().toString().replace(" rad,", "").replace(" rad", ""); // trec comes perk sembla que donen problemes al serialitzar-les i guardar-les al datamode...
+			pos = parameters.getJointPositions().toString().replace(" rad,", "").replace(" rad", ""); // trec comes perk sembla que donen problemes al serialitzar-les i guardar-les al datamode...
 			
-			pos = parameters.getPose().toString();
-						
-			wayPointLabel.setText("WayPoint (rad): " + pos);
+			wayPointLabel.setText("WayPoint (rad): " + pos.replace(" ", ", "));
 			
 			if (controlUpdateDataModel) {
 				Workflow.getInstance().updateDataModel(new int[] {wfPos});
