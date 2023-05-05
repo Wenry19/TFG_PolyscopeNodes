@@ -136,7 +136,6 @@ public class OptionsPanel extends JPanel {
 		addOption("PopUp");
 		addOption("SetDigitalOutput");
 		addOption("SetAnalogOutput");
-		addOption("Script");
 		
 	}
 	

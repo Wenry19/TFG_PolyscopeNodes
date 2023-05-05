@@ -9,7 +9,6 @@ import com.upc.EasyProduction.blocks.dataBlocks.DefPutFuncsData;
 import com.upc.EasyProduction.blocks.dataBlocks.GetReadyToPutData;
 import com.upc.EasyProduction.blocks.dataBlocks.EmptyOperationData;
 import com.upc.EasyProduction.blocks.dataBlocks.PopUpData;
-import com.upc.EasyProduction.blocks.dataBlocks.ScriptData;
 import com.upc.EasyProduction.blocks.dataBlocks.SetAnalogOutputData;
 import com.upc.EasyProduction.blocks.dataBlocks.SetDigitalOutputData;
 import com.upc.EasyProduction.blocks.dataBlocks.SleepData;
@@ -56,9 +55,6 @@ public class MyStringDeserialization {
 		}
 		else if(type.contains("SetAnalogOutputData")) {
 			return getSetAnalogOutputData(data);
-		}
-		else if(type.contains("ScriptData")) {
-			return getScriptData(data);
 		}
 		else {
 			return null;
@@ -173,9 +169,5 @@ public class MyStringDeserialization {
 	 */
 	private BlockData getSetAnalogOutputData(String data) {
 		return new SetAnalogOutputData(getVal("className", data), Boolean.parseBoolean(getVal("isSelected", data)), getVal("indentation", data), getVal("out", data), getVal("value", data));
-	}
-	
-	private BlockData getScriptData(String data) {
-		return new ScriptData(getVal("className", data), Boolean.parseBoolean(getVal("isSelected", data)), getVal("indentation", data), getVal("code", data));
 	}
 }
